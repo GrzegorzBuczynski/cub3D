@@ -6,23 +6,25 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/07 17:50:18 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/07 20:19:12 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _CUB3D_H_
 # define _CUB3D_H_
 
+# include "lib_ft/libft.h"
+# include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
-# include <stdlib.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <string.h>
 
 // Constants
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 600
-# define FOV 66.0         // Field of view in degrees
+# define FOV 66.0 // Field of view in degrees
 # define TILE_SIZE 64
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
@@ -34,31 +36,39 @@
 
 typedef struct s_vector
 {
-    double x;
-    double y;
-}               t_vector;
+	double		x;
+	double		y;
+}				t_vector;
 
 typedef struct s_player
 {
-    t_vector pos;        // Position of the player
-    t_vector dir;        // Direction the player is facing
-    t_vector plane;      // Camera plane for field of view
-}               t_player;
+	t_vector pos;   // Position of the player
+	t_vector dir;   // Direction the player is facing
+	t_vector plane; // Camera plane for field of view
+}				t_player;
 
 typedef struct s_map
 {
-    char **grid;         // 2D array representing the map layout
-    int width;           // Width of the map
-    int height;          // Height of the map
-}               t_map;
+	char **grid; // 2D array representing the map layout
+	int width;   // Width of the map
+	int height;  // Height of the map
+}				t_map;
 
 typedef struct s_game
 {
-    t_player player;
-    t_map map;
-    void *mlx_ptr;       // Pointer to the MLX library instance
-    void *win_ptr;       // Pointer to the game window
-}               t_game;
+	t_player	player;
+	t_map		map;
+	void *mlx_ptr; // Pointer to the MLX library instance
+	void *win_ptr; // Pointer to the game window
+}				t_game;
 
+// check_map
+//	// check_borders.c
+//	// check_map.c
+//	// check_player.c
+void			is_player_on_map(char **map);
+
+// file.c
+int				handle_input(char **av);
 
 #endif
