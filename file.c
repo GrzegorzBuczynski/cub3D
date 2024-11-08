@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 20:23:07 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:38:13 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	handle_input(char **av, t_game *data)
 {
 	read_file(av, &data->array);
 	select_map(data);
-	// check_map(data->map);
+	check_map(data->map);
 	// sometimes it doesn't find a file to open while debugging
 	// -----------------------TO DO-----------------------
 	// Export textures from map.cub and inilitalize them

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 18:09:18 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:44:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ int	check_player(char **map)
 	int	y;
 
 	player = 0;
-	y = -1;
-	while (++y, map[y])
+	y = 0;
+	while (map[y])
 	{
-		x = -1;
-		// remove new lines from map?????
-		while (++x, map[y][x] && map[y][x] != '\n')
+		x = 0;
+		// remove new lines from map????? why to remove?
+		while (map[y][x] && map[y][x] != '\n')
+		{
 			if (!is_player_on_map(map[y][x], &player))
-				return (ft_error(1, "Map doesn't have a player.\n"));
+				ft_panic("Map doesn't have a player.\n", 1);
+			x++;
+		}
+		y++;
 	}
 	if (player != 1)
-		return (ft_error(1, "There must be exactly 1 player on the map.\n"));
+		ft_panic("There must be exactly 1 player on the map.\n", 1);
+	printf("Player is on the map\n");
 	return (0);
 }
