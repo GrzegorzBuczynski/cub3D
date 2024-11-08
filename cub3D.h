@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 17:17:27 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:10:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "lib_ft/libft.h"
+# include "structs.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
@@ -34,47 +35,22 @@
 # define ERR_TEXTURE_LOAD -2
 # define ERR_MEMORY -3
 
-typedef struct s_vector
-{
-	double		x;
-	double		y;
-}				t_vector;
-
-typedef struct s_player
-{
-	t_vector pos;   // Position of the player
-	t_vector dir;   // Direction the player is facing
-	t_vector plane; // Camera plane for field of view
-}				t_player;
-
-typedef struct s_map
-{
-	char **grid; // 2D array representing the map layout
-	int width;   // Width of the map
-	int height;  // Height of the map
-}				t_map;
-
-typedef struct s_game
-{
-	t_player	player;
-	t_map		map;
-	void *mlx_ptr; // Pointer to the MLX library instance
-	void *win_ptr; // Pointer to the game window
-}				t_game;
-
 // check_map
 //	// check_borders.c
-bool			check_borders(char **map);
+bool	check_borders(char **map);
 //	// check_map.c
-void			check_map(char **map);
+void	check_map(char **map);
 
 //	// check_player.c
-int				check_player(char **map);
+int		check_player(char **map);
 
 // file.c
-int				handle_input(char **av);
+int		handle_input(char **av, t_game *data);
 
 // utils.c
-int				ft_error(int error_code, char *message);
+int		ft_error(int error_code, char *message);
+
+void	print_map(char **map);
+void	select_map(t_game *data);
 
 #endif

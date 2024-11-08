@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
+#    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 17:43:39 by ssuchane          #+#    #+#              #
-#    Updated: 2024/11/08 16:38:32 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/11/08 20:14:51 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 CC = gcc
 
 # Compiler flags
-WARNFLAGS = -Wall -Wextra -Werror
+WARNFLAGS = #-Wall -Wextra -Werror
 RLFLAG = -lm -g
 CFLAGS = -g
 HEADERS = -I./lib_ft -I./inc -I./minilibx
@@ -24,6 +24,7 @@ LDFLAGS = -L./lib_ft -l:libft.a -L./minilibx -lmlx $(RLFLAG)
 SRCS =	main.c \
 		file.c \
 		utils.c \
+		init_map.c \
 		src/check_map/check_map.c \
 		src/check_map/check_player.c \
 		src/check_map/check_borders.c 
@@ -66,14 +67,14 @@ $(LIBFT):
 # Clean up obj files
 clean:
 	make -C lib_ft clean
-	make -C $(MINILIBX_DIR) clean
 	rm -f $(OBJS)
+# make -C $(MINILIBX_DIR) clean
 
 # Full clean up
 fclean: clean
 	rm -f $(NAME)
 	make -C lib_ft fclean
-	rm -f $(MINILIBX_LIB)
+# rm -f $(MINILIBX_LIB)
 
 # Rebuild
 re: fclean all
@@ -86,3 +87,7 @@ push:
 	git add .
 	git commit -m "make push!"
 	git push
+
+run: all
+	clear
+	./cub3D map.cub

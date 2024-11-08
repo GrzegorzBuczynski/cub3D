@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 18:44:01 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:23:07 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,43 @@ int	ft_open(const char *filename)
 	return (fd);
 }
 
-int	handle_input(char **av)
+void	read_file(char **av, char ***array)
 {
-	char	**array;
-	int		fd;
+	int	fd;
 
-	// sometimes it doesn't find a file to open while debugging
 	fd = ft_open(av[1]);
-	array = ft_read(fd);
+	*array = ft_read(fd);
+	close(fd);
+}
 
+void	print_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+	printf("\n");
+	printf("\n");
+}
+
+int	handle_input(char **av, t_game *data)
+{
+	read_file(av, &data->array);
+	select_map(data);
+	// check_map(data->map);
+	// sometimes it doesn't find a file to open while debugging
 	// -----------------------TO DO-----------------------
 	// Export textures from map.cub and inilitalize them
 	// into structure (4 textures for NORTH, SOUTH, WEST and EAST)
 	// -extract path to specific texture
 	// -save it into variable
 	// Export floor color based on RGB colors in range [0,255] 0, 255, 255
-
 	// ------------------loop for testing------------------
-	// while (array[i])
-	// {
-	// 	printf("%s", array[i]);
-	// 	i++;
-	// }
 	// ----------------------------------------------------
-
-	check_map(array);
+	// print_map(data->map);
 	return (1);
 }
-
