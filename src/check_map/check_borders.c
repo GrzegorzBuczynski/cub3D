@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 18:35:15 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:40:49 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,20 @@ bool	check_borders(char **map)
 		return (false);
 	original_char = map[start_y][start_x];
 	map[start_y][start_x] = 'V';
+	int y = 10;
+	while (map[y])
+	{
+		printf("%s", map[y]);
+		y++;
+	}
+	printf("\n\n\n");
 	flood_fill(map, start_y, start_x);
+	y = 0;
+	while (map[y])
+	{
+		printf("%s", map[y]);
+		y++;
+	}
 	if (!check_boundary(map))
 	{
 		restore_visited_to_floor(map);

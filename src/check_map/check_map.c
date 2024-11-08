@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:38:53 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 17:17:41 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:43:28 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ static void	convert_space_to_wall(char **map)
 
 void	check_map(char **map)
 {
-	int	y;
-
-	y = find_first_row_of_map(map);
-	convert_space_to_wall(&map[y]);
-	check_borders(map);
+	
+	check_borders(&map[y]);
 	check_player(&map[y]);
 }
