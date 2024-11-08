@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_append_argv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 18:05:38 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/07 20:58:07 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 21:40:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,6 @@ char	**ft_append_argv(char **argv, char *line)
 	new_argv[i + 1] = NULL;
 	return (new_argv);
 }
+
+
+
