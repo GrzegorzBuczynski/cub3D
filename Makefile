@@ -6,7 +6,7 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 17:43:39 by ssuchane          #+#    #+#              #
-#    Updated: 2024/11/07 20:19:37 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/11/08 16:38:32 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,22 @@ CC = gcc
 WARNFLAGS = -Wall -Wextra -Werror
 RLFLAG = -lm -g
 CFLAGS = -g
-HEADERS = -I./lib_ft -I./inc
-LDFLAGS = -L./lib_ft -l:libft.a $(RLFLAG)
+HEADERS = -I./lib_ft -I./inc -I./minilibx
+LDFLAGS = -L./lib_ft -l:libft.a -L./minilibx -lmlx $(RLFLAG)
 
 # Source files
 SRCS =	main.c \
 		file.c \
-		# src/check_map/check_map.c \
-		# src/check_map/check_player.c \
-		# src/check_map/check_borders.c 
+		utils.c \
+		src/check_map/check_map.c \
+		src/check_map/check_player.c \
+		src/check_map/check_borders.c 
 
 OBJS = $(SRCS:.c=.o)
+
+MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
+MINILIBX_DIR = minilibx
+MINILIBX_LIB = $(MINILIBX_DIR)/libmlx.a
 
 # Program Name
 NAME = cub3D
@@ -36,11 +41,18 @@ NAME = cub3D
 LIBFT = ./lib_ft/libft.a
 
 # Default rule
-all: $(LIBFT) $(NAME)
-	
-#$(LIBFT) $(NAME)
+all: $(MINILIBX_DIR) $(MINILIBX_LIB) $(LIBFT) $(NAME)
+
+$(MINILIBX_DIR):
+	@if [ ! -d "$(MINILIBX_DIR)" ]; then \
+		git clone $(MINILIBX_REPO) $(MINILIBX_DIR); \
+	fi
+
+$(MINILIBX_LIB): | $(MINILIBX_DIR)
+	@echo "Building MiniLibX library..."
+	@$(MAKE) -C $(MINILIBX_DIR)
+
 $(NAME): $(OBJS)
-#	clear
 	@echo "Linking objects into executable..."
 	$(CC) $(WARNFLAGS) $(CFLAGS) $(HEADERS) $(OBJS) -o $(NAME) $(LDFLAGS)
 
@@ -54,12 +66,14 @@ $(LIBFT):
 # Clean up obj files
 clean:
 	make -C lib_ft clean
+	make -C $(MINILIBX_DIR) clean
 	rm -f $(OBJS)
 
 # Full clean up
 fclean: clean
 	rm -f $(NAME)
 	make -C lib_ft fclean
+	rm -f $(MINILIBX_LIB)
 
 # Rebuild
 re: fclean all

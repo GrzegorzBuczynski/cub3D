@@ -6,12 +6,12 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/07 20:19:36 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:17:27 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _CUB3D_H_
-# define _CUB3D_H_
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "lib_ft/libft.h"
 # include <fcntl.h>
@@ -64,11 +64,17 @@ typedef struct s_game
 
 // check_map
 //	// check_borders.c
+bool			check_borders(char **map);
 //	// check_map.c
+void			check_map(char **map);
+
 //	// check_player.c
-void			is_player_on_map(char **map);
+int				check_player(char **map);
 
 // file.c
 int				handle_input(char **av);
+
+// utils.c
+int				ft_error(int error_code, char *message);
 
 #endif
