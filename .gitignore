@@ -5,7 +5,7 @@
 *.so
 *.out
 *.dll
-./minilibx/*
+minilibx/*
 cub3D
 
 # Ignore directories created by common IDEs
