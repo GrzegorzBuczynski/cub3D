@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 18:25:12 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:35:15 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool	check_boundary(char **map)
 	return (true);
 }
 
-void	restore_visited_to_walls(char **map)
+void	restore_visited_to_floor(char **map)
 {
 	int	y;
 	int	x;
@@ -117,11 +117,11 @@ bool	check_borders(char **map)
 	flood_fill(map, start_y, start_x);
 	if (!check_boundary(map))
 	{
-		restore_visited_to_walls(map);
+		restore_visited_to_floor(map);
 		restore_player_position(map, start_y, start_x, original_char);
 		return (false);
 	}
-	restore_visited_to_walls(map);
+	restore_visited_to_floor(map);
 	restore_player_position(map, start_y, start_x, original_char);
 	return (true);
 }
