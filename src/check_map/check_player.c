@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 20:44:08 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:56:02 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ int	check_player(char **map)
 	while (map[y])
 	{
 		x = 0;
-		// remove new lines from map????? why to remove?
 		while (map[y][x] && map[y][x] != '\n')
 		{
-			if (!is_player_on_map(map[y][x], &player))
-				ft_panic("Map doesn't have a player.\n", 1);
+			if (map[y][x] == 'N')
+				player++;
 			x++;
 		}
 		y++;
 	}
+	if (player == 0) //! is_player_on_map(map[y][x], &player)
+		ft_panic("Map doesn't have a player.\n", 1);
 	if (player != 1)
 		ft_panic("There must be exactly 1 player on the map.\n", 1);
 	printf("Player is on the map\n");

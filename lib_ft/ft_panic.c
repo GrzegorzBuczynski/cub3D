@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_panic.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:06:21 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/10/03 19:30:58 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:51:48 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@
  */
 void	ft_panic(char *s, int status)
 {
-	perror(s);
+	ft_putstr_fd(s, 2);
 	exit(status);
 }
