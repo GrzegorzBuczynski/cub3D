@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 17:18:39 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:09:18 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	check_player(char **map)
 	while (++y, map[y])
 	{
 		x = -1;
-		while (++x, map[y][x])
+		// remove new lines from map?????
+		while (++x, map[y][x] && map[y][x] != '\n')
 			if (!is_player_on_map(map[y][x], &player))
 				return (ft_error(1, "Map doesn't have a player.\n"));
 	}

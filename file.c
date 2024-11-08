@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 16:58:28 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:59:17 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	handle_input(char **av)
 	char	**array;
 	int		fd;
 
+	// sometimes it doesn't find a file to open while debugging
 	fd = ft_open(av[1]);
 	array = ft_read(fd);
 

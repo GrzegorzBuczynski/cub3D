@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 16:32:56 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:25:12 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ bool	check_boundary(char **map)
 	while (map[y])
 	{
 		x = -1;
-		while (x++, map[y][x] != '\0')
-			if ((y == 0 || x == 0 || map[y][x + 1] == '\0') && map[y][x] == 'V')
+		while (x++, map[y][x] != '\n' || map[y][x] != '\0')
+			// because of newline at the end it might be failing because we are
+			// not protecting from it
+			if ((y == 0 || x == 0 || map[y][x + 1] == '\n'
+				|| map[y][x + 1] == '\0') && map[y][x] == 'V')
 				return (false);
 		y++;
 	}
@@ -67,7 +70,8 @@ void	restore_visited_to_walls(char **map)
 	while (map[y])
 	{
 		x = -1;
-		while (x++, map[y][x] != '\0')
+		// new line at the end of map
+		while (x++, map[y][x] != '\n' || map[y][x] != '\0')
 			if (map[y][x] == 'V')
 				map[y][x] = '0';
 		y++;
@@ -77,15 +81,15 @@ void	restore_visited_to_walls(char **map)
 void	restore_player_position(char **map, int start_y, int start_x,
 		char player_symbol)
 {
-	if (map[start_y] != NULL && map[start_y][start_x] != '\0')
+	if (map[start_y] && map[start_y][start_x] != '\0')
 		map[start_y][start_x] = player_symbol;
 }
 
 void	flood_fill(char **map, int y, int x)
 {
-	if (y < 0 || x < 0 || map[y][x] == '\0')
-		return ;
-	if (map[y][x] == '1' || map[y][x] == 'V')
+	// new line at the end of map
+	if (y < 0 || x < 0 || map[y] == NULL || map[y][x] == '\0'
+		|| map[y][x] == 'V' || map[y][x] == '1')
 		return ;
 	map[y][x] = 'V';
 	flood_fill(map, y + 1, x);
