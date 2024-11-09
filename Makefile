@@ -5,89 +5,68 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/07 17:43:39 by ssuchane          #+#    #+#              #
-#    Updated: 2024/11/08 20:14:51 by gbuczyns         ###   ########.fr        #
+#    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
+#    Updated: 2024/11/09 16:05:34 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Compiler
+NAME = cub3D
 CC = gcc
+CFLAGS = -g #-Wall -Werror -Wextra
+RM = rm -f
 
-# Compiler flags
-WARNFLAGS = #-Wall -Wextra -Werror
-RLFLAG = -lm -g
-CFLAGS = -g
-HEADERS = -I./lib_ft -I./inc -I./minilibx
-LDFLAGS = -L./lib_ft -l:libft.a -L./minilibx -lmlx $(RLFLAG)
-
-# Source files
 SRCS =	main.c \
 		file.c \
 		utils.c \
 		init_map.c \
-		src/check_map/check_map.c \
-		src/check_map/check_player.c \
-		src/check_map/check_borders.c 
+		display_server/init_display.c \
+		check_map/check_map.c \
+		check_map/check_player.c \
+		check_map/check_borders.c 
 
-OBJS = $(SRCS:.c=.o)
+
+SRCS_DIR = src/
+SRCS_PATHS = $(addprefix $(SRCS_DIR), $(SRCS))
+OBJS = $(SRCS_PATHS:.c=.o)
+
+INCLUDES_DIR = includes
+MINILIBX_DIR = lib/minilibx
+CFLAGS += -I$(INCLUDES_DIR) -I$(MINILIBX_DIR)
+
+LIBRARY_DIRS = lib/lib_ft $(MINILIBX_DIR)
+LIBRARY_DIRSC = lib/lib_ft
+LIBRARY = mlx ft X11 Xext m
+LDFLAGS = $(addprefix -L, $(LIBRARY_DIRS)) $(addprefix -l, $(LIBRARY))
 
 MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
-MINILIBX_DIR = minilibx
-MINILIBX_LIB = $(MINILIBX_DIR)/libmlx.a
+MINILIBX_DIR = lib/minilibx
 
-# Program Name
-NAME = cub3D
-
-# Libft src
-LIBFT = ./lib_ft/libft.a
-
-# Default rule
-all: $(MINILIBX_DIR) $(MINILIBX_LIB) $(LIBFT) $(NAME)
+all: $(MINILIBX_DIR) $(LIBRARY) $(NAME)
+bonus: all
 
 $(MINILIBX_DIR):
 	@if [ ! -d "$(MINILIBX_DIR)" ]; then \
 		git clone $(MINILIBX_REPO) $(MINILIBX_DIR); \
 	fi
 
-$(MINILIBX_LIB): | $(MINILIBX_DIR)
-	@echo "Building MiniLibX library..."
-	@$(MAKE) -C $(MINILIBX_DIR)
+$(LIBRARY):
+	@$(foreach dir, $(LIBRARY_DIRS), $(MAKE) -C $(dir);)
 
 $(NAME): $(OBJS)
-	@echo "Linking objects into executable..."
-	$(CC) $(WARNFLAGS) $(CFLAGS) $(HEADERS) $(OBJS) -o $(NAME) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
 %.o: %.c
-	$(CC) $(WARNFLAGS) $(CFLAGS) $(HEADERS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Make lib_ft
-$(LIBFT):
-	make -C lib_ft
-
-# Clean up obj files
 clean:
-	make -C lib_ft clean
-	rm -f $(OBJS)
-# make -C $(MINILIBX_DIR) clean
+	$(RM) $(OBJS)
+	@$(foreach dir, $(LIBRARY_DIRSC), $(MAKE) -C $(dir) clean;)
 
-# Full clean up
 fclean: clean
-	rm -f $(NAME)
-	make -C lib_ft fclean
-# rm -f $(MINILIBX_LIB)
+	$(RM) $(NAME)
+	@$(foreach dir, $(LIBRARY_DIRSC), $(MAKE) -C $(dir) fclean;)
+	rm -rf lib/minilibx
 
-# Rebuild
 re: fclean all
 
-# Ensure that 'all', 'clean', 'fclean', 're', and 'bonus' are not interpreted as file names
-.PHONY: all clean fclean re bonus
-
-push:
-	make fclean
-	git add .
-	git commit -m "make push!"
-	git push
-
-run: all
-	clear
-	./cub3D map.cub
+.PHONY: all clean fclean re $(MINILIBX_DIR)

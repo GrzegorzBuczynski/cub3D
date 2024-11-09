@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 20:03:33 by gbuczyns         ###   ########.fr       */
+/*   Created: 2024/11/08 16:37:43 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/11/09 16:16:44 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D.h"
 
-int	main(int ac, char **av)
+int	ft_error(int error_code, char *message)
 {
-	t_game	data;
-
-	if (ac != 2)
-		return (ft_error(1, "Error: Input a map in format *.cub./n"));
-	handle_input(av, &data);
-	return (0);
+	ft_putstr_fd(message, 2);
+	return (error_code);
 }
+

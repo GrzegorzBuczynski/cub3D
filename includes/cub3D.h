@@ -6,14 +6,14 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 20:10:08 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:04:17 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "lib_ft/libft.h"
+# include "../lib/lib_ft/libft.h"
 # include "structs.h"
 # include <fcntl.h>
 # include <math.h>
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include "../lib/minilibx/mlx.h"
+# include "error_message.h"
 
 // Constants
 # define SCREEN_WIDTH 800
@@ -37,7 +39,7 @@
 
 // check_map
 //	// check_borders.c
-bool	check_borders(char **map);
+int		check_borders(char **map);
 //	// check_map.c
 void	check_map(char **map);
 
@@ -52,5 +54,6 @@ int		ft_error(int error_code, char *message);
 
 void	print_map(char **map);
 void	select_map(t_game *data);
+void	init_display(t_display *data);
 
 #endif

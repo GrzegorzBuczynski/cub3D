@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   error_message.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:37:43 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 18:48:10 by gbuczyns         ###   ########.fr       */
+/*   Created: 2024/07/24 20:15:15 by gbuczyns          #+#    #+#             */
+/*   Updated: 2024/11/09 01:59:20 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#ifndef ERROR_MESSAGE_H
 
-int	ft_error(int error_code, char *message)
-{
-	ft_putstr_fd(message, 2);
-	return (error_code);
-}
+# define ERROR_MESSAGE_H
 
+# define ERR_USAGE			"Usage: ./fdf MAP_FILE"
+# define ERR_MAP			"Incorrect MAP_FILE"
+# define ERR_MAP_READING	"Reading error"
+# define ERR_MAP_INIT		"Map initialization error"
+# define ERR_DISPLAY_INIT		"FdF initialization error"
+# define ERR_CONV_TO_ARR	"Conversion to array"
+# define ERR_CAMERA_INIT	"Camera initialization error"
+
+#endif

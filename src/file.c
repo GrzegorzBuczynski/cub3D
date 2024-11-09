@@ -6,11 +6,11 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 20:38:13 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:17:07 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D.h"
 
 char	**ft_read(int fd)
 {
@@ -60,7 +60,7 @@ void	print_map(char **map)
 	i = 0;
 	while (map[i])
 	{
-		printf("%s\n", map[i]);
+		printf("%s", map[i]);
 		i++;
 	}
 	printf("\n");

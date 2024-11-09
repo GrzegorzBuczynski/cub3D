@@ -6,11 +6,11 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/08 20:11:02 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 16:17:06 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../includes/cub3D.h"
 
 int	only_whitespace_before(char *array, int x)
 {

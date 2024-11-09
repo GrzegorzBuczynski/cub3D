@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:38:53 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 20:41:18 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 01:50:29 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	check_map(char **map)
 {
-	
 	check_player(map);
-	// check_borders(&map[y]);
+	if (!check_borders(map))
+		printf("Dupa\n");
 }

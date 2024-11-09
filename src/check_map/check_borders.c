@@ -6,135 +6,172 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/08 18:40:49 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/09 01:50:29 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3D.h"
 
-bool	find_start_position(char **map, int *start_y, int *start_x)
+int	getRowCount(char **map)
 {
-	bool	player_found;
-	int		y;
-	int		x;
+	int	rowCount;
 
-	y = 0;
-	player_found = false;
-	while (map[y])
+	rowCount = 0;
+	while (map[rowCount] != NULL)
 	{
-		x = 0;
-		while (map[y][x] != '\0')
-		{
-			if (map[y][x] == 'S' || map[y][x] == 'N' || map[y][x] == 'W'
-				|| map[y][x] == 'E')
-			{
-				if (player_found)
-					return (false);
-				player_found = true;
-				*start_y = y;
-				*start_x = x;
-			}
-			x++;
-		}
-		y++;
+		rowCount++;
 	}
-	return (player_found);
+	return (rowCount);
 }
 
-bool	check_boundary(char **map)
+// Function to calculate the length of each row, ignoring trailing '\n'
+int	getRowLength(char *row)
 {
-	int	y;
-	int	x;
+	int	len;
 
-	y = 0;
-	while (map[y])
+	len = strlen(row);
+	if (len > 0 && row[len - 1] == '\n')
 	{
-		x = -1;
-		while (x++, map[y][x] != '\n' || map[y][x] != '\0')
-			// because of newline at the end it might be failing because we are
-			// not protecting from it
-			if ((y == 0 || x == 0 || map[y][x + 1] == '\n'
-				|| map[y][x + 1] == '\0') && map[y][x] == 'V')
-				return (false);
-		y++;
+		return (len - 1); // Ignore the trailing '\n'
 	}
-	return (true);
+	return (len);
 }
 
-void	restore_visited_to_floor(char **map)
+// Flood-fill function to mark all reachable cells from the border as visited
+void	floodFill(char **map, bool **visited, int *y_sizes, int x, int y,
+		char target)
 {
-	int	y;
-	int	x;
-
-	y = 0;
-	while (map[y])
+	if (x < 0 || x >= getRowCount(map) || y < 0 || y >= y_sizes[x]
+		|| map[x][y] != target || visited[x][y])
 	{
-		x = -1;
-		// new line at the end of map
-		while (x++, map[y][x] != '\n' || map[y][x] != '\0')
-			if (map[y][x] == 'V')
-				map[y][x] = '0';
-		y++;
-	}
-}
-
-void	restore_player_position(char **map, int start_y, int start_x,
-		char player_symbol)
-{
-	if (map[start_y] && map[start_y][start_x] != '\0')
-		map[start_y][start_x] = player_symbol;
-}
-
-void	flood_fill(char **map, int y, int x)
-{
-	// new line at the end of map
-	if (y < 0 || x < 0 || map[y] == NULL || map[y][x] == '\0'
-		|| map[y][x] == 'V' || map[y][x] == '1')
 		return ;
-	map[y][x] = 'V';
-	flood_fill(map, y + 1, x);
-	flood_fill(map, y - 1, x);
-	flood_fill(map, y, x + 1);
-	flood_fill(map, y, x - 1);
-	flood_fill(map, y + 1, x + 1);
-	flood_fill(map, y - 1, x - 1);
-	flood_fill(map, y + 1, x - 1);
-	flood_fill(map, y - 1, x + 1);
+	}
+	visited[x][y] = true; // Mark as visited
+	// Recursively flood-fill in all directions
+	floodFill(map, visited, y_sizes, x + 1, y, target);
+	floodFill(map, visited, y_sizes, x - 1, y, target);
+	floodFill(map, visited, y_sizes, x, y + 1, target);
+	floodFill(map, visited, y_sizes, x, y - 1, target);
 }
 
-bool	check_borders(char **map)
+// Check if a region of '0's is completely enclosed by '1's
+int	isEnclosedRegion(char **map, bool **visited, int *y_sizes, int x, int y)
 {
-	int		start_y;
-	int		start_x;
-	char	original_char;
+	int	enclosed;
 
-	start_y = -1;
-	start_x = -1;
-	if (!find_start_position(map, &start_y, &start_x))
-		return (false);
-	original_char = map[start_y][start_x];
-	map[start_y][start_x] = 'V';
-	int y = 10;
-	while (map[y])
+	if (x < 0 || x >= getRowCount(map) || y < 0 || y >= y_sizes[x])
 	{
-		printf("%s", map[y]);
-		y++;
+		return (0); // Out of bounds
 	}
-	printf("\n\n\n");
-	flood_fill(map, start_y, start_x);
-	y = 0;
-	while (map[y])
+	if (map[x][y] == '1' || visited[x][y])
 	{
-		printf("%s", map[y]);
-		y++;
+		return (1); // Encountered a wall or already visited
 	}
-	if (!check_boundary(map))
+	visited[x][y] = true; // Mark as visited
+	enclosed = 1;
+	enclosed &= isEnclosedRegion(map, visited, y_sizes, x + 1, y);
+	enclosed &= isEnclosedRegion(map, visited, y_sizes, x - 1, y);
+	enclosed &= isEnclosedRegion(map, visited, y_sizes, x, y + 1);
+	enclosed &= isEnclosedRegion(map, visited, y_sizes, x, y - 1);
+	return (enclosed);
+}
+
+// Create a visited array
+bool	**createVisitedArray(int x_size, int *y_sizes)
+{
+	bool	**visited;
+
+	visited = malloc(x_size * sizeof(bool *));
+	for (int i = 0; i < x_size; i++)
 	{
-		restore_visited_to_floor(map);
-		restore_player_position(map, start_y, start_x, original_char);
-		return (false);
+		visited[i] = calloc(y_sizes[i], sizeof(bool)); // Allocate for each row
 	}
-	restore_visited_to_floor(map);
-	restore_player_position(map, start_y, start_x, original_char);
-	return (true);
+	return (visited);
+}
+
+// Free the visited array
+void	freeVisitedArray(bool **visited, int x_size)
+{
+	for (int i = 0; i < x_size; i++)
+	{
+		free(visited[i]);
+	}
+	free(visited);
+}
+
+// Main function to check if all regions of the map are enclosed by walls
+int	check_borders(char **map)
+{
+	int x_size = getRowCount(map);
+
+	// Calculate the y_sizes for each row, ignoring '\n' characters
+	int *y_sizes = malloc(x_size * sizeof(int));
+	if (!y_sizes)
+	{
+		return (0); // Memory allocation failed
+	}
+	for (int i = 0; i < x_size; i++)
+	{
+		y_sizes[i] = getRowLength(map[i]);
+	}
+
+	// Create a visited array
+	bool **visited = createVisitedArray(x_size, y_sizes);
+	if (!visited)
+	{
+		free(y_sizes);
+		return (0); // Memory allocation failed
+	}
+
+	// Step 1: Mark all accessible exterior regions starting from boundary cells
+	for (int i = 0; i < x_size; i++)
+	{
+		if (y_sizes[i] > 0 && map[i][0] == '0') // Left edge of each row
+			floodFill(map, visited, y_sizes, i, 0, '0');
+		if (y_sizes[i] > 1 && map[i][y_sizes[i] - 1] == '0')
+			// Right edge of each row
+			floodFill(map, visited, y_sizes, i, y_sizes[i] - 1, '0');
+	}
+	if (y_sizes[0] > 0)
+	{ // Top edge row
+		for (int j = 0; j < y_sizes[0]; j++)
+		{
+			if (map[0][j] == '0')
+			{
+				floodFill(map, visited, y_sizes, 0, j, '0');
+			}
+		}
+	}
+	if (x_size > 1 && y_sizes[x_size - 1] > 0)
+	{ // Bottom edge row
+		for (int j = 0; j < y_sizes[x_size - 1]; j++)
+		{
+			if (map[x_size - 1][j] == '0')
+			{
+				floodFill(map, visited, y_sizes, x_size - 1, j, '0');
+			}
+		}
+	}
+
+	// Step 2: Check for enclosed regions
+	int enclosedRegions = 1; // Assume all regions are enclosed initially
+	for (int i = 0; i < x_size; i++)
+	{
+		for (int j = 0; j < y_sizes[i]; j++)
+		{
+			if (map[i][j] == '0' && !visited[i][j])
+			{
+				// Found an unvisited '0', check if it's enclosed
+				if (!isEnclosedRegion(map, visited, y_sizes, i, j))
+				{
+					enclosedRegions = 0; // Found an unbounded region
+				}
+			}
+		}
+	}
+
+	// Clean up
+	freeVisitedArray(visited, x_size);
+	free(y_sizes);
+	return (enclosedRegions);
 }
