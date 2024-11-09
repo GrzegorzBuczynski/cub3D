@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 16:17:07 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 23:02:09 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,24 @@ void	print_map(char **map)
 	printf("\n");
 }
 
+void	print_map_nl(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+	printf("\n");
+	printf("\n");
+}
+
+
 int	handle_input(char **av, t_game *data)
 {
-	read_file(av, &data->array);
+	// read_file(av, &data->array);
 	select_map(data);
 	check_map(data->map);
 	// sometimes it doesn't find a file to open while debugging

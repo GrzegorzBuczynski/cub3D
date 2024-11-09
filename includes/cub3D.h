@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 17:15:16 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 23:55:01 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CUB3D_H
 
 # include "../lib/lib_ft/libft.h"
+# include "../lib/minilibx/mlx.h"
+# include "error_message.h"
 # include "structs.h"
 # include <fcntl.h>
 # include <math.h>
@@ -21,8 +23,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include "../lib/minilibx/mlx.h"
-# include "error_message.h"
 
 // Constants
 # define SCREEN_WIDTH 800
@@ -57,7 +57,8 @@ int		handle_input(char **av, t_game *data);
 int		ft_error(int error_code, char *message);
 
 void	print_map(char **map);
+void	print_map_nl(char **map);
 void	select_map(t_game *data);
 void	init_display(t_display *data);
-
+void	get_player_position(char **map, t_vector *p_pos);
 #endif

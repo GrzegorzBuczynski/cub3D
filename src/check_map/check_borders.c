@@ -3,175 +3,184 @@
 /*                                                        :::      ::::::::   */
 /*   check_borders.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 17:09:48 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 00:06:25 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-int	getRowCount(char **map)
+void	error(const char *message, int code)
 {
-	int	rowCount;
-
-	rowCount = 0;
-	while (map[rowCount] != NULL)
-	{
-		rowCount++;
-	}
-	return (rowCount);
+	fprintf(stderr, "%s", message);
+	exit(code);
 }
 
-// Function to calculate the length of each row, ignoring trailing '\n'
-int	getRowLength(char *row)
+// Function to get the width of a row
+int	get_maps_row_width(const char *row)
 {
-	int	len;
+	int	length;
 
-	len = strlen(row);
-	if (len > 0 && row[len - 1] == '\n')
+	length = strlen(row);
+	if (length > 0 && row[length - 1] == '\n')
 	{
-		return (len - 1); // Ignore the trailing '\n'
+		return (length - 1); // Exclude newline character if present
 	}
-	return (len);
+	return (length);
 }
 
-// Flood-fill function to mark all reachable cells from the border as visited
-void	floodFill(char **map, bool **visited, int *y_sizes, int x, int y,
-		char target)
+// Function to get the maximum row width in the map
+int	get_maps_max_row_width(char **map)
 {
-	if (x < 0 || x >= getRowCount(map) || y < 0 || y >= y_sizes[x]
-		|| map[x][y] != target || visited[x][y])
+	int	max_width;
+	int	i;
+	int	row_length;
+
+	max_width = 0;
+	i = 0;
+	while (map[i])
 	{
+		row_length = get_maps_row_width(map[i]);
+		if (row_length > max_width)
+		{
+			max_width = row_length;
+		}
+		i++;
+	}
+	return (max_width);
+}
+
+// Function to get the height of the map
+int	get_map_height(char **map)
+{
+	int	height;
+
+	height = 0;
+	while (map[height])
+	{
+		height++;
+	}
+	return (height);
+}
+
+// Helper function to fill the map border with '2'
+void	fill_map_border(char **map_border, int width, int height)
+{
+	int i, j;
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			map_border[i][j] = '2'; // Fill border with '2'
+		}
+	}
+}
+
+void	copy_map_into_border(char **map_border, char **map)
+{
+	int i, j;
+	int map_height = get_map_height(map);
+	int map_width = get_maps_max_row_width(map);
+
+	for (i = 0; i < map_height; i++)
+	{
+		for (j = 0; j < map_width; j++)
+		{
+			// Copy '1' from map to map_border starting from position (1,1)
+			if (map[i][j] == '1')
+			{
+				map_border[i + 1][j + 1] = '1';
+			}
+			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
+			{
+				if (map[i][j] == 'N')
+					map_border[i + 1][j + 1] = 'N';
+				if (map[i][j] == 'S')
+					map_border[i + 1][j + 1] = 'S';
+				if (map[i][j] == 'W')
+					map_border[i + 1][j + 1] = 'W';
+				if (map[i][j] == 'E')
+					map_border[i + 1][j + 1] = 'E';
+			}
+		}
+	}
+}
+
+void	get_player_position(char **map, t_vector *p_pos)
+{	
+	for (int y = 0; map[y] != NULL; y++)
+	{
+		for (int x = 0; map[y][x] != '\0'; x++)
+		{
+			if (map[y][x] == 'S' || map[y][x] == 'N'
+				|| map[y][x] == 'W' || map[y][x] == 'E')
+			{
+				// Save player coordinates
+				p_pos->x = x;
+				p_pos->y = y;
+				return ; // Exit function once player position is found
+			}
+		}
+	}
+	// If we reach here, no player position was found
+	printf("Error: No player starting position found in map\n");
+}
+
+static void	flood_fill(char **map, int height, int y, int x)
+{
+	int	width;
+
+	width = get_maps_max_row_width(map);
+	if (y < 0 || y >= height || x < 0 || x >= width || map[y][x] == '1'
+		|| map[y][x] == 'V')
 		return ;
-	}
-	visited[x][y] = true; // Mark as visited
-	// Recursively flood-fill in all directions
-	floodFill(map, visited, y_sizes, x + 1, y, target);
-	floodFill(map, visited, y_sizes, x - 1, y, target);
-	floodFill(map, visited, y_sizes, x, y + 1, target);
-	floodFill(map, visited, y_sizes, x, y - 1, target);
+	map[y][x] = 'V';
+	flood_fill(map, height, y - 1, x);
+	flood_fill(map, height, y + 1, x);
+	flood_fill(map, height, y, x - 1);
+	flood_fill(map, height, y, x + 1);
+	flood_fill(map, height, y - 1, x - 1);
+	flood_fill(map, height, y - 1, x + 1);
+	flood_fill(map, height, y + 1, x - 1);
+	flood_fill(map, height, y + 1, x + 1);
+
 }
 
-// Check if a region of '0's is completely enclosed by '1's
-int	isEnclosedRegion(char **map, bool **visited, int *y_sizes, int x, int y)
-{
-	int	enclosed;
-
-	if (x < 0 || x >= getRowCount(map) || y < 0 || y >= y_sizes[x])
-	{
-		return (0); // Out of bounds
-	}
-	if (map[x][y] == '1' || visited[x][y])
-	{
-		return (1); // Encountered a wall or already visited
-	}
-	visited[x][y] = true; // Mark as visited
-	enclosed = 1;
-	enclosed &= isEnclosedRegion(map, visited, y_sizes, x + 1, y);
-	enclosed &= isEnclosedRegion(map, visited, y_sizes, x - 1, y);
-	enclosed &= isEnclosedRegion(map, visited, y_sizes, x, y + 1);
-	enclosed &= isEnclosedRegion(map, visited, y_sizes, x, y - 1);
-	return (enclosed);
-}
-
-// Create a visited array
-bool	**createVisitedArray(int x_size, int *y_sizes)
-{
-	bool	**visited;
-
-	visited = malloc(x_size * sizeof(bool *));
-	for (int i = 0; i < x_size; i++)
-	{
-		visited[i] = calloc(y_sizes[i], sizeof(bool)); // Allocate for each row
-	}
-	return (visited);
-}
-
-// Free the visited array
-void	freeVisitedArray(bool **visited, int x_size)
-{
-	for (int i = 0; i < x_size; i++)
-	{
-		free(visited[i]);
-	}
-	free(visited);
-}
-
-// Main function to check if all regions of the map are enclosed by walls
+// Main function to check borders
 int	check_borders(char **map)
 {
-	int x_size = getRowCount(map);
+	int width = get_maps_max_row_width(map) + 2;
+	int height = get_map_height(map) + 2;
+	char **map_border;
+	int i;
+	t_vector p_pos;
 
-	// Calculate the y_sizes for each row, ignoring '\n' characters
-	int *y_sizes = malloc(x_size * sizeof(int));
-	if (!y_sizes)
-	{
-		return (0); // Memory allocation failed
-	}
-	for (int i = 0; i < x_size; i++)
-	{
-		y_sizes[i] = getRowLength(map[i]);
-	}
+	// Allocate memory for map_border
+	map_border = malloc(sizeof(char *) * height);
+	if (map_border == NULL)
+		return (-1);
 
-	// Create a visited array
-	bool **visited = createVisitedArray(x_size, y_sizes);
-	if (!visited)
+	for (i = 0; i < height; i++)
 	{
-		free(y_sizes);
-		return (0); // Memory allocation failed
-	}
-
-	// Step 1: Mark all accessible exterior regions starting from boundary cells
-	for (int i = 0; i < x_size; i++)
-	{
-		if (y_sizes[i] > 0 && map[i][0] == '0') // Left edge of each row
-			floodFill(map, visited, y_sizes, i, 0, '0');
-		if (y_sizes[i] > 1 && map[i][y_sizes[i] - 1] == '0')
-			// Right edge of each row
-			floodFill(map, visited, y_sizes, i, y_sizes[i] - 1, '0');
-	}
-	if (y_sizes[0] > 0)
-	{ // Top edge row
-		for (int j = 0; j < y_sizes[0]; j++)
+		map_border[i] = malloc(sizeof(char) * width);
+		if (map_border[i] == NULL)
 		{
-			if (map[0][j] == '0')
-			{
-				floodFill(map, visited, y_sizes, 0, j, '0');
-			}
+			while (i-- > 0)
+				free(map_border[i]);
+			free(map_border);
+			return (-1);
 		}
 	}
-	if (x_size > 1 && y_sizes[x_size - 1] > 0)
-	{ // Bottom edge row
-		for (int j = 0; j < y_sizes[x_size - 1]; j++)
-		{
-			if (map[x_size - 1][j] == '0')
-			{
-				floodFill(map, visited, y_sizes, x_size - 1, j, '0');
-			}
-		}
-	}
-
-	// Step 2: Check for enclosed regions
-	int enclosedRegions = 1; // Assume all regions are enclosed initially
-	for (int i = 0; i < x_size; i++)
-	{
-		for (int j = 0; j < y_sizes[i]; j++)
-		{
-			if (map[i][j] == '0' && !visited[i][j])
-			{
-				// Found an unvisited '0', check if it's enclosed
-				if (!isEnclosedRegion(map, visited, y_sizes, i, j))
-				{
-					enclosedRegions = 0; // Found an unbounded region
-				}
-			}
-		}
-	}
-
-	// Clean up
-	freeVisitedArray(visited, x_size);
-	free(y_sizes);
-	return (enclosedRegions);
+	fill_map_border(map_border, width, height);
+	copy_map_into_border(map_border, map);
+	print_map_nl(map_border);
+	for (i = 0; i < height; i++)
+		free(map_border[i]);
+	free(map_border);
+	get_player_position(map, &p_pos);
+	flood_fill(map_border, height, p_pos.y, p_pos.x);
+	print_map_nl(map_border);
+	return (0);
 }
