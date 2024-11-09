@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 17:21:00 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 18:55:38 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_player_on_map(char c, int *player)
 	return (1);
 }
 
-int	check_player(char **map)
+int	check_symbols(char **map)
 {
 	int	player;
 	int	x;

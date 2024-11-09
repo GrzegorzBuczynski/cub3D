@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 17:15:16 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 19:14:17 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include "../lib/minilibx/mlx.h"
 # include "error_message.h"
+
+// libmlx
+# include "../lib/minilibx/mlx.h"
+#include "xfdf.h"
+#include "key_linux.h"
 
 // Constants
 # define SCREEN_WIDTH 800
@@ -48,7 +52,7 @@ int		check_borders(char **map);
 void	check_map(char **map);
 
 //	// check_player.c
-int		check_player(char **map);
+int		check_symbols(char **map);
 
 // file.c
 int		handle_input(char **av, t_game *data);
@@ -58,6 +62,12 @@ int		ft_error(int error_code, char *message);
 
 void	print_map(char **map);
 void	select_map(t_game *data);
-void	init_display(t_display *data);
+
+
+void	init_display(t_game *game);
+int	mouse_press(int button, int x, int y, void *param);
+int	mouse_release(int button, int x, int y, void *param);
+int	mouse_move(int x, int y, void *param);
+void	setup_controls(t_display *data);
 
 #endif

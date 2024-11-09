@@ -20,29 +20,25 @@
 // 	}
 // }
 
-// void	setup_controls(t_display *data)
-// {
-// 	mlx_hook(data->win, KEYPRESS, 1L, key_press, data);
-// 	mlx_hook(data->win, DESTROYNOTIFY, (1L << 2), close_data, data);
-// 	mlx_hook(data->win, BUTTONPRESS, (1L << 2), mouse_press, data);
-// 	mlx_hook(data->win, BUTTONRELEASE, (1L << 3), mouse_release, data);
-// 	mlx_hook(data->win, MOTIONNOTIFY, (1L << 6), mouse_move, data);
-// }
 
 
-void	init_display(t_display *data)
+void	init_display(t_game *game)
 {
-	data->mlx = mlx_init();
-	if (!data->mlx)
+	t_display	*display;
+
+	display = &game->display;
+	display->game = game;
+	display->mlx = mlx_init();
+	if (!display->mlx)
 		ft_panic(ERR_DISPLAY_INIT, 1);
-	data->win = mlx_new_window(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "data");
-	if (!data->win)
+	display->win = mlx_new_window(display->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "display");
+	if (!display->win)
 		ft_panic(ERR_DISPLAY_INIT, 1);
-	data->img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!data->img)
+	display->img = mlx_new_image(display->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!display->img)
 		ft_panic(ERR_DISPLAY_INIT, 1);
-	data->data_addr = mlx_get_data_addr(data->img, &(data->bits_per_pixel),	&(data->size_line), &(data->endian));
-	// setup_controls(data);
-	// draw_background(data);
+	display->data_addr = mlx_get_data_addr(display->img, &(display->bits_per_pixel),	&(display->size_line), &(display->endian));
+	setup_controls(display);
+	// draw_background(display);
 
 }
