@@ -80,8 +80,6 @@ void	init_display(t_game *game)
 	draw(display);
 }
 
-// 65536
-// 2147483647
 char	**memory(void)
 {
 	char	**array;
@@ -106,11 +104,8 @@ char	**memory(void)
 	return (array);
 }
 
+
 // int			lines_per_step = SCREEN_HEIGHT / 2 / 40;
-
-
-
-
 
 // static void	draw_background(t_display *data)
 // {
