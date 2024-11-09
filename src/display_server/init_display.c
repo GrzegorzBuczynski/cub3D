@@ -1,6 +1,6 @@
 
 
-#include "../../cub3D.h"
+#include "../../includes/cub3D.h"
 
 // static void	draw_background(t_game *data)
 // {
