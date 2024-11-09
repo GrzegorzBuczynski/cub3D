@@ -6,13 +6,14 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/09 17:11:16 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/09 17:22:09 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = cub3D
 CC = gcc
-CFLAGS = -g #-Wall -Werror -Wextra
+CFLAGS = -g -D DEBUG=1 #-Wall -Werror -Wextra 
 RM = rm -f
 
 SRCS =	main.c \
@@ -76,6 +77,12 @@ push:
 	git add .
 	git commit -m "make push!"
 	git push
+
+rerun: 
+	make re
+	clear
+	./cub3D map.cub
+	
 run: all
 	clear
 	./cub3D map.cub

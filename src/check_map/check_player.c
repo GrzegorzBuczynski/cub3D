@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 17:09:38 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:21:00 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	check_player(char **map)
 	if (player != 1)
 		ft_panic("There must be exactly 1 player on the map.\n", 1);
 	// for testing
-	printf("Player is on the map\n");
+	if (DEBUG)
+		printf("Player is on the map\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 16:04:17 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:15:16 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 # define TILE_SIZE 64
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 // Error codes
 # define ERR_MAP_LOAD -1
