@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 19:14:17 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/09 19:41:53 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "../lib/minilibx/mlx.h"
 #include "xfdf.h"
 #include "key_linux.h"
+#include "color.h"
 
 // Constants
 # define SCREEN_WIDTH 800
@@ -35,6 +36,8 @@
 # define TILE_SIZE 64
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
+# define WIDTH 1920
+# define MENU_WIDTH 200
 
 # ifndef DEBUG
 #  define DEBUG 0
