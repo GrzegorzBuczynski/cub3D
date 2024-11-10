@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 19:41:53 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:22:14 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int	mouse_press(int button, int x, int y, void *param);
 int	mouse_release(int button, int x, int y, void *param);
 int	mouse_move(int x, int y, void *param);
 void	setup_controls(t_display *data);
+int get_color (int color, int i, bool scale);
 
 #endif

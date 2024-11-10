@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/09 19:12:07 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/10 17:23:40 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =	main.c \
 		display_server/init_display.c \
 		display_server/controls.c \
 		display_server/mouse_controls.c \
+		display_server/colors.c \
 		check_map/check_map.c \
 		check_map/check_player.c \
 		check_map/check_borders.c 
