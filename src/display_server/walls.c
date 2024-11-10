@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 21:34:38 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:36:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	print_wall(t_game *data)
 {
 	float	degree;
+	int		w_height;
 	int		i;
 	int		j;
 
@@ -26,11 +27,12 @@ void	print_wall(t_game *data)
 		degree = (-FOV / 2) + ((FOV / SCREEN_WIDTH) * i);
 		printf("degree: %f\n", degree);
 		// Calculate the distance to the wall
+		w_height = 100;
 		// Calculate the height of the wall
 		// Calculate the color of the wall
 		// Draw the wall
-		draw_line((t_vector){i, (SCREEN_HEIGHT / 2) - 50}, (t_vector){i,
-			(SCREEN_HEIGHT / 2) + 50}, &data->display);
+		draw_line((t_vector){i, (SCREEN_HEIGHT / 2) - w_height}, (t_vector){i,
+			(SCREEN_HEIGHT / 2) + w_height}, &data->display);
 		i++;
 	}
 }
