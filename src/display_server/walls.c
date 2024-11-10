@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 19:47:53 by gbuczyns         ###   ########.fr       */
+/*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
+/*   Updated: 2024/11/10 20:21:34 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	main(int ac, char **av)
+
+
+
+void print_wall(t_game *data)
 {
-	t_game	data;
-	int		i;
-
-
-	if (ac != 2)
-		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
-	// handle_input(av, &data);
-	init_display(&data);
-	mlx_loop(data.display.mlx);
-	return (0);
+	draw_line((t_vector){0, 0}, (t_vector){SCREEN_WIDTH, SCREEN_HEIGHT}, &data->display);
+	
 }

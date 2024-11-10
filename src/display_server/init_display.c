@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 18:19:06 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 20:18:10 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,18 @@ static void	draw_background(t_display *data)
 	}
 }
 
-void	draw(t_display *data)
+void	draw(t_game *game)
 {
-	int	x;
-	int	y;
 
-	draw_background(data);
-	y = 0;
-	x = 0;
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	// print_menu(fdf);
+
+	t_display	*display;
+
+	display = &game->display;
+
+	draw_background(display);
+	print_wall(game);
+	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
+	
 }
 
 void	init_display(t_game *game)
@@ -84,7 +86,7 @@ void	init_display(t_game *game)
 			&(display->bits_per_pixel), &(display->size_line),
 			&(display->endian));
 	setup_controls(display);
-	draw(display);
+	draw(game);
 }
 
 char	**memory(void)

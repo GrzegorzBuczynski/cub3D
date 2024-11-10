@@ -2,6 +2,7 @@
 	"files.associations": {
 		"cub3d.h": "c",
 		"libft.h": "c",
-		"structs.h": "c"
+		"structs.h": "c",
+		"mlx.h": "c"
 	}
 }

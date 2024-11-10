@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 18:07:42 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:45:57 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,23 @@ int		ft_error(int error_code, char *message);
 void	print_map(char **map);
 void	select_map(t_game *data);
 
+
+// display_server
 void	init_display(t_game *game);
 int		mouse_press(int button, int x, int y, void *param);
 int		mouse_release(int button, int x, int y, void *param);
 int		mouse_move(int x, int y, void *param);
 void	setup_controls(t_display *data);
+//colors.c 
 int		scale_color(int color, float factor);
+int		get_color(t_vector current, t_vector start, t_vector end,
+			t_vector delta);
+//draw.c -- 
+void	draw_line(t_vector f, t_vector s, t_display *data);
+void 	print_wall(t_game *data);
+// math_utils.c
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
+int		ft_abs(int x);
 
 #endif

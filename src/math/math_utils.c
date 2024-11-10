@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 19:47:53 by gbuczyns         ###   ########.fr       */
+/*   Created: 2024/11/10 19:45:09 by gbuczyns          #+#    #+#             */
+/*   Updated: 2024/11/10 19:45:12 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
-
-int	main(int ac, char **av)
+int	ft_min(int a, int b)
 {
-	t_game	data;
-	int		i;
+	if (a < b)
+		return (a);
+	return (b);
+}
 
+int	ft_max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
 
-	if (ac != 2)
-		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
-	// handle_input(av, &data);
-	init_display(&data);
-	mlx_loop(data.display.mlx);
-	return (0);
+int	ft_abs(int x)
+{
+	if (x < 0)
+		return (-x);
+	return (x);
 }
