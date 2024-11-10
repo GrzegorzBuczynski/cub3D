@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 17:22:14 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 17:53:53 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "../lib/lib_ft/libft.h"
+# include "error_message.h"
 # include "structs.h"
 # include <fcntl.h>
 # include <math.h>
@@ -21,13 +22,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include "error_message.h"
 
 // libmlx
 # include "../lib/minilibx/mlx.h"
-#include "xfdf.h"
-#include "key_linux.h"
-#include "color.h"
+# include "color.h"
+# include "key_linux.h"
+# include "xfdf.h"
 
 // Constants
 # define SCREEN_WIDTH 800
@@ -66,12 +66,11 @@ int		ft_error(int error_code, char *message);
 void	print_map(char **map);
 void	select_map(t_game *data);
 
-
 void	init_display(t_game *game);
-int	mouse_press(int button, int x, int y, void *param);
-int	mouse_release(int button, int x, int y, void *param);
-int	mouse_move(int x, int y, void *param);
+int		mouse_press(int button, int x, int y, void *param);
+int		mouse_release(int button, int x, int y, void *param);
+int		mouse_move(int x, int y, void *param);
 void	setup_controls(t_display *data);
-int get_color (int color, int i, bool scale);
+int		scale_color(int color, int factor);
 
 #endif
