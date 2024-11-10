@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 20:56:26 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:38:56 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int	scale_color(int color, float factor)
 int	get_color(t_vector current, t_vector start, t_vector end, t_vector delta)
 {
 	// int		red;
+	int color;
+	
+	color = scale_color(COLOR_CYAN, 0.5);
 	// int		green;
 	// int		blue;
 	// double	percentage;
@@ -45,7 +48,7 @@ int	get_color(t_vector current, t_vector start, t_vector end, t_vector delta)
 	// 		percentage);
 	// blue = get_light(start.color & 0xFF, end.color & 0xFF, percentage);
 	// return ((red << 16) | (green << 8) | blue);
-	return (COLOR_CYAN);
+	return (color);
 }
 
 int	parse_color(char *str)

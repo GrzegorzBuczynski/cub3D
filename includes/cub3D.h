@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 19:45:57 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 22:03:16 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "xfdf.h"
 
 // Constants
-# define SCREEN_WIDTH 800
+# define SCREEN_WIDTH 1400
 # define SCREEN_HEIGHT 600
 # define FOV 66.0 // Field of view in degrees
 # define TILE_SIZE 64
@@ -78,7 +78,8 @@ int		scale_color(int color, float factor);
 int		get_color(t_vector current, t_vector start, t_vector end,
 			t_vector delta);
 //draw.c -- 
-void	draw_line(t_vector f, t_vector s, t_display *data);
+// void	draw_line(t_vector f, t_vector s, t_display *data);
+void	draw_line(t_line *line, t_display *data);
 void 	print_wall(t_game *data);
 // math_utils.c
 int		ft_min(int a, int b);

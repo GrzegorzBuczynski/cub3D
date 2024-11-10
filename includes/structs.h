@@ -6,6 +6,13 @@ typedef struct s_vector
 	int				y;
 }					t_vector;
 
+typedef struct s_line
+{
+	t_vector		s;
+	t_vector		f;
+	int				color;
+}					t_line;
+
 typedef struct s_player
 {
 	t_vector pos;   // Position of the player on tile

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:15:42 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/09 22:42:56 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:41:11 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define COLOR_WHITE		0xFFFFFF
 # define COLOR_BLACK		0x000000
-# define COLOR_GRAY			0x808080
+# define COLOR_GRAY			0x404040
 
 # define COLOR_BRICK_RED	0xC2294E
 # define BACKGROUND			0x222222
