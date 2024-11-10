@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 19:17:35 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:35:15 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	get_player_position(char **map, t_vector *p_pos)
 		}
 		y++;
 	}
-	printf("Error: No player starting position found in map\n");
+	printf("Error\nNo player starting position found in map\n");
 }
 
 int	get_maps_row_width(const char *row)

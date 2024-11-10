@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 20:54:10 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:33:32 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_read(int fd)
 	array = NULL;
 	line = get_next_line(fd);
 	if (line == NULL)
-		perror("File read from is empty.\n");
+		perror("Error\nFile read from is empty.\n");
 	while (1)
 	{
 		if (line == NULL)
@@ -38,7 +38,7 @@ int	ft_open(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Failed to open a file.\n");
+		perror("Error\nFailed to open a file.\n");
 		exit(1);
 	}
 	return (fd);
