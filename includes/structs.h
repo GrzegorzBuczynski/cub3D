@@ -2,8 +2,8 @@
 
 typedef struct s_vector
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
 }				t_vector;
 
 typedef struct s_player
@@ -42,6 +42,16 @@ typedef struct s_display
 	t_mouse		mouse;
 }				t_display;
 
+typedef struct s_xpm
+{
+	void		*wall_north;
+	void		*wall_south;
+	void		*wall_west;
+	void		*wall_east;
+	int			floor;
+	int			ceiling;
+}				t_xpm;
+
 typedef struct s_game
 {
 	char		**array;
@@ -50,6 +60,7 @@ typedef struct s_game
 	t_player	player;
 	t_display	display;
 	t_map		map2;
+	t_xpm		xpm;
 	void *mlx_ptr; // Pointer to the MLX library instance
 	void *win_ptr; // Pointer to the game window
 }				t_game;
