@@ -1,23 +1,33 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_display.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
+/*   Updated: 2024/11/10 18:19:06 by gbuczyns         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
 static void	draw_background(t_display *data)
 {
-	int	*image;
-	int	i;
-	int	j;
-	int	factor;
-	int	color;
+	int		*image;
+	int		i;
+	int		j;
+	float	factor;
+	int		color;
 
 	ft_bzero(data->data_addr, SCREEN_WIDTH * SCREEN_HEIGHT
 		* (data->bits_per_pixel / 8));
 	image = (int *)(data->data_addr);
 	i = 0;
-	// Draw ceiling with grayscale gradient (darkening from 0x404040 to black)
 	while (i < SCREEN_HEIGHT / 2)
 	{
-		factor = i * i / ((SCREEN_HEIGHT / 2) * (SCREEN_HEIGHT / 2));
+		factor = ((float)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT
+						/ 2.0)));
 		color = scale_color(CEILING, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -27,13 +37,11 @@ static void	draw_background(t_display *data)
 		}
 		i++;
 	}
-	// Draw floor with grayscale gradient (brightening from black to 0x404040)
 	while (i < SCREEN_HEIGHT)
 	{
-		factor = 1 - (i - SCREEN_HEIGHT / 2) * (i - SCREEN_HEIGHT / 2)
-			/ ((SCREEN_HEIGHT / 2) * (SCREEN_HEIGHT / 2));
+		factor = ((float)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i))
+				/ ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
 		color = scale_color(FLOOR, factor);
-		// Set R=G=B for gray
 		j = 0;
 		while (j < SCREEN_WIDTH)
 		{

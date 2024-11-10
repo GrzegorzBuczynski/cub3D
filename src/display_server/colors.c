@@ -6,13 +6,13 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 17:53:38 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:07:03 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-int	scale_color(int color, int factor)
+int	scale_color(int color, float factor)
 {
 	int	red;
 	int	green;
