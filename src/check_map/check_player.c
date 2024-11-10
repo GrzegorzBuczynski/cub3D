@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 17:21:00 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:05:42 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	check_player(char **map)
 		y++;
 	}
 	if (player == 0)
-		ft_panic("Map doesn't have a player.\n", 1);
+		return (ft_error(1, "Map doesn't have a player.\n"));
 	if (player != 1)
-		ft_panic("There must be exactly 1 player on the map.\n", 1);
+		return (ft_error(1, "There must be exactly 1 player on the map.\n"));
 	// for testing
-	if (DEBUG)
-		printf("Player is on the map\n");
+	// if (DEBUG)
+	// 	printf("Player is on the map\n");
 	return (0);
 }

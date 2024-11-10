@@ -6,133 +6,82 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 00:06:25 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:17:08 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	error(const char *message, int code)
+char	**create_map_border(int width, int height)
 {
-	fprintf(stderr, "%s", message);
-	exit(code);
-}
+	char	**map_border;
+	int		i;
 
-// Function to get the width of a row
-int	get_maps_row_width(const char *row)
-{
-	int	length;
-
-	length = strlen(row);
-	if (length > 0 && row[length - 1] == '\n')
-	{
-		return (length - 1); // Exclude newline character if present
-	}
-	return (length);
-}
-
-// Function to get the maximum row width in the map
-int	get_maps_max_row_width(char **map)
-{
-	int	max_width;
-	int	i;
-	int	row_length;
-
-	max_width = 0;
+	map_border = malloc(sizeof(char *) * height);
+	if (!map_border)
+		return (NULL);
 	i = 0;
-	while (map[i])
+	while (i < height)
 	{
-		row_length = get_maps_row_width(map[i]);
-		if (row_length > max_width)
+		map_border[i] = malloc(sizeof(char) * width);
+		if (map_border[i] == NULL)
 		{
-			max_width = row_length;
+			while (--i >= 0)
+				free(map_border[i]);
+			free(map_border);
+			return (NULL);
 		}
 		i++;
 	}
-	return (max_width);
+	return (map_border);
 }
 
-// Function to get the height of the map
-int	get_map_height(char **map)
-{
-	int	height;
-
-	height = 0;
-	while (map[height])
-	{
-		height++;
-	}
-	return (height);
-}
-
-// Helper function to fill the map border with '2'
 void	fill_map_border(char **map_border, int width, int height)
 {
-	int i, j;
-	for (i = 0; i < height; i++)
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < height)
 	{
-		for (j = 0; j < width; j++)
+		x = 0;
+		while (x < width)
 		{
-			map_border[i][j] = '2'; // Fill border with '2'
+			map_border[y][x] = '2';
+			x++;
 		}
+		y++;
 	}
 }
 
 void	copy_map_into_border(char **map_border, char **map)
 {
-	int i, j;
-	int map_height = get_map_height(map);
-	int map_width = get_maps_max_row_width(map);
+	int	map_height;
+	int	map_width;
+	int	y;
+	int	x;
 
-	for (i = 0; i < map_height; i++)
+	map_height = get_map_height(map);
+	map_width = get_maps_max_row_width(map);
+	y = 0;
+	while (y < map_height)
 	{
-		for (j = 0; j < map_width; j++)
+		x = 0;
+		while (x < map_width)
 		{
-			// Copy '1' from map to map_border starting from position (1,1)
-			if (map[i][j] == '1')
-			{
-				map_border[i + 1][j + 1] = '1';
-			}
-			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
-			{
-				if (map[i][j] == 'N')
-					map_border[i + 1][j + 1] = 'N';
-				if (map[i][j] == 'S')
-					map_border[i + 1][j + 1] = 'S';
-				if (map[i][j] == 'W')
-					map_border[i + 1][j + 1] = 'W';
-				if (map[i][j] == 'E')
-					map_border[i + 1][j + 1] = 'E';
-			}
+			if (map[y][x] != '\0' && ft_strchr("1NSEW", map[y][x]))
+				map_border[y + 1][x + 1] = map[y][x];
+			x++;
 		}
+		y++;
 	}
-}
-
-void	get_player_position(char **map, t_vector *p_pos)
-{	
-	for (int y = 0; map[y] != NULL; y++)
-	{
-		for (int x = 0; map[y][x] != '\0'; x++)
-		{
-			if (map[y][x] == 'S' || map[y][x] == 'N'
-				|| map[y][x] == 'W' || map[y][x] == 'E')
-			{
-				// Save player coordinates
-				p_pos->x = x;
-				p_pos->y = y;
-				return ; // Exit function once player position is found
-			}
-		}
-	}
-	// If we reach here, no player position was found
-	printf("Error: No player starting position found in map\n");
 }
 
 static void	flood_fill(char **map, int height, int y, int x)
 {
 	int	width;
 
-	width = get_maps_max_row_width(map);
+	width = get_maps_row_width(map[0]);
 	if (y < 0 || y >= height || x < 0 || x >= width || map[y][x] == '1'
 		|| map[y][x] == 'V')
 		return ;
@@ -145,42 +94,33 @@ static void	flood_fill(char **map, int height, int y, int x)
 	flood_fill(map, height, y - 1, x + 1);
 	flood_fill(map, height, y + 1, x - 1);
 	flood_fill(map, height, y + 1, x + 1);
-
 }
 
-// Main function to check borders
 int	check_borders(char **map)
 {
-	int width = get_maps_max_row_width(map) + 2;
-	int height = get_map_height(map) + 2;
-	char **map_border;
-	int i;
-	t_vector p_pos;
+	int			width;
+	int			height;
+	char		**map_border;
+	int			status;
+	t_vector	p_pos;
 
-	// Allocate memory for map_border
-	map_border = malloc(sizeof(char *) * height);
-	if (map_border == NULL)
-		return (-1);
-
-	for (i = 0; i < height; i++)
-	{
-		map_border[i] = malloc(sizeof(char) * width);
-		if (map_border[i] == NULL)
-		{
-			while (i-- > 0)
-				free(map_border[i]);
-			free(map_border);
-			return (-1);
-		}
-	}
+	width = get_maps_max_row_width(map) + 2;
+	height = get_map_height(map) + 2;
+	status = 1;
+	map_border = create_map_border(width, height);
+	if (!map_border)
+		return (NULL);
 	fill_map_border(map_border, width, height);
 	copy_map_into_border(map_border, map);
+	// print for testing
 	print_map_nl(map_border);
-	for (i = 0; i < height; i++)
-		free(map_border[i]);
-	free(map_border);
 	get_player_position(map, &p_pos);
-	flood_fill(map_border, height, p_pos.y, p_pos.x);
+	map_border[p_pos.y][p_pos.x] = '2';
+	flood_fill(map_border, height, p_pos.y + 1, p_pos.x + 1);
+	if (map_border[0][0] == '2')
+		status = 0;
+	// print for testing
 	print_map_nl(map_border);
-	return (0);
+	free_map(map_border);
+	return (status);
 }

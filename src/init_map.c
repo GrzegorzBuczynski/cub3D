@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/09 23:50:01 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/10 18:06:12 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	only_whitespace_before(char *array, int x)
 	return (1);
 }
 
-void	convert_space_to_wall(char **map)
+void	convert_spaces_to_walls(char **map)
 {
 	int	i;
 	int	j;
@@ -59,44 +59,28 @@ static int	find_first_map_row(char **array)
 	return (y);
 }
 
-int	get_number_of_rows(char **map)
-{
-	int	rows;
-
-	rows = 0;
-	while (*map)
-	{
-		if (**map == '1' || **map == ' ')
-		{
-			rows++;
-		}
-		map++;
-	}
-	return (rows);
-}
-
 // Function to create a 2D copy of the map, excluding '\n' characters
 char	**create_map_copy(char **map)
 {
 	char	**map_cpy;
-	int		rows;
-	int		i;
-	int		j;
+	int		height;
+	int		y;
+	int		x;
 
-	i = 0;
-	rows = get_number_of_rows(map);
-	map_cpy = malloc(sizeof(char *) * rows);
-	while (map[i])
+	y = 0;
+	height = get_map_height(map);
+	map_cpy = malloc(sizeof(char *) * height);
+	while (map[y])
 	{
-		j = 0;
-		map_cpy[i] = malloc(sizeof(char) * (ft_strlen(map[i]) + 1));
-		while (map[i][j])
+		x = 0;
+		map_cpy[y] = malloc(sizeof(char) * (ft_strlen(map[y]) + 1));
+		while (map[y][x])
 		{
-			map_cpy[i][j] = map[i][j];
-			j++;
+			map_cpy[y][x] = map[y][x];
+			x++;
 		}
-		map_cpy[i][j] = '\0';
-		i++;
+		map_cpy[y][x] = '\0';
+		y++;
 	}
 	return (map_cpy);
 }
@@ -128,15 +112,15 @@ char	**memory(void)
 void	select_map(t_game *data)
 {
 	// int	y;
+	
 	// y = find_first_map_row(data->array);
 	// data->map = data->array + y;
 	data->map = memory();
-	if (DEBUG)
-		print_map(data->map);
-	convert_space_to_wall(data->map);
-	if (DEBUG)
-		print_map(data->map);
-	// get_player_position(data->map);
+	// if (DEBUG)
+	// 	print_map(data->map);
+	convert_spaces_to_walls(data->map);
+	// if (DEBUG)
+	// 	print_map(data->map);
 	data->map_cpy = create_map_copy(data->map);
-	print_map(data->map_cpy);
+	// print_map(data->map_cpy);
 }
