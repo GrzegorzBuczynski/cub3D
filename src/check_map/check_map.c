@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:38:53 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/09 18:55:38 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:15:41 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 
 
-void	check_map(char **map)
+void	check_map(t_map *map)
 {
-	check_symbols(map);
-	if (!check_borders(map))
+	check_symbols(map->grid);
+	if (!check_borders(map->grid))
 		printf("Dupa\n");
 }
