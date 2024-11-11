@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 21:43:58 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:09:24 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,30 +87,6 @@ void	init_display(t_game *game)
 			&(display->endian));
 	setup_controls(display);
 	draw(game);
-}
-
-char	**memory(void)
-{
-	char	**array;
-
-	array = calloc(sizeof(char **), 15);
-	if (!array)
-		return (NULL);
-	array[0] = ft_strdup("        1111111111111111111111111\n");
-	array[1] = ft_strdup("        1000000000110000000000001\n");
-	array[2] = ft_strdup("        1011000001110000000000001\n");
-	array[3] = ft_strdup("        1001000000000000000000001\n");
-	array[4] = ft_strdup("111111111011000001110000000000001\n");
-	array[5] = ft_strdup("1000000000110000011101111111111111111111\n");
-	array[6] = ft_strdup("1111011111111101110000001000100000000001\n");
-	array[7] = ft_strdup("1111011111111101110101001000111111111111\n");
-	array[8] = ft_strdup("11000000110101011100000010001\n");
-	array[9] = ft_strdup("1000000000000000110000001N0011\n");
-	array[10] = ft_strdup("10000000000000001101010010001\n");
-	array[11] = ft_strdup("110000011101010111110111100111\n");
-	array[12] = ft_strdup("11110111111101011101111010001\n");
-	array[13] = ft_strdup("11111111111111111111111111111\n");
-	return (array);
 }
 
 /* a * (i + 1) / a

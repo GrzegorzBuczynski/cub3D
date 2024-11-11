@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/11 13:12:36 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 14:41:12 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,7 @@ int	get_wall_height(float distance)
 	return (height);
 }
 
-int	get_distance(t_game *data, float degree)
-{
-	int		distance;
-	float	radian;
-	int		x;
-	int		y;
 
-	radian = degree * (M_PI / 180);
-	x = data->player.pos.x;
-	y = data->player.pos.y;
-	distance = 0;
-	while (data->map2.grid[y][x] != '1')
-	{
-		x += cos(radian);
-		y += sin(radian);
-		distance++;
-	}
-}
 
 void	print_wall(t_game *data)
 {

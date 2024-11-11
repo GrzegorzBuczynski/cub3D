@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/11 13:16:46 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:52:46 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,37 @@ void	print_map(char **map)
 	printf("\n");
 }
 
+char	**memory(void)
+{
+	char	**array;
+
+	array = calloc(sizeof(char **), 15);
+	if (!array)
+		return (NULL);
+	array[0] = ft_strdup("1111111111111111111111111\n");
+	array[1] = ft_strdup("1000000000000000000000001\n");
+	array[2] = ft_strdup("1000000000000000000000001\n");
+	array[3] = ft_strdup("1000000000000000000000001\n");
+	array[4] = ft_strdup("1100000000000000000000001\n");
+	array[5] = ft_strdup("10000000000000000000000011111111111111\n");
+	array[6] = ft_strdup("10000000000000000000000000000000000001\n");
+	array[7] = ft_strdup("10000000000000000000000000111111111111\n");
+	array[8] = ft_strdup("1000000000000000000000000001\n");
+	array[9] = ft_strdup("10000000000000000000000N0001\n");
+	array[10] = ft_strdup("100000000000000000000000001\n");
+	array[11] = ft_strdup("110000011101010111110111100111\n");
+	array[12] = ft_strdup("11110111111101011101111010001\n");
+	array[13] = ft_strdup("11111111111111111111111111111\n");
+	return (array);
+}
+
+
 int	handle_input(char **av, t_game *data)
 {
-	read_file(av, &data->array);
-	select_map(data);
-	check_map(&data->map2);
+	// read_file(av, &data->array);
+	// select_map(data);
+	data->map2.grid = memory();
+	// check_map(&data->map2);
 	// sometimes it doesn't find a file to open while debugging
 	// -----------------------TO DO-----------------------
 	// Export textures from map.cub and inilitalize them
