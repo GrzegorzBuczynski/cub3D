@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/11 15:54:20 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:20:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int get_distance(t_game *data, float degree) {
         y -= cos(radian);  // Move in the direction of the angle
         x += sin(radian);
         distance++;
-        
         printf("Updated x: %f, y: %f\n", x, y);
     }
 
@@ -79,6 +78,8 @@ int	main(int ac, char **av)
 	data.player.pos.y = 50;
 	data.player.tile.x = 1;
 	data.player.tile.y = 1;
+	data.map2.width = 25;
+	data.map2.height = 14;
 	float distancey = 0;
 	float distancex = 0;
 	float degree = 180;
