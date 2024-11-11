@@ -15,7 +15,8 @@ typedef struct s_line
 
 typedef struct s_player
 {
-	t_vector pos;   // Position of the player on tile
+	float x;
+	float y;  
 	t_vector tile;  // Tail of the player
 	t_vector dir;   // Direction the player is facing
 	t_vector plane; // Camera plane for field of view

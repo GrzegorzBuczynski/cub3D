@@ -6,42 +6,81 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/11 18:13:40 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 20:21:02 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+void	set_step(t_vector *step, float degree)
+{
+	if (degree >= 0 && degree < 90)
+	{
+		step->x = 1;
+		step->y = -1;
+	}
+	else if (degree >= 90 && degree < 180)
+	{
+		step->x = 1;
+		step->y = 1;
+	}
+	else if (degree >= 180 && degree < 270)
+	{
+		step->x = -1;
+		step->y = 1;
+	}
+	else
+	{
+		step->x = -1;
+		step->y = -1;
+	}
+}
+
+float	set_xray(float degree, float x)
+{
+	if (degree >= 0 && degree < 90)
+		return ((1 - x) / cos((90 - degree) * (M_PI / 180)));
+	else if (degree >= 90 && degree < 180)
+		return ((1 - x) / cos((degree - 90) * (M_PI / 180)));
+	else if (degree >= 180 && degree < 270)
+		return (x / cos((270 - degree) * (M_PI / 180)));
+	else
+		return (x / cos((degree - 270) * (M_PI / 180)));
+}
+
 int	get_distance(t_game *data, float degree)
 {
 	t_vector	player;
-	t_vector	tar;
-	float		x;
-	float		y;
+	t_vector	tile;
+	t_vector	step;
+	float		ray_x;
+	float		ray_y;
 
 	player = (t_vector){data->player.tile.x, data->player.tile.y};
-	tar = player;
-	x = (float)player.x;
-	y = (float)player.y;
-	while (data->map2.grid[tar.y][tar.x] != '1')
+	set_step(&step, degree);
+	ray_x = set_xray(degree, data->player.x);
+	ray_y = set_yray(degree, data->player.y);
+	while (data->map2.grid[tile.y][tile.x] != '1')
 	{
-		printf("x: %f y: %f\n", x, y);
-		printf("char = %c\n", data->map2.grid[(int)y][(int)x]);
-		y = y - cos(degree * (M_PI / 180));
-		x = x + sin(degree * (M_PI / 180));
-		tar.x = (int)round(x);
-		tar.y = (int)round(y);
-		printf("tar.x: %d tar.y: %d\n", tar.x, tar.y);
+		if (ray_x < ray_y)
+		{
+			ray_x += (float)step.x;
+			tile.x += step.x;
+		}
+		else
+		{
+			ray_y += (float)step.y;
+			tile.y += step.y;
+		}
 	}
-	tar = (t_vector){x, y};
-	return (ft_min(tar.x, tar.y));
+	ft_min_float(ray_x, ray_y);
 }
 
 int	main(int ac, char **av)
 {
 	t_game	data;
 	int		i;
-	int		distance;
+	float		distance;
 	float	distancey;
 	float	distancex;
 	float	degree;
@@ -69,7 +108,7 @@ int	main(int ac, char **av)
 	// distancex = x / (sin(degree * (M_PI / 180)));
 	// printf("distancey: %f\n", distancey);
 	// printf("distancex: %f\n", distancex);
-	printf("distance: %d\n", distance);
+	printf("distance: %f\n", distance);
 	// init_display(&data);
 	// mlx_loop(data.display.mlx);
 	return (0);
@@ -147,7 +186,6 @@ int	main(int ac, char **av)
 
 // rx = data->player.tile.x - x;
 // ry = data->player.tile.y - y;
-
 
 // int	get_distance(t_game *data, float degree)
 // {

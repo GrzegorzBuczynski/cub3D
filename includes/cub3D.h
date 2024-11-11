@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/11 17:11:06 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 20:20:20 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ void	draw_line(t_line *line, t_display *data);
 void	print_wall(t_game *data);
 int		get_distance(t_game *data, float degree);
 // math_utils.c
-int		ft_min(int a, int b);
+int		ft_min_int(int a, int b);
+float	ft_min_float(float a, float b);
 int		ft_max(int a, int b);
 int		ft_abs(int x);
 

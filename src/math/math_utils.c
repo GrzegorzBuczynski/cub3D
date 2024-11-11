@@ -6,11 +6,17 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:45:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 19:45:12 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/11 20:19:56 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_min(int a, int b)
+int	ft_min_int(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+float	ft_min_float(float a, float b)
 {
 	if (a < b)
 		return (a);
