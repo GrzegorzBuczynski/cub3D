@@ -14,7 +14,6 @@
 # define CUB3D_H
 
 # include "../lib/lib_ft/libft.h"
-# include "../lib/minilibx/mlx.h"
 # include "error_message.h"
 # include "structs.h"
 # include <fcntl.h>
@@ -24,13 +23,25 @@
 # include <stdlib.h>
 # include <string.h>
 
+// libmlx
+# include "../lib/minilibx/mlx.h"
+# include "color.h"
+# include "key_linux.h"
+# include "xfdf.h"
+
+// Math
+// # define M_PI 3.142
+
 // Constants
-# define SCREEN_WIDTH 800
+# define SCREEN_WIDTH 1400
 # define SCREEN_HEIGHT 600
+# define WALL_FACTOR 2
 # define FOV 66.0 // Field of view in degrees
 # define TILE_SIZE 64
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
+# define WIDTH 1920
+# define MENU_WIDTH 200
 
 # ifndef DEBUG
 #  define DEBUG 0
@@ -68,6 +79,25 @@ void	print_map_nl(char **map); // temporary
 void	print_map(char **map);
 void	print_map_nl(char **map);
 void	select_map(t_game *data);
-void	init_display(t_display *data);
 void	get_player_position(char **map, t_vector *p_pos);
+void	init_display(t_display *data);
+int		mouse_press(int button, int x, int y, void *param);
+int		mouse_release(int button, int x, int y, void *param);
+int		mouse_move(int x, int y, void *param);
+void	setup_controls(t_display *data);
+// colors.c
+int		scale_color(int color, float factor);
+int		get_color(t_vector current, t_vector start, t_vector end,
+			t_vector delta);
+// draw.c --
+// void	draw_line(t_vector f, t_vector s, t_display *data);
+void	draw_line(t_line *line, t_display *data);
+void	print_wall(t_game *data);
+int		get_distance(t_game *data, float degree);
+// math_utils.c
+int		ft_min_int(int a, int b);
+float	ft_min_float(float a, float b);
+int		ft_max(int a, int b);
+int		ft_abs(int x);
+
 #endif

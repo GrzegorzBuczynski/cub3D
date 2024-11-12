@@ -6,13 +6,22 @@ typedef struct s_vector
 	int			y;
 }				t_vector;
 
+typedef struct s_line
+{
+	t_vector		s;
+	t_vector		f;
+	int				color;
+}					t_line;
+
 typedef struct s_player
 {
-	int pos_y; // Position of the player
-	int			pos_x;
-	char dir;       // Direction the player is facing
+	float x;
+	float y;  
+	t_vector pos;   // Position of the player
+	t_vector tile;  // Tail of the player
+	t_vector dir;   // Direction the player is facing
 	t_vector plane; // Camera plane for field of view
-}				t_player;
+}					t_player;
 
 typedef struct s_map
 {
@@ -29,6 +38,18 @@ typedef struct s_mouse
 	int			previous_x;
 	int			previous_y;
 }				t_mouse;
+
+typedef struct s_camera
+{
+	// t_projection		projection;
+	int				zoom;
+	double			alpha;
+	double			beta;
+	double			gamma;
+	float			z_divisor;
+	int				x_offset;
+	int				y_offset;
+}					t_camera;
 
 typedef struct s_display
 {
