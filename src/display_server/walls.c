@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/12 19:35:33 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/12 22:58:21 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	print_wall(t_game *data)
 	while (i <= SCREEN_WIDTH)
 	{
 		// Calculate the angle of the ray
-		degree = ((FOV / SCREEN_WIDTH) * i);
-		// degree = (-FOV / 2) + ((FOV / SCREEN_WIDTH) * i);
+		// degree = ((FOV / SCREEN_WIDTH) * i);
+		degree = (-FOV / 2) + ((FOV / SCREEN_WIDTH) * i);
 		distance = get_distance(data, degree);
-		if (i % 50 == 0)
-			{printf("degree: %f\n", degree);};
+		if (i % 20 == 0)
+			{printf("20: \n");};
 		color = scale_color(COLOR_CYAN, (1 - distance));
 		w_height = get_wall_height(distance);
-		printf("degree: %f\n", degree);
+		// printf("degree: %f\n", degree);
 		// distance_factor = ((float)i / SCREEN_WIDTH);
-		printf("distance: %f\n", distance);
+		// printf("distance: %f\n", distance);
 		// Calculate the distance to the wall
 		// Calculate the height of the wall
 		// Calculate the color of the wall

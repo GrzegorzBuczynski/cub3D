@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/11 15:09:24 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/12 23:05:22 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	draw(t_game *game)
 	draw_background(display);
 	print_wall(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
+	printf("tile.x: %d tile.y%d \n", game->player.tile.x, game->player.tile.y);
 	
 }
 

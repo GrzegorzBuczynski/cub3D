@@ -16,14 +16,26 @@ int	close_program(void *param)
 void	move(int key, t_game *game)
 {
 	if (key == ARROW_LEFT)
+	{
+		game->player.tile.x--;
 		game->player.pos.x -= 10;
-	else if (key == ARROW_RIGHT)
-		game->player.pos.x += 10;
+	}
 	else if (key == ARROW_UP)
+	{
+		game->player.tile.y--;
 		game->player.pos.y -= 10;
+	}
+	else if (key == ARROW_RIGHT)
+	{
+		game->player.tile.x++;
+		game->player.pos.x += 10;
+	}
 	else
+	{
+		game->player.tile.y++;
 		game->player.pos.y += 10;
-	// draw(game->map, game);
+	}
+	draw(game);
 }
 
 void	rotate(int key, t_display *display)

@@ -6,123 +6,91 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/12 19:59:43 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/12 22:38:52 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	set_step(t_vector *step, float degree)
+float	set_x(float degree, float x)
 {
-	if (degree == 0)
-	{
-		step->x = 0;
-		step->y = -1;
-	}
-	else if (degree == 90)
-	{
-		step->y = 0;
-		step->x = 1;
-	}
-	else if (degree == 180)
-	{
-		step->x = 0;
-		step->y = 1;
-	}
-	else if (degree == 270)
-	{
-		step->y = 0;
-		step->x = -1;
-	}
-	else if (degree == 90 || degree == 270)
-	{
-		step->x = 0;
-		step->y = 1;
-	}
-	else if (degree > 0 && degree < 90)
-	{
-		step->x = 1;
-		step->y = -1;
-	}
-	else if (degree > 90 && degree < 180)
-	{
-		step->x = 1;
-		step->y = 1;
-	}
-	else if (degree > 180 && degree < 270)
-	{
-		step->x = -1;
-		step->y = 1;
-	}
+	if (degree > 0 && degree < 180)
+		return (1 - x);
+	else if (degree > 180 && degree < 360)
+		return (x);
 	else
-	{
-		step->x = -1;
-		step->y = -1;
-	}
-}
-
-float	set_xray(float degree, float x)
-{
-	if (degree > 0 && degree < 90)
-		return ((1 - x) / cos((90 - degree) * (M_PI / 180)));
-	else if (degree == 0)
 		return (9999);
-	else if (degree >= 90 && degree < 180)
-		return ((1 - x) / cos((degree - 90) * (M_PI / 180)));
-	else if (degree >= 180 && degree < 270)
-		return (x / cos((270 - degree) * (M_PI / 180)));
-	else
-		return (x / cos((degree - 270) * (M_PI / 180)));
 }
 
-float	set_yray(float degree, float y)
+float	set_y(float degree, float y)
 {
-	if (degree > 0 && degree < 90)
-		return (y * cos((degree) * (M_PI / 180)));
-	else if (degree == 0)
+	if (degree > 90 && degree < 270)
+		return (1 - y);
+	else if (degree < 90 || degree > 270)
 		return (y);
-	else if (degree >= 90 && degree < 180)
-		return (y / sin((degree - 90) * (M_PI / 180)));
-	else if (degree >= 180 && degree < 270)
-		return ((1 - y) / sin((270 - degree) * (M_PI / 180)));
 	else
-		return ((1 - y) / sin((degree - 270) * (M_PI / 180)));
+		return (9999);
+}
+
+float	getrx(float x, float degree)
+{
+	if (degree == 0 || degree == 180)
+		return (9999);
+	return (fabs(x / sin(degree * (M_PI / 180))));
+}
+
+float	getry(float y, float degree)
+{
+	if (degree == 90 || degree == 270)
+		return (9999);
+	return (fabs(y / cos(degree * (M_PI / 180))));
 }
 
 float	get_distance(t_game *data, float degree)
 {
-	t_vector	player;
-	t_vector	tile;
-	t_vector	step;
-	float		ray_x;
-	float		ray_y;
-	float		ray_x_temp;
-	float		ray_y_temp;
-	t_vector	tile_progress;
+	float		rx;
+	float		ry;
+	float		x;
+	float		y;
+	t_vector	cord;
 
-	tile_progress = (t_vector){0, 0};
-	tile = (t_vector){data->player.tile.x, data->player.tile.y};
-		ray_x_temp = set_xray(degree, data->player.x);
-		ray_y_temp = set_yray(degree, data->player.y);
-	while (data->map2.grid[tile.y][tile.x] != '1')
+	cord = (t_vector){data->player.tile.x, data->player.tile.y};
+	x = set_x(degree, data->player.x);
+	y = set_y(degree, data->player.y);
+	while (data->map2.grid[cord.y][cord.x] != '1')
 	{
-		set_step(&step, degree);
-		printf("x: %d y: %d\n", tile.x, tile.y);
-		if (ray_x < ray_y && step.x > 0.01)
+		rx = getrx(x, degree);
+		ry = getry(y, degree);
+		if (rx < ry)
 		{
-			ray_x += (float)fabs(step.x);
-			tile_progress.x++;
-			tile.x += step.x;
+			if (degree > 0 && degree < 180)
+			{
+				x++;
+				cord.x++;
+			}
+			else
+			{
+				x--;
+				cord.x--;
+			}
 		}
 		else
 		{
-			tile_progress.y++;
-			ray_y += (float)fabs(step.y);
-			tile.y += (float)step.y;
+			if ((degree >= 0 && degree < 90)||(degree > 270 && degree <= 360))
+			{
+				y++;
+				cord.y--;
+			}
+			else
+			{
+				y++;
+				cord.y--;
+			}
 		}
 	}
-	printf("x: %d y: %d\n", tile.x, tile.y);
-	return (ft_min_float(ray_x, ray_y));
+	rx = getrx(x, degree);
+	ry = getry(y, degree);
+	return (ft_min_float(rx, ry));
 }
 
 int	main(int ac, char **av)
@@ -142,21 +110,21 @@ int	main(int ac, char **av)
 	handle_input(av, &data);
 	distance = 0;
 	data.player.tile.x = 1;
-	data.player.tile.y = 2;
+	data.player.tile.y = 5;
 	data.map2.width = 25;
 	data.map2.height = 14;
 	distancey = 0;
 	distancex = 0;
 	data.player.x = 0.3;
 	data.player.y = 0.4;
-	distance = get_distance(&data, degree);
+	// distance = get_distance(&data, degree);
 	// data.player.pos.x = 50;
 	// data.player.pos.y = 50;
 	// distancey = (y / (cos(degree * (M_PI / 180)))); //
 	// distancex = x / (sin(degree * (M_PI / 180)));
 	// printf("distancey: %f\n", distancey);
 	// printf("distancex: %f\n", distancex);
-	printf("distance: %f\n", distance);
+	// printf("distance: %f\n", distance);
 	init_display(&data);
 	mlx_loop(data.display.mlx);
 	return (0);
