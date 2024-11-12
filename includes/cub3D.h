@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/11 20:20:20 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:13:03 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		get_color(t_vector current, t_vector start, t_vector end,
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void	draw_line(t_line *line, t_display *data);
 void	print_wall(t_game *data);
-int		get_distance(t_game *data, float degree);
+float		get_distance(t_game *data, float degree);
 // math_utils.c
 int		ft_min_int(int a, int b);
 float	ft_min_float(float a, float b);
