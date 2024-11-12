@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/12 19:48:32 by ssuchane         ###   ########.fr       */
+/*   Created: 2024/11/12 19:27:13 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/11/12 19:27:47 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
-int	main(int ac, char **av)
+int	close_window(void *param)
 {
-	t_game	data;
+	t_display	*window;
 
-	if (ac != 2)
-		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
-	handle_input(av, &data);
-	init_display(&data.display);
-	// mlx_loop(data.display.mlx);
-	return (0);
+	window = (t_display *)param;
+	mlx_destroy_image(window->mlx, window->img);
+	mlx_destroy_window(window->mlx, window->win);
+	mlx_destroy_display(window->mlx);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 17:56:05 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:24:46 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ int		ft_error(int error_code, char *message);
 void	print_map(char **map); // temporary
 void	print_map_nl(char **map); // temporary
 
-void	print_map(char **map);
-void	print_map_nl(char **map);
 void	select_map(t_game *data);
 void	get_player_position(char **map, t_vector *p_pos);
 void	init_display(t_display *data);
@@ -85,6 +83,8 @@ int		mouse_press(int button, int x, int y, void *param);
 int		mouse_release(int button, int x, int y, void *param);
 int		mouse_move(int x, int y, void *param);
 void	setup_controls(t_display *data);
+
+
 // colors.c
 int		scale_color(int color, float factor);
 int		get_color(t_vector current, t_vector start, t_vector end,

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 21:33:32 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:48:13 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,30 +72,28 @@ int	parse_color(char *str)
 	return ((red << 16) | (green << 8) | blue);
 }
 
-void	export_textures(t_game *data)
-{
-	int	y;
+// void	export_textures(t_game *data)
+// {
+// 	int	y;
 
-	y = 0;
-	while (data->array[y])
-	{
-		if (ft_strncmp(data->array[y], "NO ", 3) == 0)
-			data->xpm.wall_north = ft_strdup(data->array[y] + 3);
-		else if (ft_strncmp(data->array[y], "SO ", 3) == 0)
-			data->xpm.wall_south = ft_strdup(data->array[y] + 3);
-		else if (ft_strncmp(data->array[y], "WE ", 3) == 0)
-			data->xpm.wall_west = ft_strdup(data->array[y] + 3);
-		else if (ft_strncmp(data->array[y], "EA ", 3) == 0)
-			data->xpm.wall_east = ft_strdup(data->array[y] + 3);
-		else if (ft_strncmp(data->array[y], "F ", 2) == 0)
-			data->xpm.floor = parse_color(data->array[y + 2]);
-		else if (ft_strncmp(data->array[y], "C ", 2) == 0)
-			data->xpm.ceiling = parse_color(data->array[y + 2]);
-		y++;
-	}
-	//	testing
-	printf("%p\n", data->xpm.wall_north);
-}
+// 	y = 0;
+// 	while (data->array[y])
+// 	{
+// 		if (ft_strncmp(data->array[y], "NO ", 3) == 0)
+// 			data->xpm.wall_north = ft_strdup(data->array[y] + 3);
+// 		else if (ft_strncmp(data->array[y], "SO ", 3) == 0)
+// 			data->xpm.wall_south = ft_strdup(data->array[y] + 3);
+// 		else if (ft_strncmp(data->array[y], "WE ", 3) == 0)
+// 			data->xpm.wall_west = ft_strdup(data->array[y] + 3);
+// 		else if (ft_strncmp(data->array[y], "EA ", 3) == 0)
+// 			data->xpm.wall_east = ft_strdup(data->array[y] + 3);
+// 		else if (ft_strncmp(data->array[y], "F ", 2) == 0)
+// 			data->xpm.floor = parse_color(data->array[y + 2]);
+// 		else if (ft_strncmp(data->array[y], "C ", 2) == 0)
+// 			data->xpm.ceiling = parse_color(data->array[y + 2]);
+// 		y++;
+// 	}
+// }
 
 // void	init_textures(t_game *data)
 // {
@@ -113,19 +111,11 @@ void	export_textures(t_game *data)
 
 int	handle_input(char **av, t_game *data)
 {
-	read_file(av, &data->array);
+	// sometimes it doesn't find a file to open while debugging
+	// read_file(av, &data->array);
 	select_map(data);
 	check_map(data->map);
-	export_textures(data);
-	// sometimes it doesn't find a file to open while debugging
-	// -----------------------TO DO-----------------------
-	// Export textures from map.cub and inilitalize them
-	// into structure (4 textures for NORTH, SOUTH, WEST and EAST)
-	// -extract path to specific texture
-	// -save it into variable
-	// Export floor color based on RGB colors in range [0,255] 0, 255, 255
-	// ------------------loop for testing------------------
-	// ----------------------------------------------------
+	// export_textures(data);
 	// print_map(data->map);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/10 18:03:17 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/11/12 19:24:21 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS =	main.c \
 		utils.c \
 		init_map.c \
 		display_server/init_display.c \
+		display_server/close_window.c \
 		check_map/check_map.c \
 		check_map/check_player.c \
 		check_map/check_borders.c \

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 18:06:12 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:47:14 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,20 @@ int	only_whitespace_before(char *array, int x)
 
 void	convert_spaces_to_walls(char **map)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
-	i = -1;
-	while (i++, map[i])
+	y = 0;
+	while (map[y])
 	{
-		j = -1;
-		while (j++, map[i][j])
-			if (map[i][j] == ' ')
-				map[i][j] = '1';
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == ' ')
+				map[y][x] = '1';
+			x++;
+		}
+		y++;
 	}
 }
 
@@ -89,7 +93,7 @@ char	**memory(void)
 {
 	char	**array;
 
-	array = calloc(sizeof(char **), 15);
+	array = calloc(sizeof(char **), 20);
 	if (!array)
 		return (0);
 	array[0] = ft_strdup("        1111111111111111111111111\n");
@@ -116,11 +120,11 @@ void	select_map(t_game *data)
 	// y = find_first_map_row(data->array);
 	// data->map = data->array + y;
 	data->map = memory();
-	// if (DEBUG)
-	// 	print_map(data->map);
+	if (DEBUG)
+		print_map(data->map);
 	convert_spaces_to_walls(data->map);
-	// if (DEBUG)
-	// 	print_map(data->map);
+	if (DEBUG)
+		print_map(data->map);
 	data->map_cpy = create_map_copy(data->map);
 	// print_map(data->map_cpy);
 }
