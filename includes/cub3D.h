@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/13 15:33:30 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:03:32 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@
 
 // Math
 // # define M_PI 3.142
+
+# define MINIMAP_SCALE 10
+# define MINIMAP_PADDING 10
+# define PLAYER_COLOR 0xFF0000
+# define WALL_COLOR 0x808080
+# define FLOOR_COLOR 0x000000
+# define MAP_OPACITY 0.5
+# define MINIMAP_VIEWPORT_WIDTH 11
+# define MINIMAP_VIEWPORT_HEIGHT 11
 
 // Constants
 # define SCREEN_WIDTH 1400
@@ -100,5 +109,8 @@ float	ft_min_float(float a, float b);
 int		ft_max(int a, int b);
 int		ft_abs(int x);
 void	draw(t_game *game);
+
+// minimap.c
+void	draw_minimap(t_game *game);
 
 #endif

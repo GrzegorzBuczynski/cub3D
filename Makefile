@@ -6,7 +6,7 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/13 15:38:34 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/11/13 16:24:03 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS =	main.c \
 		handle_input.c \
 		utils.c \
 		init_map.c \
+		minimap.c \
 		math/math_utils.c \
 		display_server/init_display.c \
 		display_server/controls.c \
