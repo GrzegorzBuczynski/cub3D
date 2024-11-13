@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_linux.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:11:34 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/07/28 22:23:20 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/13 00:50:11 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,63 @@
 # define MAIN_PAD_MINUS 45
 # define MAIN_PAD_LESS 44
 # define MAIN_PAD_MORE 46
+
+/*
+** Keyboard LETTERS
+*/
+
+# define K_A 97
+# define K_B 98
+# define K_C 99
+# define K_D 100
+# define K_E 101
+# define K_F 102
+# define K_G 103
+# define K_H 104
+# define K_I 105
+# define K_J 106
+# define K_K 107
+# define K_L 108
+# define K_M 109
+# define K_N 110
+# define K_O 111
+# define K_P 112
+# define K_Q 113
+# define K_R 114
+# define K_S 115
+# define K_T 116
+# define K_U 117
+# define K_V 118
+# define K_W 119
+# define K_X 120
+# define K_Y 121
+# define K_Z 122
+
+
+/*
+** Keyboard NUMPAD
+*/
+
+# define K_NP_DIV 65455
+# define K_NP_MUL 65450
+# define K_NP_MIN 65453
+# define K_NP_PLU 65451
+
+/*
+** Keyboard MISC
+*/
+
+# define K_SP 32
+# define K_ESC 65307
+
+/*
+** Mouse
+*/
+
+# define M_CLK_L 1
+# define M_CLK_R 3
+# define M_CLK_M 2
+# define M_SCR_U 4
+# define M_SCR_D 5
 
 #endif

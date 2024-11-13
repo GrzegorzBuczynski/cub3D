@@ -17,6 +17,9 @@ typedef struct s_player
 {
 	float x;
 	float y;  
+	float step_size;
+	float step_x;
+	float step_y;
 	t_vector pos;   // Position of the player
 	t_vector tile;  // Tail of the player
 	t_vector dir;   // Direction the player is facing

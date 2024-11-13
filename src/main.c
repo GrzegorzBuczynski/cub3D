@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/12 22:38:52 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/13 01:12:08 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ float	get_distance(t_game *data, float degree)
 		}
 		else
 		{
-			if ((degree >= 0 && degree < 90)||(degree > 270 && degree <= 360))
+			if ((degree >= 0 && degree < 90) || (degree > 270 && degree <= 360))
 			{
 				y++;
 				cord.y--;
@@ -93,38 +93,29 @@ float	get_distance(t_game *data, float degree)
 	return (ft_min_float(rx, ry));
 }
 
+void	init_player(t_game *data)
+{
+	data->player.tile.x = 1;
+	data->player.tile.y = 5;
+	data->player.x = 0.5;
+	data->player.y = 0.5;
+	data->player.step_x = 0.1;
+	data->player.step_y = 0.1;
+
+}
+
 int	main(int ac, char **av)
 {
 	t_game	data;
 	int		i;
 	float	distance;
-	float	distancey;
-	float	distancex;
-	float	degree;
-	float	x;
-	float	y;
 
-	degree = 0;
 	if (ac != 2)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
 	handle_input(av, &data);
-	distance = 0;
-	data.player.tile.x = 1;
-	data.player.tile.y = 5;
 	data.map2.width = 25;
 	data.map2.height = 14;
-	distancey = 0;
-	distancex = 0;
-	data.player.x = 0.3;
-	data.player.y = 0.4;
-	// distance = get_distance(&data, degree);
-	// data.player.pos.x = 50;
-	// data.player.pos.y = 50;
-	// distancey = (y / (cos(degree * (M_PI / 180)))); //
-	// distancex = x / (sin(degree * (M_PI / 180)));
-	// printf("distancey: %f\n", distancey);
-	// printf("distancex: %f\n", distancex);
-	// printf("distance: %f\n", distance);
+	init_player(&data);
 	init_display(&data);
 	mlx_loop(data.display.mlx);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/12 22:58:21 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/13 01:34:51 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	print_wall(t_game *data)
 		// degree = ((FOV / SCREEN_WIDTH) * i);
 		degree = (-FOV / 2) + ((FOV / SCREEN_WIDTH) * i);
 		distance = get_distance(data, degree);
-		if (i % 20 == 0)
-			{printf("20: \n");};
-		color = scale_color(COLOR_CYAN, (1 - distance));
+		// if (i % 20 == 0)
+		// 	{printf("20: \n");};
+		color = scale_color(COLOR_CYAN, distance);
 		w_height = get_wall_height(distance);
 		// printf("degree: %f\n", degree);
 		// distance_factor = ((float)i / SCREEN_WIDTH);
@@ -60,7 +60,7 @@ void	print_wall(t_game *data)
 		// 	w_height = 2 * (SCREEN_HEIGHT / 2) * 0.25;
 		// 	color = scale_color(COLOR_CYAN, 0.70);
 		// }
-		printf("w_height: %d\n", w_height);
+		// printf("w_height: %d\n", w_height);
 		// Draw the wall
 		line = (t_line){(t_vector){i, (SCREEN_HEIGHT / 2) - w_height},
 			(t_vector){i, (SCREEN_HEIGHT / 2) + w_height}, color};

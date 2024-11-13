@@ -15,17 +15,24 @@ int	close_program(void *param)
 
 void	move(int key, t_game *game)
 {
-	if (key == ARROW_LEFT)
+	if (key == ARROW_LEFT || key == K_A)
 	{
-		game->player.tile.x--;
-		game->player.pos.x -= 10;
+		game->player.x -= game->player.step_x;
+		if (game->player.x < 0 && game->map2.grid[game->player.tile.y][game->player.tile.x - 1] != '1')
+		{
+			game->player.tile.x--;
+			game->player.x += 1;
+		}
+		else if (game->player.x < 0)
+			game->player.x = 0;
+		
 	}
-	else if (key == ARROW_UP)
+	else if (key == ARROW_UP || key == K_W)
 	{
 		game->player.tile.y--;
 		game->player.pos.y -= 10;
 	}
-	else if (key == ARROW_RIGHT)
+	else if (key == ARROW_RIGHT || key == K_D)
 	{
 		game->player.tile.x++;
 		game->player.pos.x += 10;
@@ -65,7 +72,8 @@ int	key_press(int key, void *param)
 	if (key == MAIN_PAD_ESC)
 		close_program(display);
 	if (key == ARROW_LEFT || key == ARROW_RIGHT || key == ARROW_UP
-		|| key == ARROW_DOWN)
+		|| key == ARROW_DOWN, key == K_W || key == K_A || key == K_S
+		|| key == K_D)
 		move(key, display->game);
 	// if (key == NUM_PAD_PLUS || key == MAIN_PAD_PLUS || key == NUM_PAD_MINUS
 	// 	|| key == MAIN_PAD_MINUS)
