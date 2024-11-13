@@ -16,12 +16,15 @@ typedef struct s_line
 typedef struct s_player
 {
 	float x;
-	float y;
-	t_vector pos;	// Position of the player
-	t_vector tile;	// Tail of the player
-	t_vector dir;	// Direction the player is facing
+	float y;  
+	float step_size;
+	float step_x;
+	float step_y;
+	t_vector pos;   // Position of the player
+	t_vector tile;  // Tail of the player
+	t_vector dir;   // Direction the player is facing
 	t_vector plane; // Camera plane for field of view
-} t_player;
+}					t_player;
 
 typedef struct s_map
 {
@@ -51,17 +54,19 @@ typedef struct s_camera
 	int y_offset;
 } t_camera;
 
-typedef struct s_display
+typedef struct s_diaplay
 {
-	void *mlx;
-	void *win;
-	void *img;
-	char *data_addr;
-	int size_line;
-	int bits_per_pixel;
-	int endian;
-	t_mouse mouse;
-} t_display;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	char			*data_addr;
+	int				size_line;
+	int				bits_per_pixel;
+	int				endian;
+	t_mouse			mouse;
+	t_camera		camera;
+	struct s_game	*game;
+}					t_display;
 
 typedef struct s_xpm
 {

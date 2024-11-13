@@ -6,7 +6,7 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/12 19:24:21 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/11/13 15:38:34 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,17 @@ SRCS =	main.c \
 		handle_input.c \
 		utils.c \
 		init_map.c \
+		math/math_utils.c \
 		display_server/init_display.c \
-		display_server/close_window.c \
+		display_server/controls.c \
+		display_server/mouse_controls.c \
+		display_server/colors.c \
+		display_server/walls.c \
+		display_server/draw.c \
 		check_map/check_map.c \
 		check_map/check_player.c \
 		check_map/check_borders.c \
-		check_map/map_utils.c
+		check_map/map_utils.c 
 
 
 SRCS_DIR = src/

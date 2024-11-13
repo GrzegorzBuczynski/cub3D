@@ -1,0 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
+/*   Updated: 2024/11/13 01:37:47 by ja               ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3D.h"
+
+int	scale_color(int color, float factor)
+{
+	int	red;
+	int	green;
+	int	blue;
+
+	red = (color >> 16) & 0xFF;
+	green = (color >> 8) & 0xFF;
+	blue = color & 0xFF;
+	red = red - (red * (factor / 20));
+	green = green - (green * (factor / 20));
+	blue = blue - (blue * (factor / 20));
+	return ((red << 16) | (green << 8) | blue);
+}
+
+int	get_color(t_vector current, t_vector start, t_vector end, t_vector delta)
+{
+	// int		red;
+	int color;
+	
+	color = scale_color(COLOR_CYAN, 0.5);
+	// int		green;
+	// int		blue;
+	// double	percentage;
+	// if (current.color == end.color)
+	// 	return (current.color);
+	// if (delta.x > delta.y)
+	// 	percentage = percent(start.x, end.x, current.x);
+	// else
+	// 	percentage = percent(start.y, end.y, current.y);
+	// red = get_light((start.color >> 16) & 0xFF, (end.color >> 16) & 0xFF,
+	// 		percentage);
+	// green = get_light((start.color >> 8) & 0xFF, (end.color >> 8) & 0xFF,
+	// 		percentage);
+	// blue = get_light(start.color & 0xFF, end.color & 0xFF, percentage);
+	// return ((red << 16) | (green << 8) | blue);
+	return (color);
+}
+
+int	parse_color(char *str)
+{
+	char *temp;
+	int red;
+	int green;
+	int blue;
+
+	temp = str;
+	ft_skip_whitespace(&temp);
+	red = ft_atoi(temp);
+	temp = ft_strchr(temp, ',');
+	temp++;
+	green = ft_atoi(temp);
+	temp = ft_strchr(temp, ',');
+	temp++;
+	blue = ft_atoi(temp);
+
+	return ((red << 16) | (green << 8) | blue);
+}

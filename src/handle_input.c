@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/12 19:48:13 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:46:32 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,6 @@ void	read_file(char **av, char ***array)
 	fd = ft_open(av[1]);
 	*array = ft_read(fd);
 	close(fd);
-}
-
-int	parse_color(char *str)
-{
-	char	*temp;
-	int		red;
-	int		green;
-	int		blue;
-
-	temp = str;
-	ft_skip_whitespace(&temp);
-	red = ft_atoi(temp);
-	temp = ft_strchr(temp, ',');
-	temp++;
-	green = ft_atoi(temp);
-	temp = ft_strchr(temp, ',');
-	temp++;
-	blue = ft_atoi(temp);
-	return ((red << 16) | (green << 8) | blue);
 }
 
 // void	export_textures(t_game *data)

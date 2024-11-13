@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/12 19:24:46 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:33:30 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	print_map_nl(char **map); // temporary
 
 void	select_map(t_game *data);
 void	get_player_position(char **map, t_vector *p_pos);
-void	init_display(t_display *data);
+void	init_display(t_game *data);
 int		mouse_press(int button, int x, int y, void *param);
 int		mouse_release(int button, int x, int y, void *param);
 int		mouse_move(int x, int y, void *param);
@@ -93,11 +93,12 @@ int		get_color(t_vector current, t_vector start, t_vector end,
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void	draw_line(t_line *line, t_display *data);
 void	print_wall(t_game *data);
-int		get_distance(t_game *data, float degree);
+float		get_distance(t_game *data, float degree);
 // math_utils.c
 int		ft_min_int(int a, int b);
 float	ft_min_float(float a, float b);
 int		ft_max(int a, int b);
 int		ft_abs(int x);
+void	draw(t_game *game);
 
 #endif
