@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/18 20:39:48 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:14:01 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,6 @@ void	set_time(t_data *a)
 
 void	print_walls(t_game *data)
 {
-	clear_buffer(&data->a.buffer);
 	calc(&data->a);
 	// drawBuffer(data->a.buffer[0]);
 	// set_time(&data->a);
