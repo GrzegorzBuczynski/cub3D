@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/18 21:14:01 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/18 22:17:52 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,12 +189,20 @@ void	draw_vertical_line(t_data *a)
 	{
 		texY = (int)a->texPos & (TEXHEIGHT - 1);
 		a->texPos += a->texstep;
-		a->color = a->texture[a->texNum][TEXHEIGHT * texY + a->texX];
+		a->color = a->texture[a->texNum][TEXWIDTH * texY + a->texX];
 		if (a->side == VERTICAL)
 			a->color = (a->color >> 1) & 8355711;
 		a->buffer[y] = a->color;
 		y++;
 	}
+}
+
+void line_height(t_data *a)
+{
+	if (a->perpWallDist == 0)
+		a->lineHeight = SCREEN_HEIGHT;
+	else
+		a->lineHeight = (int)(SCREEN_HEIGHT / a->perpWallDist);
 }
 
 void	calc(t_data *a)
@@ -209,10 +217,12 @@ void	calc(t_data *a)
 		calculate_step_and_initial_sideDist(a);
 		search_wall_hit(a);
 		calculate_perpendicular_ray(a);
-		a->lineHeight = (int)(SCREEN_HEIGHT / a->perpWallDist);
+		line_height(a);
+		// a->lineHeight = (int)(SCREEN_HEIGHT / a->perpWallDist);
 		texturing_calculations(a);
 		calculate_value_of_wallX(a);
 		coordinate_on_the_texture(a);
+		calculate_lowest_and_highest_pixel(a);
 		draw_vertical_line(a);
 		a->x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/18 21:01:34 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:46:58 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_player(t_data *data)
 {
 	data->playerdir.x = -1;
 	data->playerdir.y = 0;
-	data->plane.x = 0.0;
+	data->plane.x = 0;
 	data->plane.y = 0.66;
 	data->time = 0;
 	data->oldTime = 0;
