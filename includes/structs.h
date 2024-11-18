@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/13 16:57:56 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/16 23:17:19 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,44 @@ typedef struct s_vector
 	int				x;
 	int				y;
 }					t_vector;
+
+typedef struct s_dvector
+{
+	double			x;
+	double			y;
+}					t_dvector;
+
+typedef struct s_data
+{
+	int				x;
+	t_vector		map;
+	t_vector		step;
+	t_dvector		rayDir;
+	t_dvector		lenght_to; // length of ray from current position to next x or y-line
+	t_dvector		deltaDist; // length of ray from one x or y-line to next x or y-line
+	double			perpWallDist;
+	t_dvector		playerpos;
+	t_dvector		playerdir;
+	t_dvector		plane;
+	double			cameraX;
+	int				side;
+	int				hit;
+	int				lineHeight;
+	int				drawStart;
+	int				drawEnd;
+	int				texNum;
+	double			wallX;
+	int				texX;
+	double			texstep;
+	double			texPos;
+	int				color;
+	int				pitch;
+	int				**texture;
+	int				**buffer;
+	double			time;
+	double			oldTime;
+	double			frameTime;
+}					t_data;
 
 typedef struct s_line
 {
@@ -30,17 +68,17 @@ typedef struct s_player
 	float			step_size;
 	float			step_x;
 	float			step_y;
-	t_vector		pos; // Position of the player
-	t_vector		tile; // Tail of the player
-	t_vector		dir; // Direction the player is facing
-	t_vector		plane; // Camera plane for field of view
+	t_vector pos;   // Position of the player
+	t_vector tile;  // Tail of the player
+	t_vector dir;   // Direction the player is facing
+	t_vector plane; // Camera plane for field of view
 }					t_player;
 
 typedef struct s_map
 {
-	char			**grid; // 2D array representing the map layout
-	int				width; // Width of the map
-	int				height; // Height of the map
+	char **grid; // 2D array representing the map layout
+	int width;   // Width of the map
+	int height;  // Height of the map
 }					t_map;
 
 typedef struct s_mouse
@@ -64,7 +102,6 @@ typedef struct s_camera
 	int				y_offset;
 }					t_camera;
 
-
 typedef struct s_display
 {
 	void			*mlx;
@@ -81,11 +118,11 @@ typedef struct s_display
 
 typedef struct s_square_params
 {
-    int x;
-    int y;
-    int size;
-    int color;
-}               t_square_params;
+	int				x;
+	int				y;
+	int				size;
+	int				color;
+}					t_square_params;
 
 typedef struct s_minimap
 {
@@ -110,17 +147,25 @@ typedef struct s_xpm
 	int				ceiling;
 }					t_xpm;
 
-
 typedef struct s_game
 {
+	t_data			a;
 	char			**array;
 	char			**map;
 	char			**map_cpy;
+	double			time;
+	double			oldTime;
+	double			planeX;
+	double			planeY;
+	double			playerdirX;
+	double			playerdirY;
+	double			playerposX;
+	double			playerposY;
 	t_player		player;
 	t_display		display;
 	t_map			map2;
 	t_xpm			xpm;
 	t_minimap		minimap;
-	void			*mlx_ptr; // Pointer to the MLX library instance
-	void			*win_ptr; // Pointer to the game window
+	void *mlx_ptr; // Pointer to the MLX library instance
+	void *win_ptr; // Pointer to the game window
 }					t_game;

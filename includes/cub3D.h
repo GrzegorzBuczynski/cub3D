@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/13 17:03:32 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:29:43 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		get_color(t_vector current, t_vector start, t_vector end,
 // draw.c --
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void	draw_line(t_line *line, t_display *data);
-void	print_wall(t_game *data);
+void	print_walls(t_game *data);
 float		get_distance(t_game *data, float degree);
 // math_utils.c
 int		ft_min_int(int a, int b);

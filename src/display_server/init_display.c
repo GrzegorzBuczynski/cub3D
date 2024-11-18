@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/13 16:37:32 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:29:43 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	draw(t_game *data)
 
 	display = &data->display;
 	draw_background(display);
-	print_wall(data);
+	print_walls(data);
 	draw_minimap(data);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
 	printf("tile.x: %d tile.y%d \n", data->player.tile.x, data->player.tile.y);
