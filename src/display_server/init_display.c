@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/16 17:29:43 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/18 20:37:19 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	draw(t_game *data)
 
 	display = &data->display;
 	draw_background(display);
-	print_walls(data);
-	draw_minimap(data);
+	// print_walls(data);
+	// draw_minimap(data);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
 	printf("tile.x: %d tile.y%d \n", data->player.tile.x, data->player.tile.y);
 }
@@ -83,6 +83,7 @@ void	init_display(t_game *data)
 	display->data_addr = mlx_get_data_addr(display->img,
 			&(display->bits_per_pixel), &(display->size_line),
 			&(display->endian));
+	data->a.buffer = (int *)(display->data_addr);
 	setup_controls(display);
 	draw(data);
 }

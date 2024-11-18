@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/17 01:19:35 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/18 20:39:48 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void	draw_vertical_line(t_data *a)
 		a->color = a->texture[a->texNum][TEXHEIGHT * texY + a->texX];
 		if (a->side == VERTICAL)
 			a->color = (a->color >> 1) & 8355711;
-		a->buffer[y][a->x] = a->color;
+		a->buffer[y] = a->color;
 		y++;
 	}
 }
@@ -239,18 +239,18 @@ void	clear_buffer(int **buffer)
 void	set_time(t_data *a)
 {
 	a->oldTime = a->time;
-	a->time = getTicks();
+	// a->time = getTicks();
 	a->frameTime = (a->time - a->oldTime) / 1000.0;
-	print(1.0 / a->frameTime);
+	printf("%f \n", 1.0 / a->frameTime);
 }
 
 void	print_walls(t_game *data)
 {
 	clear_buffer(&data->a.buffer);
 	calc(&data->a);
-	drawBuffer(data->a.buffer[0]);
-	set_time(&data->a);
-	redraw();
+	// drawBuffer(data->a.buffer[0]);
+	// set_time(&data->a);
+	// redraw();
 }
 
 // int	get_wall_height(float distance)

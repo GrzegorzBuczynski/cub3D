@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/16 17:29:43 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/18 20:45:43 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@
 # define WIDTH 1920
 # define MENU_WIDTH 200
 
+# define TEX_COUNT 8   // Number of textures
+# define TEX_WIDTH 64  // Texture width
+# define TEX_HEIGHT 64 // Texture heigh
+
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
@@ -82,7 +86,7 @@ int		handle_input(char **av, t_game *data);
 
 // utils.c
 int		ft_error(int error_code, char *message);
-void	print_map(char **map); // temporary
+void	print_map(char **map);    // temporary
 void	print_map_nl(char **map); // temporary
 
 void	select_map(t_game *data);
@@ -93,7 +97,6 @@ int		mouse_release(int button, int x, int y, void *param);
 int		mouse_move(int x, int y, void *param);
 void	setup_controls(t_display *data);
 
-
 // colors.c
 int		scale_color(int color, float factor);
 int		get_color(t_vector current, t_vector start, t_vector end,
@@ -102,7 +105,9 @@ int		get_color(t_vector current, t_vector start, t_vector end,
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void	draw_line(t_line *line, t_display *data);
 void	print_walls(t_game *data);
-float		get_distance(t_game *data, float degree);
+float	get_distance(t_game *data, float degree);
+void	generate_textures(int ***textures, int texWidth, int texHeight);
+
 // math_utils.c
 int		ft_min_int(int a, int b);
 float	ft_min_float(float a, float b);
