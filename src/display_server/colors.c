@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/13 01:37:47 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/18 21:11:32 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	scale_color(int color, float factor)
 	red = (color >> 16) & 0xFF;
 	green = (color >> 8) & 0xFF;
 	blue = color & 0xFF;
-	red = red - (red * (factor / 20));
-	green = green - (green * (factor / 20));
-	blue = blue - (blue * (factor / 20));
+	red = red - (red * (factor / 1));
+	green = green - (green * (factor / 1));
+	blue = blue - (blue * (factor / 1));
 	return ((red << 16) | (green << 8) | blue);
 }
 
