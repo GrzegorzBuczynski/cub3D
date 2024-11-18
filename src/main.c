@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/18 20:57:33 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:01:34 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	generate_textures(int ***textures, int texWidth, int texHeight)
 	{
 		for (int y = 0; y < texHeight; y++)
 		{
-			textures[0][texWidth * y + x] = 
-			textures[1][texWidth * y + x] = 
-			textures[2][texWidth * y + x] = 
-			textures[3][texWidth * y + x] = 
-			textures[4][texWidth * y + x] = 
-			textures[5][texWidth * y + x] = 
-			textures[6][texWidth * y + x] = 
-			textures[7][texWidth * y + x] = 
+			textures[0][texWidth * y + x] = COLOR_WHITE;
+			textures[1][texWidth * y + x] = COLOR_GRAY;
+			textures[2][texWidth * y + x] = COLOR_BRICK_RED;
+			textures[3][texWidth * y + x] = COLOR_GRAY;
+			textures[4][texWidth * y + x] = COLOR_GRAY;
+			textures[5][texWidth * y + x] = COLOR_GRAY;
+			textures[6][texWidth * y + x] = COLOR_GRAY;
+			// textures[7][texWidth * y + x] = COLOR_GRAY;
 		}
 	}
 }
