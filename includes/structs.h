@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 20:56:55 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:23:23 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,37 @@ typedef struct s_dvector
 
 typedef struct s_data
 {
-	int				x;
-	t_vector		map;
-	t_vector		step;
-	t_dvector		rayDir;
-	t_dvector		lenght_to;
-	// length of ray from current position to next x or y-line
-	t_dvector		deltaDist;
-	// length of ray from one x or y-line to next x or y-line
-	double			perpWallDist;
-	t_dvector		playerdir;
-	t_dvector		plane;
+	double			angle;
+	int				*buffer;
+	int				color;
 	double			cameraX;
-	int				side;
-	int				hit;
-	int				lineHeight;
+	t_dvector		deltaDist;
 	int				drawStart;
 	int				drawEnd;
-	int				texNum;
-	double			wallX;
-	int				texX;
-	double			texstep;
-	double			texPos;
-	int				color;
-	int				pitch;
-	int				**texture;
-	int				*buffer;
-	double			time;
-	double			oldTime;
 	double			frameTime;
 	struct s_game	*game;
+	int				hit;
+	double			initial_plane;
+	double			initial_playerdir;
+	t_dvector		lenght_to;
+	int				lineHeight;
+	t_vector		map;
+	double			oldTime;
+	double			perpWallDist;
+	int				pitch;
+	t_dvector		plane;
+	t_dvector		playerdir;
+	t_dvector		rayDir;
+	int				side;
+	t_vector		step;
+	int				texX;
+	int				texNum;
+	double			texPos;
+	double			texstep;
+	int				**texture;
+	double			time;
+	double			wallX;
+	int				x;
 }					t_data;
 
 typedef struct s_line

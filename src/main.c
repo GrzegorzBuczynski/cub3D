@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 21:01:55 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:25:31 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ void	generate_textures(int ***table, int texWidth, int texHeight)
 
 void	init_player(t_data *data)
 {
-	data->playerdir.x = 0;
-	data->playerdir.y = -1;
-	data->plane.x = 0.66;
-	data->plane.y = 0;
+	data->angle = 0;
+	data->initial_plane = INITIAL_PLANE__SIZE;
+	data->initial_playerdir = INITIAL_PLAYERDIR;
+	data->playerdir.x = data->initial_playerdir * sin(data->angle);
+	data->playerdir.y = data->initial_playerdir * cos(data->angle);
+	data->plane.x = data->initial_plane * cos(data->angle);
+	data->plane.y = data->initial_plane * sin(data->angle);
 	data->time = 0;
 	data->oldTime = 0;
 	data->game->player.pos.x = 10.0;

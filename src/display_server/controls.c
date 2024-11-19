@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 21:04:10 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:34:15 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,33 @@ int	close_program(void *param)
 	exit(0);
 }
 
+void rotate_left(t_game *game)
+{
+	game->a.angle -= ROT_SPEED;
+	if (game->a.angle < 0)
+		game->a.angle += 360;
+	game->a.playerdir.x = game->a.initial_playerdir *cos(game->a.angle * M_PI / 180);
+	game->a.playerdir.y = game->a.initial_playerdir *sin(game->a.angle * M_PI / 180);
+	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
+	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
+}
+
+void rotate_right(t_game *game)
+{
+	game->a.angle += ROT_SPEED;
+	if (game->a.angle >= 360)
+		game->a.angle -= 360;
+	game->a.playerdir.x = game->a.initial_playerdir *cos(game->a.angle * M_PI / 180);
+	game->a.playerdir.y = game->a.initial_playerdir *sin(game->a.angle * M_PI / 180);
+	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
+	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
+}
+
 void	move(int key, t_game *game)
 {
 	if (key == ARROW_LEFT || key == K_A)
 	{
+		// rotate_left(game);
 	}
 	else if (key == ARROW_UP || key == K_W)
 	{
