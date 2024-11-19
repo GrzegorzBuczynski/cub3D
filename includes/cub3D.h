@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/18 20:45:43 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:43:03 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@
 # define TILE_SIZE 64
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
-# define WIDTH 1920
-# define MENU_WIDTH 200
+
+#define mapWidth 24
+#define mapHeight 24
 
 # define TEX_COUNT 8   // Number of textures
 # define TEX_WIDTH 64  // Texture width

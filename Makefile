@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
+#    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/13 16:24:03 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/11/19 18:43:24 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS =	main.c \
 		display_server/colors.c \
 		display_server/walls.c \
 		display_server/draw.c \
+		display_server/map.c \
 		check_map/check_map.c \
 		check_map/check_player.c \
 		check_map/check_borders.c \

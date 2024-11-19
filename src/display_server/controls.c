@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/13 15:36:34 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:30:18 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+extern int	worldMap[mapWidth][mapHeight];
 
 int	close_program(void *param)
 {
@@ -27,31 +29,27 @@ void	move(int key, t_game *game)
 {
 	if (key == ARROW_LEFT || key == K_A)
 	{
-		game->player.x -= game->player.step_x;
-		if (game->player.x < 0
-			&& game->map2.grid[game->player.tile.y][game->player.tile.x
-			- 1] != '1')
-		{
-			game->player.tile.x--;
-			game->player.x += 1;
-		}
-		else if (game->player.x < 0)
-			game->player.x = 0;
 	}
 	else if (key == ARROW_UP || key == K_W)
 	{
-		game->player.tile.y--;
-		game->player.pos.y -= 10;
+		if (worldMap[(int)(game->player.pos.x
+				+ game->player.step_x)][(int)(game->player.pos.y)] == false)
+			game->player.pos.x += game->player.step_x;
+		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y
+				+ game->player.step_y)] == false)
+			game->player.pos.y += game->player.step_y;
 	}
 	else if (key == ARROW_RIGHT || key == K_D)
 	{
-		game->player.tile.x++;
-		game->player.pos.x += 10;
 	}
-	else
+	else if (key == ARROW_DOWN || key == K_S)
 	{
-		game->player.tile.y++;
-		game->player.pos.y += 10;
+		if (worldMap[(int)(game->player.pos.x
+				- game->player.step_x)][(int)(game->player.pos.y)] == false)
+			game->player.pos.x -= game->player.step_x;
+		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y
+				- game->player.step_y)] == false)
+			game->player.pos.y -= game->player.step_y;
 	}
 	draw(game);
 }

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/18 21:13:45 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:51:50 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw(t_game *data)
 	print_walls(data);
 	// draw_minimap(data);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
-	printf("tile.x: %d tile.y%d \n", data->player.tile.x, data->player.tile.y);
+	printf("tile.x: %d tile.y%d \n", data->a.playerpos.x, data->a.playerpos.y);
 }
 
 void	init_display(t_game *data)

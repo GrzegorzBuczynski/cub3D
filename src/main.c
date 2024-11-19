@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/18 21:46:58 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:28:38 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 #include <stdlib.h>
 
 // Function to generate textures, returning a pointer to the allocated memory
-void	generate_textures(int ***textures, int texWidth, int texHeight)
+void	generate_textures(int ***table, int texWidth, int texHeight)
 {
-	*textures = (int **)malloc(TEX_COUNT * sizeof(int *));
+	int	**textures;
+
+	textures = (int **)malloc(TEX_COUNT * sizeof(int *));
+	*table = textures;
 	if (textures == NULL)
 	{
 		perror("Failed to allocate memory for textures");
@@ -39,11 +42,11 @@ void	generate_textures(int ***textures, int texWidth, int texHeight)
 			textures[0][texWidth * y + x] = COLOR_WHITE;
 			textures[1][texWidth * y + x] = COLOR_GRAY;
 			textures[2][texWidth * y + x] = COLOR_BRICK_RED;
-			textures[3][texWidth * y + x] = COLOR_GRAY;
-			textures[4][texWidth * y + x] = COLOR_GRAY;
-			textures[5][texWidth * y + x] = COLOR_GRAY;
-			textures[6][texWidth * y + x] = COLOR_GRAY;
-			// textures[7][texWidth * y + x] = COLOR_GRAY;
+			textures[3][texWidth * y + x] = COLOR_RED;
+			textures[4][texWidth * y + x] = COLOR_TURQUOISE;
+			textures[5][texWidth * y + x] = COLOR_MAGENTA;
+			textures[6][texWidth * y + x] = COLOR_YELLOW;
+			textures[7][texWidth * y + x] = COLOR_BLUE;
 		}
 	}
 }
@@ -56,18 +59,17 @@ void	init_player(t_data *data)
 	data->plane.y = 0.66;
 	data->time = 0;
 	data->oldTime = 0;
-	data->playerpos.x = 22.0;
-	data->playerpos.y = 11.5;
+	data->game->player.pos.x = 10.0;
+	data->game->player.pos.y = 11.5;
 }
 
 int	main(int ac, char **av)
 {
 	t_game	data;
-	int		i;
-	float	distance;
 
 	if (ac != 2)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
+	data.a.game = &data;
 	// handle_input(av, &data);
 	init_player(&data.a);
 	generate_textures(&data.a.texture, TEX_WIDTH, TEX_HEIGHT);

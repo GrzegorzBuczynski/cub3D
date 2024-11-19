@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/18 20:33:18 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:26:35 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ typedef struct s_data
 	t_vector		map;
 	t_vector		step;
 	t_dvector		rayDir;
-	t_dvector		lenght_to; // length of ray from current position to next x or y-line
-	t_dvector		deltaDist; // length of ray from one x or y-line to next x or y-line
+	t_dvector		lenght_to;
+	// length of ray from current position to next x or y-line
+	t_dvector		deltaDist;
+	// length of ray from one x or y-line to next x or y-line
 	double			perpWallDist;
 	t_dvector		playerpos;
 	t_dvector		playerdir;
@@ -52,6 +54,7 @@ typedef struct s_data
 	double			time;
 	double			oldTime;
 	double			frameTime;
+	struct s_game	*game;
 }					t_data;
 
 typedef struct s_line
@@ -63,15 +66,12 @@ typedef struct s_line
 
 typedef struct s_player
 {
-	float			x;
-	float			y;
 	float			step_size;
 	float			step_x;
 	float			step_y;
-	t_vector pos;   // Position of the player
-	t_vector tile;  // Tail of the player
-	t_vector dir;   // Direction the player is facing
-	t_vector plane; // Camera plane for field of view
+	t_dvector pos;     // Position of the player
+	t_dvector pos_old; // Position of the player in the previous frame
+	t_vector plane;    // Camera plane for field of view
 }					t_player;
 
 typedef struct s_map
@@ -157,10 +157,6 @@ typedef struct s_game
 	double			oldTime;
 	double			planeX;
 	double			planeY;
-	double			playerdirX;
-	double			playerdirY;
-	double			playerposX;
-	double			playerposY;
 	t_player		player;
 	t_display		display;
 	t_map			map2;
