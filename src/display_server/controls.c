@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 20:59:20 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:04:10 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,7 @@ int	key_press(int key, void *param)
 	display = (t_display *)param;
 	if (key == MAIN_PAD_ESC)
 		close_program(display);
-	if (key == ARROW_LEFT || key == ARROW_RIGHT || key == ARROW_UP
-		|| key == ARROW_DOWN, key == K_W || key == K_A || key == K_S
-		|| key == K_D)
+	if (key == ARROW_LEFT || key == ARROW_RIGHT || key == ARROW_UP || key == ARROW_DOWN || key == K_W || key == K_A || key == K_S || key == K_D)
 		move(key, display->game);
 	// if (key == NUM_PAD_PLUS || key == MAIN_PAD_PLUS || key == NUM_PAD_MINUS
 	// 	|| key == MAIN_PAD_MINUS)
