@@ -6,7 +6,7 @@
 /*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 22:39:43 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/19 23:02:29 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,33 @@ void rotate_right(t_game *game)
 	game->a.playerdir.y = game->a.initial_playerdir *sin(game->a.angle * M_PI / 180);
 	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
 	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
+	game->player.step_up_down.x = MOVE_SPEED * sin(game->a.angle);
+	game->player.step_up_down.y = MOVE_SPEED * cos(game->a.angle);
+	
+	game->player.step_left_right.x = MOVE_SPEED * cos(game->a.angle);
+	game->player.step_left_right.y = MOVE_SPEED * sin(game->a.angle);
 }
 
 void	move(int key, t_game *game)
 {
-	if (key == ARROW_LEFT || key == K_A)
+	if (key == ARROW_LEFT)
 	{
 		rotate_left(game);
 	}
+	else if (key == K_A )
+	{
+
+		if (worldMap[(int)(game->player.pos.x - game->player.step_left_right.x)][(int)(game->player.pos.y)] == false)
+			game->player.pos.x -= game->player.step_left_right.x;
+		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y - game->player.step_left_right.y)] == false)
+			game->player.pos.y -= game->player.step_left_right.y;
+	}
 	else if (key == ARROW_UP || key == K_W)
 	{
-		if (worldMap[(int)(game->player.pos.x + game->player.step_x)][(int)(game->player.pos.y)] == false)
-			game->player.pos.x += game->player.step_x;
-		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_y)] == false)
-			game->player.pos.y += game->player.step_y;
+		if (worldMap[(int)(game->player.pos.x + game->player.step_up_down.x)][(int)(game->player.pos.y)] == false)
+			game->player.pos.x += game->player.step_up_down.x;
+		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_up_down.y)] == false)
+			game->player.pos.y += game->player.step_up_down.y;
 	}
 	else if (key == ARROW_RIGHT || key == K_D)
 	{
@@ -67,11 +80,11 @@ void	move(int key, t_game *game)
 	else if (key == ARROW_DOWN || key == K_S)
 	{
 		if (worldMap[(int)(game->player.pos.x
-				- game->player.step_x)][(int)(game->player.pos.y)] == false)
-			game->player.pos.x -= game->player.step_x;
+				- game->player.step_up_down)][(int)(game->player.pos.y)] == false)
+			game->player.pos.x -= game->player.step_up_down;
 		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y
-				- game->player.step_y)] == false)
-			game->player.pos.y -= game->player.step_y;
+				- game->player.step_left_right)] == false)
+			game->player.pos.y -= game->player.step_left_right;
 	}
 	draw(game);
 }
