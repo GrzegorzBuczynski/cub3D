@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/19 20:57:12 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:34:42 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw(t_game *data)
 	print_walls(data);
 	// draw_minimap(data);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
-	printf("pos.x: %f pos.y%f \n", data->player.pos.x, data->player.pos.y);
+	printf("pos.x: %f pos.y%f angle %f \n", data->player.pos.x, data->player.pos.y, data->a.angle);
 }
 
 void	init_display(t_game *data)

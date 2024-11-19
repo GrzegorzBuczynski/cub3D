@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 21:34:15 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:39:43 by ja               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	move(int key, t_game *game)
 {
 	if (key == ARROW_LEFT || key == K_A)
 	{
-		// rotate_left(game);
+		rotate_left(game);
 	}
 	else if (key == ARROW_UP || key == K_W)
 	{
@@ -62,6 +62,7 @@ void	move(int key, t_game *game)
 	}
 	else if (key == ARROW_RIGHT || key == K_D)
 	{
+		rotate_right(game);
 	}
 	else if (key == ARROW_DOWN || key == K_S)
 	{
