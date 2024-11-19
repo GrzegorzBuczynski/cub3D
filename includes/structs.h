@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 19:26:35 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:56:55 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_data
 	t_dvector		deltaDist;
 	// length of ray from one x or y-line to next x or y-line
 	double			perpWallDist;
-	t_dvector		playerpos;
 	t_dvector		playerdir;
 	t_dvector		plane;
 	double			cameraX;
@@ -66,9 +65,9 @@ typedef struct s_line
 
 typedef struct s_player
 {
-	float			step_size;
-	float			step_x;
-	float			step_y;
+	double			step_size;
+	double			step_x;
+	double			step_y;
 	t_dvector pos;     // Position of the player
 	t_dvector pos_old; // Position of the player in the previous frame
 	t_vector plane;    // Camera plane for field of view
@@ -97,7 +96,7 @@ typedef struct s_camera
 	double			alpha;
 	double			beta;
 	double			gamma;
-	float			z_divisor;
+	double			z_divisor;
 	int				x_offset;
 	int				y_offset;
 }					t_camera;

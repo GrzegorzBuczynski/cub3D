@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 19:30:18 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:59:20 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ void	move(int key, t_game *game)
 	}
 	else if (key == ARROW_UP || key == K_W)
 	{
-		if (worldMap[(int)(game->player.pos.x
-				+ game->player.step_x)][(int)(game->player.pos.y)] == false)
+		if (worldMap[(int)(game->player.pos.x + game->player.step_x)][(int)(game->player.pos.y)] == false)
 			game->player.pos.x += game->player.step_x;
-		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y
-				+ game->player.step_y)] == false)
+		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_y)] == false)
 			game->player.pos.y += game->player.step_y;
 	}
 	else if (key == ARROW_RIGHT || key == K_D)

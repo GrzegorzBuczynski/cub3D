@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/19 18:51:50 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:57:12 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	draw_background(t_display *data)
 	int		*image;
 	int		i;
 	int		j;
-	float	factor;
+	double	factor;
 	int		color;
 
 	ft_bzero(data->data_addr, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -26,7 +26,7 @@ static void	draw_background(t_display *data)
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
-		factor = ((float)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT
+		factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT
 						/ 2.0)));
 		color = scale_color(CEILING, factor);
 		j = 0;
@@ -39,7 +39,7 @@ static void	draw_background(t_display *data)
 	}
 	while (i < SCREEN_HEIGHT)
 	{
-		factor = ((float)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i))
+		factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i))
 				/ ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
 		color = scale_color(FLOOR, factor);
 		j = 0;
@@ -61,7 +61,7 @@ void	draw(t_game *data)
 	print_walls(data);
 	// draw_minimap(data);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
-	printf("tile.x: %d tile.y%d \n", data->a.playerpos.x, data->a.playerpos.y);
+	printf("pos.x: %f pos.y%f \n", data->player.pos.x, data->player.pos.y);
 }
 
 void	init_display(t_game *data)

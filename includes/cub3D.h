@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 18:43:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:57:39 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,19 @@ int		mouse_move(int x, int y, void *param);
 void	setup_controls(t_display *data);
 
 // colors.c
-int		scale_color(int color, float factor);
+int		scale_color(int color, double factor);
 int		get_color(t_vector current, t_vector start, t_vector end,
 			t_vector delta);
 // draw.c --
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void	draw_line(t_line *line, t_display *data);
 void	print_walls(t_game *data);
-float	get_distance(t_game *data, float degree);
+double	get_distance(t_game *data, double degree);
 void	generate_textures(int ***textures, int texWidth, int texHeight);
 
 // math_utils.c
 int		ft_min_int(int a, int b);
-float	ft_min_float(float a, float b);
+double	ft_min_double(double a, double b);
 int		ft_max(int a, int b);
 int		ft_abs(int x);
 void	draw(t_game *game);

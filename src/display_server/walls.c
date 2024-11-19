@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/19 19:24:10 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:57:17 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,28 @@ void	setdeltaDist(t_data *a)
 
 void	calculate_step_and_initial_sideDist(t_data *a)
 {
+	t_player	*player;
+	
+	player = &a->game->player;
 	if (a->rayDir.x < 0)
 	{
 		a->step.x = -1;
-		a->lenght_to.x = (a->playerpos.x - a->map.x) * a->deltaDist.x;
+		a->lenght_to.x = (player->pos.x - a->map.x) * a->deltaDist.x;
 	}
 	else
 	{
 		a->step.x = 1;
-		a->lenght_to.x = (1.0 + a->map.x - a->playerpos.x) * a->deltaDist.x;
+		a->lenght_to.x = (1.0 + a->map.x - player->pos.x) * a->deltaDist.x;
 	}
 	if (a->rayDir.y < 0)
 	{
 		a->step.y = -1;
-		a->lenght_to.y = (a->playerpos.y - a->map.y) * a->deltaDist.y;
+		a->lenght_to.y = (player->pos.y - a->map.y) * a->deltaDist.y;
 	}
 	else
 	{
 		a->step.y = 1;
-		a->lenght_to.y = (1.0 + a->map.y - a->playerpos.y) * a->deltaDist.y;
+		a->lenght_to.y = (1.0 + a->map.y - player->pos.y) * a->deltaDist.y;
 	}
 }
 
@@ -110,10 +113,13 @@ void	texturing_calculations(t_data *a)
 
 void	calculate_value_of_wallX(t_data *a)
 {
+	t_player	*player;
+	
+	player = &a->game->player;
 	if (a->side == HORIZONTAL)
-		a->wallX = a->playerpos.y + a->perpWallDist * a->rayDir.y;
+		a->wallX = player->pos.y + a->perpWallDist * a->rayDir.y;
 	else
-		a->wallX = a->playerpos.x + a->perpWallDist * a->rayDir.x;
+		a->wallX = player->pos.x + a->perpWallDist * a->rayDir.x;
 	a->wallX -= floor((a->wallX));
 }
 
@@ -222,7 +228,7 @@ void	print_walls(t_game *data)
 	// redraw();
 }
 
-// int	get_wall_height(float distance)
+// int	get_wall_height(double distance)
 // {
 // 	int	height;
 
