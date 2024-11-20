@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 16:43:47 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:55:11 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	init_player(t_data *data)
 	data->game->player.step_size = STEP_SIZE;
 	data->game->player.step_side_side.y = data->game->player.step_size * sin(data->angle* M_PI / 180);
 	data->game->player.step_side_side.x = data->game->player.step_size * cos(data->angle* M_PI / 180);
-	data->game->player.step_up_down.y = data->game->player.step_size * cos(data->angle* M_PI / 180);
-	data->game->player.step_up_down.x = data->game->player.step_size * sin(data->angle* M_PI / 180);
+	data->game->player.step_top_down.y = data->game->player.step_size * cos(data->angle* M_PI / 180);
+	data->game->player.step_top_down.x = -data->game->player.step_size * sin(data->angle* M_PI / 180);
 }
 
 int	main(int ac, char **av)

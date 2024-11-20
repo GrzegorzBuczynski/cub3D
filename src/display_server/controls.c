@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 16:43:41 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:53:43 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void rotate_left(t_game *game)
 	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
 	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
 	
-	game->player.step_side_side.x = MOVE_SPEED * cos(game->a.angle * M_PI / 180);
-	game->player.step_side_side.y = MOVE_SPEED * sin(game->a.angle * M_PI / 180);
-	game->player.step_up_down.x = MOVE_SPEED * sin(game->a.angle * M_PI / 180);
-	game->player.step_up_down.y = MOVE_SPEED * cos(game->a.angle * M_PI / 180);
+	game->player.step_side_side.x = STEP_SIZE * cos(game->a.angle * M_PI / 180);
+	game->player.step_side_side.y = STEP_SIZE * sin(game->a.angle * M_PI / 180);
+	game->player.step_top_down.x = STEP_SIZE * sin(game->a.angle * M_PI / 180);
+	game->player.step_top_down.y = STEP_SIZE * cos(game->a.angle * M_PI / 180);
 }
 
 void rotate_right(t_game *game)
@@ -53,8 +53,8 @@ void rotate_right(t_game *game)
 	
 	game->player.step_side_side.x = STEP_SIZE * cos(game->a.angle * M_PI / 180);
 	game->player.step_side_side.y = STEP_SIZE * sin(game->a.angle * M_PI / 180);
-	game->player.step_up_down.x = STEP_SIZE * sin(game->a.angle *	M_PI / 180);
-	game->player.step_up_down.y = STEP_SIZE * cos(game->a.angle * M_PI / 180);
+	game->player.step_top_down.x = -STEP_SIZE * sin(game->a.angle *	M_PI / 180);
+	game->player.step_top_down.y = STEP_SIZE * cos(game->a.angle * M_PI / 180);
 }
 
 void walk_right(t_game *game)
@@ -75,18 +75,18 @@ void walk_left(t_game *game)
 
 void walk_forward(t_game *game)
 {
-	if (worldMap[(int)(game->player.pos.x - game->player.step_up_down.x)][(int)(game->player.pos.y)] == false)
-		game->player.pos.x -= game->player.step_up_down.x;
-	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y - game->player.step_up_down.y)] == false)
-		game->player.pos.y -= game->player.step_up_down.y;
+	if (worldMap[(int)(game->player.pos.x - game->player.step_top_down.x)][(int)(game->player.pos.y)] == false)
+		game->player.pos.x -= game->player.step_top_down.x;
+	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y - game->player.step_top_down.y)] == false)
+		game->player.pos.y -= game->player.step_top_down.y;
 }
 
 void walk_backward(t_game *game)
 {
-	if (worldMap[(int)(game->player.pos.x + game->player.step_up_down.x)][(int)(game->player.pos.y)] == false)
-		game->player.pos.x += game->player.step_up_down.x;
-	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_up_down.y)] == false)
-		game->player.pos.y += game->player.step_up_down.y;
+	if (worldMap[(int)(game->player.pos.x + game->player.step_top_down.x)][(int)(game->player.pos.y)] == false)
+		game->player.pos.x += game->player.step_top_down.x;
+	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_top_down.y)] == false)
+		game->player.pos.y += game->player.step_top_down.y;
 }
 
 void	move(int key, t_game *game)

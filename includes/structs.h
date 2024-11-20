@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 16:15:38 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:52:05 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_player
 {
 	double			step_size;
 	t_dvector			step_side_side;
-	t_dvector			step_up_down;
+	t_dvector			step_top_down;
 	t_dvector pos;     // Position of the player
 	t_dvector pos_old; // Position of the player in the previous frame
 	t_vector plane;    // Camera plane for field of view
