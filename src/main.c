@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 16:57:04 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/20 19:01:14 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_player(t_data *data)
 	data->initial_plane = INITIAL_PLANE__SIZE;
 	data->initial_playerdir = INITIAL_PLAYERDIR;
 	data->playerdir.x = data->initial_playerdir * sin(data->angle * M_PI / 180);
-	data->playerdir.y = data->initial_playerdir * cos(data->angle* M_PI / 180);
+	data->playerdir.y = data->initial_playerdir * cos(data->angle * M_PI / 180);
 	data->plane.x = data->initial_plane * cos(data->angle * M_PI / 180);
 	data->plane.y = data->initial_plane * sin(data->angle * M_PI / 180);
 	data->time = 0;
@@ -65,10 +65,14 @@ void	init_player(t_data *data)
 	data->game->player.pos.x = 10.0;
 	data->game->player.pos.y = 11.5;
 	data->game->player.step_size = STEP_SIZE;
-	data->game->player.step_side_side.y = data->game->player.step_size * sin(data->angle* M_PI / 180);
-	data->game->player.step_side_side.x = data->game->player.step_size * cos(data->angle* M_PI / 180);
-	data->game->player.step_top_down.y = data->game->player.step_size * cos(data->angle* M_PI / 180);
-	data->game->player.step_top_down.x = -data->game->player.step_size * sin(data->angle* M_PI / 180);
+	data->game->player.step_side_side.y = data->game->player.step_size
+		* sin(data->angle * M_PI / 180);
+	data->game->player.step_side_side.x = data->game->player.step_size
+		* cos(data->angle * M_PI / 180);
+	data->game->player.step_top_down.y = data->game->player.step_size
+		* cos(data->angle * M_PI / 180);
+	data->game->player.step_top_down.x = -data->game->player.step_size
+		* sin(data->angle * M_PI / 180);
 }
 
 int	main(int ac, char **av)
@@ -79,9 +83,44 @@ int	main(int ac, char **av)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
 	data.a.game = &data;
 	// handle_input(av, &data);
-	init_player(&data.a);
-	generate_textures(&data.a.texture, TEX_WIDTH, TEX_HEIGHT);
-	init_display(&data);
-	mlx_loop(data.display.mlx);
+	// init_player(&data.a);
+	// generate_textures(&data.a.texture, TEX_WIDTH, TEX_HEIGHT);
+	// init_display(&data);
+	// mlx_loop(data.display.mlx);
 	return (0);
 }
+
+// int	main(void)
+// {
+// 	void *mlx;
+// 	void *img;
+// 	int img_width;
+// 	int img_height;
+
+// 	mlx = mlx_init(); // Inicjalizacja MiniLibX
+// 	img = mlx_xpm_file_to_image(mlx, "pilot.xpm", &img_width,
+// 			&img_height);
+// 	if (!img)
+// 	{
+// 		printf("Błąd: nie udało się załadować obrazu XPM\n");
+// 		return ;
+// 	}
+
+// 	int *pixels;
+// 	int bits_per_pixel;
+// 	int line_length;
+// 	int endian;
+
+// 	pixels = (int *)mlx_get_data_addr(img, &bits_per_pixel, &line_length,
+// 			&endian);
+
+// 	for (int y = 0; y < img_height; y++)
+// 	{
+// 		for (int x = 0; x < img_width; x++)
+// 		{
+// 			int color = pixels[y * (line_length / 4) + x];
+// 				// Odczyt koloru pikseli
+// 			printf("Pixel[%d][%d] = %#X\n", y, x, color);
+// 		}
+// 	}
+// }
