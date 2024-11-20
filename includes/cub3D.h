@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 22:38:09 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/20 16:43:30 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
 # define MOVE_SPEED 0.05
+# define STEP_SIZE 0.5
 # define ROT_SPEED 1.0
 
 #define mapWidth 24

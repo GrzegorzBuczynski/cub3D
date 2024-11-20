@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 23:02:29 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/20 16:43:41 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ void rotate_left(t_game *game)
 	game->a.playerdir.y = game->a.initial_playerdir *sin(game->a.angle * M_PI / 180);
 	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
 	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
+	
+	game->player.step_side_side.x = MOVE_SPEED * cos(game->a.angle * M_PI / 180);
+	game->player.step_side_side.y = MOVE_SPEED * sin(game->a.angle * M_PI / 180);
+	game->player.step_up_down.x = MOVE_SPEED * sin(game->a.angle * M_PI / 180);
+	game->player.step_up_down.y = MOVE_SPEED * cos(game->a.angle * M_PI / 180);
 }
 
 void rotate_right(t_game *game)
@@ -45,11 +50,43 @@ void rotate_right(t_game *game)
 	game->a.playerdir.y = game->a.initial_playerdir *sin(game->a.angle * M_PI / 180);
 	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
 	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
-	game->player.step_up_down.x = MOVE_SPEED * sin(game->a.angle);
-	game->player.step_up_down.y = MOVE_SPEED * cos(game->a.angle);
 	
-	game->player.step_left_right.x = MOVE_SPEED * cos(game->a.angle);
-	game->player.step_left_right.y = MOVE_SPEED * sin(game->a.angle);
+	game->player.step_side_side.x = STEP_SIZE * cos(game->a.angle * M_PI / 180);
+	game->player.step_side_side.y = STEP_SIZE * sin(game->a.angle * M_PI / 180);
+	game->player.step_up_down.x = STEP_SIZE * sin(game->a.angle *	M_PI / 180);
+	game->player.step_up_down.y = STEP_SIZE * cos(game->a.angle * M_PI / 180);
+}
+
+void walk_right(t_game *game)
+{
+	if (worldMap[(int)(game->player.pos.x + game->player.step_side_side.x)][(int)(game->player.pos.y)] == false)
+		game->player.pos.x += game->player.step_side_side.x;
+	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_side_side.y)] == false)
+		game->player.pos.y += game->player.step_side_side.y;
+}
+
+void walk_left(t_game *game)
+{
+	if (worldMap[(int)(game->player.pos.x - game->player.step_side_side.x)][(int)(game->player.pos.y)] == false)
+		game->player.pos.x -= game->player.step_side_side.x;
+	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y - game->player.step_side_side.y)] == false)
+		game->player.pos.y -= game->player.step_side_side.y;
+}
+
+void walk_forward(t_game *game)
+{
+	if (worldMap[(int)(game->player.pos.x - game->player.step_up_down.x)][(int)(game->player.pos.y)] == false)
+		game->player.pos.x -= game->player.step_up_down.x;
+	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y - game->player.step_up_down.y)] == false)
+		game->player.pos.y -= game->player.step_up_down.y;
+}
+
+void walk_backward(t_game *game)
+{
+	if (worldMap[(int)(game->player.pos.x + game->player.step_up_down.x)][(int)(game->player.pos.y)] == false)
+		game->player.pos.x += game->player.step_up_down.x;
+	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_up_down.y)] == false)
+		game->player.pos.y += game->player.step_up_down.y;
 }
 
 void	move(int key, t_game *game)
@@ -60,31 +97,23 @@ void	move(int key, t_game *game)
 	}
 	else if (key == K_A )
 	{
-
-		if (worldMap[(int)(game->player.pos.x - game->player.step_left_right.x)][(int)(game->player.pos.y)] == false)
-			game->player.pos.x -= game->player.step_left_right.x;
-		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y - game->player.step_left_right.y)] == false)
-			game->player.pos.y -= game->player.step_left_right.y;
+		walk_left(game);
 	}
 	else if (key == ARROW_UP || key == K_W)
 	{
-		if (worldMap[(int)(game->player.pos.x + game->player.step_up_down.x)][(int)(game->player.pos.y)] == false)
-			game->player.pos.x += game->player.step_up_down.x;
-		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_up_down.y)] == false)
-			game->player.pos.y += game->player.step_up_down.y;
+		walk_forward(game);
 	}
-	else if (key == ARROW_RIGHT || key == K_D)
+	else if (key == ARROW_RIGHT)
 	{
 		rotate_right(game);
 	}
+	else if (key == K_D)
+	{
+		walk_right(game);
+	}
 	else if (key == ARROW_DOWN || key == K_S)
 	{
-		if (worldMap[(int)(game->player.pos.x
-				- game->player.step_up_down)][(int)(game->player.pos.y)] == false)
-			game->player.pos.x -= game->player.step_up_down;
-		if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y
-				- game->player.step_left_right)] == false)
-			game->player.pos.y -= game->player.step_left_right;
+		walk_backward(game);
 	}
 	draw(game);
 }

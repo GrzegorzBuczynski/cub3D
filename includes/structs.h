@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 22:53:10 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/20 16:15:38 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ typedef struct s_line
 typedef struct s_player
 {
 	double			step_size;
+	t_dvector			step_side_side;
 	t_dvector			step_up_down;
-	t_dvector			step_left_right;
 	t_dvector pos;     // Position of the player
 	t_dvector pos_old; // Position of the player in the previous frame
 	t_vector plane;    // Camera plane for field of view
