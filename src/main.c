@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 19:01:14 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/20 19:01:36 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ int	main(int ac, char **av)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
 	data.a.game = &data;
 	// handle_input(av, &data);
-	// init_player(&data.a);
-	// generate_textures(&data.a.texture, TEX_WIDTH, TEX_HEIGHT);
-	// init_display(&data);
-	// mlx_loop(data.display.mlx);
+	init_player(&data.a);
+	generate_textures(&data.a.texture, TEX_WIDTH, TEX_HEIGHT);
+	init_display(&data);
+	mlx_loop(data.display.mlx);
 	return (0);
 }
 
