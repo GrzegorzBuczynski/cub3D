@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 16:55:11 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:57:04 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	generate_textures(int ***table, int texWidth, int texHeight)
 
 void	init_player(t_data *data)
 {
-	data->angle = 90;
+	data->angle = 0;
 	data->initial_plane = INITIAL_PLANE__SIZE;
 	data->initial_playerdir = INITIAL_PLAYERDIR;
 	data->playerdir.x = data->initial_playerdir * sin(data->angle * M_PI / 180);

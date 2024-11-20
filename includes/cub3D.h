@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 16:47:13 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:43:19 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 # define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
 # define STEP_SIZE 0.5
-# define ROT_SPEED 1.0
+# define ROT_SPEED 5.0
 
 #define mapWidth 24
 #define mapHeight 24
