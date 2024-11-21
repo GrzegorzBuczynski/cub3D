@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/21 18:51:17 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:19:24 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define TEXHEIGHT 64
 #define HORIZONTAL 0
 #define VERTICAL 1
-#define PITCH 100
+#define PITCH 0
 
 extern int	worldMap[mapWidth][mapHeight];
 
@@ -150,7 +150,7 @@ void	draw_vertical_line(t_data *a)
 
 	y = a->drawStart;
 	a->texstep = 1.0 * TEXHEIGHT / a->lineHeight;
-	a->texPos = (a->drawStart - 100 - SCREEN_HEIGHT / 2 + a->lineHeight / 2)
+	a->texPos = (a->drawStart - PITCH - SCREEN_HEIGHT / 2 + a->lineHeight / 2)
 		* a->texstep;
 	while (y < a->drawEnd)
 	{
