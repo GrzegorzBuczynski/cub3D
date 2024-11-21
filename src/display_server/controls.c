@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 18:09:21 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/21 19:54:35 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,25 @@ int	close_program(void *param)
 	exit(0);
 }
 
+void update_playerdir(t_game *game)
+{
+	game->a.playerdir.x = game->a.initial_playerdir * sin(game->a.angle * M_PI / 180);
+	game->a.playerdir.y = game->a.initial_playerdir * cos(game->a.angle * M_PI / 180);
+}
+
+void update_plane(t_game *game)
+{
+	game->a.plane.x = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
+	game->a.plane.y = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
+}
+
 void rotate_left(t_game *game)
 {
 	game->a.angle -= ROT_SPEED;
 	if (game->a.angle < 0)
 		game->a.angle += 360;
-	game->a.playerdir.x = game->a.initial_playerdir *cos(game->a.angle * M_PI / 180);
-	game->a.playerdir.y = game->a.initial_playerdir *sin(game->a.angle * M_PI / 180);
-	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
-	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
+	update_playerdir(game);
+	update_plane(game);
 	
 	game->player.step_side_side.x = STEP_SIZE * cos(game->a.angle * M_PI / 180);
 	game->player.step_side_side.y = STEP_SIZE * sin(game->a.angle * M_PI / 180);
@@ -41,15 +51,14 @@ void rotate_left(t_game *game)
 	game->player.step_top_down.y = STEP_SIZE * cos(game->a.angle * M_PI / 180);
 }
 
+
 void rotate_right(t_game *game)
 {
 	game->a.angle += ROT_SPEED;
 	if (game->a.angle >= 360)
 		game->a.angle -= 360;
-	game->a.playerdir.x = game->a.initial_playerdir *cos(game->a.angle * M_PI / 180);
-	game->a.playerdir.y = game->a.initial_playerdir *sin(game->a.angle * M_PI / 180);
-	game->a.plane.x = game->a.initial_plane *sin(game->a.angle * M_PI / 180);
-	game->a.plane.y = game->a.initial_plane *cos(game->a.angle * M_PI / 180);
+	update_playerdir(game);
+	update_plane(game);
 	
 	game->player.step_side_side.x = STEP_SIZE * cos(game->a.angle * M_PI / 180);
 	game->player.step_side_side.y = STEP_SIZE * sin(game->a.angle * M_PI / 180);

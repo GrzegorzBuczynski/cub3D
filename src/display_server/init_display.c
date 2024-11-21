@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/20 18:01:10 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:05:07 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw(t_game *data)
 	print_walls(data);
 	// draw_minimap(data);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
-	printf("pos.x: %f pos.y%f angle %f \n", data->player.pos.x, data->player.pos.y, data->a.angle);
+	printf("pos.x: %f pos.y%f angle %f playerdir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", data->player.pos.x, data->player.pos.y, data->a.angle, data->a.playerdir.x, data->a.playerdir.y, data->a.plane.x, data->a.plane.y);
 }
 
 void	init_display(t_game *data)

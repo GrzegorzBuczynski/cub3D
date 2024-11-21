@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 19:01:36 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/21 19:47:29 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,13 @@ int	main(int ac, char **av)
 // 			printf("Pixel[%d][%d] = %#X\n", y, x, color);
 // 		}
 // 	}
+// }
+
+// int main()
+// {
+// 	double i = 0;
+
+// 	i = sin(270 * M_PI / 180);
+
+// 	printf("%f\n", i);
 // }
