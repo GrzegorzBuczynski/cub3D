@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/20 20:45:08 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:17 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	setdeltaDist(t_data *a)
 	if (a->rayDir.y == 0)
 		a->deltaDist.y = 1e30;
 	else
-		a->deltaDist.y = fabs(1 / fabs(a->rayDir.y));
+		a->deltaDist.y = sqrt(1 + (a->rayDir.x * a->rayDir.x) / (a->rayDir.y * a->rayDir.y));
 	if (a->rayDir.x == 0)
 		a->deltaDist.x = 1e30;
 	else
-		a->deltaDist.x = fabs(1 / (fabs(a->rayDir.x)));
+		a->deltaDist.x = sqrt(1 + (a->rayDir.y * a->rayDir.y) / (a->rayDir.x * a->rayDir.x));
 }
 
 void	calculate_step_and_initial_sideDist(t_data *a)
@@ -101,9 +101,10 @@ void	search_wall_hit(t_data *a)
 void	calculate_perpendicular_ray(t_data *a)
 {
 	if (a->side == HORIZONTAL)
-		a->perpWallDist = (a->lenght_to.x - a->deltaDist.x * a->cameraX);
+		a->perpWallDist = (a->lenght_to.y - a->deltaDist.y);
 	else
-		a->perpWallDist = (a->lenght_to.y - a->deltaDist.y * a->cameraX);
+		a->perpWallDist = (a->lenght_to.x - a->deltaDist.x);
+	a->perpWallDist = a->perpWallDist;
 }
 
 void	texturing_calculations(t_data *a)
