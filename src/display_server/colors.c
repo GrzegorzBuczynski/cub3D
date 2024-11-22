@@ -6,12 +6,18 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/19 20:57:05 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/22 22:07:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+
+/* 
+ scale collor takes a color and a factor and returns a new color
+ the new color is the old color with the factor applied to it
+ factor is a double between 0 and 1
+ */
 int	scale_color(int color, double factor)
 {
 	int	red;

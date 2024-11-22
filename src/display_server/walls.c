@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/21 20:19:24 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/22 22:09:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,17 @@ void	search_wall_hit(t_data *a)
 	}
 }
 
-void	calculate_perpendicular_ray(t_data *a)
+void	calculate_line_height(t_data *a)
 {
 	if (a->side == HORIZONTAL)
-		a->perpWallDist = (a->lenght_to.y - a->deltaDist.y);
+		a->perpWallDist = (a->map.y - a->game->player.pos.y + (1 - a->step.y) / 2) / a->rayDir.y + 0.0001;
 	else
-		a->perpWallDist = (a->lenght_to.x - a->deltaDist.x);
-	a->perpWallDist = a->perpWallDist;
+		a->perpWallDist = (a->map.x - a->game->player.pos.x + (1 - a->step.x) / 2) / a->rayDir.x + 0.0001;
+	a->lineHeight = (int)(SCREEN_HEIGHT / a->perpWallDist);
 }
+
+
+
 
 void	texturing_calculations(t_data *a)
 {
@@ -159,18 +162,15 @@ void	draw_vertical_line(t_data *a)
 		a->color = a->texture[a->texNum][TEXWIDTH * texY + a->texX];
 		if (a->side == VERTICAL)
 			a->color = (a->color >> 1) & 8355711;
-		a->buffer[y*SCREEN_WIDTH + a->x] = a->color;
+		a->buffer[y*SCREEN_WIDTH + a->x] = scale_color(a->color,a->perpWallDist/10);
 		y++;
 	}
 }
 
-void line_height(t_data *a)
-{
-	if (a->perpWallDist == 0)
-		a->lineHeight = SCREEN_HEIGHT;
-	else
-		a->lineHeight = (int)(SCREEN_HEIGHT / a->perpWallDist);
-}
+
+
+
+
 
 void	calc(t_data *a)
 {
@@ -183,9 +183,7 @@ void	calc(t_data *a)
 		setdeltaDist(a);
 		calculate_step_and_initial_sideDist(a);
 		search_wall_hit(a);
-		calculate_perpendicular_ray(a);
-		line_height(a);
-		// a->lineHeight = (int)(SCREEN_HEIGHT / a->perpWallDist);
+		calculate_line_height(a);
 		texturing_calculations(a);
 		calculate_value_of_wallX(a);
 		coordinate_on_the_texture(a);
