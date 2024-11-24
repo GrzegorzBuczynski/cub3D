@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 17:43:19 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:09:19 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@
 # define NORTH -1
 # define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
-# define STEP_SIZE 0.5
+# define STEP_SIZE 0.1
 # define ROT_SPEED 5.0
+# define DISTANCE 0.2
+# define MOVE_SPEED 0.2
+# define ROTATION_SPEED 0.2
 
 #define mapWidth 24
 #define mapHeight 24
@@ -119,6 +122,13 @@ double	ft_min_double(double a, double b);
 int		ft_max(int a, int b);
 int		ft_abs(int x);
 void	draw(t_game *game);
+
+// movment.c
+void	move_front(t_game *game);
+void	move_back(t_game *game);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
+
 
 // minimap.c
 void	draw_minimap(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/22 22:09:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:28:34 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ void	draw_vertical_line(t_data *a)
 		a->color = a->texture[a->texNum][TEXWIDTH * texY + a->texX];
 		if (a->side == VERTICAL)
 			a->color = (a->color >> 1) & 8355711;
-		a->buffer[y*SCREEN_WIDTH + a->x] = scale_color(a->color,a->perpWallDist/10);
+		a->buffer[y*SCREEN_WIDTH + a->x] = scale_color(a->color,a->perpWallDist/15);
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/22 19:11:49 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/24 19:24:11 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRCS =	main.c \
 		display_server/colors.c \
 		display_server/walls.c \
 		display_server/draw.c \
+		display_server/movment.c \
+		display_server/rotate_game.c \
 		display_server/map.c \
 		display_server/close_window.c \
 		check_map/check_map.c \

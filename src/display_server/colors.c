@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/22 22:07:28 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/24 17:29:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	scale_color(int color, double factor)
 	red = red - (red * (factor / 1));
 	green = green - (green * (factor / 1));
 	blue = blue - (blue * (factor / 1));
+	if (red < 0)
+		red = 0;
+	if (green < 0)
+		green = 0;
+	if (blue < 0)
+		blue = 0;
 	return ((red << 16) | (green << 8) | blue);
 }
 

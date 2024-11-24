@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/20 16:52:05 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:23:20 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_line
 typedef struct s_player
 {
 	double			step_size;
+	t_dvector		dir;
 	t_dvector			step_side_side;
 	t_dvector			step_top_down;
 	t_dvector pos;     // Position of the player
@@ -151,17 +152,46 @@ typedef struct s_game
 {
 	t_data			a;
 	char			**array;
-	char			**map;
+	t_display		display;
+	struct s_map	map;
+	t_map			map2;
+	t_minimap		minimap;
+	void *mlx_ptr; // Pointer to the MLX library instance
 	char			**map_cpy;
 	double			time;
 	double			oldTime;
 	double			planeX;
 	double			planeY;
 	t_player		player;
-	t_display		display;
-	t_map			map2;
-	t_xpm			xpm;
-	t_minimap		minimap;
-	void *mlx_ptr; // Pointer to the MLX library instance
+	struct s_pressed pressed;
 	void *win_ptr; // Pointer to the game window
+	t_xpm			xpm;
 }					t_game;
+
+typedef struct s_pressed
+{
+	int				left;
+	int				right;
+	int				w;
+	int				a;
+	int				s;
+	int				d;
+	int				space;
+}						t_pressed;
+
+typedef struct s_map
+{
+	// t_dataList			*data;
+	char				**map;
+	int					start_map;
+	int					height;
+	int					width;
+	char				*no;
+	char				*so;
+	char				*we;
+	char				*ea;
+	char				*floor;
+	char				*ceiling;
+	unsigned int		color_floor;
+	unsigned int		color_ceiling;
+}						t_map;

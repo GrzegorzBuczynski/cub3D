@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/21 20:16:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:05:36 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,4 +191,24 @@ void	setup_controls(t_display *data)
 	mlx_hook(data->win, BUTTONPRESS, (1L << 2), mouse_press, data);
 	mlx_hook(data->win, BUTTONRELEASE, (1L << 3), mouse_release, data);
 	mlx_hook(data->win, MOTIONNOTIFY, (1L << 6), mouse_move, data);
+}
+
+
+bool	moves_execute(t_game *game)
+{
+	if (game->pressed.w)
+		move_front(game);
+	if (game->pressed.s)
+		move_back(game);
+	if (game->pressed.a)
+		move_left(game);
+	if (game->pressed.d)
+		move_right(game);
+	if (game->pressed.left)
+		rotate_left(game);
+	if (game->pressed.right)
+		rotate_right(game);
+	// if (game->pressed.space)
+	// 	open_door_execute(game);
+	return (true);
 }
