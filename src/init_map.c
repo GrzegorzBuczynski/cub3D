@@ -115,17 +115,17 @@ char	**memory(void)
 
 void	select_map(t_game *data)
 {
-	// int	y;
+	int	y;
 	
-	// y = find_first_map_row(data->array);
-	// data->map = data->array + y;
-	data->map = memory();
-	data->map2.grid = memory();
+	y = find_first_map_row(data->array);
+	data->map.map = data->array + y;
+	// data->map = memory();
+	// data->map.grid = memory();
 	if (DEBUG)
-		print_map(data->map);
-	convert_spaces_to_walls(data->map);
+		print_map(data->map.map);
+	convert_spaces_to_walls(data->map.map);
 	if (DEBUG)
-		print_map(data->map);
-	data->map_cpy = create_map_copy(data->map);
+		print_map(data->map.map);
+	data->map_cpy = create_map_copy(data->map.map);
 	// print_map(data->map_cpy);
 }

@@ -60,23 +60,23 @@ void update_step(t_game *game)
 	
 };
 
-void rotate_left(t_game *game)
-{
-	increment_angle(game);
-	update_playerdir(game);
-	update_plane(game);
-	update_step(game);
-}
+// void rotate_left(t_game *game)
+// {
+// 	increment_angle(game);
+// 	update_playerdir(game);
+// 	update_plane(game);
+// 	update_step(game);
+// }
 
 
 
-void rotate_right(t_game *game)
-{
-	decrement_angle(game);
-	update_playerdir(game);
-	update_plane(game);
-	update_step(game);
-}
+// void rotate_right(t_game *game)
+// {
+// 	decrement_angle(game);
+// 	update_playerdir(game);
+// 	update_plane(game);
+// 	update_step(game);
+// }
 
 void walk_right(t_game *game)
 {
@@ -139,24 +139,24 @@ void	move(int key, t_game *game)
 	draw(game);
 }
 
-void	rotate(int key, t_display *display)
-{
-	// if (key == NUM_PAD_2 || key == MAIN_PAD_2)
-	// 	display->camera->alpha += 0.05;
-	// else if (key == NUM_PAD_8 || key == MAIN_PAD_8)
-	// 	display->camera->alpha -= 0.05;
-	// else if (key == NUM_PAD_4 || key == MAIN_PAD_4)
-	// 	display->camera->beta -= 0.05;
-	// else if (key == NUM_PAD_6 || key == MAIN_PAD_6)
-	// 	display->camera->beta += 0.05;
-	// else if (key == NUM_PAD_1 || key == MAIN_PAD_1 || key == NUM_PAD_3
-	// 	|| key == MAIN_PAD_3)
-	// 	display->camera->gamma += 0.05;
-	// else if (key == NUM_PAD_7 || key == MAIN_PAD_7 || key == NUM_PAD_9
-	// 	|| key == MAIN_PAD_9)
-	// 	display->camera->gamma -= 0.05;
-	// draw(display, display);
-}
+// void	rotate(int key, t_display *display)
+// {
+// 	// if (key == NUM_PAD_2 || key == MAIN_PAD_2)
+// 	// 	display->camera->alpha += 0.05;
+// 	// else if (key == NUM_PAD_8 || key == MAIN_PAD_8)
+// 	// 	display->camera->alpha -= 0.05;
+// 	// else if (key == NUM_PAD_4 || key == MAIN_PAD_4)
+// 	// 	display->camera->beta -= 0.05;
+// 	// else if (key == NUM_PAD_6 || key == MAIN_PAD_6)
+// 	// 	display->camera->beta += 0.05;
+// 	// else if (key == NUM_PAD_1 || key == MAIN_PAD_1 || key == NUM_PAD_3
+// 	// 	|| key == MAIN_PAD_3)
+// 	// 	display->camera->gamma += 0.05;
+// 	// else if (key == NUM_PAD_7 || key == MAIN_PAD_7 || key == NUM_PAD_9
+// 	// 	|| key == MAIN_PAD_9)
+// 	// 	display->camera->gamma -= 0.05;
+// 	// draw(display, display);
+// }
 
 int	key_press(int key, void *param)
 {

@@ -75,13 +75,6 @@ typedef struct s_player
 	t_vector plane;    // Camera plane for field of view
 }					t_player;
 
-typedef struct s_map
-{
-	char **grid; // 2D array representing the map layout
-	int width;   // Width of the map
-	int height;  // Height of the map
-}					t_map;
-
 typedef struct s_mouse
 {
 	char			is_pressed;
@@ -148,36 +141,6 @@ typedef struct s_xpm
 	int				ceiling;
 }					t_xpm;
 
-typedef struct s_game
-{
-	t_data			a;
-	char			**array;
-	t_display		display;
-	struct s_map	map;
-	t_map			map2;
-	t_minimap		minimap;
-	void *mlx_ptr; // Pointer to the MLX library instance
-	char			**map_cpy;
-	double			time;
-	double			oldTime;
-	double			planeX;
-	double			planeY;
-	t_player		player;
-	struct s_pressed pressed;
-	void *win_ptr; // Pointer to the game window
-	t_xpm			xpm;
-}					t_game;
-
-typedef struct s_pressed
-{
-	int				left;
-	int				right;
-	int				w;
-	int				a;
-	int				s;
-	int				d;
-	int				space;
-}						t_pressed;
 
 typedef struct s_map
 {
@@ -195,3 +158,35 @@ typedef struct s_map
 	unsigned int		color_floor;
 	unsigned int		color_ceiling;
 }						t_map;
+
+typedef struct s_pressed
+{
+	int				left;
+	int				right;
+	int				w;
+	int				a;
+	int				s;
+	int				d;
+	int				space;
+}					t_pressed;
+
+
+
+typedef struct s_game
+{
+	t_data			a;
+	char			**array;
+	t_display		display;
+	struct	s_map	map;
+	t_minimap		minimap;
+	void *mlx_ptr; // Pointer to the MLX library instance
+	char			**map_cpy;
+	double			time;
+	double			oldTime;
+	double			planeX;
+	double			planeY;
+	t_player		player;
+	struct s_pressed pressed;
+	void *win_ptr; // Pointer to the game window
+	t_xpm			xpm;
+}					t_game;

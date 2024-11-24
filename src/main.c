@@ -82,7 +82,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
 	data.a.game = &data;
-	// handle_input(av, &data);
+	handle_input(av, &data);
 	init_player(&data.a);
 	generate_textures(&data.a.texture, TEX_WIDTH, TEX_HEIGHT);
 	init_display(&data);

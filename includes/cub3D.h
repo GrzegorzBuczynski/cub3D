@@ -32,6 +32,9 @@
 // Math
 // # define M_PI 3.142
 
+#define true 1
+#define false 0
+
 # define MINIMAP_SCALE 10
 # define MINIMAP_PADDING 10
 # define PLAYER_COLOR 0xFF0000

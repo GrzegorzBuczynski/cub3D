@@ -93,7 +93,7 @@ void	read_file(char **av, char ***array)
 int	handle_input(char **av, t_game *data)
 {
 	// sometimes it doesn't find a file to open while debugging
-	// read_file(av, &data->array);
+	read_file(av, &data->array);
 	select_map(data);
 	// check_map(data->map);
 	// export_textures(data);
