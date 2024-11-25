@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 18:50:53 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:24:32 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	draw(t_game *game)
 	display = &game->display;
 	draw_background(display);
 	print_walls(game);
-	move(game);
 	// draw_minimap(data);
+	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
 }
