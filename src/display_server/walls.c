@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 20:20:26 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:21:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	calculate_texture_coordinates(t_game *game)
 		game->rc.tex_x = TEXWIDTH - game->rc.tex_x - 1;
 	if (game->rc.side == 1 && game->rc.raydir.y < 0)
 		game->rc.tex_x = TEXWIDTH - game->rc.tex_x - 1;
-	game->rc.step = 1.0 * TEXHEIGHT / game->rc.line_height;
+	game->rc.step_size = 1.0 * TEXHEIGHT / game->rc.line_height;
 	game->rc.tex_pos = (game->rc.draw_start - SCREEN_HEIGHT / 2
 			+ game->rc.line_height / 2) * game->rc.step;
 }

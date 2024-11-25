@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 20:20:17 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:21:48 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ typedef struct s_raycaster
 	t_dvector			playerdir;
 	t_dvector			raydir;
 	int					side;
-	double				step;
+	t_dvector			step;
+	double				step_size;
 	int					tex_x;
 	int					texNum;
 	double				tex_pos;
