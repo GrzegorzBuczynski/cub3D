@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 20:29:00 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:32:41 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@
 # define TEX_COUNT 8   // Number of textures
 # define TEX_WIDTH 64  // Texture width
 # define TEX_HEIGHT 64 // Texture heigh
+# define TEXWIDTH 512
+# define TEXHEIGHT 512
 
 # ifndef DEBUG
 #  define DEBUG 0

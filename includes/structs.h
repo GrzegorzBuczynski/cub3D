@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 20:28:01 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:38:20 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ typedef struct s_raycaster
 	int					**texture;
 	double				time;
 	double				wall_x;
-	int					x;
+	t_vector			tex;
+
 }						t_raycaster;
 
 typedef struct s_line
@@ -169,10 +170,18 @@ typedef struct s_pressed
 	int					d;
 	int					space;
 }						t_pressed;
+typedef struct s_image
+{
+	void				*img;
+	char				*addr;
+	int					bits_per_pixel;
+	int					line_length;
+	int					endian;
+}						t_image;
 
 typedef struct s_game
 {
-	t_raycaster				rc;
+	t_raycaster			rc;
 	char				**array;
 	t_display			display;
 	struct s_map		map;
@@ -187,13 +196,10 @@ typedef struct s_game
 	struct s_pressed	pressed;
 	void *win_ptr; // Pointer to the game window
 	t_xpm				xpm;
+	t_image				*no_img;
+	t_image				*so_img;
+	t_image				*we_img;
+	t_image				*ea_img;
+	t_image				*back;
 }						t_game;
 
-typedef struct s_image
-{
-	void				*img;
-	char				*addr;
-	int					bits_per_pixel;
-	int					line_length;
-	int					endian;
-}						t_image;

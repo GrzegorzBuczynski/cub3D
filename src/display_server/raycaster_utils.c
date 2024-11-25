@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 20:27:31 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:34:19 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ void	add_character_plane(t_game *game)
 	plane = game->player.direction;
 	if (plane == 'S')
 	{
-		game->player.dir_x = 1;
-		game->player.plane_y = -0.66;
+		game->player.dir.x = 1;
+		game->player.plane.y = -0.66;
 	}
 	else if (plane == 'N')
 	{
-		game->player.dir_x = -1;
-		game->player.plane_y = 0.66;
+		game->player.dir.x = -1;
+		game->player.plane.y = 0.66;
 	}
 	else if (plane == 'E')
 	{
-		game->player.dir_y = 1;
-		game->player.plane_x = 0.66;
+		game->player.dir.y = 1;
+		game->player.plane.x = 0.66;
 	}
 	else if (plane == 'W')
 	{
-		game->player.dir_y = -1;
-		game->player.plane_x = -0.66;
+		game->player.dir.y = -1;
+		game->player.plane.x = -0.66;
 	}
 }
 
@@ -68,14 +68,14 @@ t_image	*get_texture_directions(t_game *game)
 {
 	if (game->rc.side == 0)
 	{
-		if (game->rc.raydir_x > 0)
+		if (game->rc.raydir.x > 0)
 			return (game->so_img);
 		else
 			return (game->no_img);
 	}
 	else
 	{
-		if (game->rc.raydir_y > 0)
+		if (game->rc.raydir.y > 0)
 			return (game->ea_img);
 		else
 			return (game->we_img);

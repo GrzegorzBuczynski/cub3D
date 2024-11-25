@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 20:25:41 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:37:29 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	draw_background(t_display *data)
 
 static void	render_walls(t_game *game, int x, int y)
 {
-	game->rc.tex_y = (int)game->rc.tex_pos & (TEXHEIGHT - 1);
-	game->rc.tex_pos += game->rc.step;
+	game->rc.tex.y = (int)game->rc.tex_pos & (TEXHEIGHT - 1);
+	game->rc.tex_pos += game->rc.step_size;
 	game->rc.color = get_texture_pixel(get_texture_directions(game),
-			game->rc.tex_x, game->rc.tex_y);
+			game->rc.tex_x, game->rc.tex.y);
 	my_mlx_pixel_put(game->back, x, y, game->rc.color);
 }
 
