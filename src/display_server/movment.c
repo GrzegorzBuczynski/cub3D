@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/24 18:18:25 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:48:14 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,23 @@ void	move_right(t_game *game)
 		|| game->map.map[(int)game->player.pos.x][(int)(new_pos_y + DISTANCE
 			* game->player.plane.y)] == 'O')
 		game->player.pos.y = new_pos_y;
+}
+
+int	move(t_game *game)
+{
+	if (game->pressed.w)
+		move_front(game);
+	if (game->pressed.s)
+		move_back(game);
+	if (game->pressed.a)
+		move_left(game);
+	if (game->pressed.d)
+		move_right(game);
+	if (game->pressed.left)
+		rotate_left(game);
+	if (game->pressed.right)
+		rotate_right(game);
+	// if (game->pressed.space)
+	// 	open_door_execute(game);
+	return (true);
 }

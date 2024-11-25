@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 18:32:34 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:47:48 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,6 @@ static int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-// void	move(int key, t_game *game)
-// {
-// 	if (key == ARROW_LEFT)
-// 	{
-// 		rotate_left(game);
-// 	}
-// 	else if (key == K_A )
-// 	{
-// 		walk_left(game);
-// 	}
-// 	else if (key == ARROW_UP || key == K_W)
-// 	{
-// 		walk_forward(game);
-// 	}
-// 	else if (key == ARROW_RIGHT)
-// 	{
-// 		rotate_right(game);
-// 	}
-// 	else if (key == K_D)
-// 	{
-// 		walk_right(game);
-// 	}
-// 	else if (key == ARROW_DOWN || key == K_S)
-// 	{
-// 		walk_backward(game);
-// 	}
-// }
-
-
 int	key_press(int key, void *param)
 {
 	t_game	*game;
@@ -98,25 +69,6 @@ void	setup_controls(t_game *game)
 	mlx_hook(display->win, MOTIONNOTIFY, (1L << 6), mouse_move, display);
 }
 
-
-bool	moves_execute(t_game *game)
-{
-	if (game->pressed.w)
-		move_front(game);
-	if (game->pressed.s)
-		move_back(game);
-	if (game->pressed.a)
-		move_left(game);
-	if (game->pressed.d)
-		move_right(game);
-	if (game->pressed.left)
-		rotate_left(game);
-	if (game->pressed.right)
-		rotate_right(game);
-	// if (game->pressed.space)
-	// 	open_door_execute(game);
-	return (true);
-}
 
 
 // void	rotate(int key, t_display *display)
@@ -223,4 +175,33 @@ bool	moves_execute(t_game *game)
 // 		game->player.pos.x += game->player.step_top_down.x;
 // 	if (worldMap[(int)(game->player.pos.x)][(int)(game->player.pos.y + game->player.step_top_down.y)] == false)
 // 		game->player.pos.y += game->player.step_top_down.y;
+// }
+
+
+// void	move(int key, t_game *game)
+// {
+// 	if (key == ARROW_LEFT)
+// 	{
+// 		rotate_left(game);
+// 	}
+// 	else if (key == K_A )
+// 	{
+// 		walk_left(game);
+// 	}
+// 	else if (key == ARROW_UP || key == K_W)
+// 	{
+// 		walk_forward(game);
+// 	}
+// 	else if (key == ARROW_RIGHT)
+// 	{
+// 		rotate_right(game);
+// 	}
+// 	else if (key == K_D)
+// 	{
+// 		walk_right(game);
+// 	}
+// 	else if (key == ARROW_DOWN || key == K_S)
+// 	{
+// 		walk_backward(game);
+// 	}
 // }

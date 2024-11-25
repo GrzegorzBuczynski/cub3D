@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/25 16:34:15 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/25 18:48:59 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS =	main.c \
 		display_server/rotate_game.c \
 		display_server/map.c \
 		display_server/close_window.c \
+		display_server/render.c \
 		check_map/check_map.c \
 		check_map/check_player.c \
 		check_map/check_borders.c \

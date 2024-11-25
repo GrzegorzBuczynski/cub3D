@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 18:27:19 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:49:37 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 // Math
 // # define M_PI 3.142
 
-#define true 1
-#define false 0
+# define true 1
+# define false 0
 
 # define MINIMAP_SCALE 10
 # define MINIMAP_PADDING 10
@@ -60,8 +60,8 @@
 # define MOVE_SPEED 0.2
 # define ROTATION_SPEED 0.2
 
-#define mapWidth 24
-#define mapHeight 24
+# define mapWidth 24
+# define mapHeight 24
 
 # define TEX_COUNT 8   // Number of textures
 # define TEX_WIDTH 64  // Texture width
@@ -119,6 +119,7 @@ void	draw_line(t_line *line, t_display *data);
 void	print_walls(t_game *data);
 double	get_distance(t_game *data, double degree);
 void	generate_textures(int ***textures, int texWidth, int texHeight);
+void	draw_background(t_display *data);
 
 // math_utils.c
 int		ft_min_int(int a, int b);
@@ -128,13 +129,13 @@ int		ft_abs(int x);
 void	draw(t_game *game);
 
 // movment.c
+int		move(t_game *game);
 void	move_front(t_game *game);
 void	move_back(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
 void	rotate_left(t_game *game);
 void	rotate_right(t_game *game);
-
 
 // minimap.c
 void	draw_minimap(t_game *game);

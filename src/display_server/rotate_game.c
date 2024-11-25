@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:08:29 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/24 19:18:14 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:47:53 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,4 @@ void	rotate_left(t_game *game)
 	game->player.plane.y = old_plane_x * sin(ROTATION_SPEED)
 		+ game->player.plane.y * cos(ROTATION_SPEED);
 }
+

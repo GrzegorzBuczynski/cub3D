@@ -6,63 +6,11 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 18:33:27 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:50:48 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-static void	draw_background(t_display *data)
-{
-	int		*image;
-	int		i;
-	int		j;
-	double	factor;
-	int		color;
-
-	ft_bzero(data->data_addr, SCREEN_WIDTH * SCREEN_HEIGHT
-		* (data->bits_per_pixel / 8));
-	image = (int *)(data->data_addr);
-	i = 0;
-	while (i < SCREEN_HEIGHT / 2)
-	{
-		factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT
-						/ 2.0)));
-		color = scale_color(CEILING, factor);
-		j = 0;
-		while (j < SCREEN_WIDTH)
-		{
-			image[i * SCREEN_WIDTH + j] = color;
-			j++;
-		}
-		i++;
-	}
-	while (i < SCREEN_HEIGHT)
-	{
-		factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i))
-				/ ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
-		color = scale_color(FLOOR, factor);
-		j = 0;
-		while (j < SCREEN_WIDTH)
-		{
-			image[i * SCREEN_WIDTH + j] = color;
-			j++;
-		}
-		i++;
-	}
-}
-
-void	draw(t_game *data)
-{
-	t_display	*display;
-
-	display = &data->display;
-	draw_background(display);
-	print_walls(data);
-	// draw_minimap(data);
-	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
-	// printf("pos.x: %f pos.y%f angle %f playerdir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", data->player.pos.x, data->player.pos.y, data->rc.angle, data->rc.playerdir.x, data->rc.playerdir.y, data->rc.plane.x, data->rc.plane.y);
-}
 
 void	init_display(t_game *game)
 {
