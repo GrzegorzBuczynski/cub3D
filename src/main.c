@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 15:35:43 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:32:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,30 +51,30 @@ void	generate_textures(int ***table, int texWidth, int texHeight)
 	}
 }
 
-static void	init_position_charactor(t_game *game)
-{
-	int	i;
-	int	j;
+// static void	init_position_charactor(t_game *game)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	j = 0;
-	while (game->map.map[i])
-	{
-		j = 0;
-		while (game->map.map[i][j])
-		{
-			if (valid_symbol_character(game->map.map[i][j]))
-			{
-				game->player.direction = game->map->map[i][j];
-				game->map->map[i][j] = '0';
-				game->player.pos_x = i + 0.5;
-				game->player.pos_y = j + 0.5;
-			}
-			j++;
-		}
-		i++;
-	}
-}
+// 	i = 0;
+// 	j = 0;
+// 	while (game->map.map[i])
+// 	{
+// 		j = 0;
+// 		while (game->map.map[i][j])
+// 		{
+// 			if (valid_symbol_character(game->map.map[i][j]))
+// 			{
+// 				game->player.direction = game->map->map[i][j];
+// 				game->map->map[i][j] = '0';
+// 				game->player.pos.x = i + 0.5;
+// 				game->player.pos.y = j + 0.5;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 void	init_player(t_data *data)
 {
