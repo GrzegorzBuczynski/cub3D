@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 16:32:38 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:27:19 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	init_display(t_game *data);
 int		mouse_press(int button, int x, int y, void *param);
 int		mouse_release(int button, int x, int y, void *param);
 int		mouse_move(int x, int y, void *param);
-void	setup_controls(t_display *data);
+void	setup_controls(t_game *game);
 
 // colors.c
 int		scale_color(int color, double factor);
@@ -132,6 +132,8 @@ void	move_front(t_game *game);
 void	move_back(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
+void	rotate_left(t_game *game);
+void	rotate_right(t_game *game);
 
 
 // minimap.c

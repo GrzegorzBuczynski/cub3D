@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 14:51:00 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:33:27 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw(t_game *data)
 	print_walls(data);
 	// draw_minimap(data);
 	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
-	printf("pos.x: %f pos.y%f angle %f playerdir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", data->player.pos.x, data->player.pos.y, data->a.angle, data->a.playerdir.x, data->a.playerdir.y, data->a.plane.x, data->a.plane.y);
+	// printf("pos.x: %f pos.y%f angle %f playerdir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", data->player.pos.x, data->player.pos.y, data->rc.angle, data->rc.playerdir.x, data->rc.playerdir.y, data->rc.plane.x, data->rc.plane.y);
 }
 
 void	init_display(t_game *game)
@@ -83,9 +83,7 @@ void	init_display(t_game *game)
 	display->data_addr = mlx_get_data_addr(display->img,
 			&(display->bits_per_pixel), &(display->size_line),
 			&(display->endian));
-	game->a.buffer = (int *)(display->data_addr);
-	setup_controls(display);
-	mlx_loop_hook(display->mlx, draw, game);
+	game->rc.buffer = (int *)(display->data_addr);
 }
 
 /* a * (i + 1) / a

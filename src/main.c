@@ -6,20 +6,11 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 17:26:07 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:32:51 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-// Function to generate textures, returning a pointer to the allocated memory
-
-
-
-
-
 
 int	main(int ac, char **av)
 {
@@ -27,11 +18,13 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
-	game.a.game = &game;
+	game.rc.game = &game;
 	handle_input(av, &game);
 	init_player(&game);
-	generate_textures(&game.a.texture, TEX_WIDTH, TEX_HEIGHT);
+	generate_textures(&game.rc.texture, TEX_WIDTH, TEX_HEIGHT);
 	init_display(&game);
+	mlx_loop_hook(game.display.mlx, draw, &game);
+	setup_controls(&game);
 	mlx_loop(game.display.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 17:31:40 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:57:50 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@
 
 extern int	worldMap[mapWidth][mapHeight];
 
-void	set_cameraX(t_data *a)
+void	set_cameraX(t_raycaster *a)
 {
 	a->cameraX = 2 * a->x / (double)SCREEN_WIDTH - 1;
 }
 
-void	set_initial_map_position(t_data *a)
+void	set_initial_map_position(t_raycaster *a)
 {
 	a->map.x = (int)a->game->player.pos.x;
 	a->map.y = (int)a->game->player.pos.y;
 }
 
-void	set_rayDir(t_data *a)
+void	set_rayDir(t_raycaster *a)
 {
 	a->rayDir.x = a->playerdir.x + a->plane.x * a->cameraX;
 	a->rayDir.y = a->playerdir.y + a->plane.y * a->cameraX;
 }
 
-void	setdeltaDist(t_data *a)
+void	setdeltaDist(t_raycaster *a)
 {
 	if (a->rayDir.y == 0)
 		a->deltaDist.y = 1e30;
@@ -49,7 +49,7 @@ void	setdeltaDist(t_data *a)
 		a->deltaDist.x = sqrt(1 + (a->rayDir.y * a->rayDir.y) / (a->rayDir.x * a->rayDir.x));
 }
 
-void	calculate_step_and_initial_sideDist(t_data *a)
+void	calculate_step_and_initial_sideDist(t_raycaster *a)
 {
 	t_player	*player;
 	
@@ -76,7 +76,7 @@ void	calculate_step_and_initial_sideDist(t_data *a)
 	}
 }
 
-void	search_wall_hit(t_data *a)
+void	search_wall_hit(t_raycaster *a)
 {
 	a->hit = 0;
 	while (a->hit == 0)
@@ -98,7 +98,7 @@ void	search_wall_hit(t_data *a)
 	}
 }
 
-void	calculate_line_height(t_data *a)
+void	calculate_line_height(t_raycaster *a)
 {
 	if (a->side == HORIZONTAL)
 		a->perpWallDist = (a->map.y - a->game->player.pos.y + (1 - a->step.y) / 2) / a->rayDir.y + 0.0001;
@@ -110,12 +110,12 @@ void	calculate_line_height(t_data *a)
 
 
 
-void	texturing_calculations(t_data *a)
+void	texturing_calculations(t_raycaster *a)
 {
 	a->texNum = worldMap[a->map.x][a->map.y] - 1;
 }
 
-void	calculate_value_of_wallX(t_data *a)
+void	calculate_value_of_wallX(t_raycaster *a)
 {
 	t_player	*player;
 	
@@ -127,7 +127,7 @@ void	calculate_value_of_wallX(t_data *a)
 	a->wallX -= floor((a->wallX));
 }
 
-void	coordinate_on_the_texture(t_data *a)
+void	coordinate_on_the_texture(t_raycaster *a)
 {
 	a->texX = (int)(a->wallX * (double)TEXWIDTH);
 	if (a->side == HORIZONTAL && a->rayDir.x > 0)
@@ -136,7 +136,7 @@ void	coordinate_on_the_texture(t_data *a)
 		a->texX = TEXWIDTH - a->texX - 1;
 }
 
-void	calculate_lowest_and_highest_pixel(t_data *a)
+void	calculate_lowest_and_highest_pixel(t_raycaster *a)
 {
 	a->drawStart = -a->lineHeight / 2 + SCREEN_HEIGHT / 2 + PITCH;
 	if (a->drawStart < 0)
@@ -146,7 +146,7 @@ void	calculate_lowest_and_highest_pixel(t_data *a)
 		a->drawEnd = SCREEN_HEIGHT - 1;
 }
 
-void	draw_vertical_line(t_data *a)
+void	draw_vertical_line(t_raycaster *a)
 {
 	int	y;
 	int	texY;
@@ -185,7 +185,7 @@ void	clear_buffer(int **buffer)
 	}
 }
 
-void	set_time(t_data *a)
+void	set_time(t_raycaster *a)
 {
 	a->oldTime = a->time;
 	// a->time = getTicks();
@@ -195,22 +195,25 @@ void	set_time(t_data *a)
 
 void	print_walls(t_game *game)
 {
-	a->x = 0;
-	while (a->x < SCREEN_WIDTH)
+	t_raycaster	*rc;
+
+	rc = &game->rc;
+	rc->x = 0;
+	while (rc->x < SCREEN_WIDTH)
 	{
-		set_cameraX(a); // x-coordinate in camera space
-		set_initial_map_position(a);
-		set_rayDir(a);
-		setdeltaDist(a);
-		calculate_step_and_initial_sideDist(a);
-		search_wall_hit(a);
-		calculate_line_height(a);
-		texturing_calculations(a);
-		calculate_value_of_wallX(a);
-		coordinate_on_the_texture(a);
-		calculate_lowest_and_highest_pixel(a);
-		draw_vertical_line(a);
-		a->x++;
+		set_cameraX(rc); // x-coordinate in camera space
+		set_initial_map_position(rc);
+		set_rayDir(rc);
+		setdeltaDist(rc);
+		calculate_step_and_initial_sideDist(rc);
+		search_wall_hit(rc);
+		calculate_line_height(rc);
+		texturing_calculations(rc);
+		calculate_value_of_wallX(rc);
+		coordinate_on_the_texture(rc);
+		calculate_lowest_and_highest_pixel(rc);
+		draw_vertical_line(rc);
+		rc->x++;
 	}
 }
 

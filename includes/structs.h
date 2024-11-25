@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 15:53:47 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:56:31 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_dvector
 	double				y;
 }						t_dvector;
 
-typedef struct s_data
+typedef struct s_raycaster
 {
 	double				angle;
 	int					*buffer;
@@ -55,7 +55,7 @@ typedef struct s_data
 	double				time;
 	double				wallX;
 	int					x;
-}						t_data;
+}						t_raycaster;
 
 typedef struct s_line
 {
@@ -171,7 +171,7 @@ typedef struct s_pressed
 
 typedef struct s_game
 {
-	t_data				a;
+	t_raycaster				rc;
 	char				**array;
 	t_display			display;
 	struct s_map		map;
