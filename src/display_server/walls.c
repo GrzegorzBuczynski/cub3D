@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/24 17:28:34 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:31:40 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,32 +167,6 @@ void	draw_vertical_line(t_data *a)
 	}
 }
 
-
-
-
-
-
-void	calc(t_data *a)
-{
-	a->x = 0;
-	while (a->x < SCREEN_WIDTH)
-	{
-		set_cameraX(a); // x-coordinate in camera space
-		set_initial_map_position(a);
-		set_rayDir(a);
-		setdeltaDist(a);
-		calculate_step_and_initial_sideDist(a);
-		search_wall_hit(a);
-		calculate_line_height(a);
-		texturing_calculations(a);
-		calculate_value_of_wallX(a);
-		coordinate_on_the_texture(a);
-		calculate_lowest_and_highest_pixel(a);
-		draw_vertical_line(a);
-		a->x++;
-	}
-}
-
 void	clear_buffer(int **buffer)
 {
 	int	x;
@@ -219,12 +193,25 @@ void	set_time(t_data *a)
 	printf("%f \n", 1.0 / a->frameTime);
 }
 
-void	print_walls(t_game *data)
+void	print_walls(t_game *game)
 {
-	calc(&data->a);
-	// drawBuffer(data->a.buffer[0]);
-	// set_time(&data->a);
-	// redraw();
+	a->x = 0;
+	while (a->x < SCREEN_WIDTH)
+	{
+		set_cameraX(a); // x-coordinate in camera space
+		set_initial_map_position(a);
+		set_rayDir(a);
+		setdeltaDist(a);
+		calculate_step_and_initial_sideDist(a);
+		search_wall_hit(a);
+		calculate_line_height(a);
+		texturing_calculations(a);
+		calculate_value_of_wallX(a);
+		coordinate_on_the_texture(a);
+		calculate_lowest_and_highest_pixel(a);
+		draw_vertical_line(a);
+		a->x++;
+	}
 }
 
 // int	get_wall_height(double distance)

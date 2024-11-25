@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:28:56 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 16:31:27 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:25:51 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void find_player_on_map(t_game *game)
 	
 }
 
-void init_player_direction(t_game *game)
+void init_player_n_plane_direction(t_game *game)
 {
 	if (game->player.direction == 'N')
 	{
@@ -74,7 +74,7 @@ void init_player_direction(t_game *game)
 void	init_player(t_game *game)
 {
 	find_player_on_map(game);
-	init_player_direction(game);
+	init_player_n_plane_direction(game);
 }
 
 
