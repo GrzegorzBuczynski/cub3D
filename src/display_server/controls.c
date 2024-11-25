@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/24 19:05:36 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:57:27 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ void	move(int key, t_game *game)
 	{
 		walk_backward(game);
 	}
-	draw(game);
 }
 
 // void	rotate(int key, t_display *display)

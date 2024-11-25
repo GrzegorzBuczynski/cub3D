@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/24 19:23:20 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:36:36 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct s_player
 	t_dvector pos_old; // Position of the player in the previous frame
 	t_vector plane;    // Camera plane for field of view
 }					t_player;
+
+
 
 typedef struct s_mouse
 {
