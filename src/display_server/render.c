@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 20:22:06 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:25:41 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,21 @@ void	draw_background(t_display *data)
 	}
 }
 
+static void	render_walls(t_game *game, int x, int y)
+{
+	game->rc.tex_y = (int)game->rc.tex_pos & (TEXHEIGHT - 1);
+	game->rc.tex_pos += game->rc.step;
+	game->rc.color = get_texture_pixel(get_texture_directions(game),
+			game->rc.tex_x, game->rc.tex_y);
+	my_mlx_pixel_put(game->back, x, y, game->rc.color);
+}
+
 void	print_walls(t_game *game)
 {
 	int	y;
 	int	x;
 
 	x = -1;
-	render_floor_and_ceiling(game);
 	while (++x < SCREEN_WIDTH)
 	{
 		ray_direction_calculate(game, x);

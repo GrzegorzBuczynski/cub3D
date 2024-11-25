@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 20:21:48 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:28:01 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,3 +188,12 @@ typedef struct s_game
 	void *win_ptr; // Pointer to the game window
 	t_xpm				xpm;
 }						t_game;
+
+typedef struct s_image
+{
+	void				*img;
+	char				*addr;
+	int					bits_per_pixel;
+	int					line_length;
+	int					endian;
+}						t_image;

@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/25 18:48:59 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/25 20:29:17 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS =	main.c \
 		display_server/controls.c \
 		display_server/mouse_controls.c \
 		display_server/colors.c \
+		display_server/raycaster_utils.c \
 		display_server/walls.c \
 		display_server/draw.c \
 		display_server/movment.c \
