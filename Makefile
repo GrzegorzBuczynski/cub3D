@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/24 19:24:11 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/25 16:34:15 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRCS =	main.c \
 		utils.c \
 		init_map.c \
 		minimap.c \
+		init/init_player.c \
+		init/init_textures.c \
 		math/math_utils.c \
 		display_server/init_display.c \
 		display_server/controls.c \

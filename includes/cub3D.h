@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/24 19:09:19 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:32:38 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	check_map(char **map);
 
 //	// check_player.c
 int		check_player(char **map);
+void	init_player(t_game *game);
 
 //	// map_utils.c
 void	get_player_position(char **map, t_vector *p_pos);
