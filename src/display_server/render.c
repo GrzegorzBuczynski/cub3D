@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 19:24:32 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:10:06 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,28 @@ void	draw_background(t_display *data)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	print_walls(t_game *game)
+{
+	int	y;
+	int	x;
+
+	x = -1;
+	render_floor_and_ceiling(game);
+	while (++x < SCREEN_WIDTH)
+	{
+		ray_direction_calculate(game, x);
+		calculate_step_and_dist(game);
+		set_ray_steps(game);
+		calculate_wall_parameters(game);
+		calculate_texture_coordinates(game);
+		y = game->rc.draw_start - 1;
+		while (++y < game->rc.draw_end)
+		{
+			render_walls(game, x, y);
+		}
 	}
 }
 

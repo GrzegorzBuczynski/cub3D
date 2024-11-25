@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 17:56:31 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:20:17 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,33 +27,33 @@ typedef struct s_raycaster
 	double				angle;
 	int					*buffer;
 	int					color;
-	double				cameraX;
-	t_dvector			deltaDist;
-	int					drawStart;
-	int					drawEnd;
+	double				camera_x;
+	t_dvector			delta_dist;
+	int					draw_start;
+	int					draw_end;
 	double				frameTime;
 	struct s_game		*game;
 	int					hit;
 	double				initial_plane;
 	double				initial_playerdir;
 	t_dvector			lenght_to;
-	int					lineHeight;
+	int					line_height;
 	t_vector			map;
 	double				oldTime;
-	double				perpWallDist;
+	double				perp_wall_dist;
 	int					pitch;
 	t_dvector			plane;
 	t_dvector			playerdir;
-	t_dvector			rayDir;
+	t_dvector			raydir;
 	int					side;
-	t_vector			step;
-	int					texX;
+	double				step;
+	int					tex_x;
 	int					texNum;
-	double				texPos;
+	double				tex_pos;
 	double				texstep;
 	int					**texture;
 	double				time;
-	double				wallX;
+	double				wall_x;
 	int					x;
 }						t_raycaster;
 

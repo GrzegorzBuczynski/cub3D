@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 17:57:50 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:20:26 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,211 +18,101 @@
 #define VERTICAL 1
 #define PITCH 0
 
-extern int	worldMap[mapWidth][mapHeight];
-
-void	set_cameraX(t_raycaster *a)
+void	ray_direction_calculate(t_game *game, int x)
 {
-	a->cameraX = 2 * a->x / (double)SCREEN_WIDTH - 1;
+	game->rc.camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
+	game->rc.raydir.x = game->player.dir.x + game->player.plane.x
+		* game->rc.camera_x;
+	game->rc.raydir.y = game->player.dir.y + game->player.plane.y
+		* game->rc.camera_x;
+	game->rc.map.x = (int)game->player.pos.x;
+	game->rc.map.y = (int)game->player.pos.y;
+	game->rc.delta_dist.x = fabs(1 / game->rc.raydir.x);
+	game->rc.delta_dist.y = fabs(1 / game->rc.raydir.y);
 }
 
-void	set_initial_map_position(t_raycaster *a)
+void	calculate_step_and_dist(t_game *game)
 {
-	a->map.x = (int)a->game->player.pos.x;
-	a->map.y = (int)a->game->player.pos.y;
-}
-
-void	set_rayDir(t_raycaster *a)
-{
-	a->rayDir.x = a->playerdir.x + a->plane.x * a->cameraX;
-	a->rayDir.y = a->playerdir.y + a->plane.y * a->cameraX;
-}
-
-void	setdeltaDist(t_raycaster *a)
-{
-	if (a->rayDir.y == 0)
-		a->deltaDist.y = 1e30;
-	else
-		a->deltaDist.y = sqrt(1 + (a->rayDir.x * a->rayDir.x) / (a->rayDir.y * a->rayDir.y));
-	if (a->rayDir.x == 0)
-		a->deltaDist.x = 1e30;
-	else
-		a->deltaDist.x = sqrt(1 + (a->rayDir.y * a->rayDir.y) / (a->rayDir.x * a->rayDir.x));
-}
-
-void	calculate_step_and_initial_sideDist(t_raycaster *a)
-{
-	t_player	*player;
-	
-	player = &a->game->player;
-	if (a->rayDir.x < 0)
+	if (game->rc.raydir.x < 0)
 	{
-		a->step.x = -1;
-		a->lenght_to.x = (player->pos.x - a->map.x) * a->deltaDist.x;
+		game->rc.step.x = -1;
+		game->rc.lenght_to.x = (game->player.pos.x - game->rc.map.x)
+			* game->rc.delta_dist.x;
 	}
 	else
 	{
-		a->step.x = 1;
-		a->lenght_to.x = (1.0 + a->map.x - player->pos.x) * a->deltaDist.x;
+		game->rc.step.x = 1;
+		game->rc.lenght_to.x = (game->rc.map.x + 1.0 - game->player.pos.x)
+			* game->rc.delta_dist.x;
 	}
-	if (a->rayDir.y < 0)
+	if (game->rc.raydir.y < 0)
 	{
-		a->step.y = -1;
-		a->lenght_to.y = (player->pos.y - a->map.y) * a->deltaDist.y;
+		game->rc.step.y = -1;
+		game->rc.lenght_to.y = (game->player.pos.y - game->rc.map.y)
+			* game->rc.delta_dist.y;
 	}
 	else
 	{
-		a->step.y = 1;
-		a->lenght_to.y = (1.0 + a->map.y - player->pos.y) * a->deltaDist.y;
+		game->rc.step.y = 1;
+		game->rc.lenght_to.y = (game->rc.map.y + 1.0 - game->player.pos.y)
+			* game->rc.delta_dist.y;
 	}
 }
 
-void	search_wall_hit(t_raycaster *a)
+void	set_ray_steps(t_game *game)
 {
-	a->hit = 0;
-	while (a->hit == 0)
+	game->rc.hit = 0;
+	while (game->rc.hit == 0)
 	{
-		if (a->lenght_to.x < a->lenght_to.y)
+		if (game->rc.lenght_to.x < game->rc.lenght_to.y)
 		{
-			a->lenght_to.x += a->deltaDist.x;
-			a->map.x += a->step.x;
-			a->side = VERTICAL;
+			game->rc.lenght_to.x += game->rc.delta_dist.x;
+			game->rc.map.x += game->rc.step.x;
+			game->rc.side = 0;
 		}
 		else
 		{
-			a->lenght_to.y += a->deltaDist.y;
-			a->map.y += a->step.y;
-			a->side = HORIZONTAL;
+			game->rc.lenght_to.y += game->rc.delta_dist.y;
+			game->rc.map.y += game->rc.step.y;
+			game->rc.side = 1;
 		}
-		if (worldMap[a->map.x][a->map.y] > 0)
-			a->hit = 1;
+		if (game->map.map[game->rc.map.x][game->rc.map.y] > '0')
+			game->rc.hit = 1;
 	}
 }
 
-void	calculate_line_height(t_raycaster *a)
+void	calculate_wall_parameters(t_game *game)
 {
-	if (a->side == HORIZONTAL)
-		a->perpWallDist = (a->map.y - a->game->player.pos.y + (1 - a->step.y) / 2) / a->rayDir.y + 0.0001;
+	if (game->rc.side == 0)
+		game->rc.perp_wall_dist = (game->rc.map.x - game->player.pos.x + (1
+					- game->rc.step.x) / 2) / game->rc.raydir.x + 0.0001;
 	else
-		a->perpWallDist = (a->map.x - a->game->player.pos.x + (1 - a->step.x) / 2) / a->rayDir.x + 0.0001;
-	a->lineHeight = (int)(SCREEN_HEIGHT / a->perpWallDist);
+		game->rc.perp_wall_dist = (game->rc.map.y - game->player.pos.y + (1
+					- game->rc.step.y) / 2) / game->rc.raydir.y + 0.0001;
+	game->rc.line_height = (int)(SCREEN_HEIGHT / game->rc.perp_wall_dist);
+	game->rc.draw_start = -game->rc.line_height / 2 + SCREEN_HEIGHT / 2;
+	if (game->rc.draw_start < 0)
+		game->rc.draw_start = 0;
+	game->rc.draw_end = game->rc.line_height / 2 + SCREEN_HEIGHT / 2;
+	if (game->rc.draw_end >= SCREEN_HEIGHT)
+		game->rc.draw_end = SCREEN_HEIGHT - 1;
 }
 
-
-
-
-void	texturing_calculations(t_raycaster *a)
+void	calculate_texture_coordinates(t_game *game)
 {
-	a->texNum = worldMap[a->map.x][a->map.y] - 1;
-}
-
-void	calculate_value_of_wallX(t_raycaster *a)
-{
-	t_player	*player;
-	
-	player = &a->game->player;
-	if (a->side == HORIZONTAL)
-		a->wallX = player->pos.y + a->perpWallDist * a->rayDir.y;
+	if (game->rc.side == 0)
+		game->rc.wall_x = game->player.pos.y + game->rc.perp_wall_dist
+			* game->rc.raydir.y;
 	else
-		a->wallX = player->pos.x + a->perpWallDist * a->rayDir.x;
-	a->wallX -= floor((a->wallX));
+		game->rc.wall_x = game->player.pos.x + game->rc.perp_wall_dist
+			* game->rc.raydir.x;
+	game->rc.wall_x -= floor(game->rc.wall_x);
+	game->rc.tex_x = (int)(game->rc.wall_x * (double)TEXWIDTH);
+	if (game->rc.side == 0 && game->rc.raydir.x > 0)
+		game->rc.tex_x = TEXWIDTH - game->rc.tex_x - 1;
+	if (game->rc.side == 1 && game->rc.raydir.y < 0)
+		game->rc.tex_x = TEXWIDTH - game->rc.tex_x - 1;
+	game->rc.step = 1.0 * TEXHEIGHT / game->rc.line_height;
+	game->rc.tex_pos = (game->rc.draw_start - SCREEN_HEIGHT / 2
+			+ game->rc.line_height / 2) * game->rc.step;
 }
-
-void	coordinate_on_the_texture(t_raycaster *a)
-{
-	a->texX = (int)(a->wallX * (double)TEXWIDTH);
-	if (a->side == HORIZONTAL && a->rayDir.x > 0)
-		a->texX = TEXWIDTH - a->texX - 1;
-	if (a->side == VERTICAL && a->rayDir.y < 0)
-		a->texX = TEXWIDTH - a->texX - 1;
-}
-
-void	calculate_lowest_and_highest_pixel(t_raycaster *a)
-{
-	a->drawStart = -a->lineHeight / 2 + SCREEN_HEIGHT / 2 + PITCH;
-	if (a->drawStart < 0)
-		a->drawStart = 0;
-	a->drawEnd = a->lineHeight / 2 + SCREEN_HEIGHT / 2 + PITCH;
-	if (a->drawEnd >= SCREEN_HEIGHT)
-		a->drawEnd = SCREEN_HEIGHT - 1;
-}
-
-void	draw_vertical_line(t_raycaster *a)
-{
-	int	y;
-	int	texY;
-
-	y = a->drawStart;
-	a->texstep = 1.0 * TEXHEIGHT / a->lineHeight;
-	a->texPos = (a->drawStart - PITCH - SCREEN_HEIGHT / 2 + a->lineHeight / 2)
-		* a->texstep;
-	while (y < a->drawEnd)
-	{
-		texY = (int)a->texPos & (TEXHEIGHT - 1);
-		a->texPos += a->texstep;
-		a->color = a->texture[a->texNum][TEXWIDTH * texY + a->texX];
-		if (a->side == VERTICAL)
-			a->color = (a->color >> 1) & 8355711;
-		a->buffer[y*SCREEN_WIDTH + a->x] = scale_color(a->color,a->perpWallDist/15);
-		y++;
-	}
-}
-
-void	clear_buffer(int **buffer)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < SCREEN_HEIGHT)
-	{
-		x = 0;
-		while (x < SCREEN_WIDTH)
-		{
-			buffer[y][x] = 0;
-			x++;
-		}
-		y++;
-	}
-}
-
-void	set_time(t_raycaster *a)
-{
-	a->oldTime = a->time;
-	// a->time = getTicks();
-	a->frameTime = (a->time - a->oldTime) / 1000.0;
-	printf("%f \n", 1.0 / a->frameTime);
-}
-
-void	print_walls(t_game *game)
-{
-	t_raycaster	*rc;
-
-	rc = &game->rc;
-	rc->x = 0;
-	while (rc->x < SCREEN_WIDTH)
-	{
-		set_cameraX(rc); // x-coordinate in camera space
-		set_initial_map_position(rc);
-		set_rayDir(rc);
-		setdeltaDist(rc);
-		calculate_step_and_initial_sideDist(rc);
-		search_wall_hit(rc);
-		calculate_line_height(rc);
-		texturing_calculations(rc);
-		calculate_value_of_wallX(rc);
-		coordinate_on_the_texture(rc);
-		calculate_lowest_and_highest_pixel(rc);
-		draw_vertical_line(rc);
-		rc->x++;
-	}
-}
-
-// int	get_wall_height(double distance)
-// {
-// 	int	height;
-
-// 	height = WALL_FACTOR * (SCREEN_HEIGHT / 2) / distance;
-// 	if (height > SCREEN_HEIGHT / 2)
-// 		height = SCREEN_HEIGHT / 2;
-// 	return (height);
-// }
