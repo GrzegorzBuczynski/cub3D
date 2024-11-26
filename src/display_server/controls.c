@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 18:28:40 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:41:06 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,24 @@ static int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
+
+int	key_release_hook(int keycode, t_game *game)
+{
+	if ((keycode == K_W ||keycode == ARROW_UP)  && game->pressed.w)
+		game->pressed.w = false;
+	if ((keycode == K_S || keycode == ARROW_DOWN) && game->pressed.s)
+		game->pressed.s = false;
+	if (keycode == K_A && game->pressed.a)
+		game->pressed.a = false;
+	if (keycode == K_D && game->pressed.d)
+		game->pressed.d = false;
+	if (keycode == ARROW_RIGHT && game->pressed.right)
+		game->pressed.right = false;
+	if (keycode == ARROW_LEFT && game->pressed.left)
+		game->pressed.left = false;
+	return (0);
+}
+
 int	key_press(int key, void *param)
 {
 	t_game	*game;
@@ -53,7 +71,6 @@ int	key_press(int key, void *param)
 		close_program(&game->display);
 	if (key == ARROW_LEFT || key == ARROW_RIGHT || key == ARROW_UP || key == ARROW_DOWN || key == K_W || key == K_A || key == K_S || key == K_D)
 		key_hook(key, game);
-	printf("pos.x: %f pos.y%f angle %f playerdir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->rc.playerdir.x, game->rc.playerdir.y, game->rc.plane.x, game->rc.plane.y);
 	return (0);
 }
 
@@ -62,7 +79,8 @@ void	setup_controls(t_game *game)
 	t_display *display;
 
 	display = &game->display;
-	mlx_hook(display->win, KEYPRESS, 1L, key_press, game);
+	mlx_hook(display->win, KEYPRESS, KEYPRESSMASK, key_press, game);
+	mlx_hook(display->win, KEYRELEASE, KEYRELEASEMASK, key_release_hook, game);
 	mlx_hook(display->win, DESTROYNOTIFY, (1L << 2), close_program, display);
 	mlx_hook(display->win, BUTTONPRESS, (1L << 2), mouse_press, display);
 	mlx_hook(display->win, BUTTONRELEASE, (1L << 3), mouse_release, display);

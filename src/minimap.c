@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/19 20:35:42 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:39:52 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_square(t_display *display, t_square_params *params)
 		j = 0;
 		while (j < params->size)
 		{
-			((int *)(display->data_addr))[(params->y + i) * SCREEN_WIDTH
+			((int *)(&display->img.pixel_data))[(params->y + i) * SCREEN_WIDTH
 				+ (params->x + j)] = params->color;
 			j++;
 		}

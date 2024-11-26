@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:33:44 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/26 17:48:05 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:14:51 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,5 @@ void	generate_textures(int ***table, int texWidth, int texHeight)
 		}
 	}
 }
+
+

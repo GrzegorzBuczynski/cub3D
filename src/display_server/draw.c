@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:24:23 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 22:02:48 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:40:17 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	put_pixel(t_display *display, int x, int y, int color)
 	int	i;
 	int *image;
 
-	image = (int *)(display->data_addr);
+	image = (int *)(&display->img.pixel_data);
 	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
 		image[y * SCREEN_WIDTH + x] = color;
 }
