@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/25 20:29:17 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/26 17:38:54 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,15 @@ SRCS =	main.c \
 		init_map.c \
 		minimap.c \
 		init/init_player.c \
-		init/init_textures.c \
+		init/init_textures_wraper.c \
+		init/textures_init.c \
 		math/math_utils.c \
 		display_server/init_display.c \
 		display_server/controls.c \
 		display_server/mouse_controls.c \
 		display_server/colors.c \
 		display_server/raycaster_utils.c \
+		display_server/mlx_safe.c \
 		display_server/walls.c \
 		display_server/draw.c \
 		display_server/movment.c \

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 20:38:20 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:51:00 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,16 @@ typedef struct s_xpm
 	int					ceiling;
 }						t_xpm;
 
+typedef struct s_texture
+{
+	int					width;
+	int					height;
+	int					**map;
+	char				*pixel_data;
+	int					bpp;
+	int					line_length;
+	int					endian;
+}						t_texture;
 typedef struct s_map
 {
 	// t_dataList			*data;
@@ -150,14 +160,13 @@ typedef struct s_map
 	int					start_map;
 	int					height;
 	int					width;
-	char				*no;
-	char				*so;
-	char				*we;
-	char				*ea;
-	char				*floor;
-	char				*ceiling;
-	unsigned int		color_floor;
-	unsigned int		color_ceiling;
+	t_texture			no;
+	t_texture			so;
+	t_texture			we;
+	t_texture			ea;
+	unsigned int		floor;
+	unsigned int		ceiling;
+	t_texture			texture;
 }						t_map;
 
 typedef struct s_pressed
@@ -179,27 +188,21 @@ typedef struct s_image
 	int					endian;
 }						t_image;
 
+typedef struct s_time
+{
+	double				old_time;
+	double				frame_time;
+	double				move_speed;
+	double				rot_speed;
+}						t_time;
 typedef struct s_game
 {
-	t_raycaster			rc;
 	char				**array;
 	t_display			display;
+	t_raycaster			rc;
 	struct s_map		map;
 	t_minimap			minimap;
-	void *mlx_ptr; // Pointer to the MLX library instance
 	char				**map_cpy;
-	double				time;
-	double				oldTime;
-	double				planeX;
-	double				planeY;
-	t_player			player;
 	struct s_pressed	pressed;
-	void *win_ptr; // Pointer to the game window
-	t_xpm				xpm;
-	t_image				*no_img;
-	t_image				*so_img;
-	t_image				*we_img;
-	t_image				*ea_img;
-	t_image				*back;
+	t_time				time;
 }						t_game;
-

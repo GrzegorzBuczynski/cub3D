@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/13 21:24:44 by ja               ###   ########.fr       */
+/*   Updated: 2024/11/26 17:17:40 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ void	read_file(char **av, char ***array)
 // 			&(data->width), &(data->height));
 // }
 
-int	handle_input(char **av, t_game *data)
+int	handle_input(char **av, t_game *game)
 {
 	// sometimes it doesn't find a file to open while debugging
-	read_file(av, &data->array);
-	select_map(data);
+	read_file(av, &game->array);
+	select_map(game);
 	// check_map(data->map);
 	// export_textures(data);
 	// print_map(data->map);

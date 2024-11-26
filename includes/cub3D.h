@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/25 20:32:41 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:47:39 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,9 @@ void	print_walls(t_game *data);
 double	get_distance(t_game *data, double degree);
 void	generate_textures(int ***textures, int texWidth, int texHeight);
 void	draw_background(t_display *data);
+void	init_textures(char **file, t_map *map);
+void init_textures_wrapper(t_game *game);
+
 
 // math_utils.c
 int		ft_min_int(int a, int b);
@@ -140,10 +143,18 @@ void	rotate_left(t_game *game);
 void	rotate_right(t_game *game);
 
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
-int	get_texture_pixel(t_image *texture, int tex_x, int tex_y);
+int		get_texture_pixel(t_image *texture, int tex_x, int tex_y);
 void	add_character_plane(t_game *game);
 t_image	*get_texture_directions(t_game *game);
 // minimap.c
 void	draw_minimap(t_game *game);
+
+// mlx_safe.c mlx wrapper
+void	*init_mlx_safe(void);
+void	*init_window_safe(void *mlx, int width, int height, const char *title);
+void	*mlx_xpm_file_to_image_safe(void *mlx, const char *path, int *width,
+			int *height);
+void	*mlx_get_data_addr_safe(void *image, int *bpp, int *line_length,
+			int *endian);
 
 #endif
