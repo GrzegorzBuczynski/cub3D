@@ -44,6 +44,15 @@ static int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
+void activate(t_game *game)
+{
+	game->pressed.w = true;
+	game->pressed.s = true;
+	game->pressed.a = true;
+	game->pressed.d = true;
+	game->pressed.right = true;
+	game->pressed.left = true;
+}
 
 int	key_release_hook(int keycode, t_game *game)
 {

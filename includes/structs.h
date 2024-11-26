@@ -71,7 +71,7 @@ typedef struct s_player
 	char				direction;
 	t_dvector			dir;
 	t_dvector			pos;
-	t_vector			plane;
+	t_dvector			plane;
 	double				step_size;
 	t_dvector			step_side_side;
 	t_dvector			step_top_down;
