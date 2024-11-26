@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 20:37:29 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:33:19 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	draw_background(t_display *data)
 	double	factor;
 	int		color;
 
-	ft_bzero(data->data_addr, SCREEN_WIDTH * SCREEN_HEIGHT
-		* (data->bits_per_pixel / 8));
-	image = (int *)(data->data_addr);
+	ft_bzero(data->img.pixel_data, SCREEN_WIDTH * SCREEN_HEIGHT * (data->img.bpp
+			/ 8));
+	image = (int *)(data->img.pixel_data);
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
@@ -58,7 +58,7 @@ static void	render_walls(t_game *game, int x, int y)
 	game->rc.tex_pos += game->rc.step_size;
 	game->rc.color = get_texture_pixel(get_texture_directions(game),
 			game->rc.tex_x, game->rc.tex.y);
-	my_mlx_pixel_put(game->back, x, y, game->rc.color);
+	my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
 }
 
 void	print_walls(t_game *game)
@@ -82,14 +82,15 @@ void	print_walls(t_game *game)
 	}
 }
 
-void	draw(t_game *game)
+int	draw(t_game *game)
 {
-	t_display	*display;
+	t_display *display;
 
 	display = &game->display;
 	draw_background(display);
 	print_walls(game);
 	// draw_minimap(data);
 	move(game);
-	mlx_put_image_to_window(display->mlx, display->win, display->img, 0, 0);
+	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
+	return (0);
 }

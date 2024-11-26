@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/26 17:42:46 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:21:14 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static char	*get_path(const char *str)
 	return (ft_strdup(str));
 }
 
-t_texture	parse_texture(char *path)
+t_image	parse_texture(char *path)
 {
-	t_texture	result;
+	t_image	result;
 	void		*image;
 	void		*mlx;
 

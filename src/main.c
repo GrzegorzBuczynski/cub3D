@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 17:47:47 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:04:07 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int ac, char **av)
 	handle_input(av, &game);
 	init_player(&game);
 	init_textures_wrapper(&game);
-	(&game);
 	init_display(&game);
 	mlx_loop_hook(game.display.mlx, draw, &game);
 	setup_controls(&game);

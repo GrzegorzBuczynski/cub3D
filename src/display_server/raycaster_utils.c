@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 20:34:19 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:24:11 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = image->addr + (y * image->line_length + x * (image->bits_per_pixel
+	dst = image->pixel_data + (y * image->line_length + x * (image->bpp
 				/ 8));
 	*(unsigned int *)dst = color;
 }
@@ -27,12 +27,12 @@ int	get_texture_pixel(t_image *texture, int tex_x, int tex_y)
 	int				offset;
 	unsigned int	*pixel;
 
-	if (!texture || !texture->addr || tex_x < 0 || tex_y < 0
+	if (!texture || !texture->pixel_data || tex_x < 0 || tex_y < 0
 		|| tex_x >= TEXWIDTH || tex_y >= TEXHEIGHT)
 		return (0);
-	offset = tex_y * (texture->line_length / (texture->bits_per_pixel / 8))
+	offset = tex_y * (texture->line_length / (texture->bpp / 8))
 		+ tex_x;
-	pixel = (unsigned int *)(texture->addr + offset * (texture->bits_per_pixel
+	pixel = (unsigned int *)(texture->pixel_data + offset * (texture->bpp
 				/ 8));
 	return (*pixel);
 }
@@ -69,15 +69,15 @@ t_image	*get_texture_directions(t_game *game)
 	if (game->rc.side == 0)
 	{
 		if (game->rc.raydir.x > 0)
-			return (game->so_img);
+			return (&game->map.so);
 		else
-			return (game->no_img);
+			return (&game->map.no);
 	}
 	else
 	{
 		if (game->rc.raydir.y > 0)
-			return (game->ea_img);
+			return (&game->map.ea);
 		else
-			return (game->we_img);
+			return (&game->map.we);
 	}
 }

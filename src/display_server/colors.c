@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/24 17:29:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:23:21 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ int	get_color(t_vector current, t_vector start, t_vector end, t_vector delta)
 
 int	parse_color(char *str)
 {
-	char *temp;
-	int red;
-	int green;
-	int blue;
+	char	*temp;
+	int		red;
+	int		green;
+	int		blue;
 
 	temp = str;
 	ft_skip_whitespace(&temp);
@@ -79,6 +79,5 @@ int	parse_color(char *str)
 	temp = ft_strchr(temp, ',');
 	temp++;
 	blue = ft_atoi(temp);
-
 	return ((red << 16) | (green << 8) | blue);
 }

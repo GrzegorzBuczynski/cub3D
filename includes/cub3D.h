@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 17:47:39 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:35:23 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,15 +123,14 @@ double	get_distance(t_game *data, double degree);
 void	generate_textures(int ***textures, int texWidth, int texHeight);
 void	draw_background(t_display *data);
 void	init_textures(char **file, t_map *map);
-void init_textures_wrapper(t_game *game);
-
+void	init_textures_wrapper(t_game *game);
 
 // math_utils.c
 int		ft_min_int(int a, int b);
 double	ft_min_double(double a, double b);
 int		ft_max(int a, int b);
 int		ft_abs(int x);
-void	draw(t_game *game);
+int	draw(t_game *game);
 
 // movment.c
 int		move(t_game *game);
@@ -143,7 +142,7 @@ void	rotate_left(t_game *game);
 void	rotate_right(t_game *game);
 
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
-int		get_texture_pixel(t_image *texture, int tex_x, int tex_y);
+int		get_texture_pixel(t_image *texture, int x, int y);
 void	add_character_plane(t_game *game);
 t_image	*get_texture_directions(t_game *game);
 // minimap.c
@@ -157,4 +156,12 @@ void	*mlx_xpm_file_to_image_safe(void *mlx, const char *path, int *width,
 void	*mlx_get_data_addr_safe(void *image, int *bpp, int *line_length,
 			int *endian);
 
+void	ray_direction_calculate(t_game *game, int x);
+void	calculate_step_and_dist(t_game *game);
+void	set_ray_steps(t_game *game);
+void	calculate_wall_parameters(t_game *game);
+void	calculate_texture_coordinates(t_game *game);
+
+
+int		parse_color(char *str);
 #endif

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 18:50:48 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:31:05 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	init_display(t_game *game)
 			"display");
 	if (!display->win)
 		ft_panic(ERR_DISPLAY_INIT, 1);
-	display->img = mlx_new_image(display->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!display->img)
+	display->mlx_img = mlx_new_image(display->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!display->mlx_img)
 		ft_panic(ERR_DISPLAY_INIT, 1);
-	display->data_addr = mlx_get_data_addr(display->img,
-			&(display->bits_per_pixel), &(display->size_line),
-			&(display->endian));
-	game->rc.buffer = (int *)(display->data_addr);
+	display->img.pixel_data = mlx_get_data_addr(display->mlx_img,
+			&(display->img.bpp), &(display->img.line_length),
+			&(display->img.endian));
+	game->rc.buffer = (int *)(display->img.pixel_data);
 }
 
 /* a * (i + 1) / a

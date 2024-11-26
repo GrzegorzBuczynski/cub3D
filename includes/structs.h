@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 17:51:00 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:29:36 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,22 @@ typedef struct s_camera
 	int					y_offset;
 }						t_camera;
 
+typedef struct s_image
+{
+	int					width;
+	int					height;
+	char				*pixel_data;
+	int					bpp;
+	int					line_length;
+	int					endian;
+}						t_image;
+
 typedef struct s_display
 {
 	void				*mlx;
 	void				*win;
-	void				*img;
-	char				*data_addr;
-	int					size_line;
-	int					bits_per_pixel;
-	int					endian;
+	void				*mlx_img;
+	t_image				img;
 	t_mouse				mouse;
 	t_camera			camera;
 	struct s_game		*game;
@@ -143,16 +150,6 @@ typedef struct s_xpm
 	int					ceiling;
 }						t_xpm;
 
-typedef struct s_texture
-{
-	int					width;
-	int					height;
-	int					**map;
-	char				*pixel_data;
-	int					bpp;
-	int					line_length;
-	int					endian;
-}						t_texture;
 typedef struct s_map
 {
 	// t_dataList			*data;
@@ -160,13 +157,13 @@ typedef struct s_map
 	int					start_map;
 	int					height;
 	int					width;
-	t_texture			no;
-	t_texture			so;
-	t_texture			we;
-	t_texture			ea;
+	t_image			no;
+	t_image			so;
+	t_image			we;
+	t_image			ea;
 	unsigned int		floor;
 	unsigned int		ceiling;
-	t_texture			texture;
+	t_image			texture;
 }						t_map;
 
 typedef struct s_pressed
@@ -179,14 +176,7 @@ typedef struct s_pressed
 	int					d;
 	int					space;
 }						t_pressed;
-typedef struct s_image
-{
-	void				*img;
-	char				*addr;
-	int					bits_per_pixel;
-	int					line_length;
-	int					endian;
-}						t_image;
+
 
 typedef struct s_time
 {
@@ -204,5 +194,6 @@ typedef struct s_game
 	t_minimap			minimap;
 	char				**map_cpy;
 	struct s_pressed	pressed;
+	t_player			player;
 	t_time				time;
 }						t_game;

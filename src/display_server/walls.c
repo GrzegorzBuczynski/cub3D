@@ -6,17 +6,15 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 20:35:26 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:12:23 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-#define TEXWIDTH 64
-#define TEXHEIGHT 64
 #define HORIZONTAL 0
 #define VERTICAL 1
-#define PITCH 0
+
 
 void	ray_direction_calculate(t_game *game, int x)
 {
