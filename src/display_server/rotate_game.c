@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:08:29 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/27 18:27:55 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:34:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ void	update_dir_n_plane(t_game *game)
 void	rotate_right(t_game *game)
 {
 	game->rc.angle += ROTATION_SPEED * game->rc.time_ratio;
-	if (game->rc.angle < 0)
-		game->rc.angle = 2 * M_PI + game->rc.angle;
+	if (game->rc.angle >= 2 * M_PI)
+		game->rc.angle = game->rc.angle - 2 * M_PI;
 	update_dir_n_plane(game);
 }
 
 void	rotate_left(t_game *game)
 {
 	game->rc.angle -= ROTATION_SPEED * game->rc.time_ratio;
-	if (game->rc.angle >= 2 * M_PI)
-		game->rc.angle = game->rc.angle - 2 * M_PI;
+	if (game->rc.angle < 0)
+		game->rc.angle = game->rc.angle + 2 * M_PI;
 	update_dir_n_plane(game);
 }
