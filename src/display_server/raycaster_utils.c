@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/26 18:24:11 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 19:49:52 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	get_texture_pixel(t_image *texture, int tex_x, int tex_y)
 	unsigned int	*pixel;
 
 	if (!texture || !texture->pixel_data || tex_x < 0 || tex_y < 0
-		|| tex_x >= TEXWIDTH || tex_y >= TEXHEIGHT)
+		|| tex_x >= texture->width || tex_y >= texture->height)
 		return (0);
 	offset = tex_y * (texture->line_length / (texture->bpp / 8))
 		+ tex_x;
@@ -81,3 +81,4 @@ t_image	*get_texture_directions(t_game *game)
 			return (&game->map.we);
 	}
 }
+

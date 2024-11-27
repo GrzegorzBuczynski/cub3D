@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
+#    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/28 11:57:40 by ssuchane          #+#    #+#              #
-#    Updated: 2024/10/03 20:26:09 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/11/27 18:53:15 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ NAME = libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 .PHONY: all clean fclean re
 

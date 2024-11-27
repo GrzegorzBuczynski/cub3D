@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/26 18:12:23 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 19:24:50 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ void	calculate_texture_coordinates(t_game *game)
 		game->rc.wall_x = game->player.pos.x + game->rc.perp_wall_dist
 			* game->rc.raydir.x;
 	game->rc.wall_x -= floor(game->rc.wall_x);
-	game->rc.tex_x = (int)(game->rc.wall_x * (double)TEXWIDTH);
+	game->rc.tex_x = (int)(game->rc.wall_x * (double)game->rc.texture->width);
 	if (game->rc.side == 0 && game->rc.raydir.x > 0)
-		game->rc.tex_x = TEXWIDTH - game->rc.tex_x - 1;
+		game->rc.tex_x = game->rc.texture->width - game->rc.tex_x - 1;
 	if (game->rc.side == 1 && game->rc.raydir.y < 0)
-		game->rc.tex_x = TEXWIDTH - game->rc.tex_x - 1;
-	game->rc.step_size = 1.0 * TEXHEIGHT / game->rc.line_height;
+		game->rc.tex_x = game->rc.texture->width - game->rc.tex_x - 1;
+	game->rc.step_size = 1.0 * game->rc.texture->height / game->rc.line_height;
 	game->rc.tex_pos = (game->rc.draw_start - SCREEN_HEIGHT / 2
 			+ game->rc.line_height / 2) * game->rc.step_size;
 }

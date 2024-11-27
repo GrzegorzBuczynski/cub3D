@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/27 17:58:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 19:25:48 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ typedef struct s_dvector
 	double				y;
 }						t_dvector;
 
+typedef struct s_image
+{
+	int					width;
+	int					height;
+	char				*pixel_data;
+	int					bpp;
+	int					line_length;
+	int					endian;
+}						t_image;
 typedef struct s_raycaster
 {
 	double				angle;
@@ -52,7 +61,8 @@ typedef struct s_raycaster
 	int					texNum;
 	double				tex_pos;
 	double				texstep;
-	int					**texture;
+	// int					**texture;
+	t_image				*texture;
 	double				time_ratio;
 	double				time;
 	double				wall_x;
@@ -100,16 +110,6 @@ typedef struct s_camera
 	int					x_offset;
 	int					y_offset;
 }						t_camera;
-
-typedef struct s_image
-{
-	int					width;
-	int					height;
-	char				*pixel_data;
-	int					bpp;
-	int					line_length;
-	int					endian;
-}						t_image;
 
 typedef struct s_display
 {

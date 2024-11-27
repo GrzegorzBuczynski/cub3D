@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:19:02 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/26 18:31:05 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 19:54:46 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	init_display(t_game *game)
 	display->img.pixel_data = mlx_get_data_addr(display->mlx_img,
 			&(display->img.bpp), &(display->img.line_length),
 			&(display->img.endian));
+	display->img.width = SCREEN_WIDTH;
+	display->img.height = SCREEN_HEIGHT;
 	game->rc.buffer = (int *)(display->img.pixel_data);
 }
 
