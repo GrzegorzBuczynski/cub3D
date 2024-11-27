@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/27 17:58:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:09:55 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ void	add_character_plane(t_game *game);
 t_image	*get_texture_directions(t_game *game);
 // minimap.c
 void	draw_minimap(t_game *game);
+void	put_pixel(t_display *display, int x, int y, int color);
+
 
 // mlx_safe.c mlx wrapper
 void	*init_mlx_safe(void);
