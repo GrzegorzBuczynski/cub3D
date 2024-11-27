@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 18:04:07 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:37:37 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
+	ft_bzero(&game, sizeof(t_game));
 	game.rc.game = &game;
 	handle_input(av, &game);
 	init_player(&game);

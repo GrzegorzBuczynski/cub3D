@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 18:29:36 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:58:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_raycaster
 	double				tex_pos;
 	double				texstep;
 	int					**texture;
+	double				time_ratio;
 	double				time;
 	double				wall_x;
 	t_vector			tex;
@@ -69,6 +70,8 @@ typedef struct s_line
 typedef struct s_player
 {
 	char				direction;
+	double				ini_dir;
+	double 				ini_plane;
 	t_dvector			dir;
 	t_dvector			pos;
 	t_dvector			plane;

@@ -6,43 +6,32 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:08:29 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/25 18:47:53 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:27:55 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
+void	update_dir_n_plane(t_game *game)
+{
+	game->player.dir.x = game->player.ini_dir * sin(game->rc.angle);
+	game->player.dir.y = game->player.ini_dir * cos(game->rc.angle);
+	game->player.plane.x = game->player.dir.y * 0.66;
+	game->player.plane.y = -game->player.dir.x * 0.66;
+}
+
 void	rotate_right(t_game *game)
 {
-	double	old_dir_x;
-	double	old_plane_x;
-
-	old_dir_x = game->player.dir.x;
-	game->player.dir.x = game->player.dir.x * cos(-ROTATION_SPEED)
-		- game->player.dir.y * sin(-ROTATION_SPEED);
-	game->player.dir.y = old_dir_x * sin(-ROTATION_SPEED) + game->player.dir.y
-		* cos(-ROTATION_SPEED);
-	old_plane_x = game->player.plane.x;
-	game->player.plane.x = game->player.plane.x * cos(-ROTATION_SPEED)
-		- game->player.plane.y * sin(-ROTATION_SPEED);
-	game->player.plane.y = old_plane_x * sin(-ROTATION_SPEED)
-		+ game->player.plane.y * cos(-ROTATION_SPEED);
+	game->rc.angle += ROTATION_SPEED * game->rc.time_ratio;
+	if (game->rc.angle < 0)
+		game->rc.angle = 2 * M_PI + game->rc.angle;
+	update_dir_n_plane(game);
 }
 
 void	rotate_left(t_game *game)
 {
-	double	old_dir_x;
-	double	old_plane_x;
-
-	old_dir_x = game->player.dir.x;
-	game->player.dir.x = game->player.dir.x * cos(ROTATION_SPEED)
-		- game->player.dir.y * sin(ROTATION_SPEED);
-	game->player.dir.y = old_dir_x * sin(ROTATION_SPEED) + game->player.dir.y
-		* cos(ROTATION_SPEED);
-	old_plane_x = game->player.plane.x;
-	game->player.plane.x = game->player.plane.x * cos(ROTATION_SPEED)
-		- game->player.plane.y * sin(ROTATION_SPEED);
-	game->player.plane.y = old_plane_x * sin(ROTATION_SPEED)
-		+ game->player.plane.y * cos(ROTATION_SPEED);
+	game->rc.angle -= ROTATION_SPEED * game->rc.time_ratio;
+	if (game->rc.angle >= 2 * M_PI)
+		game->rc.angle = game->rc.angle - 2 * M_PI;
+	update_dir_n_plane(game);
 }
-

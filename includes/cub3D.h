@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 19:39:48 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:58:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@
 # define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
 # define STEP_SIZE 0.1
-# define ROT_SPEED 5.0
 # define DISTANCE 0.2
 # define MOVE_SPEED 0.2
 # define ROTATION_SPEED 0.2
@@ -141,6 +140,7 @@ void	move_left(t_game *game);
 void	move_right(t_game *game);
 void	rotate_left(t_game *game);
 void	rotate_right(t_game *game);
+void	update_dir_n_plane(t_game *game);
 
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 int		get_texture_pixel(t_image *texture, int x, int y);
