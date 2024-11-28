@@ -94,6 +94,6 @@ int	draw(t_game *game)
 	// draw_minimap(data);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	printf("pos.x: %f pos.y%f angle %f playerdir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->rc.playerdir.x, game->rc.playerdir.y, game->rc.plane.x, game->rc.plane.y);
+	printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
 	return (0);
 }

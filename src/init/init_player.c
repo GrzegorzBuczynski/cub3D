@@ -29,8 +29,8 @@ void find_player_on_map(t_game *game)
 			{
 				game->player.direction = game->map.map[i][j];
 				game->map.map[i][j] = '0';
-				game->player.pos.x = i + 0.5;
-				game->player.pos.y = j + 0.5;
+				game->player.pos.y = i + 0.5;
+				game->player.pos.x = j + 0.5;
 			}
 			j++;
 		}
@@ -42,30 +42,26 @@ void find_player_on_map(t_game *game)
 void init_player_n_plane_direction(t_game *game)
 {
 	game->player.ini_plane = 0.66;
+	game->player.ini_dir = -1;
 	if (game->player.direction == 'N')
 	{
-		game->player.ini_dir = 1;
-		game->rc.angle = 3 * M_PI / 2;
+		game->rc.angle = M_PI/2;
 		update_dir_n_plane(game);
 	}
 	else if (game->player.direction == 'S')
 	{
-		game->player.ini_dir = -1;
-		game->rc.angle = M_PI / 2;
+		game->rc.angle = M_PI*3/2;
 		update_dir_n_plane(game);
 	}
 	else if (game->player.direction == 'E')
 	{
-		game->player.ini_dir = -1;
 		game->rc.angle = 0;
 		update_dir_n_plane(game);
 	}
 	else if (game->player.direction == 'W')
 	{
-		game->player.ini_dir = 1;
 		game->rc.angle = M_PI;
 		update_dir_n_plane(game);
-	
 	}
 }
 

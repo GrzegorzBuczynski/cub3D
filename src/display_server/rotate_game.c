@@ -14,10 +14,10 @@
 
 void	update_dir_n_plane(t_game *game)
 {
-	game->player.dir.x = game->player.ini_dir * sin(game->rc.angle);
-	game->player.dir.y = game->player.ini_dir * cos(game->rc.angle);
-	game->player.plane.x = game->player.dir.y * 0.66;
-	game->player.plane.y = -game->player.dir.x * 0.66;
+	game->player.dir.x = game->player.ini_dir * cos(game->rc.angle);
+	game->player.dir.y = game->player.ini_dir * sin(game->rc.angle);
+	game->player.plane.y = game->player.dir.x * game->player.ini_plane;
+	game->player.plane.x = -game->player.dir.y * game->player.ini_plane;
 }
 
 void	rotate_right(t_game *game)

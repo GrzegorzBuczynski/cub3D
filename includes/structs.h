@@ -18,8 +18,8 @@ typedef struct s_vector
 
 typedef struct s_dvector
 {
-	double				x;
 	double				y;
+	double				x;
 }						t_dvector;
 
 typedef struct s_image
@@ -51,8 +51,6 @@ typedef struct s_raycaster
 	double				oldTime;
 	double				perp_wall_dist;
 	int					pitch;
-	t_dvector			plane;
-	t_dvector			playerdir;
 	t_dvector			raydir;
 	int					side;
 	t_dvector			step;
