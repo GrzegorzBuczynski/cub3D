@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/29 20:41:19 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/11/29 22:09:38 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,32 +17,32 @@ CFLAGS = -g -D DEBUG=1 #-Wall -Werror -Wextra
 RM = rm -f
 
 SRCS =	main.c \
-		handle_input.c \
-		utils.c \
-		init_map.c \
-		minimap.c \
+		raycaster_utils.c \
+		controls/close_window.c \
+		controls/controls.c \
+		controls/mouse_controls.c \
+		controls/movment.c \
+		controls/rotate_game.c \
+		display_server/init_display.c \
+		display_server/mlx_safe.c \
+		init/handle_input.c \
 		init/init_player.c \
 		init/init_textures_wraper.c \
 		init/textures_init.c \
+		map/check_borders.c \
+		map/check_map.c \
+		map/check_player.c \
+		map/init_map.c \
+		map/map_utils.c \
+		map/map.c \
+		map/minimap.c \
 		math/math_utils.c \
-		display_server/init_display.c \
-		display_server/time.c \
-		display_server/controls.c \
-		display_server/mouse_controls.c \
-		display_server/colors.c \
-		display_server/raycaster_utils.c \
-		display_server/mlx_safe.c \
-		display_server/walls.c \
-		display_server/draw.c \
-		display_server/movment.c \
-		display_server/rotate_game.c \
-		display_server/map.c \
-		display_server/close_window.c \
-		display_server/render.c \
-		check_map/check_map.c \
-		check_map/check_player.c \
-		check_map/check_borders.c \
-		check_map/map_utils.c 
+		rendering/colors.c \
+		rendering/walls.c \
+		rendering/draw.c \
+		rendering/render.c \
+		utils/time.c \
+		utils/utils.c 
 
 
 SRCS_DIR = src/
