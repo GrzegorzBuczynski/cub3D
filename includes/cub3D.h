@@ -60,6 +60,8 @@
 # define DISTANCE 0.2
 # define MOVE_SPEED 0.8
 # define ROTATION_SPEED 0.8
+# define FPS 60
+
 
 # define mapWidth 24
 # define mapHeight 24

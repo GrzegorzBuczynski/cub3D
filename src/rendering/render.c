@@ -98,7 +98,7 @@ int	draw(t_game *game)
 	// draw_minimap(data);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	ft_sleep(game->time.old_time, 16);
+	ft_sleep(game->time.old_time, 100 / FPS);
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
 	printf("frame time %f: \n", game->time.frame_time );
