@@ -6,13 +6,13 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/27 21:11:26 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/29 20:07:22 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	draw_background(t_display *data)
+void	draw_background(t_display *display)
 {
 	int		*image;
 	int		i;
@@ -20,9 +20,9 @@ void	draw_background(t_display *data)
 	double	factor;
 	int		color;
 
-	ft_bzero(data->img.pixel_data, SCREEN_WIDTH * SCREEN_HEIGHT * (data->img.bpp
+	ft_bzero(display->img.pixel_data, SCREEN_WIDTH * SCREEN_HEIGHT * (display->img.bpp
 			/ 8));
-	image = (int *)(data->img.pixel_data);
+	image = (int *)(display->img.pixel_data);
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
@@ -57,7 +57,7 @@ static void	render_walls(t_game *game, int x, int y)
 	game->rc.tex.y = (int)game->rc.tex_pos & (game->rc.texture->height - 1);
 	game->rc.tex_pos += game->rc.step_size;
 	game->rc.color = get_texture_pixel(game->rc.texture,
-			game->rc.tex_x, game->rc.tex.y);
+			game->rc.tex.x, game->rc.tex.y);
 	put_pixel(&game->display, x, y, game->rc.color);
 	// my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
 }
@@ -87,9 +87,27 @@ void	print_walls(t_game *game)
 int	draw(t_game *game)
 {
 	t_display *display;
+	void *mlx_img;
+	int width;
+	int height;
+	char *data;
 
 	display = &game->display;
 	draw_background(display);
+	// mlx_img = mlx_xpm_file_to_image(display->mlx, "./textures/walls2/wallE.xpm", &width,
+	// 		&height);
+
+	// image.pixel_data = mlx_get_data_addr(mlx_img, &image.bpp, &image.width, &image.endian);
+
+	// image.pixel_data = mlx_get_data_addr(mlx_img, image.bpp, &image.width, &image.endian);
+	// data = (game->map.no.pixel_data);
+	// for(int i = 0; i < game->map.no.width * game->map.no.height*4; i++)
+	// {
+	// 	char *c = (char *)&data[i];
+	// 	display->img.pixel_data[i] = data[i];
+	// }
+	// mlx_put_image_to_window(display->mlx, display->win, mlx_img, 0, 0);
+	
 	print_walls(game);
 	// draw_minimap(data);
 	move(game);

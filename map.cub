@@ -1,7 +1,12 @@
-NO ./wall_north.xpm
-SO ./wall_south.xpm
-WE ./wall_west.xpm
-EA ./wall_east.xpm
+NO ./textures/walls1/wall_north.xpm
+/SO ./wall_south.xpm
+/WE ./wall_west.xpm
+/EA ./wall_east.xpm
+
+/NO ./textures/walls2/wallE.xpm
+SO ./textures/walls2/wallE.xpm
+WE ./textures/walls2/wallE.xpm
+EA ./textures/walls2/wallE.xpm
 
 
 F 220,100,0

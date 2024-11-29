@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/26 18:21:14 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/29 19:46:46 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ static char	*get_path(const char *str)
 t_image	parse_texture(char *path)
 {
 	t_image	result;
-	void		*image;
-	void		*mlx;
+	void	*image;
+	void	*mlx;
+	char	*pixel_data;
 
 	mlx = init_mlx_safe();
 	image = NULL;
 	image = mlx_xpm_file_to_image_safe(mlx, get_path(path), &result.width,
 			&result.height);
-	result.pixel_data = (char *)mlx_get_data_addr_safe(image, &result.bpp,
-			&result.line_length, &result.endian);
-	result.pixel_data = ft_strdup(result.pixel_data);
+	pixel_data = mlx_get_data_addr_safe(image, &result.bpp, &result.line_length,
+			&result.endian);
+	result.pixel_data = calloc(result.width * result.height, result.bpp / 8);
+	if (!result.pixel_data)
+		ft_panic("Error.\nFailed to allocate memory for texture.\n", 1);
+	ft_memcpy(result.pixel_data, pixel_data, result.width * result.height
+		* result.bpp / 8);
 	mlx_destroy_image(mlx, image);
 	mlx_destroy_display(mlx);
 	return (result);
