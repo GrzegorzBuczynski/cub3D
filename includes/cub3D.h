@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/27 21:09:55 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/29 20:42:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@
 # include "../lib/lib_ft/libft.h"
 # include "error_message.h"
 # include "structs.h"
+# include <X11/X.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <X11/X.h>
 
 // libmlx
 # include "../lib/minilibx/mlx.h"
 # include "color.h"
 # include "key_linux.h"
 # include "xfdf.h"
+# include <sys/time.h>
 
 // Math
 // # define M_PI 3.142
@@ -130,7 +131,7 @@ int		ft_min_int(int a, int b);
 double	ft_min_double(double a, double b);
 int		ft_max(int a, int b);
 int		ft_abs(int x);
-int	draw(t_game *game);
+int		draw(t_game *game);
 
 // movment.c
 int		move(t_game *game);
@@ -150,7 +151,6 @@ t_image	*get_texture_directions(t_game *game);
 void	draw_minimap(t_game *game);
 void	put_pixel(t_display *display, int x, int y, int color);
 
-
 // mlx_safe.c mlx wrapper
 void	*init_mlx_safe(void);
 void	*init_window_safe(void *mlx, int width, int height, const char *title);
@@ -164,7 +164,7 @@ void	calculate_step_and_dist(t_game *game);
 void	set_ray_steps(t_game *game);
 void	calculate_wall_parameters(t_game *game);
 void	calculate_texture_coordinates(t_game *game);
-
+int		get_time(void);
 
 int		parse_color(char *str);
 #endif

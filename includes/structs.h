@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/29 19:49:04 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/29 20:42:26 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_raycaster
 	t_dvector			delta_dist;
 	int					draw_start;
 	int					draw_end;
-	double				frameTime;
 	struct s_game		*game;
 	int					hit;
 	double				initial_plane;
@@ -48,7 +47,6 @@ typedef struct s_raycaster
 	t_dvector			lenght_to;
 	int					line_height;
 	t_vector			map;
-	double				oldTime;
 	double				perp_wall_dist;
 	int					pitch;
 	t_dvector			raydir;
@@ -62,7 +60,6 @@ typedef struct s_raycaster
 	// int					**texture;
 	t_image				*texture;
 	double				time_ratio;
-	double				time;
 	double				wall_x;
 	t_vector			tex;
 
@@ -182,6 +179,7 @@ typedef struct s_pressed
 typedef struct s_time
 {
 	double				old_time;
+	double				new_time;
 	double				frame_time;
 	double				move_speed;
 	double				rot_speed;
