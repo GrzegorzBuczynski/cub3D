@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/29 20:45:50 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/29 22:38:03 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,25 +93,12 @@ int	draw(t_game *game)
 	char *data;
 
 	display = &game->display;
-	draw_background(display);
-	// mlx_img = mlx_xpm_file_to_image(display->mlx, "./textures/walls2/wallE.xpm", &width,
-	// 		&height);
-
-	// image.pixel_data = mlx_get_data_addr(mlx_img, &image.bpp, &image.width, &image.endian);
-
-	// image.pixel_data = mlx_get_data_addr(mlx_img, image.bpp, &image.width, &image.endian);
-	// data = (game->map.no.pixel_data);
-	// for(int i = 0; i < game->map.no.width * game->map.no.height*4; i++)
-	// {
-	// 	char *c = (char *)&data[i];
-	// 	display->img.pixel_data[i] = data[i];
-	// }
-	// mlx_put_image_to_window(display->mlx, display->win, mlx_img, 0, 0);
-	
+	draw_background(display);	
 	print_walls(game);
 	// draw_minimap(data);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
+	ft_sleep(game->time.old_time, 180 / 1000);
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
 	game->time.old_time = game->time.new_time;

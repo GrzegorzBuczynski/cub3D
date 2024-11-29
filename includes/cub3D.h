@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/29 20:42:08 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/29 22:41:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ void	set_ray_steps(t_game *game);
 void	calculate_wall_parameters(t_game *game);
 void	calculate_texture_coordinates(t_game *game);
 int		get_time(void);
+void	ft_sleep(int start_time, double expected_time);
 
 int		parse_color(char *str);
 #endif

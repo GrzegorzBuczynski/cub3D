@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/29 20:42:26 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/29 22:28:20 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ typedef struct s_time
 	double				move_speed;
 	double				rot_speed;
 }						t_time;
+
 typedef struct s_game
 {
 	char				**array;
