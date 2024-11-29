@@ -98,11 +98,12 @@ int	draw(t_game *game)
 	// draw_minimap(data);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	ft_sleep(game->time.old_time, 180 / 1000);
+	ft_sleep(game->time.old_time, 16);
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
+	printf("frame time %f: \n", game->time.frame_time );
 	game->time.old_time = game->time.new_time;
-	printf("fps: %f\n", 1000 / game->time.frame_time);
+	// printf("fps: %f\n", 1000 / game->time.frame_time);
 	// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
 	return (0);
 }

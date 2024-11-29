@@ -25,11 +25,11 @@ void	ft_sleep(int start_time, double expected_time)
 	int	delta;
 
 	delta = get_time() - start_time;
-	while (delta < expected_time && delta > 1000)
+	while (delta < expected_time && delta > 2)
 	{
 		usleep(1000);
 		delta = get_time() - start_time;
 	}
-	while ((get_time() - start_time) < expected_time + 50)
+	while ((get_time() - start_time) < expected_time)
 		usleep(50);
 }

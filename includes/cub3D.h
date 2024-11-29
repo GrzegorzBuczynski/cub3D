@@ -58,8 +58,8 @@
 # define TILE_SIZE 64
 # define STEP_SIZE 0.1
 # define DISTANCE 0.2
-# define MOVE_SPEED 0.2
-# define ROTATION_SPEED 0.2
+# define MOVE_SPEED 0.8
+# define ROTATION_SPEED 0.8
 
 # define mapWidth 24
 # define mapHeight 24
