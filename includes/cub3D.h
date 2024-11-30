@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/29 22:41:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/11/30 19:47:32 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@
 # define STEP_SIZE 0.1
 # define DISTANCE 0.2
 # define MOVE_SPEED 0.8
-# define ROTATION_SPEED 0.8
+# define ROTATION_SPEED 0.2
 # define FPS 60
 
 
