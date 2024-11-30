@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/29 19:46:46 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 00:29:19 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,29 @@ t_image	parse_texture(char *path)
 	return (result);
 }
 
+t_image	parse_texture2(char *path)
+{
+	t_image	result;
+	void	*image;
+	void	*mlx;
+	char	*pixel_data;
+
+	mlx = init_mlx_safe();
+	image = NULL;
+	image = mlx_xpm_file_to_image_safe(mlx, path, &result.width,
+			&result.height);
+	pixel_data = mlx_get_data_addr_safe(image, &result.bpp, &result.line_length,
+			&result.endian);
+	result.pixel_data = calloc(result.width * result.height, result.bpp / 8);
+	if (!result.pixel_data)
+		ft_panic("Error.\nFailed to allocate memory for texture.\n", 1);
+	ft_memcpy(result.pixel_data, pixel_data, result.width * result.height
+		* result.bpp / 8);
+	mlx_destroy_image(mlx, image);
+	mlx_destroy_display(mlx);
+	return (result);
+}
+
 void	init_textures(char **file, t_map *map)
 {
 	int	y;
@@ -69,4 +92,7 @@ void	init_textures(char **file, t_map *map)
 			map->ceiling = parse_color(get_path(&file[y][2]));
 		y++;
 	}
+	// map->compass = parse_texture2("textures/compass.xpm");
+	map->compass = parse_texture2("textures/compass.xpm");
 }
+
