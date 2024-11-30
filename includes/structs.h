@@ -53,6 +53,7 @@ typedef struct s_raycaster
 	int					side;
 	t_dvector			step;
 	double				step_size;
+	int 				scale_color;
 	int					tex_x;
 	int					texNum;
 	double				tex_pos;

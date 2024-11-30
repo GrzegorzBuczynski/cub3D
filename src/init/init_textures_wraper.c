@@ -15,6 +15,7 @@
 void init_textures_wrapper(t_game *game)
 {
 	init_textures(game->array, &game->map);
+	game->rc.scale_color = 1;
 	// generate_textures(&game->rc.texture, TEX_WIDTH, TEX_HEIGHT);
 }
 

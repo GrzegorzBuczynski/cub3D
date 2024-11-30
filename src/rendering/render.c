@@ -58,6 +58,8 @@ static void	render_walls(t_game *game, int x, int y)
 	game->rc.tex_pos += game->rc.step_size;
 	game->rc.color = get_texture_pixel(game->rc.texture,
 			game->rc.tex.x, game->rc.tex.y);
+	if(game->rc.scale_color)
+		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist / 15);
 	put_pixel(&game->display, x, y, game->rc.color);
 	// my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
 }
