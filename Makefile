@@ -105,3 +105,7 @@ rerun:
 run: all
 	clear
 	./cub3D map.cub
+
+run42: all
+	clear
+	./cub3D 42_map.cub

@@ -59,7 +59,7 @@ static void	render_walls(t_game *game, int x, int y)
 	game->rc.color = get_texture_pixel(game->rc.texture,
 			game->rc.tex.x, game->rc.tex.y);
 	if(game->rc.scale_color)
-		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist / 15);
+		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist / 40);
 	put_pixel(&game->display, x, y, game->rc.color);
 	// my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
 }
@@ -103,9 +103,9 @@ int	draw(t_game *game)
 	ft_sleep(game->time.old_time, 100 / FPS);
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
-	printf("frame time %f: \n", game->time.frame_time );
+	// printf("frame time %f: \n", game->time.frame_time );
 	game->time.old_time = game->time.new_time;
-	// printf("fps: %f\n", 1000 / game->time.frame_time);
+	printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
 	return (0);
 }
