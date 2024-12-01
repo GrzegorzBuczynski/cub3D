@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 01:30:35 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:13:45 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ int	draw(t_game *game)
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
 	game->time.old_time = game->time.new_time;
-	// Print FPS for debugging
+	// // Print FPS for debugging
 	fps_counter(game, (int)game->time.frame_time);
-	// printf("fps: %f\n", 1000.0 / game->time.frame_time);
+	printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	return (0);
 }

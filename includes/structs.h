@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 00:47:42 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:13:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,9 @@ typedef struct s_pressed
 
 typedef struct s_time
 {
-	double			old_time;
-	double			new_time;
-	double			frame_time;
+	unsigned int	old_time;
+	unsigned int	new_time;
+	unsigned int	frame_time;
 	double			move_speed;
 	double			rot_speed;
 }					t_time;

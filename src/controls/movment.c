@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movment.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 01:47:00 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:03:13 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,10 @@ int	move(t_game *game)
 		rotate_left(game);
 	if (game->pressed.right)
 		rotate_right(game);
-	if (game->pressed.shift)
-	{
-		// dawej nitro
-	}
+	// if (game->pressed.shift)
+	// {
+	// 	// dawej nitro
+	// }
 	// if (game->pressed.space)
 	// 	open_door_execute(game);
 	return (true);
