@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 00:29:19 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:26:14 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@
 # define TILE_SIZE 64
 # define STEP_SIZE 0.1
 # define DISTANCE 0.2
-# define MOVE_SPEED 0.2
-# define ROTATION_SPEED 0.2
+# define MOVE_SPEED 0.6
+# define ROTATION_SPEED 0.3
 # define FPS 60
 
 # define mapWidth 24

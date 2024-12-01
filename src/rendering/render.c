@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 00:29:19 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:24:32 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,26 @@ void	print_walls(t_game *game)
 	}
 }
 
+void	fps_counter(t_game *game, int frame_time)
+{
+	static int	i = 0;
+	static int	arr[20] = {0};
+	int			avg = 0;
+	int			fps;
+
+	fps = 1000 / frame_time; // Obliczanie FPS na podstawie czasu klatki.
+	arr[i] = fps; // Przypisanie bieżącego FPS do tablicy.
+	i = (i + 1) % 20; // Cycliczny wskaźnik do tablicy.
+
+	// Obliczanie średniej FPS.
+	for (int j = 0; j < 20; j++)
+		avg += arr[j];
+	avg /= 20;
+
+	mlx_string_put(game->display.mlx, game->display.win, 1315, 30, 0xFFFFFF, "FPS: ");
+	mlx_string_put(game->display.mlx, game->display.win, 1350, 30, 0xFFFFFF, ft_itoa(avg));
+}
+
 int	draw(t_game *game)
 {
 	t_display	*display;
@@ -98,11 +118,12 @@ int	draw(t_game *game)
 	render_compass(game);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	ft_sleep(game->time.old_time, 100 / FPS);
+	ft_sleep(game->time.old_time, 1000 / FPS);
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
 	game->time.old_time = game->time.new_time;
 	// Print FPS for debugging
+	fps_counter(game, (int)game->time.frame_time);
 	printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	return (0);
 }
