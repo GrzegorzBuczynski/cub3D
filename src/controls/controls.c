@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 18:07:06 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:50:15 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	close_program(void *param)
 	exit(0);
 }
 
-static int	key_hook(int keycode, t_game *game)
+static int	key_press(int keycode, t_game *game)
 {
+	if (keycode == MAIN_PAD_ESC)
+		close_program(&game->display);
 	if (keycode == K_W || keycode == ARROW_UP)
 		game->pressed.w = true;
 	if (keycode == K_S || keycode == ARROW_DOWN)
@@ -39,8 +41,8 @@ static int	key_hook(int keycode, t_game *game)
 		game->pressed.right = true;
 	if (keycode == ARROW_LEFT)
 		game->pressed.left = true;
-	// if (keycode == SHIFT)
-	// 	game->pressed.left = true;
+	if (keycode == SHIFT)
+		game->pressed.shift = true;
 	// if (keycode == KEY_SPACE)
 	// 	game->pressed.space = true;
 	return (0);
@@ -56,7 +58,7 @@ void activate(t_game *game)
 	game->pressed.left = true;
 }
 
-int	key_release_hook(int keycode, t_game *game)
+int	key_release(int keycode, t_game *game)
 {
 	if ((keycode == K_W ||keycode == ARROW_UP)  && game->pressed.w)
 		game->pressed.w = false;
@@ -70,20 +72,8 @@ int	key_release_hook(int keycode, t_game *game)
 		game->pressed.right = false;
 	if (keycode == ARROW_LEFT && game->pressed.left)
 		game->pressed.left = false;
-	// if (keycode == SHIFT && game->pressed.shift)
-	// 	game->pressed.shift = false;
-	return (0);
-}
-
-int	key_press(int key, void *param)
-{
-	t_game	*game;
-
-	game = (t_game *)param;
-	if (key == MAIN_PAD_ESC)
-		close_program(&game->display);
-	if (key == ARROW_LEFT || key == ARROW_RIGHT || key == ARROW_UP || key == ARROW_DOWN || key == K_W || key == K_A || key == K_S || key == K_D)
-		key_hook(key, game);
+	if (keycode == SHIFT && game->pressed.shift)
+		game->pressed.shift = false;
 	return (0);
 }
 
@@ -93,7 +83,7 @@ void	setup_controls(t_game *game)
 
 	display = &game->display;
 	mlx_hook(display->win, KEYPRESS, KEYPRESSMASK, key_press, game);
-	mlx_hook(display->win, KEYRELEASE, KEYRELEASEMASK, key_release_hook, game);
+	mlx_hook(display->win, KEYRELEASE, KEYRELEASEMASK, key_release, game);
 	mlx_hook(display->win, DESTROYNOTIFY, (1L << 2), close_program, display);
 	mlx_hook(display->win, BUTTONPRESS, (1L << 2), mouse_press, display);
 	mlx_hook(display->win, BUTTONRELEASE, (1L << 3), mouse_release, display);

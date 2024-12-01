@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 18:24:08 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:41:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ typedef struct s_pressed
 	int				s;
 	int				d;
 	int				space;
+	int 			shift;
 }					t_pressed;
 
 typedef struct s_time
