@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:36:00 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/29 22:41:46 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:08:47 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,4 @@ void	ft_sleep(int start_time, double expected_time)
 		usleep(1000);
 		delta = get_time() - start_time;
 	}
-	while ((get_time() - start_time) < expected_time)
-		usleep(50);
 }

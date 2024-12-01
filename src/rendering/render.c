@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/29 22:38:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:09:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	print_walls(t_game *game)
 
 int	draw(t_game *game)
 {
+	static unsigned int i;	
+	printf("draw %d\n", i++);
 	t_display *display;
 	void *mlx_img;
 	int width;
@@ -100,12 +102,12 @@ int	draw(t_game *game)
 	// draw_minimap(data);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	ft_sleep(game->time.old_time, 100 / FPS);
+	ft_sleep(game->time.old_time, 1000 / FPS);
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
 	// printf("frame time %f: \n", game->time.frame_time );
 	game->time.old_time = game->time.new_time;
-	printf("fps: %f\n", 1000.0 / game->time.frame_time);
+	// printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
 	return (0);
 }
