@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 20:08:17 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:18:06 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@
 # define TILE_SIZE 64
 # define STEP_SIZE 0.1
 # define DISTANCE 0.2
-# define MOVE_SPEED 0.6
-# define ROTATION_SPEED 0.5
+# define MOVE_SPEED 0.05
+# define ROTATION_SPEED 0.05
 # define FPS 60
 
 # define mapWidth 24

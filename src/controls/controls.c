@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 20:12:46 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:18:22 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ static int	key_press(int keycode, t_game *game)
 	if (keycode == ARROW_LEFT)
 		game->pressed.left = true;
 	if (keycode == K_SPACE)
-		game->params.speed_ratio = 2.5;
+		game->params.speed_ratio = 2;
 	// printf("keycode: %d\n", keycode);
-	// if (keycode == KEY_SPACE)
-	// 	game->pressed.space = true;
 	return (0);
 }
 

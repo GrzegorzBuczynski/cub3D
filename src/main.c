@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 20:11:45 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:16:18 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	init(t_game *game)
 	init_display(game);
 	mlx_loop_hook(game->display.mlx, draw, game);
 	setup_controls(game);
-	game->params.fps = 60;
+	game->params.fps = FPS;
 	game->params.limit_fps = 1;
 	game->params.speed_ratio = 1;
+	game->rc.time_ratio = 1;
 }
 
 int	main(int ac, char **av)

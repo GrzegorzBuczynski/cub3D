@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 19:58:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:16:30 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	limit_fps(t_game *game)
 	if (game->params.limit_fps)
 	{
 		delay_time = 1000 / game->params.fps;
-		ft_sleep(game->time.old_time, 1000 / FPS);
+		ft_sleep(game->time.old_time, 1000 / game->params.fps);
 	}
 }
 
