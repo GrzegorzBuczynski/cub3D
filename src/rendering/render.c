@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 01:24:32 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:30:35 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ int	draw(t_game *game)
 	game->time.old_time = game->time.new_time;
 	// Print FPS for debugging
 	fps_counter(game, (int)game->time.frame_time);
-	printf("fps: %f\n", 1000.0 / game->time.frame_time);
+	// printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	return (0);
 }

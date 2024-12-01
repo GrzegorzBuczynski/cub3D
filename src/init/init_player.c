@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:28:56 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/27 19:09:52 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:31:57 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void find_player_on_map(t_game *game)
 		}
 		i++;
 	}
-	
+	if (!game->player.direction)
+		perror("Error!\nNo player on the map!\n.");
+	// TO DO ---------
+	// NIE DOPUSCIC DO STARTU PROGRAMU
 }
 
 void init_player_n_plane_direction(t_game *game)
