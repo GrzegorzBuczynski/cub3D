@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 18:03:13 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:56:44 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	move_front(t_game *game)
 	double	new_pos_x;
 
 	new_pos_y = game->player.pos.y + game->player.dir.y * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x + game->player.dir.x * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	if (game->map.map[(int)(new_pos_y + DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == '0'
 		|| game->map.map[(int)(new_pos_y + DISTANCE
@@ -39,9 +39,9 @@ void	move_back(t_game *game)
 	double	new_pos_x;
 
 	new_pos_y = game->player.pos.y - game->player.dir.y * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x - game->player.dir.x * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	if (game->map.map[(int)(new_pos_y - DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == '0'
 		|| game->map.map[(int)(new_pos_y - DISTANCE
@@ -60,9 +60,9 @@ void	move_left(t_game *game)
 	double	new_pos_x;
 
 	new_pos_y = game->player.pos.y - game->player.plane.y * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x - game->player.plane.x * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	if (game->map.map[(int)(new_pos_y - DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == '0'
 		|| game->map.map[(int)(new_pos_y - DISTANCE
@@ -81,9 +81,9 @@ void	move_right(t_game *game)
 	double	new_pos_x;
 
 	new_pos_y = game->player.pos.y + game->player.plane.y * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x + game->player.plane.x * MOVE_SPEED
-		* game->rc.time_ratio;
+		* game->rc.time_ratio * game->params.speed_ratio;
 	if (game->map.map[(int)(new_pos_y + DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == '0'
 		|| game->map.map[(int)(new_pos_y + DISTANCE

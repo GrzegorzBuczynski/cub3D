@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 19:41:59 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:53:03 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ typedef struct s_params
 {
 	int				fps;
 	int				limit_fps;
+	double			speed_ratio;
 }					t_params;
 
 typedef struct s_game

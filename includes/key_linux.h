@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_linux.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:11:34 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 01:44:17 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 20:06:22 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ARROW_LEFT 65361
 # define ARROW_RIGHT 65363
 
-# define SHIFT 65506
+# define SHIFT 65505
 
 # define NUM_PAD_0 65438
 # define NUM_PAD_1 65436
@@ -106,7 +106,7 @@
 ** Keyboard MISC
 */
 
-# define K_SP 32
+# define K_SPACE 32
 # define K_ESC 65307
 
 /*

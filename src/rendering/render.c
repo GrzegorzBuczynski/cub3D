@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 18:45:37 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 19:58:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int	draw(t_game *game)
 	game->time.frame_time = game->time.new_time - game->time.old_time;
 	game->time.old_time = game->time.new_time;
 	fps_counter(game, (int)game->time.frame_time);
-	printf("fps: %f\n", 1000.0 / game->time.frame_time);
+	// printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
 	return (0);
 }
