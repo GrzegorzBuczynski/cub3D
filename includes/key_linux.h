@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_linux.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ja <ja@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:11:34 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/13 00:50:11 by ja               ###   ########.fr       */
+/*   Updated: 2024/12/01 01:44:17 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define ARROW_DOWN 65364
 # define ARROW_LEFT 65361
 # define ARROW_RIGHT 65363
+
+# define SHIFT 65506
 
 # define NUM_PAD_0 65438
 # define NUM_PAD_1 65436

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 19:41:06 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:45:13 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ static int	key_hook(int keycode, t_game *game)
 		game->pressed.d = true;
 	if (keycode == ARROW_RIGHT)
 		game->pressed.right = true;
-	if (keycode == ARROW_LEFT )
+	if (keycode == ARROW_LEFT)
+		game->pressed.left = true;
+	if (keycode == SHIFT)
 		game->pressed.left = true;
 	// if (keycode == KEY_SPACE)
 	// 	game->pressed.space = true;
@@ -68,6 +70,8 @@ int	key_release_hook(int keycode, t_game *game)
 		game->pressed.right = false;
 	if (keycode == ARROW_LEFT && game->pressed.left)
 		game->pressed.left = false;
+	if (keycode == SHIFT && game->pressed.shift)
+		game->pressed.shift = false;
 	return (0);
 }
 

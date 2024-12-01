@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:28:56 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 01:31:57 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/01 01:38:03 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void init_player_n_plane_direction(t_game *game)
 		game->rc.angle = M_PI*3/2;
 		update_dir_n_plane(game);
 	}
-	else if (game->player.direction == 'E')
+	else if (game->player.direction == 'W')
 	{
 		game->rc.angle = 0;
 		update_dir_n_plane(game);
 	}
-	else if (game->player.direction == 'W')
+	else if (game->player.direction == 'E')
 	{
 		game->rc.angle = M_PI;
 		update_dir_n_plane(game);
