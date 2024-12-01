@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 18:13:45 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:30:29 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,24 +87,36 @@ void	print_walls(t_game *game)
 	}
 }
 
+void	limit_fps(t_game *game)
+{
+	unsigned int	delay_time;
+
+	if (game->params.limit_fps)
+	{
+		delay_time = 1000 / game->params.fps;
+		ft_sleep(game->time.old_time, 1000 / FPS);
+	}
+}
+
 void	fps_counter(t_game *game, int frame_time)
 {
 	static int	i = 0;
 	static int	arr[20] = {0};
-	int			avg = 0;
+	int			avg;
 	int			fps;
 
+	avg = 0;
 	fps = 1000 / frame_time; // Obliczanie FPS na podstawie czasu klatki.
-	arr[i] = fps; // Przypisanie bieżącego FPS do tablicy.
-	i = (i + 1) % 20; // Cycliczny wskaźnik do tablicy.
-
+	arr[i] = fps;            // Przypisanie bieżącego FPS do tablicy.
+	i = (i + 1) % 20;        // Cycliczny wskaźnik do tablicy.
 	// Obliczanie średniej FPS.
 	for (int j = 0; j < 20; j++)
 		avg += arr[j];
 	avg /= 20;
-
-	mlx_string_put(game->display.mlx, game->display.win, 1315, 30, 0xFFFFFF, "FPS: ");
-	mlx_string_put(game->display.mlx, game->display.win, 1350, 30, 0xFFFFFF, ft_itoa(avg));
+	mlx_string_put(game->display.mlx, game->display.win, 1315, 30, 0xFFFFFF,
+		"FPS: ");
+	mlx_string_put(game->display.mlx, game->display.win, 1350, 30, 0xFFFFFF,
+		ft_itoa(avg));
 }
 
 int	draw(t_game *game)
@@ -118,7 +130,7 @@ int	draw(t_game *game)
 	render_compass(game);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	ft_sleep(game->time.old_time, 1000 / FPS);
+	limit_fps(game);
 	game->time.new_time = get_time();
 	game->time.frame_time = game->time.new_time - game->time.old_time;
 	game->time.old_time = game->time.new_time;

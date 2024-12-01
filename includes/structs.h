@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 18:13:08 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/01 18:24:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,12 @@ typedef struct s_time
 	double			rot_speed;
 }					t_time;
 
+typedef struct s_params
+{
+	int				fps;
+	int				limit_fps;
+}					t_params;
+
 typedef struct s_game
 {
 	char			**array;
@@ -199,4 +205,5 @@ typedef struct s_game
 	t_pressed		pressed;
 	t_player		player;
 	t_time			time;
+	t_params		params;
 }					t_game;
