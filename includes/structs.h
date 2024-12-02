@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 19:53:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:04:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_raycaster
 	t_image			*texture;
 	double			time_ratio;
 	double			wall_x;
-	t_vector		tex;
+	t_dvector		tex;
 
 }					t_raycaster;
 

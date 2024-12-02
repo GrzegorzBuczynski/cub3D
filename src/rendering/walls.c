@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/29 18:53:16 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:36:56 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ void	calculate_wall_parameters(t_game *game)
 					- game->rc.step.x) / 2) / game->rc.raydir.x + 0.0001;
 	game->rc.line_height = (int)(SCREEN_HEIGHT / game->rc.perp_wall_dist);
 	game->rc.draw_start = -game->rc.line_height / 2 + SCREEN_HEIGHT / 2;
-	if (game->rc.draw_start < 0)
-		game->rc.draw_start = 0;
 	game->rc.draw_end = game->rc.line_height / 2 + SCREEN_HEIGHT / 2;
-	if (game->rc.draw_end >= SCREEN_HEIGHT)
-		game->rc.draw_end = SCREEN_HEIGHT - 1;
+	// if (game->rc.draw_start < 0)
+	// 	game->rc.draw_start = 0;
+	// if (game->rc.draw_end >= SCREEN_HEIGHT)
+	// 	game->rc.draw_end = SCREEN_HEIGHT - 1;
 }
 
 void	calculate_texture_coordinates(t_game *game)

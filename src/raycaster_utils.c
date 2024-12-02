@@ -6,10 +6,9 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/27 19:49:52 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:01:42 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/cub3D.h"
 
@@ -17,23 +16,24 @@ void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = image->pixel_data + (y * image->line_length + x * (image->bpp
-				/ 8));
+	dst = image->pixel_data + (y * image->line_length + x * (image->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 
-int	get_texture_pixel(t_image *texture, int tex_x, int tex_y)
+int	get_texture_pixel(t_image *texture, double tex_x, double tex_y)
 {
 	int				offset;
 	unsigned int	*pixel;
+	int				x;
+	int				y;
 
-	if (!texture || !texture->pixel_data || tex_x < 0 || tex_y < 0
-		|| tex_x >= texture->width || tex_y >= texture->height)
+	if (!texture || !texture->pixel_data || tex_x < 0 || tex_y < 0 || tex_x > 1
+		|| tex_y > 1)
 		return (0);
-	offset = tex_y * (texture->line_length / (texture->bpp / 8))
-		+ tex_x;
-	pixel = (unsigned int *)(texture->pixel_data + offset * (texture->bpp
-				/ 8));
+	x = tex_x * texture->width;
+	y = tex_y * texture->height;
+	offset = y * texture->line_length + x * (texture->bpp / 8);
+	pixel = (unsigned int *)(texture->pixel_data + offset);
 	return (*pixel);
 }
 
@@ -81,4 +81,3 @@ t_image	*get_texture_directions(t_game *game)
 			return (&game->map.we);
 	}
 }
-
