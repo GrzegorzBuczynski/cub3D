@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/12 19:23:28 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:59:28 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int	check_borders(char **map)
 	height = get_map_height(map) + 2;
 	status = 1;
 	map_border = create_map_border(width, height);
+	convert_spaces_to_walls(map_border);
 	if (!map_border)
 		return (1);
 	fill_map_border(map_border, width, height);

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/02 21:42:17 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:15:49 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	render_walls(t_game *game, int x, int y)
 			game->rc.tex.y);
 	if (game->rc.scale_color)
 		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist
-				/ 40);
+				/ 20);
 	put_pixel(&game->display, x, y, game->rc.color);
 	// my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
 }

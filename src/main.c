@@ -6,11 +6,23 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 21:39:43 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:21:30 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+// ------------TO DO------------
+// A) SPRITES
+// B) FLOOR/CEILING TEXTURE/COLOR
+// C) MOUSE CONTROLS
+// D) HUD ?????????
+// E) MENU
+// F) SCALE TEXTURE ON WALL
+// G) SCORE?
+// H) INTRO?
+// I) WIDTH X HEIGHT PROPORTIONAL
+
 
 void	init(t_game *game)
 {
@@ -27,6 +39,7 @@ void	init(t_game *game)
 	game->params.limit_fps = 1;
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
+	game->rc.scale_color = 1;
 }
 
 int	main(int ac, char **av)

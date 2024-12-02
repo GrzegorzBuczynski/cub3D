@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 21:39:25 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 22:09:38 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #define MINIMAP_PADDING_X 20
 #define MINIMAP_PADDING_Y 20
 #define PLAYER_RADIUS 10
-#define FLOOR_COLOR COLOR_DISCO
+#define FLOOR_COLOR COLOR_BROWN
 #define WALL_COLOR COLOR_AQUA
-#define PLAYER_COLOR COLOR_RED
+#define PLAYER_COLOR COLOR_GOLD
 
 typedef struct s_square
 {
@@ -80,7 +80,8 @@ void	draw_minimap_background(t_image *image, int y, int x,
 		j = 0;
 		while (j < (2 * PLAYER_RADIUS) + 1)
 		{
-			draw_square(image, 0, 0, color);
+			draw_square(image, i * MINIMAP_SCALE + y, j * MINIMAP_SCALE + x,
+				color);
 			j++;
 		}
 		i++;
@@ -100,7 +101,7 @@ void	draw_minimap(t_game *game)
 	image = &game->display.img;
 	y = p_pos.y - PLAYER_RADIUS;
 	// draw_minimap_background(image, MINIMAP_PADDING_Y, MINIMAP_PADDING_X,
-	// FLOOR_COLOR);
+		// FLOOR_COLOR);
 	m_pos.y = 0;
 	m_pos.x = 0;
 	while (y < p_pos.y + PLAYER_RADIUS)
