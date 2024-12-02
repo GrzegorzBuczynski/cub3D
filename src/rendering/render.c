@@ -62,7 +62,6 @@ static void draw_floor(t_display *display)
 
 void	draw_background(t_display *display)
 {
-
 	draw_ceiling(display);
 	draw_floor(display);
 }
@@ -156,3 +155,86 @@ int	draw(t_game *game)
 	// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
 	return (0);
 }
+
+
+/* 
+static void draw_ceiling(t_display *display, double jump_factor)
+{
+    int *image;
+    int i;
+    int j;
+    double factor;
+    int color;
+
+    image = (int *)(display->img.pixel_data);
+    i = 0;
+    while (i < SCREEN_HEIGHT / 2)
+    {
+        factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
+        color = scale_color(CEILING, factor);
+        j = 0;
+        while (j < SCREEN_WIDTH)
+        {
+            image[(int)((i + jump_factor) * SCREEN_WIDTH + j)] = color;
+            j++;
+        }
+        i++;
+    }
+}
+
+static void draw_floor(t_display *display, double jump_factor)
+{
+    int *image;
+    int i;
+    int j;
+    double factor;
+    int color;
+
+    image = (int *)(display->img.pixel_data);
+    i = SCREEN_HEIGHT / 2;
+    while (i < SCREEN_HEIGHT)
+    {
+        factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i)) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
+        color = scale_color(FLOOR, factor);
+        j = 0;
+        while (j < SCREEN_WIDTH)
+        {
+            image[(int)((i + jump_factor) * SCREEN_WIDTH + j)] = color;
+            j++;
+        }
+        i++;
+    }
+}
+
+void draw_background(t_game *game)
+{
+    int i;
+    double factor;
+    double jump_factor = 0;
+    t_display *display;
+
+    display = &game->display;
+    i = 0;
+    if (game->params.jump)
+    {
+        if (i < 30 * game->rc.time_ratio)
+        {
+            factor = 0.5 + ((double)(i * i) / (30.0 * 30.0));
+            jump_factor = factor * 10; // Adjust the multiplier as needed for the jump effect
+        }
+        else if (i < 60 * game->rc.time_ratio)
+        {
+            factor = 1.0 - ((double)(i - 30) * (i - 30) / (30.0 * 30.0));
+            jump_factor = factor * 10; // Adjust the multiplier as needed for the jump effect
+        }
+        i++;
+        if (i == 60 * game->rc.time_ratio)
+        {
+            game->params.jump = 0;
+            i = 0;
+        }
+    }
+    draw_ceiling(display, jump_factor);
+    draw_floor(display, jump_factor);
+}
+ */
