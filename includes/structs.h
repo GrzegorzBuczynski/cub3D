@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 17:04:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:17:16 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ typedef struct s_raycaster
 	int				side;
 	t_dvector		step;
 	double			step_size;
-	int				scale_color;
 	int				tex_x;
 	int				texNum;
 	double			tex_pos;
@@ -194,6 +193,7 @@ typedef struct s_params
 	int				fps;
 	int				limit_fps;
 	double			speed_ratio;
+	int 			scale_color;
 }					t_params;
 
 typedef struct s_game

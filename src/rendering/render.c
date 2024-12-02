@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/02 17:05:48 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:30:03 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ static void	render_walls(t_game *game, int x, int y)
 	game->rc.tex_pos += game->rc.step_size;
 	game->rc.color = get_texture_pixel(game->rc.texture, game->rc.tex.x,
 			game->rc.tex.y);
-	if (game->rc.scale_color)
+	if (game->params.scale_color)
 		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist
 				/ 40);
 	put_pixel(&game->display, x, y, game->rc.color);
 	// my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
 }
 
-void	print_walls(t_game *game)
+void	print_stripe(t_game *game)
 {
 	int	y;
 	int	x;
@@ -130,7 +130,7 @@ int	draw(t_game *game)
 
 	display = &game->display;
 	draw_background(display);
-	print_walls(game);
+	print_stripe(game);
 	render_compass(game);
 	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);

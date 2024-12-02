@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 20:16:18 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:16:48 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init(t_game *game)
 	game->params.limit_fps = 1;
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
+	game->params.scale_color = 0;
 }
 
 int	main(int ac, char **av)
