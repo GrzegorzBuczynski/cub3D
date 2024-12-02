@@ -6,20 +6,20 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 17:41:09 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:51:40 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 typedef struct s_vector
 {
-	int				x;
 	int				y;
+	int				x;
 }					t_vector;
 
 typedef struct s_dvector
 {
-	double			y;
 	double			x;
+	double			y;
 }					t_dvector;
 
 typedef struct s_image
@@ -122,8 +122,8 @@ typedef struct s_display
 
 typedef struct s_square_params
 {
-	int				x;
 	int				y;
+	int				x;
 	int				size;
 	int				color;
 }					t_square_params;
@@ -131,11 +131,11 @@ typedef struct s_square_params
 typedef struct s_minimap
 {
 	t_image			image;
-	int				start_x;
 	int				start_y;
+	int				start_x;
 	int				cell_size;
-	int				pixel_x;
 	int				pixel_y;
+	int				pixel_x;
 	int				map_x;
 	int				map_y;
 	int				color;
