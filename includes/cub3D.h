@@ -118,7 +118,7 @@ void			draw_line(t_line *line, t_display *data);
 void			print_walls(t_game *data);
 double			get_distance(t_game *data, double degree);
 void			generate_textures(int ***textures, int texWidth, int texHeight);
-void			draw_background(t_display *data);
+// void			draw_background(t_display *data);
 void			init_textures(char **file, t_map *map);
 void			init_textures_wrapper(t_game *game);
 

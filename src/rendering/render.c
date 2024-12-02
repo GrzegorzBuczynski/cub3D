@@ -12,22 +12,19 @@
 
 #include "../../includes/cub3D.h"
 
-void	draw_background(t_display *display)
+static void draw_ceiling(t_display *display)
 {
-	int		*image;
-	int		i;
-	int		j;
-	double	factor;
-	int		color;
+	int *image;
+	int i;
+	int j;
+	double factor;
+	int color;
 
-	ft_bzero(display->img.pixel_data, SCREEN_WIDTH * SCREEN_HEIGHT
-		* (display->img.bpp / 8));
 	image = (int *)(display->img.pixel_data);
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT
-						/ 2.0)));
+		factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
 		color = scale_color(CEILING, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -37,10 +34,21 @@ void	draw_background(t_display *display)
 		}
 		i++;
 	}
+}
+
+static void draw_floor(t_display *display)
+{
+	int *image;
+	int i;
+	int j;
+	double factor;
+	int color;
+
+	image = (int *)(display->img.pixel_data);
+	i = SCREEN_HEIGHT / 2;
 	while (i < SCREEN_HEIGHT)
 	{
-		factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i))
-				/ ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
+		factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i)) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
 		color = scale_color(FLOOR, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -50,6 +58,13 @@ void	draw_background(t_display *display)
 		}
 		i++;
 	}
+}
+
+void	draw_background(t_display *display)
+{
+
+	draw_ceiling(display);
+	draw_floor(display);
 }
 
 static void	render_walls(t_game *game, int x, int y)

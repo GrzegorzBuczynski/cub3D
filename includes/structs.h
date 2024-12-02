@@ -195,6 +195,7 @@ typedef struct s_params
 	int				fps;
 	int				limit_fps;
 	double			speed_ratio;
+	int				jump;
 }					t_params;
 
 typedef struct s_game
