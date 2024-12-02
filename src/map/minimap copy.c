@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 20:25:55 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:14:16 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,23 @@
 
 typedef struct s_square
 {
-	int size;
-	int color;
-} t_square;
+	int	size;
+	int	color;
+}		t_square;
 
-void put_pixel2(t_image *img, int y, int x, int color)
+void	put_pixel2(t_image *img, int y, int x, int color)
 {
-	int i;
-	int *image;
+	int	i;
+	int	*image;
 
 	image = (int *)(img->pixel_data);
 	image[y * SCREEN_WIDTH + x] = color;
 }
 
-void draw_square(t_image *image, int y, int x, unsigned int color)
+void	draw_square(t_image *image, int y, int x, unsigned int color)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < MINIMAP_SCALE)
@@ -57,34 +57,32 @@ void draw_square(t_image *image, int y, int x, unsigned int color)
 	}
 }
 
-void draw_player(t_image *image, int y, int x)
+void	draw_player(t_image *image, int y, int x)
 {
 	draw_square(image, y, x, PLAYER_COLOR);
 }
 
-void draw_wall(t_image *image, int y, int x)
+void	draw_wall(t_image *image, int y, int x)
 {
 	draw_square(image, y, x, WALL_COLOR);
 }
 
-void draw_floor(t_image *image, int y, int x)
+void	draw_floor(t_image *image, int y, int x)
 {
 	draw_square(image, y, x, FLOOR_COLOR);
 }
 
-void draw_minimap(t_game *game)
+void	draw_minimap(t_game *game)
 {
-	int y;
-	int x;
-	t_vector p_pos;
+	int			y;
+	int			x;
+	t_dvector	pos;
 
-	p_pos.x = (int)game->player.pos.x;
-	p_pos.y = (int)game->player.pos.y;
-
-	y = p_pos.y - PLAYER_RADIUS;
-	while (y < p_pos.y + PLAYER_RADIUS)
+	pos = game->player.pos;
+	y = 0;
+	while ()
 	{
-		x = x - PLAYER_RADIUS;
+		x = 0;
 		while ()
 		{
 			x++;
@@ -94,22 +92,7 @@ void draw_minimap(t_game *game)
 	draw_player(&game->display.img, 100, 100);
 }
 
-void temp(t_game *game)
-{
-	y = pos->y;
-	while (y < (2 * PLAYER_RADIUS) + 1)
-	{
-		x = pos->x;
-		while (x < (2 * PLAYER_RADIUS) + 1)
-		{
-			if (map.grid[y - PLAYER_RADIUS][x - PLAYER_RADIUS] == '1')
-				draw_wall(image, y, x);
-			else if (map.grid[y - PLAYER_RADIUS][x - PLAYER_RADIUS] == '0')
-				draw_floor(image, y, x);
-			else
-				draw_player(image, y, x);
-		}
-	}
-}
+while (y > PLAYER_RADIUS)
+map.grid[y - PLAYER_RADIUS][x - PLAYER_RADIUS] == '1'
 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?92382A78A91E7ED2D41FC91B0424F106AD21
+https://prod.liveshare.vsengsaas.visualstudio.com/join?E45145DF5A5C02CEC28CC69F874B060C711D
