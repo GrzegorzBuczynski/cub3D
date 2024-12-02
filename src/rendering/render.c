@@ -133,6 +133,16 @@ void	fps_counter(t_game *game, int frame_time)
 		ft_itoa(avg));
 }
 
+void set_times(t_game *game)
+{
+	game->time.new_time = get_time();
+	game->time.frame_time = game->time.new_time - game->time.old_time;
+	game->time.old_time = game->time.new_time;
+	fps_counter(game, (int)game->time.frame_time);
+	game->rc.time_ratio = game->time.frame_time / 16.0;
+
+}
+
 int	draw(t_game *game)
 {
 	t_display	*display;
@@ -143,13 +153,10 @@ int	draw(t_game *game)
 	print_walls(game);
 	render_compass(game);
 	draw_minimap(game);
-	move(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
 	limit_fps(game);
-	game->time.new_time = get_time();
-	game->time.frame_time = game->time.new_time - game->time.old_time;
-	game->time.old_time = game->time.new_time;
-	fps_counter(game, (int)game->time.frame_time);
+	set_times(game);
+	move(game);
 	// printf("pos.y %d pox.x %d \n", (int)game->player.pos.y,(int)game->player.pos.x);
 	// printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
