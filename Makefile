@@ -6,7 +6,7 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/11/30 20:24:28 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/12/02 16:09:28 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =	main.c \
 		controls/close_window.c \
 		controls/controls.c \
 		controls/mouse_controls.c \
-		controls/movment.c \
+		controls/movement.c \
 		controls/rotate_game.c \
 		display_server/init_display.c \
 		display_server/mlx_safe.c \

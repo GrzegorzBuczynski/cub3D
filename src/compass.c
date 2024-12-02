@@ -18,7 +18,6 @@ void	render_compass(t_game *game)
 	int			center_x;
 	double		angle;
 	t_image		compass;
-;
 
 	display = &game->display;
 	center_x = SCREEN_WIDTH / 2;
