@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/13 15:46:54 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:13:29 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,14 @@ void	select_map(t_game *data)
 	int	y;
 	
 	y = find_first_map_row(data->array);
-	data->map.map = data->array + y;
+	data->map.grid = data->array + y;
 	// data->map = memory();
 	// data->map.grid = memory();
 	if (DEBUG)
-		print_map(data->map.map);
-	convert_spaces_to_walls(data->map.map);
+		print_map(data->map.grid);
+	convert_spaces_to_walls(data->map.grid);
 	if (DEBUG)
-		print_map(data->map.map);
-	data->map_cpy = create_map_copy(data->map.map);
+		print_map(data->map.grid);
+	data->map_cpy = create_map_copy(data->map.grid);
 	// print_map(data->map_cpy);
 }

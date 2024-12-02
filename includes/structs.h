@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 19:53:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:41:09 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct s_square_params
 
 typedef struct s_minimap
 {
+	t_image			image;
 	int				start_x;
 	int				start_y;
 	int				cell_size;
@@ -154,7 +155,7 @@ typedef struct s_xpm
 typedef struct s_map
 {
 	// t_dataList			*data;
-	char			**map;
+	char			**grid;
 	int				start_map;
 	int				height;
 	int				width;

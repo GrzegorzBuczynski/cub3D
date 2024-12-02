@@ -3,88 +3,96 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 18:39:52 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:12:29 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	init_minimap(t_minimap *m_map, t_display *display)
+#define MINIMAP_SCALE 5
+#define MINIMAP_PADDING_X 20
+#define MINIMAP_PADDING_Y 20
+#define PLAYER_RADIUS 7
+#define WALL 1
+#define FLOOR 2
+#define PLAYER 3
+
+#define FLOOR_COLOR COLOR_DISCO
+#define WALL_COLOR COLOR_GRAY
+#define PLAYER_COLOR COLOR_RED
+
+typedef struct s_square
 {
-	m_map->display = display;
-	m_map->start_x = MINIMAP_PADDING;
-	m_map->start_y = MINIMAP_PADDING;
-	m_map->cell_size = MINIMAP_SCALE;
-	m_map->map_y = 0;
+	int	size;
+	int	color;
+}		t_square;
+
+void	put_pixel2(t_image *img, int y, int x, int color)
+{
+	int	i;
+	int	*image;
+
+	image = (int *)(img->pixel_data);
+	image[y * SCREEN_WIDTH + x] = color;
 }
 
-int	get_tile_color(char tile)
-{
-	if (tile == '1')
-		return (WALL_COLOR);
-	else
-		return (FLOOR_COLOR);
-}
-
-void	draw_square(t_display *display, t_square_params *params)
+void	draw_square(t_image *image, int y, int x, unsigned int color)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < params->size)
+	while (i < MINIMAP_SCALE)
 	{
 		j = 0;
-		while (j < params->size)
+		while (j < MINIMAP_SCALE)
 		{
-			((int *)(&display->img.pixel_data))[(params->y + i) * SCREEN_WIDTH
-				+ (params->x + j)] = params->color;
+			put_pixel2(image, y + i, x + j, color);
 			j++;
 		}
 		i++;
 	}
 }
 
-// void	draw_minimap_item(t_minimap *m_map, t_game *game, int is_player)
-// {
-// 	t_square_params	params;
+void	draw_player(t_image *image, int y, int x)
+{
+	draw_square(image, y, x, PLAYER_COLOR);
+}
 
-// 	if (!is_player)
-// 	{
-// 		params.color = get_tile_color(game->map2.grid[m_map->map_y][m_map->map_x]);
-// 		params.x = m_map->start_x + (m_map->map_x * m_map->cell_size);
-// 		params.y = m_map->start_y + (m_map->map_y * m_map->cell_size);
-// 		params.size = m_map->cell_size;
-// 		draw_square(m_map->display, &params);
-// 	}
-// 	else
-// 	{
-// 		params.x = m_map->start_x + (game->player.tile.x * m_map->cell_size);
-// 		params.y = m_map->start_y + (game->player.tile.y * m_map->cell_size);
-// 		params.size = m_map->cell_size / 2;
-// 		params.color = PLAYER_COLOR;
-// 		draw_square(m_map->display, &params);
-// 	}
-// }
+void	draw_wall(t_image *image, int y, int x)
+{
+	draw_square(image, y, x, WALL_COLOR);
+}
 
-// void	draw_minimap(t_game *game)
-// {
-// 	t_minimap	m_map;
+void	draw_floor(t_image *image, int y, int x)
+{
+	draw_square(image, y, x, FLOOR_COLOR);
+}
 
-// 	init_minimap(&m_map, &game->display);
-// 	m_map.map_y = 0;
-// 	while (m_map.map_y < game->map2.height)
-// 	{
-// 		m_map.map_x = 0;
-// 		while (m_map.map_x < game->map2.width)
-// 		{
-// 			draw_minimap_item(&m_map, game, 0);
-// 			m_map.map_x++;
-// 		}
-// 		m_map.map_y++;
-// 	}
-// 	draw_minimap_item(&m_map, game, 1);
-// }
+void	draw_minimap(t_game *game)
+{
+	int			y;
+	int			x;
+	t_dvector	pos;
+
+	pos = game->player.pos;
+	y = 0;
+	while ()
+	{
+		x = 0;
+		while ()
+		{
+			x++;
+		}
+		y++;
+	}
+	draw_player(&game->display.img, 100, 100);
+}
+
+
+map.grid[y - PLAYER_RADIUS][x - PLAYER_RADIUS] == '1'
+
+https://prod.liveshare.vsengsaas.visualstudio.com/join?E45145DF5A5C02CEC28CC69F874B060C711D

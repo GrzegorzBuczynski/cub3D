@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/01 20:18:06 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:19:09 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,9 @@
 # define true 1
 # define false 0
 
-# define MINIMAP_SCALE 10
-# define MINIMAP_PADDING 10
-# define PLAYER_COLOR 0xFF0000
-# define WALL_COLOR 0x808080
-# define FLOOR_COLOR 0x000000
-# define MAP_OPACITY 0.5
-# define MINIMAP_VIEWPORT_WIDTH 11
-# define MINIMAP_VIEWPORT_HEIGHT 11
+// Minimap
+#define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
+#define MINIMAP_RADIUS 5     // Range of the minimap (5 tiles in each direction)
 
 // Constants
 # define SCREEN_WIDTH 1400
