@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 21:27:10 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:39:25 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,26 +100,25 @@ void	draw_minimap(t_game *game)
 	image = &game->display.img;
 	y = p_pos.y - PLAYER_RADIUS;
 	// draw_minimap_background(image, MINIMAP_PADDING_Y, MINIMAP_PADDING_X,
-		// FLOOR_COLOR);
+	// FLOOR_COLOR);
 	m_pos.y = 0;
 	m_pos.x = 0;
 	while (y < p_pos.y + PLAYER_RADIUS)
 	{
-		if (y >= 0 && y < game->map.height)
+		x = p_pos.x - PLAYER_RADIUS;
+		m_pos.x = 0;
+		while (x < p_pos.x + PLAYER_RADIUS)
 		{
-			x = p_pos.x - PLAYER_RADIUS;
-			if (x >= 0 && x < game->map.width)
+			if ((y >= 0 && y < game->map.height) && (x >= 0
+					&& x < game->map.width))
 			{
-				m_pos.x = 0;
-				while (x < p_pos.x + PLAYER_RADIUS)
-				{
-					if (game->map.grid[y][x] == '1')
-						draw_wall(image, m_pos.y * MINIMAP_SCALE + MINIMAP_PADDING_Y,
-							m_pos.x * MINIMAP_SCALE + MINIMAP_PADDING_X);
-					x++;
-					m_pos.x++;
-				}
+				if (game->map.grid[y][x] == '1')
+					draw_wall(image, m_pos.y * MINIMAP_SCALE
+						+ MINIMAP_PADDING_Y, m_pos.x * MINIMAP_SCALE
+						+ MINIMAP_PADDING_X);
 			}
+			x++;
+			m_pos.x++;
 		}
 		y++;
 		m_pos.y++;
