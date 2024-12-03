@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:13:11 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/02 17:14:28 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:29:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,4 @@ int	get_texture_pixel(t_image *texture, double tex_x, double tex_y)
 	pixel = (unsigned int *)(texture->pixel_data + offset);
 	return (*pixel);
 }
-u
+

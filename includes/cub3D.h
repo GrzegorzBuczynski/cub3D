@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 17:30:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:22:17 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,9 @@
 # define true 1
 # define false 0
 
-# define MINIMAP_SCALE 10
-# define MINIMAP_PADDING 10
-# define PLAYER_COLOR 0xFF0000
-# define WALL_COLOR 0x808080
-# define FLOOR_COLOR 0x000000
-# define MAP_OPACITY 0.5
-# define MINIMAP_VIEWPORT_WIDTH 11
-# define MINIMAP_VIEWPORT_HEIGHT 11
+// Minimap
+#define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
+#define MINIMAP_RADIUS 5     // Range of the minimap (5 tiles in each direction)
 
 // Constants
 # define SCREEN_WIDTH 1400
@@ -123,7 +118,7 @@ void			draw_line(t_line *line, t_display *data);
 void			print_stripe(t_game *data);
 double			get_distance(t_game *data, double degree);
 void			generate_textures(int ***textures, int texWidth, int texHeight);
-void			draw_background(t_display *data);
+// void			draw_background(t_display *data);
 void			init_textures(char **file, t_map *map);
 void			init_textures_wrapper(t_game *game);
 

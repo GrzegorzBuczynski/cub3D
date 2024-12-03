@@ -6,28 +6,25 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/02 17:30:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:23:20 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	draw_background(t_display *display)
+static void draw_ceiling(t_display *display)
 {
-	int		*image;
-	int		i;
-	int		j;
-	double	factor;
-	int		color;
+	int *image;
+	int i;
+	int j;
+	double factor;
+	int color;
 
-	ft_bzero(display->img.pixel_data, SCREEN_WIDTH * SCREEN_HEIGHT
-		* (display->img.bpp / 8));
 	image = (int *)(display->img.pixel_data);
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT
-						/ 2.0)));
+		factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
 		color = scale_color(CEILING, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -37,10 +34,21 @@ void	draw_background(t_display *display)
 		}
 		i++;
 	}
+}
+
+static void draw_floor(t_display *display)
+{
+	int *image;
+	int i;
+	int j;
+	double factor;
+	int color;
+
+	image = (int *)(display->img.pixel_data);
+	i = SCREEN_HEIGHT / 2;
 	while (i < SCREEN_HEIGHT)
 	{
-		factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i))
-				/ ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
+		factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i)) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
 		color = scale_color(FLOOR, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -50,6 +58,12 @@ void	draw_background(t_display *display)
 		}
 		i++;
 	}
+}
+
+void	draw_background(t_display *display)
+{
+	draw_ceiling(display);
+	draw_floor(display);
 }
 
 static void	render_walls(t_game *game, int x, int y)
@@ -64,7 +78,7 @@ static void	render_walls(t_game *game, int x, int y)
 			game->rc.tex.y);
 	if (game->params.scale_color)
 		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist
-				/ 40);
+				/ 20);
 	put_pixel(&game->display, x, y, game->rc.color);
 	// my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
 }
@@ -123,6 +137,16 @@ void	fps_counter(t_game *game, int frame_time)
 		ft_itoa(avg));
 }
 
+void set_times(t_game *game)
+{
+	game->time.new_time = get_time();
+	game->time.frame_time = game->time.new_time - game->time.old_time;
+	game->time.old_time = game->time.new_time;
+	fps_counter(game, (int)game->time.frame_time);
+	game->rc.time_ratio = game->time.frame_time / 16.0;
+
+}
+
 int	draw(t_game *game)
 {
 	t_display	*display;
@@ -132,14 +156,96 @@ int	draw(t_game *game)
 	draw_background(display);
 	print_stripe(game);
 	render_compass(game);
-	move(game);
+	draw_minimap(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
 	limit_fps(game);
-	game->time.new_time = get_time();
-	game->time.frame_time = game->time.new_time - game->time.old_time;
-	game->time.old_time = game->time.new_time;
-	fps_counter(game, (int)game->time.frame_time);
+	set_times(game);
+	move(game);
+	// printf("pos.y %d pox.x %d \n", (int)game->player.pos.y,(int)game->player.pos.x);
 	// printf("fps: %f\n", 1000.0 / game->time.frame_time);
 	// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y %f planedir.x %f planedir.y %f\n", game->player.pos.x, game->player.pos.y, game->rc.angle, game->player.dir.x, game->player.dir.y, game->player.plane.y, game->player.plane.x);
 	return (0);
 }
+
+
+/* 
+static void draw_ceiling(t_display *display, double jump_factor)
+{
+    int *image;
+    int i;
+    int j;
+    double factor;
+    int color;
+
+    image = (int *)(display->img.pixel_data);
+    i = 0;
+    while (i < SCREEN_HEIGHT / 2)
+    {
+        factor = ((double)(i * i) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
+        color = scale_color(CEILING, factor);
+        j = 0;
+        while (j < SCREEN_WIDTH)
+        {
+            image[(int)((i + jump_factor) * SCREEN_WIDTH + j)] = color;
+            j++;
+        }
+        i++;
+    }
+}
+
+static void draw_floor(t_display *display, double jump_factor)
+{
+    int *image;
+    int i;
+    int j;
+    double factor;
+    int color;
+
+    image = (int *)(display->img.pixel_data);
+    i = SCREEN_HEIGHT / 2;
+    while (i < SCREEN_HEIGHT)
+    {
+        factor = ((double)((SCREEN_HEIGHT - i) * (SCREEN_HEIGHT - i)) / ((SCREEN_HEIGHT / 2.0) * (SCREEN_HEIGHT / 2.0)));
+        color = scale_color(FLOOR, factor);
+        j = 0;
+        while (j < SCREEN_WIDTH)
+        {
+            image[(int)((i + jump_factor) * SCREEN_WIDTH + j)] = color;
+            j++;
+        }
+        i++;
+    }
+}
+
+void draw_background(t_game *game)
+{
+    int i;
+    double factor;
+    double jump_factor = 0;
+    t_display *display;
+
+    display = &game->display;
+    i = 0;
+    if (game->params.jump)
+    {
+        if (i < 30 * game->rc.time_ratio)
+        {
+            factor = 0.5 + ((double)(i * i) / (30.0 * 30.0));
+            jump_factor = factor * 10; // Adjust the multiplier as needed for the jump effect
+        }
+        else if (i < 60 * game->rc.time_ratio)
+        {
+            factor = 1.0 - ((double)(i - 30) * (i - 30) / (30.0 * 30.0));
+            jump_factor = factor * 10; // Adjust the multiplier as needed for the jump effect
+        }
+        i++;
+        if (i == 60 * game->rc.time_ratio)
+        {
+            game->params.jump = 0;
+            i = 0;
+        }
+    }
+    draw_ceiling(display, jump_factor);
+    draw_floor(display, jump_factor);
+}
+ */

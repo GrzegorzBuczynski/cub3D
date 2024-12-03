@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:28:56 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 20:14:29 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:13:29 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ void find_player_on_map(t_game *game)
 
 	i = 0;
 	j = 0;
-	while (game->map.map[i])
+	while (game->map.grid[i])
 	{
 		j = 0;
-		while (game->map.map[i][j])
+		while (game->map.grid[i][j])
 		{
-			if (game->map.map[i][j] == 'N' || game->map.map[i][j] == 'S'
-				|| game->map.map[i][j] == 'E' || game->map.map[i][j] == 'W')
+			if (game->map.grid[i][j] == 'N' || game->map.grid[i][j] == 'S'
+				|| game->map.grid[i][j] == 'E' || game->map.grid[i][j] == 'W')
 			{
-				game->player.direction = game->map.map[i][j];
-				game->map.map[i][j] = '0';
+				game->player.direction = game->map.grid[i][j];
+				game->map.grid[i][j] = '0';
 				game->player.pos.y = i + 0.5;
 				game->player.pos.x = j + 0.5;
 			}

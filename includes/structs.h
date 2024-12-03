@@ -6,20 +6,20 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 17:17:16 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:22:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 typedef struct s_vector
 {
-	int				x;
 	int				y;
+	int				x;
 }					t_vector;
 
 typedef struct s_dvector
 {
-	double			y;
 	double			x;
+	double			y;
 }					t_dvector;
 
 typedef struct s_image
@@ -121,19 +121,20 @@ typedef struct s_display
 
 typedef struct s_square_params
 {
-	int				x;
 	int				y;
+	int				x;
 	int				size;
 	int				color;
 }					t_square_params;
 
 typedef struct s_minimap
 {
-	int				start_x;
+	t_image			image;
 	int				start_y;
+	int				start_x;
 	int				cell_size;
-	int				pixel_x;
 	int				pixel_y;
+	int				pixel_x;
 	int				map_x;
 	int				map_y;
 	int				color;
@@ -153,7 +154,7 @@ typedef struct s_xpm
 typedef struct s_map
 {
 	// t_dataList			*data;
-	char			**map;
+	char			**grid;
 	int				start_map;
 	int				height;
 	int				width;
@@ -193,7 +194,11 @@ typedef struct s_params
 	int				fps;
 	int				limit_fps;
 	double			speed_ratio;
+<<<<<<< HEAD
 	int 			scale_color;
+=======
+	int				jump;
+>>>>>>> main
 }					t_params;
 
 typedef struct s_game

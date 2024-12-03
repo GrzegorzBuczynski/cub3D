@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movment.c                                          :+:      :+:    :+:   */
+/*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/02 16:09:12 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:13:29 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	move_front(t_game *game)
 		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x + game->player.dir.x * MOVE_SPEED
 		* game->rc.time_ratio * game->params.speed_ratio;
-	if (game->map.map[(int)(new_pos_y + DISTANCE
+	if (game->map.grid[(int)(new_pos_y + DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == '0'
-		|| game->map.map[(int)(new_pos_y + DISTANCE
+		|| game->map.grid[(int)(new_pos_y + DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.map[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
 			* game->player.dir.x)] == '0'
-		|| game->map.map[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
 			* game->player.dir.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
@@ -42,14 +42,14 @@ void	move_back(t_game *game)
 		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x - game->player.dir.x * MOVE_SPEED
 		* game->rc.time_ratio * game->params.speed_ratio;
-	if (game->map.map[(int)(new_pos_y - DISTANCE
+	if (game->map.grid[(int)(new_pos_y - DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == '0'
-		|| game->map.map[(int)(new_pos_y - DISTANCE
+		|| game->map.grid[(int)(new_pos_y - DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.map[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
 			* game->player.dir.x)] == '0'
-		|| game->map.map[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
 			* game->player.dir.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
@@ -63,14 +63,14 @@ void	move_left(t_game *game)
 		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x - game->player.plane.x * MOVE_SPEED
 		* game->rc.time_ratio * game->params.speed_ratio;
-	if (game->map.map[(int)(new_pos_y - DISTANCE
+	if (game->map.grid[(int)(new_pos_y - DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == '0'
-		|| game->map.map[(int)(new_pos_y - DISTANCE
+		|| game->map.grid[(int)(new_pos_y - DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.map[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
 			* game->player.plane.x)] == '0'
-		|| game->map.map[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - DISTANCE
 			* game->player.plane.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
@@ -84,14 +84,14 @@ void	move_right(t_game *game)
 		* game->rc.time_ratio * game->params.speed_ratio;
 	new_pos_x = game->player.pos.x + game->player.plane.x * MOVE_SPEED
 		* game->rc.time_ratio * game->params.speed_ratio;
-	if (game->map.map[(int)(new_pos_y + DISTANCE
+	if (game->map.grid[(int)(new_pos_y + DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == '0'
-		|| game->map.map[(int)(new_pos_y + DISTANCE
+		|| game->map.grid[(int)(new_pos_y + DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.map[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
 			* game->player.plane.x)] == '0'
-		|| game->map.map[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + DISTANCE
 			* game->player.plane.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
