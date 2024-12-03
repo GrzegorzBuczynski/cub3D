@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 16:39:16 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:29:59 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,26 +131,8 @@ typedef struct s_square_params
 typedef struct s_minimap
 {
 	t_image			image;
-	int				start_y;
-	int				start_x;
-	int				cell_size;
-	int				pixel_y;
-	int				pixel_x;
-	int				map_x;
-	int				map_y;
-	int				color;
 	t_display		*display;
 }					t_minimap;
-
-typedef struct s_xpm
-{
-	void			*wall_north;
-	void			*wall_south;
-	void			*wall_west;
-	void			*wall_east;
-	int				floor;
-	int				ceiling;
-}					t_xpm;
 
 typedef struct s_map
 {

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 22:09:38 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:31:30 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,21 +126,3 @@ void	draw_minimap(t_game *game)
 	}
 	draw_player(&game->display.img, 100, 100);
 }
-
-// void	temp(t_game *game)
-// {
-// 	y = pos->y;
-// 	while (y < (2 * PLAYER_RADIUS) + 1)
-// 	{
-// 		x = pos->x;
-// 		while (x < (2 * PLAYER_RADIUS) + 1)
-// 		{
-// 			if (map.grid[y - PLAYER_RADIUS][x - PLAYER_RADIUS] == '1')
-// 				draw_wall(image, y, x);
-// 			else if (map.grid[y - PLAYER_RADIUS][x - PLAYER_RADIUS] == '0')
-// 				draw_floor(image, y, x);
-// 			else
-// 				draw_player(image, y, x);
-// 		}
-// 	}
-// }

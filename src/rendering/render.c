@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 18:27:33 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:28:59 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	draw_ceiling(unsigned int color, t_display *display)
 	image = (int *)(display->img.pixel_data);
 	color_base = color;
 	i = 0;
-	while (i < SCREEN_HEIGHT/2)
+	while (i < SCREEN_HEIGHT / 2)
 	{
 		factor = ((double)(i) / pow(0.75 * SCREEN_HEIGHT, 1));
 		color_base = scale_color(color, factor);
@@ -50,8 +50,8 @@ static void	draw_floor(unsigned int color, t_display *display)
 	i = SCREEN_HEIGHT;
 	while (i > SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)(SCREEN_HEIGHT - 1 - i) * (SCREEN_HEIGHT - 1 - i)
-				/ pow(SCREEN_HEIGHT / 2, 2));
+		factor = ((double)pow((SCREEN_HEIGHT - 1 - i), 3) / pow(SCREEN_HEIGHT
+					/ 2, 3));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
