@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 14:22:17 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:15:37 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@
 # define false 0
 
 // Minimap
-#define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
-#define MINIMAP_RADIUS 5     // Range of the minimap (5 tiles in each direction)
+# define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
+# define MINIMAP_RADIUS 5    
+	// Range of the minimap (5 tiles in each direction)
 
 // Constants
 # define SCREEN_WIDTH 1400
@@ -173,4 +174,6 @@ t_image			parse_texture2(char *path);
 t_image			cut_image(t_image *image, double factor, int width);
 
 int				parse_color(char *str);
+void			trim_texture(t_image s_image);
+
 #endif

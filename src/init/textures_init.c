@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 00:47:42 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:17:13 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_image	parse_texture(char *path)
 		ft_panic("Error.\nFailed to allocate memory for texture.\n", 1);
 	ft_memcpy(result.pixel_data, pixel_data, result.width * result.height
 		* result.bpp / 8);
+	trim_texture(result);
 	mlx_destroy_image(mlx, image);
 	mlx_destroy_display(mlx);
 	return (result);
