@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 15:15:37 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:42:02 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 
 // Minimap
 # define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
-# define MINIMAP_RADIUS 5    
-	// Range of the minimap (5 tiles in each direction)
+# define MINIMAP_RADIUS 5
+// Range of the minimap (5 tiles in each direction)
 
 // Constants
 # define SCREEN_WIDTH 1400
@@ -116,7 +116,7 @@ int				get_color(t_vector current, t_vector start, t_vector end,
 // draw.c --
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void			draw_line(t_line *line, t_display *data);
-void			print_stripe(t_game *data);
+void			print_stripes(t_game *data);
 double			get_distance(t_game *data, double degree);
 void			generate_textures(int ***textures, int texWidth, int texHeight);
 // void			draw_background(t_display *data);
@@ -141,7 +141,7 @@ void			rotate_right(t_game *game);
 void			update_dir_n_plane(t_game *game);
 
 void			my_mlx_pixel_put(t_image *image, int x, int y, int color);
-int				get_texture_pixel(t_image *texture, int x, int y);
+int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
 t_image			*get_texture_directions(t_game *game);
 // minimap.c
@@ -174,6 +174,6 @@ t_image			parse_texture2(char *path);
 t_image			cut_image(t_image *image, double factor, int width);
 
 int				parse_color(char *str);
-void			trim_texture(t_image s_image);
+void			trim_texture(t_image *image);
 
 #endif

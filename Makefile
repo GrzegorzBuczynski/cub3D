@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
+#    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/02 16:09:28 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/12/03 15:24:46 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS =	main.c \
 		rendering/walls.c \
 		rendering/draw.c \
 		rendering/render.c \
+		rendering/textures.c \
 		utils/time.c \
 		utils/utils.c 
 
