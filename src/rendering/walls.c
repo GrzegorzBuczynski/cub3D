@@ -87,7 +87,7 @@ void	print_walls(t_game *game)
 			wall.factor.y = ((double)y - wall.y_start) / wall.height;
 			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
 					wall.factor.x);
-			color = scale_color(color, wall.perp_wall_dist / 20);
+			color = scale_color(color, wall.perp_wall_dist / 30);
 			put_pixel(&game->display, x, y, color);
 		}
 	}
