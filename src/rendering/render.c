@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 21:03:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:16:44 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	draw_ceiling(unsigned int color, t_display *display)
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)(i) / pow(0.75 * SCREEN_HEIGHT, 1));
+		factor = ((double)pow(i, 3) / pow(SCREEN_HEIGHT/2, 3));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
