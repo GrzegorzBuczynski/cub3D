@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 17:19:09 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:06:58 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@
 # define false 0
 
 // Minimap
-#define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
-#define MINIMAP_RADIUS 5     // Range of the minimap (5 tiles in each direction)
+# define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
+# define MINIMAP_RADIUS 5
+// Range of the minimap (5 tiles in each direction)
 
 // Constants
 # define SCREEN_WIDTH 1400
@@ -52,7 +53,7 @@
 # define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
 # define STEP_SIZE 0.1
-# define DISTANCE 0.2
+# define DISTANCE 0.5
 # define MOVE_SPEED 0.05
 # define ROTATION_SPEED 0.05
 # define FPS 60
@@ -91,12 +92,14 @@ int				get_maps_row_width(const char *row);
 int				get_maps_max_row_width(char **map);
 int				get_map_height(char **map);
 void			free_map(char **map);
+void			convert_spaces_to_walls(char **map);
 
 // handle_input.c
 int				handle_input(char **av, t_game *data);
 
 // utils.c
 int				ft_error(int error_code, char *message);
+
 void	print_map(char **map);    // temporary
 void	print_map_nl(char **map); // temporary
 
@@ -109,7 +112,7 @@ int				mouse_move(int x, int y, void *param);
 void			setup_controls(t_game *game);
 
 // colors.c
-int				scale_color(int color, double factor);
+unsigned int	scale_color(unsigned int color, double factor);
 int				get_color(t_vector current, t_vector start, t_vector end,
 					t_vector delta);
 // draw.c --
@@ -165,7 +168,6 @@ unsigned int	get_time(void);
 void			ft_sleep(unsigned int start_time, double expected_time);
 
 // compass.c
-void			init_compass(t_game *game);
 void			render_compass(t_game *game);
 void			put_image_to_image(t_display *display, t_image *image, int y,
 					int x);

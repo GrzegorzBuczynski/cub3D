@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/26 18:23:21 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:07:04 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
  the new color is the old color with the factor applied to it
  factor is a double between 0 and 1
  */
-int	scale_color(int color, double factor)
+unsigned int	scale_color(unsigned int color, double factor)
 {
-	int	red;
-	int	green;
-	int	blue;
+	unsigned int	red;
+	unsigned int	green;
+	unsigned int	blue;
 
 	red = (color >> 16) & 0xFF;
 	green = (color >> 8) & 0xFF;

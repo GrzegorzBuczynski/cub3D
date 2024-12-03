@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:15:42 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/10 21:41:11 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:08:25 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 # define COLOR_H
 
-# define FLOOR		COLOR_GRAY
-# define CEILING	COLOR_GRAY
 # define TEXT_COLOR			0xEAEAEA
 # define MENU_BACKGROUND	0x1E1E1E
 

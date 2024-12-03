@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 22:21:30 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:45:41 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init(t_game *game)
 	game->map.width = get_maps_max_row_width(game->map.grid);
 	game->map.height = get_map_height(game->map.grid);
 	game->params.fps = FPS;
-	game->params.limit_fps = 1;
+	game->params.limit_fps = 0;
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
 	game->rc.scale_color = 1;
