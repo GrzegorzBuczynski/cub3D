@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 21:08:51 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:22:15 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ void	init(t_game *game)
 	game->map.width = get_maps_max_row_width(game->map.grid);
 	game->map.height = get_map_height(game->map.grid);
 	game->params.fps = FPS;
-	game->params.limit_fps = 1;
+	game->params.limit_fps = true;
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
-	game->params.scale_color = 1;
-	game->player.init_dir = -1;
+	game->params.scale_color = true;
 }
 
 int	main(int ac, char **av)

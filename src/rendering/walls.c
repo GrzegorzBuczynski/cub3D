@@ -6,14 +6,11 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 21:13:39 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:19:34 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-#define HORIZONTAL 0
-#define VERTICAL 1
 
 typedef struct s_wall
 {
@@ -90,8 +87,7 @@ void	print_walls(t_game *game)
 			wall.factor.y = ((double)y - wall.y_start) / wall.height;
 			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
 					wall.factor.x);
-			color = scale_color(color, wall.perp_wall_dist
-				/ 20);
+			color = scale_color(color, wall.perp_wall_dist / 20);
 			put_pixel(&game->display, x, y, color);
 		}
 	}

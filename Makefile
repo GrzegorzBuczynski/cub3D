@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/03 15:24:46 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/03 21:25:57 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ SRCS =	main.c \
 		map/check_player.c \
 		map/init_map.c \
 		map/map_utils.c \
-		map/map.c \
 		map/minimap.c \
 		math/math_utils.c \
 		rendering/colors.c \

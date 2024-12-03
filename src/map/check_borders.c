@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_borders.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/02 21:59:28 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:24:32 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ int	check_borders(char **map)
 	fill_map_border(map_border, width, height);
 	copy_map_into_border(map_border, map);
 	// print for testing
-	print_map_nl(map_border);
+	// print_map_nl(map_border);
 	get_player_position(map, &p_pos);
 	map_border[p_pos.y][p_pos.x] = '2';
 	flood_fill(map_border, height, p_pos.y + 1, p_pos.x + 1);
 	if (map_border[0][0] == '2')
 		status = 0;
 	// print for testing
-	print_map_nl(map_border);
+	// print_map_nl(map_border);
 	free_map(map_border);
 	return (status);
 }

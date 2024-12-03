@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 21:03:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:21:23 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,11 @@
 # define ROTATION_SPEED 0.05
 # define FPS 60
 
+#define HORIZONTAL 0
+#define VERTICAL 1
+
 # define mapWidth 24
 # define mapHeight 24
-
-# define TEX_COUNT 8   // Number of textures
-# define TEX_WIDTH 64  // Texture width
-# define TEX_HEIGHT 64 // Texture heigh
-# define TEXWIDTH 512
-# define TEXHEIGHT 512
 
 # ifndef DEBUG
 #  define DEBUG 0
