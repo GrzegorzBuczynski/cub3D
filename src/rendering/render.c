@@ -72,10 +72,10 @@ static void	render_walls(t_game *game, int x, int y)
 {
 	unsigned int	color;
 
-	color = get_texture_pixel(game->rc.texture, game->rc.tex.y, game->rc.tex.x);
-	game->rc.tex.y = (int)game->rc.tex_pos & (game->rc.texture->height - 1);
+	color = get_texture_pixel(game->rc.tex_img, game->rc.tex.y, game->rc.tex.x);
+	game->rc.tex.y = (int)game->rc.tex_pos & (game->rc.tex_img->height - 1);
 	game->rc.tex_pos += game->rc.step_size;
-	game->rc.color = get_texture_pixel(game->rc.texture, game->rc.tex.x,
+	game->rc.color = get_texture_pixel(game->rc.tex_img, game->rc.tex.x,
 			game->rc.tex.y);
 	if (game->params.scale_color)
 		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist

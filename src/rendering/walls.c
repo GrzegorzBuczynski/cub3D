@@ -61,8 +61,8 @@ void calculate_wall_distance(t_game *game, t_wall *wall)
 
 void calculate_wall_height(t_game *game, t_wall *wall)
 {
-	wall->height = (int)(SCREEN_HEIGHT / game->rc.perp_wall_dist);
-	wall->y_start = (SCREEN_HEIGHT - game->rc.line_height) / 2;
+	wall->height = (int)(SCREEN_HEIGHT / wall->perp_wall_dist);
+	wall->y_start = (SCREEN_HEIGHT - wall->height) / 2;
 	wall->wall_end = SCREEN_HEIGHT / 2 + wall->height / 2;
 }
 
@@ -104,12 +104,12 @@ void	print_stripes(t_game *game)
 		calculate_wall_distance(game, &wall);
 		calculate_wall_height(game, &wall);
 		calculate_draw_limits(game, &wall);
-		game->rc.texture = get_texture(game);
+		game->rc.tex_img = get_texture(game);
 		y = game->rc.draw_start - 1;
 		while (++y < game->rc.draw_end)
 		{
 			wall.factor.y = (y - wall.y_start) / wall.height;
-			color = get_texture_pixel(game->rc.texture, wall.factor.y, wall.factor.x);
+			color = get_texture_pixel(game->rc.tex_img, wall.factor.y, wall.factor.x);
 			put_pixel(&game->display, x, y, color);
 		}
 	}

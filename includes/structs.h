@@ -60,7 +60,7 @@ typedef struct s_raycaster
 	double			tex_pos;
 	double			texstep;
 	// int					**texture;
-	t_image			*texture;
+	t_image			*tex_img;
 	double			time_ratio;
 	double			wall_x;
 	t_dvector		tex;
