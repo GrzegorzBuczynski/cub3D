@@ -144,7 +144,7 @@ void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 void			update_dir_n_plane(t_game *game);
 
-int				get_texture_pixel(t_image *texture, double tex_y, double tex_x);
+unsigned int				get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
 t_image			*get_texture(t_game *game);
 // minimap.c

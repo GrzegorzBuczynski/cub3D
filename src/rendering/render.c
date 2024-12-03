@@ -139,7 +139,7 @@ int	draw(t_game *game)
 	render_compass(game);
 	draw_minimap(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	// limit_fps(game);
+	limit_fps(game);
 	set_times(game);
 	move(game);
 	// debug(game);

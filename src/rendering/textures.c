@@ -26,7 +26,7 @@ void	trim_texture(t_image *image)
 		image->height = image->width * 0.75;
 }
 
-int	get_texture_pixel(t_image *texture, double tex_y, double tex_x)
+unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x)
 {
 	int				offset;
 	unsigned int	*pixel;
