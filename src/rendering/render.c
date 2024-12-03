@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 16:59:25 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:47:45 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,6 @@ void	draw_background(t_display *display)
 	draw_floor(display);
 }
 
-static void	render_walls(t_game *game, int x, int y)
-{
-	unsigned int	color;
-
-	color = get_texture_pixel(game->rc.tex_img, game->rc.tex.y, game->rc.tex.x);
-	game->rc.tex.y = (int)game->rc.tex_pos & (game->rc.tex_img->height - 1);
-	game->rc.tex_pos += game->rc.step_size;
-	game->rc.color = get_texture_pixel(game->rc.tex_img, game->rc.tex.x,
-			game->rc.tex.y);
-	if (game->params.scale_color)
-		game->rc.color = scale_color(game->rc.color, game->rc.perp_wall_dist
-				/ 20);
-	put_pixel(&game->display, x, y, game->rc.color);
-	// my_mlx_pixel_put(&game->display.img, x, y, game->rc.color);
-}
-
-
-
 void	limit_fps(t_game *game)
 {
 	unsigned int	delay_time;
@@ -127,6 +109,22 @@ void	set_times(t_game *game)
 	game->rc.time_ratio = game->time.frame_time / 16.0;
 }
 
+void	debug(t_game *game)
+{
+	printf("pos.y %d pox.x %d \n", (int)game->player.pos.y,
+		(int)game->player.pos.x);
+	printf("fps: %f\n", 1000.0 / game->time.frame_time);
+	printf("pos.x: %f pos.y%f angle %f player.dir.x:"
+			"%f playerdir.y	%f planedir.x %f planedir.y %f\n",
+			game->player.pos.x,
+			game->player.pos.y,
+			game->rc.angle,
+			game->player.dir.x,
+			game->player.dir.y,
+			game->player.plane.y,
+			game->player.plane.x);
+}
+
 int	draw(t_game *game)
 {
 	t_display	*display;
@@ -141,14 +139,8 @@ int	draw(t_game *game)
 	limit_fps(game);
 	set_times(game);
 	move(game);
-	// printf("pos.y %d pox.x %d \n",
-		// (int)game->player.pos.y,(int)game->player.pos.x);
-		// printf("fps: %f\n", 1000.0 / game->time.frame_time);
-		// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y
-		// %f planedir.x %f planedir.y %f\n", game->player.pos.x,
-		// game->player.pos.y, game->rc.angle, game->player.dir.x,
-		// game->player.dir.y, game->player.plane.y, game->player.plane.x);
-		// return (0);
+	// debug(game);
+	return (0);
 }
 
 /*

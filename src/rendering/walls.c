@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 19:34:47 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:42:38 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,11 @@
 
 typedef struct s_wall
 {
-	t_dvector	pos;
 	int			height;
 	double		perp_wall_dist;
 	int			y_start;
-	int			wall_end;
-	int			wall_y;
+	int			y_end;
 	t_dvector	factor;
-
-	// double	tex_y;
 }				t_wall;
 
 void	calculate_wall_x(t_game *game, t_wall *wall)
@@ -57,7 +53,7 @@ void	calculate_wall_height(t_game *game, t_wall *wall)
 {
 	wall->height = (int)(SCREEN_HEIGHT / wall->perp_wall_dist);
 	wall->y_start = (SCREEN_HEIGHT - wall->height) / 2;
-	wall->wall_end = SCREEN_HEIGHT / 2 + wall->height / 2;
+	wall->y_end = SCREEN_HEIGHT / 2 + wall->height / 2;
 }
 
 void	calculate_draw_limits(t_game *game, t_wall *wall)
@@ -65,19 +61,10 @@ void	calculate_draw_limits(t_game *game, t_wall *wall)
 	game->rc.draw_start = wall->y_start;
 	if (game->rc.draw_start < 0)
 		game->rc.draw_start = 0;
-	game->rc.draw_end = wall->wall_end;
+	game->rc.draw_end = wall->y_end;
 	if (game->rc.draw_end > SCREEN_HEIGHT)
 		game->rc.draw_end = SCREEN_HEIGHT - 1;
 }
-
-// void	calculate_texture_coordinates(t_game *game, t_wall *wall)
-// {
-
-// 	// game->rc.step_size = 1.0 * game->rc.texture->height
-		// / game->rc.line_height;
-// 	// game->rc.tex_pos = (game->rc.draw_start - SCREEN_HEIGHT / 2
-// 	// 		+ game->rc.line_height / 2) * game->rc.step_size;
-// }
 
 void	print_stripes(t_game *game)
 {
@@ -108,15 +95,6 @@ void	print_stripes(t_game *game)
 	}
 }
 
-// render_walls(game, x, y);
-// if (game->rc.draw_start < 0)
-// 	wall_start = - game->rc.draw_start;
-// else
-// 	wall_start = game->rc.draw_start;
-// if (game->rc.draw_end >= SCREEN_HEIGHT)
-// 	wall_end = SCREEN_HEIGHT - 1;
-// else
-// 	wall_end = game->rc.draw_end;
 
 void	set_ray_steps(t_game *game)
 {
