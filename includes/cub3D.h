@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 15:42:02 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:02:50 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,8 @@
 # define WALL_FACTOR 2
 # define FOV 66.0 // Field of view in degrees
 # define INITIAL_ROTATION 0.0
-# define INITIAL_PLANE__SIZE 0.66
 # define NORTH -1
-# define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
-# define STEP_SIZE 0.1
 # define DISTANCE 0.2
 # define MOVE_SPEED 0.05
 # define ROTATION_SPEED 0.05

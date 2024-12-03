@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 19:42:38 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:55:12 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,12 @@ void	print_stripes(t_game *game)
 	}
 }
 
-
 void	set_ray_steps(t_game *game)
 {
-	game->rc.hit = 0;
-	while (game->rc.hit == 0)
+	int	hit;
+
+	hit = 0;
+	while (hit == 0)
 	{
 		if (game->rc.lenght_to.y < game->rc.lenght_to.x)
 		{
@@ -113,7 +114,7 @@ void	set_ray_steps(t_game *game)
 			game->rc.map.y += game->rc.step.x;
 			game->rc.side = 1;
 		}
-		if (game->map.grid[game->rc.map.x][game->rc.map.y] > '0')
-			game->rc.hit = 1;
+		if (game->map.grid[game->rc.map.x][game->rc.map.y] != '0')
+			hit = 1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 15:21:53 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:11:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 // G) SCORE?
 // H) INTRO?
 // I) WIDTH X HEIGHT PROPORTIONAL
-
 
 void	init(t_game *game)
 {
@@ -40,6 +39,8 @@ void	init(t_game *game)
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
 	game->params.scale_color = 1;
+	game->player.init_plane = FOV / 100;
+	game->player.init_dir = -1;
 }
 
 int	main(int ac, char **av)
@@ -49,10 +50,8 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (ft_error(1, "Error: Input a map in format *.cub.\n"));
 	ft_bzero(&game, sizeof(t_game));
-	game.rc.game = &game;
 	handle_input(av, &game);
 	init(&game);
 	mlx_loop(game.display.mlx);
 	return (0);
 }
-
