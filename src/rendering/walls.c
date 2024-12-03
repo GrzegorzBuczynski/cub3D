@@ -36,12 +36,12 @@ typedef struct s_wall
 void	calculate_wall_x(t_game *game, t_wall *wall)
 {
 	if (game->rc.side == 0)
-		wall->factor.x = game->player.pos.x + game->rc.perp_wall_dist
+		wall->factor.x = game->player.pos.x + wall->perp_wall_dist
 			* game->rc.raydir.x;
 	else
-		wall->factor.x = game->player.pos.y + game->rc.perp_wall_dist
+		wall->factor.x = game->player.pos.y + wall->perp_wall_dist
 			* game->rc.raydir.y;
-	wall->factor.x -= floor(game->rc.wall_x);
+	wall->factor.x -= floor(wall->factor.x);
 	if (game->rc.side == 0 && game->rc.raydir.y > 0)
 		wall->factor.x = 1 - wall->factor.x;
 	if (game->rc.side == 1 && game->rc.raydir.x < 0)
