@@ -142,13 +142,13 @@ int	draw(t_game *game)
 	set_times(game);
 	move(game);
 	// printf("pos.y %d pox.x %d \n",
-		(int)game->player.pos.y,(int)game->player.pos.x);
+		// (int)game->player.pos.y,(int)game->player.pos.x);
 		// printf("fps: %f\n", 1000.0 / game->time.frame_time);
 		// printf("pos.x: %f pos.y%f angle %f player.dir.x: %f playerdir.y
-		%f planedir.x %f planedir.y %f\n", game->player.pos.x,
-		game->player.pos.y, game->rc.angle, game->player.dir.x,
-		game->player.dir.y, game->player.plane.y, game->player.plane.x);
-		return (0);
+		// %f planedir.x %f planedir.y %f\n", game->player.pos.x,
+		// game->player.pos.y, game->rc.angle, game->player.dir.x,
+		// game->player.dir.y, game->player.plane.y, game->player.plane.x);
+		// return (0);
 }
 
 /*

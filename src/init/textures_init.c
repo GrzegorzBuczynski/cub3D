@@ -43,7 +43,7 @@ t_image	parse_texture(char *path)
 		ft_panic("Error.\nFailed to allocate memory for texture.\n", 1);
 	ft_memcpy(result.pixel_data, pixel_data, result.width * result.height
 		* result.bpp / 8);
-	trim_texture(result);
+	trim_texture(&result);
 	mlx_destroy_image(mlx, image);
 	mlx_destroy_display(mlx);
 	return (result);

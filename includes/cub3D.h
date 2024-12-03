@@ -140,13 +140,12 @@ void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 void			update_dir_n_plane(t_game *game);
 
-void			my_mlx_pixel_put(t_image *image, int x, int y, int color);
-int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
+int				get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
-t_image			*get_texture_directions(t_game *game);
+t_image			*get_texture(t_game *game);
 // minimap.c
 void			draw_minimap(t_game *game);
-void			put_pixel(t_display *display, int x, int y, int color);
+void			put_pixel(t_display *display, int x, int y, unsigned int color);
 
 // mlx_safe.c mlx wrapper
 void			*init_mlx_safe(void);

@@ -43,7 +43,7 @@ int	get_texture_pixel(t_image *texture, double tex_y, double tex_x)
 	return (*pixel);
 }
 
-t_image	*get_texture_directions(t_game *game)
+t_image	*get_texture(t_game *game)
 {
 	if (game->rc.side == 0)
 	{

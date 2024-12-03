@@ -12,7 +12,7 @@
 
 #include "../includes/cub3D.h"
 
-void put_pixel(t_display *display, int x, int y, int color)
+void put_pixel(t_display *display, int x, int y, unsigned int color)
 {
 	int i;
 	int *image;

@@ -19,86 +19,103 @@
 
 typedef struct s_wall
 {
-	int		wall_start;
-	int		wall_end;
-	int		wall_height;
-	int		wall_y;
+	t_dvector	pos;
+	int			height;
+	double	perp_wall_dist;
+	int			y_start;
+	int			wall_end;
+	int			wall_y;
+	t_dvector	factor;
+
 	// double	tex_y;
 }			t_wall;
 
-typedef struct t_texture
-{	
-	t_dvector	pos;
-	t_image		*image;
-	
-}		t_texture;
 
 
-void	calculate_wall_parameters(t_game *game)
+
+void	calculate_wall_x(t_game *game, t_wall *wall)
 {
 	if (game->rc.side == 0)
-		game->rc.perp_wall_dist = (game->rc.map.x - game->player.pos.y + (1
-					- game->rc.step.y) / 2) / game->rc.raydir.y + 0.0001;
-	else
-		game->rc.perp_wall_dist = (game->rc.map.y - game->player.pos.x + (1
-					- game->rc.step.x) / 2) / game->rc.raydir.x + 0.0001;
-	game->rc.line_height = (int)(SCREEN_HEIGHT / game->rc.perp_wall_dist);
-	game->rc.draw_start = (SCREEN_HEIGHT - game->rc.line_height) / 2;
-	game->rc.draw_end = game->rc.line_height / 2 + SCREEN_HEIGHT / 2;
-
-
-	
-	// if (game->rc.draw_start < 0)
-	// 	game->rc.draw_start = 0;
-	// game->rc.draw_end = SCREEN_HEIGHT - game->rc.draw_start;
-}
-
-void	calculate_texture_coordinates(t_game *game)
-{
-	if (game->rc.side == 0)
-		game->rc.wall_x = game->player.pos.x + game->rc.perp_wall_dist
+		wall->factor.x = game->player.pos.x + game->rc.perp_wall_dist
 			* game->rc.raydir.x;
 	else
-		game->rc.wall_x = game->player.pos.y + game->rc.perp_wall_dist
+		wall->factor.x = game->player.pos.y + game->rc.perp_wall_dist
 			* game->rc.raydir.y;
-	game->rc.wall_x -= floor(game->rc.wall_x);
-	game->rc.tex.x = game->rc.wall_x;
+	wall->factor.x -= floor(game->rc.wall_x);
 	if (game->rc.side == 0 && game->rc.raydir.y > 0)
-		game->rc.tex.x = 1 - game->rc.tex.x ;
+		wall->factor.x = 1 - wall->factor.x;
 	if (game->rc.side == 1 && game->rc.raydir.x < 0)
-		game->rc.tex.x = 1 - game->rc.tex.x;
-	// game->rc.step_size = 1.0 * game->rc.texture->height / game->rc.line_height;
-	// game->rc.tex_pos = (game->rc.draw_start - SCREEN_HEIGHT / 2
-	// 		+ game->rc.line_height / 2) * game->rc.step_size;
+		wall->factor.x = 1 - wall->factor.x;
 }
+
+
+void calculate_wall_distance(t_game *game, t_wall *wall)
+{
+	if (game->rc.side == 0)
+		wall->perp_wall_dist = (game->rc.map.x - game->player.pos.y + (1
+					- game->rc.step.y) / 2) / game->rc.raydir.y + 0.0001;
+	else
+		wall->perp_wall_dist = (game->rc.map.y - game->player.pos.x + (1
+					- game->rc.step.x) / 2) / game->rc.raydir.x + 0.0001;
+}
+
+void calculate_wall_height(t_game *game, t_wall *wall)
+{
+	wall->height = (int)(SCREEN_HEIGHT / game->rc.perp_wall_dist);
+	wall->y_start = (SCREEN_HEIGHT - game->rc.line_height) / 2;
+	wall->wall_end = SCREEN_HEIGHT / 2 + wall->height / 2;
+}
+
+void calculate_draw_limits(t_game *game, t_wall *wall)
+{	
+	game->rc.draw_start = wall->y_start;
+	if (game->rc.draw_start < 0)
+		game->rc.draw_start = 0;
+	game->rc.draw_end = wall->wall_end;
+	if (game->rc.draw_end > SCREEN_HEIGHT)
+		game->rc.draw_end = SCREEN_HEIGHT -1;
+	
+}
+
+// void	calculate_texture_coordinates(t_game *game, t_wall *wall)
+// {
+
+
+// 	// game->rc.step_size = 1.0 * game->rc.texture->height / game->rc.line_height;
+// 	// game->rc.tex_pos = (game->rc.draw_start - SCREEN_HEIGHT / 2
+// 	// 		+ game->rc.line_height / 2) * game->rc.step_size;
+// }
 
 void	print_stripes(t_game *game)
 {
-	int			y;
-	int			x;
-	int			wall_start;
-	int			wall_end;
-	t_wall		wall;
-	t_texture	tex;
+	int				x;
+	int 			y;
+	unsigned int	color;
+	t_wall			wall;
 
-	tex.pos.y = wall.wall_y / wall.wall_height;
+
 	x = -1;
 	while (++x < SCREEN_WIDTH)
 	{
 		ray_direction_calculate(game, x);
 		calculate_step_and_dist(game);
 		set_ray_steps(game);
-		calculate_wall_parameters(game);
-		game->rc.texture = get_texture_directions(game);
-		calculate_texture_coordinates(game);
+		calculate_wall_x(game, &wall);
+		calculate_wall_distance(game, &wall);
+		calculate_wall_height(game, &wall);
+		calculate_draw_limits(game, &wall);
+		game->rc.texture = get_texture(game);
 		y = game->rc.draw_start - 1;
 		while (++y < game->rc.draw_end)
 		{
-			render_walls(game, x, y);
+			wall.factor.y = (y - wall.y_start) / wall.height;
+			color = get_texture_pixel(game->rc.texture, wall.factor.y, wall.factor.x);
+			put_pixel(&game->display, x, y, color);
 		}
 	}
 }
 
+			// render_walls(game, x, y);
 // if (game->rc.draw_start < 0)
 // 	wall_start = - game->rc.draw_start;
 // else
