@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 18:06:58 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:48:43 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@
 # define false 0
 
 // Minimap
-# define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
-# define MINIMAP_RADIUS 5
-// Range of the minimap (5 tiles in each direction)
+# define MINIMAP_SCALE 8
+# define MINIMAP_PADDING_X 20
+# define MINIMAP_PADDING_Y 20
+# define PLAYER_RADIUS 10
+# define FLOOR_COLOR COLOR_BROWN
+# define WALL_COLOR COLOR_AQUA
+# define PLAYER_COLOR COLOR_GOLD
 
 // Constants
 # define SCREEN_WIDTH 1400

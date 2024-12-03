@@ -6,25 +6,11 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 19:31:30 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:08:23 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-#define MINIMAP_SCALE 8
-#define MINIMAP_PADDING_X 20
-#define MINIMAP_PADDING_Y 20
-#define PLAYER_RADIUS 10
-#define FLOOR_COLOR COLOR_BROWN
-#define WALL_COLOR COLOR_AQUA
-#define PLAYER_COLOR COLOR_GOLD
-
-typedef struct s_square
-{
-	int	size;
-	int	color;
-}		t_square;
 
 void	put_pixel2(t_image *img, int y, int x, int color)
 {
