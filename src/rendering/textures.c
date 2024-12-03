@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:13:11 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 15:29:29 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:38:31 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	get_texture_pixel(t_image *texture, double tex_y, double tex_x)
 	if (!texture || !texture->pixel_data || tex_x < 0 || tex_y < 0 || tex_x > 1
 		|| tex_y > 1)
 		return (0);
-	x = (int)tex_x * texture->width;
-	y = (int)tex_y * texture->height;
+	x = tex_x * texture->width;
+	y = tex_y * texture->height;
 	offset = y * texture->line_length + x * (texture->bpp / 8);
 	pixel = (unsigned int *)(texture->pixel_data + offset);
 	return (*pixel);
