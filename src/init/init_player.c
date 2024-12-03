@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:28:56 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 20:07:35 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:08:58 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void init_player_n_plane_direction(t_game *game)
 
 void	init_player(t_game *game)
 {
+	game->player.init_plane = FOV / 100;
 	find_player_on_map(game);
 	init_player_n_plane_direction(game);
 }

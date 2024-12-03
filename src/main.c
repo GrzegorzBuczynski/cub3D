@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 21:05:59 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:08:51 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 void	init(t_game *game)
 {
-	game->player.init_plane = FOV / 100;
 	init_player(game);
 	// game->player.pos.x = 9;
 	// game->player.pos.y = 9;
