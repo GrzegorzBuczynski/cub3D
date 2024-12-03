@@ -6,11 +6,13 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 21:16:44 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:49:14 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
+
+#define POWER 7
 
 static void	draw_ceiling(unsigned int color, t_display *display)
 {
@@ -25,7 +27,7 @@ static void	draw_ceiling(unsigned int color, t_display *display)
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)pow(i, 3) / pow(SCREEN_HEIGHT/2, 3));
+		factor = ((double)pow(i, POWER) / pow(SCREEN_HEIGHT/2, POWER));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -50,8 +52,8 @@ static void	draw_floor(unsigned int color, t_display *display)
 	i = SCREEN_HEIGHT;
 	while (i > SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)pow((SCREEN_HEIGHT - 1 - i), 3) / pow(SCREEN_HEIGHT
-					/ 2, 3));
+		factor = ((double)pow((SCREEN_HEIGHT - 1 - i), POWER) / pow(SCREEN_HEIGHT
+					/ 2, POWER));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -137,7 +139,7 @@ int	draw(t_game *game)
 	render_compass(game);
 	draw_minimap(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
-	limit_fps(game);
+	// limit_fps(game);
 	set_times(game);
 	move(game);
 	// debug(game);

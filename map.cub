@@ -1,12 +1,9 @@
-NO ./textures/walls1/wall_north.xpm
-SO ./textures/walls1/wall_south.xpm
-WE ./textures/walls1/wall_west.xpm
-EA ./textures/walls1/wall_east.xpm
+NO ./textures/walls1/biala.xpm
+SO ./textures/walls1/czarna.xpm
+WE ./textures/walls1/wall_north.xpm
+EA ./textures/walls1/brick.xpm
 
-/NO ./textures/walls2/wallE.xpm
-/SO ./textures/walls2/wallE.xpm
-/WE ./textures/walls2/wallE.xpm
-/EA ./textures/walls2/wallE.xpm
+
 
 
 F 220,100,0

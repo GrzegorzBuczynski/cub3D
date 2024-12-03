@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 21:21:23 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:44:31 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@
 # define ROTATION_SPEED 0.05
 # define FPS 60
 
-#define HORIZONTAL 0
-#define VERTICAL 1
+# define HORIZONTAL 0
+# define VERTICAL 1
 
 # define mapWidth 24
 # define mapHeight 24
@@ -173,7 +173,7 @@ void			render_compass(t_game *game);
 void			put_image_to_image(t_display *display, t_image *image, int y,
 					int x);
 t_image			parse_texture2(char *path);
-t_image			cut_image(t_image *image, double factor, int width);
+t_image			cut_image(t_image *image, double factor, int width, int *data);
 
 int				parse_color(char *str);
 void			trim_texture(t_image *image);
