@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 20:56:28 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:03:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int				get_color(t_vector current, t_vector start, t_vector end,
 // draw.c --
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void			draw_line(t_line *line, t_display *data);
-void			print_stripes(t_game *data);
+void			print_walls(t_game *data);
 double			get_distance(t_game *data, double degree);
 void			generate_textures(int ***textures, int texWidth, int texHeight);
 // void			draw_background(t_display *data);

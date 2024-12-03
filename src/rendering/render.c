@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 20:59:18 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:03:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ int	draw(t_game *game)
 	void		*mlx_img;
 
 	display = &game->display;
-	draw_background(display);
-	print_stripes(game);
+	draw_background(game, display);
+	print_walls(game);
 	render_compass(game);
 	draw_minimap(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);

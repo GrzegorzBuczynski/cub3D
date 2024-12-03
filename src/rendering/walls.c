@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 19:55:12 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:03:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	calculate_draw_limits(t_game *game, t_wall *wall)
 		game->rc.draw_end = SCREEN_HEIGHT - 1;
 }
 
-void	print_stripes(t_game *game)
+void	print_walls(t_game *game)
 {
 	int				x;
 	int				y;

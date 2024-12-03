@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 20:57:30 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:05:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 void	init(t_game *game)
 {
+	game->player.init_plane = FOV / 100;
 	init_player(game);
 	// game->player.pos.x = 9;
 	// game->player.pos.y = 9;
@@ -39,7 +40,6 @@ void	init(t_game *game)
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
 	game->params.scale_color = 1;
-	game->player.init_plane = FOV / 100;
 	game->player.init_dir = -1;
 }
 
