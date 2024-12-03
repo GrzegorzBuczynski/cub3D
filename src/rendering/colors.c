@@ -20,9 +20,9 @@
  */
 unsigned int	scale_color(unsigned int color, double factor)
 {
-	unsigned int	red;
-	unsigned int	green;
-	unsigned int	blue;
+	int	red;
+	int	green;
+	int	blue;
 
 	red = (color >> 16) & 0xFF;
 	green = (color >> 8) & 0xFF;

@@ -36,7 +36,7 @@ void	init(t_game *game)
 	game->map.width = get_maps_max_row_width(game->map.grid);
 	game->map.height = get_map_height(game->map.grid);
 	game->params.fps = FPS;
-	game->params.limit_fps = 0;
+	game->params.limit_fps = 1;
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
 	game->rc.scale_color = 1;

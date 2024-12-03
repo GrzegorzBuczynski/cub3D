@@ -44,7 +44,7 @@
 
 // Constants
 # define SCREEN_WIDTH 1400
-# define SCREEN_HEIGHT 600
+# define SCREEN_HEIGHT 800
 # define WALL_FACTOR 2
 # define FOV 66.0 // Field of view in degrees
 # define INITIAL_ROTATION 0.0
@@ -53,7 +53,7 @@
 # define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
 # define STEP_SIZE 0.1
-# define DISTANCE 0.5
+# define TO_WALL_DISTANCE 0.3
 # define MOVE_SPEED 0.05
 # define ROTATION_SPEED 0.05
 # define FPS 60

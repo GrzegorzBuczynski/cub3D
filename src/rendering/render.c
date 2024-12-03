@@ -23,9 +23,9 @@ static void	draw_ceiling(unsigned int color, t_display *display)
 	image = (int *)(display->img.pixel_data);
 	color_base = color;
 	i = 0;
-	while (i < SCREEN_HEIGHT / 2)
+	while (i < SCREEN_HEIGHT /2)
 	{
-		factor = ((double)(i * i) / pow(SCREEN_HEIGHT / 2, 2));
+		factor = ((double)(i) / pow(0.75 * SCREEN_HEIGHT, 1));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -50,8 +50,7 @@ static void	draw_floor(unsigned int color, t_display *display)
 	i = SCREEN_HEIGHT;
 	while (i > SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)(SCREEN_HEIGHT - 1 - i) * (SCREEN_HEIGHT - 1 - i)
-				/ pow(SCREEN_HEIGHT / 2, 2));
+		factor = ((double)(SCREEN_HEIGHT - 1 - i) / pow(0.75 * SCREEN_HEIGHT, 1));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
