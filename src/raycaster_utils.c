@@ -6,36 +6,12 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/27 19:49:52 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:01:49 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/cub3D.h"
 
-void	my_mlx_pixel_put(t_image *image, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = image->pixel_data + (y * image->line_length + x * (image->bpp
-				/ 8));
-	*(unsigned int *)dst = color;
-}
-
-int	get_texture_pixel(t_image *texture, int tex_x, int tex_y)
-{
-	int				offset;
-	unsigned int	*pixel;
-
-	if (!texture || !texture->pixel_data || tex_x < 0 || tex_y < 0
-		|| tex_x >= texture->width || tex_y >= texture->height)
-		return (0);
-	offset = tex_y * (texture->line_length / (texture->bpp / 8))
-		+ tex_x;
-	pixel = (unsigned int *)(texture->pixel_data + offset * (texture->bpp
-				/ 8));
-	return (*pixel);
-}
 
 void	add_character_plane(t_game *game)
 {
@@ -64,21 +40,45 @@ void	add_character_plane(t_game *game)
 	}
 }
 
-t_image	*get_texture_directions(t_game *game)
+void	ray_direction_calculate(t_game *game, int x)
 {
-	if (game->rc.side == 0)
+	game->rc.camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
+	game->rc.raydir.y = game->player.dir.y + game->player.plane.y
+		* game->rc.camera_x;
+	game->rc.raydir.x = game->player.dir.x + game->player.plane.x
+		* game->rc.camera_x;
+	game->rc.map.x = (int)game->player.pos.y;
+	game->rc.map.y = (int)game->player.pos.x;
+	game->rc.delta_dist.y = fabs(1 / game->rc.raydir.y);
+	game->rc.delta_dist.x = fabs(1 / game->rc.raydir.x);
+}
+
+void	calculate_step_and_dist(t_game *game)
+{
+	if (game->rc.raydir.y < 0)
 	{
-		if (game->rc.raydir.y > 0)
-			return (&game->map.so);
-		else
-			return (&game->map.no);
+		game->rc.step.y = -1;
+		game->rc.lenght_to.y = (game->player.pos.y - game->rc.map.x)
+			* game->rc.delta_dist.y;
 	}
 	else
 	{
-		if (game->rc.raydir.x > 0)
-			return (&game->map.ea);
-		else
-			return (&game->map.we);
+		game->rc.step.y = 1;
+		game->rc.lenght_to.y = (game->rc.map.x + 1.0 - game->player.pos.y)
+			* game->rc.delta_dist.y;
+	}
+	if (game->rc.raydir.x < 0)
+	{
+		game->rc.step.x = -1;
+		game->rc.lenght_to.x = (game->player.pos.x - game->rc.map.y)
+			* game->rc.delta_dist.x;
+	}
+	else
+	{
+		game->rc.step.x = 1;
+		game->rc.lenght_to.x = (game->rc.map.y + 1.0 - game->player.pos.x)
+			* game->rc.delta_dist.x;
 	}
 }
+
 

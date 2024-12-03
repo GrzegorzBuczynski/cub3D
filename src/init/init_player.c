@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:28:56 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/02 16:13:29 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:07:35 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void find_player_on_map(t_game *game)
 
 void init_player_n_plane_direction(t_game *game)
 {
-	game->player.ini_plane = 0.66;
-	game->player.ini_dir = -1;
 	if (game->player.direction == 'N')
 	{
 		game->rc.angle = M_PI/2;
@@ -74,27 +72,3 @@ void	init_player(t_game *game)
 	init_player_n_plane_direction(game);
 }
 
-
-// void	init_player2(t_data *data)
-// {
-// 	data->angle = 0;
-// 	data->initial_plane = INITIAL_PLANE__SIZE;
-// 	data->initial_playerdir = INITIAL_PLAYERDIR;
-// 	data->playerdir.x = data->initial_playerdir * sin(data->angle * M_PI / 180);
-// 	data->playerdir.y = data->initial_playerdir * cos(data->angle * M_PI / 180);
-// 	data->plane.x = data->initial_plane * cos(data->angle * M_PI / 180);
-// 	data->plane.y = data->initial_plane * sin(data->angle * M_PI / 180);
-// 	data->time = 0;
-// 	data->oldTime = 0;
-// 	data->game->player.pos.x = 10.0;
-// 	data->game->player.pos.y = 11.5;
-// 	data->game->player.step_size = STEP_SIZE;
-// 	data->game->player.step_side_side.y = data->game->player.step_size
-// 		* sin(data->angle * M_PI / 180);
-// 	data->game->player.step_side_side.x = data->game->player.step_size
-// 		* cos(data->angle * M_PI / 180);
-// 	data->game->player.step_top_down.y = data->game->player.step_size
-// 		* cos(data->angle * M_PI / 180);
-// 	data->game->player.step_top_down.x = -data->game->player.step_size
-// 		* sin(data->angle * M_PI / 180);
-// }

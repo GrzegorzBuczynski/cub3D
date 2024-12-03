@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 19:48:43 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:56:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@
 # define FLOOR_COLOR COLOR_BROWN
 # define WALL_COLOR COLOR_AQUA
 # define PLAYER_COLOR COLOR_GOLD
+# define MINIMAP_TILE_SIZE 10 // Size of each tile on the minimap in pixels
+# define MINIMAP_RADIUS 5
+// Range of the minimap (5 tiles in each direction)
 
 // Constants
 # define SCREEN_WIDTH 1400
@@ -52,9 +55,7 @@
 # define WALL_FACTOR 2
 # define FOV 66.0 // Field of view in degrees
 # define INITIAL_ROTATION 0.0
-# define INITIAL_PLANE__SIZE 0.66
 # define NORTH -1
-# define INITIAL_PLAYERDIR NORTH
 # define TILE_SIZE 64
 # define STEP_SIZE 0.1
 # define TO_WALL_DISTANCE 0.3
@@ -122,7 +123,7 @@ int				get_color(t_vector current, t_vector start, t_vector end,
 // draw.c --
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void			draw_line(t_line *line, t_display *data);
-void			print_walls(t_game *data);
+void			print_stripes(t_game *data);
 double			get_distance(t_game *data, double degree);
 void			generate_textures(int ***textures, int texWidth, int texHeight);
 // void			draw_background(t_display *data);
@@ -146,13 +147,12 @@ void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 void			update_dir_n_plane(t_game *game);
 
-void			my_mlx_pixel_put(t_image *image, int x, int y, int color);
-int				get_texture_pixel(t_image *texture, int x, int y);
+int				get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
-t_image			*get_texture_directions(t_game *game);
+t_image			*get_texture(t_game *game);
 // minimap.c
 void			draw_minimap(t_game *game);
-void			put_pixel(t_display *display, int x, int y, int color);
+void			put_pixel(t_display *display, int x, int y, unsigned int color);
 
 // mlx_safe.c mlx wrapper
 void			*init_mlx_safe(void);
@@ -179,4 +179,6 @@ t_image			parse_texture2(char *path);
 t_image			cut_image(t_image *image, double factor, int width);
 
 int				parse_color(char *str);
+void			trim_texture(t_image *image);
+
 #endif

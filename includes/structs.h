@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 19:29:59 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:56:51 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,35 +36,18 @@ typedef struct s_image
 typedef struct s_raycaster
 {
 	double			angle;
-	int				*buffer;
-	int				color;
 	double			camera_x;
 	t_dvector		delta_dist;
 	int				draw_start;
 	int				draw_end;
-	struct s_game	*game;
-	int				hit;
-	double			initial_plane;
-	double			initial_playerdir;
 	t_dvector		lenght_to;
-	int				line_height;
 	t_vector		map;
-	double			perp_wall_dist;
-	int				pitch;
 	t_dvector		raydir;
 	int				side;
 	t_dvector		step;
-	double			step_size;
-	int				scale_color;
-	int				tex_x;
-	int				texNum;
-	double			tex_pos;
-	double			texstep;
-	// int					**texture;
-	t_image			*texture;
+	t_image			*tex_img;
 	double			time_ratio;
-	double			wall_x;
-	t_vector		tex;
+	t_dvector		tex;
 
 }					t_raycaster;
 
@@ -78,14 +61,11 @@ typedef struct s_line
 typedef struct s_player
 {
 	char			direction;
-	double			ini_dir;
-	double			ini_plane;
+	double			init_plane;
+	double			init_dir;
 	t_dvector		dir;
-	t_dvector		pos;
 	t_dvector		plane;
-	double			step_size;
-	t_dvector		step_side_side;
-	t_dvector		step_top_down;
+	t_dvector		pos;
 }					t_player;
 
 typedef struct s_mouse
@@ -178,6 +158,7 @@ typedef struct s_params
 	int				limit_fps;
 	double			speed_ratio;
 	int				jump;
+	int				scale_color;
 }					t_params;
 
 typedef struct s_game
