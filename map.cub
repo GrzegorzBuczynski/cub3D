@@ -8,6 +8,15 @@ SO ./textures/walls1/code.xpm
 WE ./textures/walls1/white_brick.xpm
 EA ./textures/walls1/brick.xpm
 
+ANIMATION B 8 
+./textures/animation/wallking_disk/disk1.xpm
+./textures/animation/wallking_disk/disk2.xpm
+./textures/animation/wallking_disk/disk3.xpm
+./textures/animation/wallking_disk/disk4.xpm
+./textures/animation/wallking_disk/disk5.xpm
+./textures/animation/wallking_disk/disk6.xpm
+./textures/animation/wallking_disk/disk7.xpm
+./textures/animation/wallking_disk/disk8.xpm
 
 F 220,100,0
 C 225,30,0

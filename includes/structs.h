@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 14:25:43 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:43:29 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,14 @@ typedef struct s_params
 	int				scale_color;
 }					t_params;
 
+typedef struct s_animation
+{
+	int		nb_frames;
+	char	type;
+	t_image	image[100];
+
+}			t_animation;
+
 typedef struct s_game
 {
 	char			**array;
@@ -174,4 +182,5 @@ typedef struct s_game
 	t_player		player;
 	t_time			time;
 	t_params		params;
+	t_animation		animation[20];
 }					t_game;
