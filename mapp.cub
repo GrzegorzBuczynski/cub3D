@@ -1,0 +1,20 @@
+/NO ./textures/walls1/biala.xpm
+/SO ./textures/walls1/code.xpm
+/WE ./textures/walls1/wall_north.xpm
+/EA ./textures/walls1/brick.xpm
+
+NO ./textures/walls1/gray_bumpy_wall.xpm
+SO ./textures/walls1/code.xpm
+WE ./textures/walls1/white_brick.xpm
+EA ./textures/walls1/brick.xpm
+
+
+F 220,100,0
+C 225,30,0
+
+
+111111111111111111111111111111111111111111111111
+100000000000000000000000000000000000000000000001
+100000N00000000000000000000000000000000000000001
+111111111111111111111111111111111111111111111111
+
