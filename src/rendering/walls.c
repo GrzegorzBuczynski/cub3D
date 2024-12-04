@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 21:19:34 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:46:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	set_ray_steps(t_game *game)
 			game->rc.map.y += game->rc.step.x;
 			game->rc.side = 1;
 		}
-		if (game->map.grid[game->rc.map.x][game->rc.map.y] != '0')
+		if (game->map.grid[game->rc.map.x][game->rc.map.y] == '1')
 			hit = 1;
 	}
 }

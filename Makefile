@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/03 21:25:57 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/04 12:45:25 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS =	main.c \
 		rendering/colors.c \
 		rendering/walls.c \
 		rendering/draw.c \
+		rendering/main_background.c \
 		rendering/render.c \
 		rendering/textures.c \
 		utils/time.c \
