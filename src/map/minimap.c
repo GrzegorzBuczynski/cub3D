@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 19:30:22 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:49:09 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,47 @@ void	draw_minimap_background(t_image *image, int y, int x,
 	}
 }
 
+void	set_player_position(t_game *game, t_vector *p_pos)
+{
+	p_pos->x = (int)game->player.pos.x;
+	p_pos->y = (int)game->player.pos.y;
+}
+
+void	adjust_map_position(t_game *game, t_vector *map_pos, t_vector *off)
+{
+	if (map_pos->y <= PLAYER_RADIUS)
+		map_pos->y = 0;
+	else
+		map_pos->y = map_pos->y - PLAYER_RADIUS;
+	off->y = map_pos->y + (2 * PLAYER_RADIUS);
+	if (map_pos->y + ((2 * PLAYER_RADIUS) + 1) >= game->map.height)
+		map_pos->y = game->map.height - ((2 * PLAYER_RADIUS) + 1);
+}
+
+void	adjust_horizontal_map_position(t_game *game, t_vector *p_pos,
+		t_vector *map_pos, t_vector *off)
+{
+	if (p_pos->x <= PLAYER_RADIUS)
+		map_pos->x = 0;
+	else
+		map_pos->x = p_pos->x - PLAYER_RADIUS;
+	off->x = map_pos->x + (2 * PLAYER_RADIUS) + 1;
+	if (map_pos->x + ((2 * PLAYER_RADIUS) + 1) >= game->map.width)
+		map_pos->x = game->map.width - ((2 * PLAYER_RADIUS) + 1);
+}
+
+void	draw_map_tile(t_game *game, t_vector map_pos, t_vector render_pos)
+{
+	if ((map_pos.y >= 0 && map_pos.y < game->map.height) && (map_pos.x >= 0
+			&& map_pos.x < game->map.width))
+	{
+		if (game->map.grid[map_pos.y][map_pos.x] == '1')
+			draw_wall(&game->display.img, render_pos.y * MINIMAP_SCALE
+				+ MINIMAP_PADDING_Y, render_pos.x * MINIMAP_SCALE
+				+ MINIMAP_PADDING_X);
+	}
+}
+
 void	draw_minimap(t_game *game)
 {
 	t_vector	p_pos;
@@ -81,37 +122,17 @@ void	draw_minimap(t_game *game)
 	t_vector	map_pos;
 	t_vector	off;
 
-	p_pos.x = (int)game->player.pos.x;
-	p_pos.y = (int)game->player.pos.y;
+	set_player_position(game, &p_pos);
 	render_pos.y = 0;
-	if (p_pos.y <= PLAYER_RADIUS)
-		map_pos.y = 0;
-	else
-		map_pos.y = p_pos.y - PLAYER_RADIUS;
-	map_pos.x = p_pos.x - PLAYER_RADIUS;
-	off.y = map_pos.y + (2 * PLAYER_RADIUS);
-	if (map_pos.y + ((2 * PLAYER_RADIUS) + 1) >= game->map.height)
-		map_pos.y = game->map.height - ((2 * PLAYER_RADIUS) + 1);
+	map_pos.y = p_pos.y;4
+	adjust_map_position(game, &map_pos, &off);
 	while (map_pos.y < off.y)
 	{
 		render_pos.x = 0;
-		if (p_pos.x <= PLAYER_RADIUS)
-			map_pos.x = 0;
-		else
-			map_pos.x = p_pos.x - PLAYER_RADIUS;
-		off.x = map_pos.x + (2 * PLAYER_RADIUS) + 1;
-		if (map_pos.x + ((2 * PLAYER_RADIUS) + 1) >= game->map.width)
-			map_pos.x = game->map.width - ((2 * PLAYER_RADIUS) + 1);
+		adjust_horizontal_map_position(game, &p_pos, &map_pos, &off);
 		while (map_pos.x < off.x)
 		{
-			if ((map_pos.y >= 0 && map_pos.y < game->map.height)
-				&& (map_pos.x >= 0 && map_pos.x < game->map.width))
-			{
-				if (game->map.grid[map_pos.y][map_pos.x] == '1')
-					draw_wall(&game->display.img, render_pos.y * MINIMAP_SCALE
-						+ MINIMAP_PADDING_Y, render_pos.x * MINIMAP_SCALE
-						+ MINIMAP_PADDING_X);
-			}
+			draw_map_tile(game, map_pos, render_pos);
 			map_pos.x++;
 			render_pos.x++;
 		}
