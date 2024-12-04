@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 16:34:41 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:16:57 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +163,10 @@ typedef struct s_params
 
 typedef struct s_animation
 {
-	int		nb_frames;
+	int		frames_count;
 	char	type;
-	t_image	image[100];
+	double	speed;
+	t_image	frames[100];
 
 }			t_animation;
 

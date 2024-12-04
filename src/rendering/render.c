@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 16:34:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:33:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,15 @@ void update_frame_nbr(t_raycaster *rc)
 	rc->sec_part += 1.0 / FPS;
 	if (rc->sec_part > 1)
 		rc->sec_part -= 1;
-	printf("sec_part: %f\n", rc->sec_part);
+	// printf("sec_part: %f\n", rc->sec_part);
 }
 int	draw(t_game *game)
 {
 	t_display	*display;
 	void		*mlx_img;
-	static t_raycaster rc;
+	t_raycaster	*rc;
 
-	ft_bzero(&rc, sizeof(t_raycaster));
+	rc = &game->rc;
 	display = &game->display;
 	draw_background(game, display);
 	draw_object(game, '1');
@@ -84,7 +84,7 @@ int	draw(t_game *game)
 	set_times(game);
 	move(game);
 	// debug(game);
-	update_frame_nbr(&game->rc);
+	update_frame_nbr(rc);
 	return (0);
 }
 
