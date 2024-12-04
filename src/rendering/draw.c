@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:24:23 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 21:43:56 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:29:06 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ t_image	cut_image(t_image *image, double factor, int width, int *data)
 
 	cut.width = width;
 	cut.height = image->height;
-	cut.pixel_data = data;
+	cut.pixel_data = (char *)data;
 	input_data = (int *)image->pixel_data;
 	i = 1;
 	while (i < cut.height)

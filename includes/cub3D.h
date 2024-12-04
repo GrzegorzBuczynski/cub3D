@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 15:31:55 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:28:00 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int				get_color(t_vector current, t_vector start, t_vector end,
 // draw.c --
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void			draw_line(t_line *line, t_display *data);
-void			draw_object(t_game *data, char c, t_raycaster *rc);
+void			draw_object(t_game *data, char c);
 void			draw_background(t_game *game, t_display *display);
 
 void			init_textures(char **file, t_map *map);
@@ -176,5 +176,6 @@ int				parse_color(char *str);
 void			trim_texture(t_image *image);
 t_image			parse_texture(char *path);
 char			*get_path(const char *str);
+void			limit_fps(t_game *game);
 
 #endif

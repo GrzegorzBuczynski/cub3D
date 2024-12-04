@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 15:43:29 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:34:41 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_raycaster
 	double			time_ratio;
 	t_dvector		tex;
 	double			sec_part;
-
 }					t_raycaster;
 
 typedef struct s_line

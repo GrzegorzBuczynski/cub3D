@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 14:25:31 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:27:13 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	scan_for_hit(t_game *game, char c)
 	}
 }
 
-void	draw_object(t_game *game, char c, t_raycaster *rc)
+void	draw_object(t_game *game, char c)
 {
 	int				x;
 	int				y;
@@ -113,7 +113,7 @@ void	draw_object(t_game *game, char c, t_raycaster *rc)
 		set_distance(game, &wall);
 		set_wall_height(game, &wall);
 		set_draw_limits(game, &wall);
-		game->rc.tex_img = get_texture(game, c, rc->sec_part);
+		game->rc.tex_img = get_texture(game, c, game->rc.sec_part);
 		y = game->rc.draw_start - 1;
 		while (++y < game->rc.draw_end)
 		{
