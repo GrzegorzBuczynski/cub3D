@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 19:49:09 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:49:16 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	draw_minimap(t_game *game)
 
 	set_player_position(game, &p_pos);
 	render_pos.y = 0;
-	map_pos.y = p_pos.y;4
+	map_pos.y = p_pos.y;
 	adjust_map_position(game, &map_pos, &off);
 	while (map_pos.y < off.y)
 	{
