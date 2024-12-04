@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 13:18:29 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:28:21 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,10 @@ int				get_color(t_vector current, t_vector start, t_vector end,
 // draw.c --
 // void	draw_line(t_vector f, t_vector s, t_display *data);
 void			draw_line(t_line *line, t_display *data);
-void			print_walls(t_game *data);
-double			get_distance(t_game *data, double degree);
+void			draw_object(t_game *data, char c, t_raycaster *rc);
 void			generate_textures(int ***textures, int texWidth, int texHeight);
-// void			draw_background(t_display *data);
+void			draw_background(t_game *game, t_display *display);
+
 void			init_textures(char **file, t_map *map);
 void			init_textures_wrapper(t_game *game);
 
@@ -146,7 +146,7 @@ void			update_dir_n_plane(t_game *game);
 
 unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
-t_image			*get_texture(t_game *game);
+t_image			*get_texture(t_game *game, char c, double time);
 // minimap.c
 void			draw_minimap(t_game *game);
 void			put_pixel(t_display *display, int x, int y, unsigned int color);
@@ -160,9 +160,9 @@ void			*mlx_xpm_file_to_image_safe(void *mlx, const char *path,
 void			*mlx_get_data_addr_safe(void *image, int *bpp, int *line_length,
 					int *endian);
 
-void			ray_direction_calculate(t_game *game, int x);
-void			calculate_step_and_dist(t_game *game);
-int			scan_for_hit(t_game *game, char c);
+void			set_ray_direction(t_game *game, int x);
+void			set_step_and_dist(t_game *game);
+int				scan_for_hit(t_game *game, char c);
 unsigned int	get_time(void);
 void			ft_sleep(unsigned int start_time, double expected_time);
 

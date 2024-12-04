@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:13:11 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 19:38:31 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:29:14 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x)
 	return (*pixel);
 }
 
-t_image	*get_texture(t_game *game)
+t_image	*get_wall_texture_by_side(t_game *game)
 {
 	if (game->rc.side == 0)
 	{
@@ -60,3 +60,17 @@ t_image	*get_texture(t_game *game)
 			return (&game->map.we);
 	}
 }
+
+t_image *get_texture_by_type(t_game *game, char c, double time)
+{
+	get_wall_texture_by_side(game);
+}
+
+t_image	*get_texture(t_game *game, char c, double time)
+{
+	if (c == '1')
+		return (get_wall_texture_by_side(game));
+	else
+		return (get_texture_by_type(game, c, time));
+}
+

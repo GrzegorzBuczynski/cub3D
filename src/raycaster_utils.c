@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 17:01:49 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:13:22 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	add_character_plane(t_game *game)
 	}
 }
 
-void	ray_direction_calculate(t_game *game, int x)
+void	set_ray_direction(t_game *game, int x)
 {
 	game->rc.camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 	game->rc.raydir.y = game->player.dir.y + game->player.plane.y
@@ -53,7 +53,7 @@ void	ray_direction_calculate(t_game *game, int x)
 	game->rc.delta_dist.x = fabs(1 / game->rc.raydir.x);
 }
 
-void	calculate_step_and_dist(t_game *game)
+void	set_step_and_dist(t_game *game)
 {
 	if (game->rc.raydir.y < 0)
 	{
