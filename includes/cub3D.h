@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 21:44:31 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:18:29 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 void			update_dir_n_plane(t_game *game);
 
-unsigned int				get_texture_pixel(t_image *texture, double tex_y, double tex_x);
+unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
 t_image			*get_texture(t_game *game);
 // minimap.c
@@ -162,9 +162,7 @@ void			*mlx_get_data_addr_safe(void *image, int *bpp, int *line_length,
 
 void			ray_direction_calculate(t_game *game, int x);
 void			calculate_step_and_dist(t_game *game);
-void			set_ray_steps(t_game *game);
-void			calculate_wall_parameters(t_game *game);
-void			calculate_texture_coordinates(t_game *game);
+int			scan_for_hit(t_game *game, char c);
 unsigned int	get_time(void);
 void			ft_sleep(unsigned int start_time, double expected_time);
 

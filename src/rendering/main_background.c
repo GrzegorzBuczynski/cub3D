@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 12:43:55 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 12:44:08 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:26:11 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	draw_floor(unsigned int color, t_display *display)
 	image = (int *)(display->img.pixel_data);
 	color_base = color;
 	i = SCREEN_HEIGHT;
-	while (i > SCREEN_HEIGHT / 2)
+	while (i > SCREEN_HEIGHT / 2 - 1)
 	{
 		factor = ((double)pow((SCREEN_HEIGHT - 1 - i), POWER) / pow(SCREEN_HEIGHT
 					/ 2, POWER));

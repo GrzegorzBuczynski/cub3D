@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 12:46:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:26:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,37 +63,7 @@ void	calculate_draw_limits(t_game *game, t_wall *wall)
 		game->rc.draw_end = SCREEN_HEIGHT - 1;
 }
 
-void	print_walls(t_game *game)
-{
-	int				x;
-	int				y;
-	unsigned int	color;
-	t_wall			wall;
-
-	x = -1;
-	while (++x < SCREEN_WIDTH)
-	{
-		ray_direction_calculate(game, x);
-		calculate_step_and_dist(game);
-		set_ray_steps(game);
-		calculate_wall_x(game, &wall);
-		calculate_wall_distance(game, &wall);
-		calculate_wall_height(game, &wall);
-		calculate_draw_limits(game, &wall);
-		game->rc.tex_img = get_texture(game);
-		y = game->rc.draw_start - 1;
-		while (++y < game->rc.draw_end)
-		{
-			wall.factor.y = ((double)y - wall.y_start) / wall.height;
-			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
-					wall.factor.x);
-			color = scale_color(color, wall.perp_wall_dist / 30);
-			put_pixel(&game->display, x, y, color);
-		}
-	}
-}
-
-void	set_ray_steps(t_game *game)
+int	scan_for_hit(t_game *game, char c)
 {
 	int	hit;
 
@@ -112,7 +82,46 @@ void	set_ray_steps(t_game *game)
 			game->rc.map.y += game->rc.step.x;
 			game->rc.side = 1;
 		}
-		if (game->map.grid[game->rc.map.x][game->rc.map.y] == '1')
+		if (game->map.grid[game->rc.map.x][game->rc.map.y] == c)
+		{
 			hit = 1;
+			return (1);
+		}
+		else if (game->map.grid[game->rc.map.x][game->rc.map.y] == '1')
+		{
+			hit = 1;
+			return (0);
+		}
+	}
+}
+
+void	print_walls(t_game *game)
+{
+	int				x;
+	int				y;
+	unsigned int	color;
+	t_wall			wall;
+
+	x = -1;
+	while (++x < SCREEN_WIDTH)
+	{
+		ray_direction_calculate(game, x);
+		calculate_step_and_dist(game);
+		if (scan_for_hit(game, '1') == 0)
+			continue ;
+		calculate_wall_x(game, &wall);
+		calculate_wall_distance(game, &wall);
+		calculate_wall_height(game, &wall);
+		calculate_draw_limits(game, &wall);
+		game->rc.tex_img = get_texture(game);
+		y = game->rc.draw_start - 1;
+		while (++y < game->rc.draw_end)
+		{
+			wall.factor.y = ((double)y - wall.y_start) / wall.height;
+			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
+					wall.factor.x);
+			color = scale_color(color, wall.perp_wall_dist / 30);
+			put_pixel(&game->display, x, y, color);
+		}
 	}
 }
