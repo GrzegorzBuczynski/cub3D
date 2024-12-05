@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 19:49:16 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:28:02 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,30 @@ void	draw_map_tile(t_game *game, t_vector map_pos, t_vector render_pos)
 	}
 }
 
+int	get_map_center_axis(int axis)
+{
+	int	screen_width;
+	int	screen_height;
+
+	screen_width = SCREEN_WIDTH;
+	screen_height = SCREEN_HEIGHT;
+	if (axis == 0)
+	{
+		return ((screen_width / 2) - (MINIMAP_SCALE / 2) - MINIMAP_PADDING_X);
+	}
+	else if (axis == 1)
+	{
+		return ((screen_height / 2) - (MINIMAP_SCALE / 2) - MINIMAP_PADDING_Y);
+	}
+	return (-1);
+}
+
 void	draw_minimap(t_game *game)
 {
 	t_vector	p_pos;
 	t_vector	render_pos;
 	t_vector	map_pos;
+	t_vector	p_pos_mm;
 	t_vector	off;
 
 	set_player_position(game, &p_pos);
@@ -139,4 +158,13 @@ void	draw_minimap(t_game *game)
 		map_pos.y++;
 		render_pos.y++;
 	}
+	if (p_pos.x <= PLAYER_RADIUS || p_pos.x + PLAYER_RADIUS >= game->map.width)
+		p_pos_mm.x = get_map_center_axis(0);
+	else
+		p_pos_mm.x = p_pos.x;
+	if (p_pos.y <= PLAYER_RADIUS || p_pos.y + PLAYER_RADIUS >= game->map.height)
+		p_pos_mm.y = get_map_center_axis(1);
+	else
+		p_pos_mm.y = p_pos.y;
+	draw_player(&game->display.img, p_pos_mm.y, p_pos_mm.x);
 }
