@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/05 15:28:02 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:51:15 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	adjust_horizontal_map_position(t_game *game, t_vector *p_pos,
 void	draw_map_tile(t_game *game, t_vector map_pos, t_vector render_pos)
 {
 	if ((map_pos.y >= 0 && map_pos.y < game->map.height) && (map_pos.x >= 0
-			&& map_pos.x < game->map.width))
+			&& map_pos.x < ft_strlen(game->map.grid[map_pos.y])))
 	{
 		if (game->map.grid[map_pos.y][map_pos.x] == '1')
 			draw_wall(&game->display.img, render_pos.y * MINIMAP_SCALE
