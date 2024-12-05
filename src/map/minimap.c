@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/05 19:22:28 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:39:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void	draw_minimap2(t_game *game)
 	t_vector	sm_pos;
 	t_vector	center;
 
+	t_vector p_pos_on_screen; // player position
 	sm_pos.y = 0;
 	while (sm_pos.y < 2 * PLAYER_RADIUS + 1)
 	{
@@ -142,6 +143,8 @@ void	draw_minimap2(t_game *game)
 		}
 		sm_pos.y++;
 	}
+	update_player_pos_on_screen(game, &p_pos_on_screen, center);
+	draw_player(&game->display.img, p_pos_on_screen.y, p_pos_on_screen.x);
 }
 
 void	draw_walls(t_game *game, t_vector m_pos_on_screen, t_vector size,
@@ -176,18 +179,28 @@ void	draw_walls(t_game *game, t_vector m_pos_on_screen, t_vector size,
 	}
 }
 
-void	update_player_pos_on_screen(t_game *game, t_vector *p_pos_on_screen)
+void	update_player_pos_on_screen(t_game *game, t_vector *p_pos_on_screen,
+		t_vector center)
 {
 	p_pos_on_screen->y = PLAYER_RADIUS * MINIMAP_SCALE + MINIMAP_PADDING_Y;
 	p_pos_on_screen->x = PLAYER_RADIUS * MINIMAP_SCALE + MINIMAP_PADDING_X;
+	if (game->player.pos.y < PLAYER_RADIUS)
+		p_pos_on_screen->y = game->player.pos.y * MINIMAP_SCALE
+			+ MINIMAP_PADDING_Y;
+	if (game->player.pos.y > game->map.height - PLAYER_RADIUS)
+		p_pos_on_screen->y = (game->player.pos.y - center.y + PLAYER_RADIUS)
+			* MINIMAP_SCALE + MINIMAP_PADDING_Y;
+	if (game->player.pos.x < PLAYER_RADIUS)
+		p_pos_on_screen->x = game->player.pos.x * MINIMAP_SCALE
+			+ MINIMAP_PADDING_X;
+	if (game->player.pos.x > game->map.width - PLAYER_RADIUS)
+		p_pos_on_screen->x = (game->player.pos.x - center.x + PLAYER_RADIUS)
+			* MINIMAP_SCALE + MINIMAP_PADDING_X;
 }
 
 void	draw_minimap(t_game *game)
 {
-	t_vector p_pos_on_screen; // player position
 	draw_minimap_background(&game->display.img, MINIMAP_PADDING_Y,
 		MINIMAP_PADDING_X, FLOOR_COLOR);
 	draw_minimap2(game);
-	update_player_pos_on_screen(game, &p_pos_on_screen);
-	draw_player(&game->display.img, p_pos_on_screen.y, p_pos_on_screen.x);
 }
