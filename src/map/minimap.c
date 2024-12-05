@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/05 19:00:00 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:22:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	draw_minimap_background(t_image *image, int y, int x,
 	}
 }
 
-void	get_minimap_color(t_game *game, t_vector sm_pos, t_vector center)
+void	draw_minimap_color(t_game *game, t_vector sm_pos, t_vector center)
 {
 	t_vector	mini_grid;
 
@@ -106,18 +106,19 @@ void	get_minimap_color(t_game *game, t_vector sm_pos, t_vector center)
 void	update_center(t_vector *center, t_game *game, int y)
 {
 	int	i;
-	int len;
+	int	len;
 
 	center->x = game->player.pos.x;
 	center->y = game->player.pos.y;
 	if (center->x < PLAYER_RADIUS)
 		center->x = PLAYER_RADIUS;
-	if (y > game->map.height)
-		len = game->map.width;
-	else
-		len = ft_strlen(game->map.grid[y]);
-	if (center->x > len - PLAYER_RADIUS)
-		center->x = len - PLAYER_RADIUS;
+	// if (y > game->map.height)
+	// 	len = game->map.width;
+	// else
+	// 	len = game->map.height;
+	// len = ft_strlen(game->map.grid[y]);
+	if (center->x > game->map.width - PLAYER_RADIUS)
+		center->x = game->map.width - PLAYER_RADIUS;
 	if (center->y > game->map.height - PLAYER_RADIUS)
 		center->y = game->map.height - PLAYER_RADIUS;
 	if (center->y < PLAYER_RADIUS)
@@ -136,7 +137,7 @@ void	draw_minimap2(t_game *game)
 		while (sm_pos.x < 2 * PLAYER_RADIUS + 1)
 		{
 			update_center(&center, game, sm_pos.y);
-			get_minimap_color(game, sm_pos, center);
+			draw_minimap_color(game, sm_pos, center);
 			sm_pos.x++;
 		}
 		sm_pos.y++;
@@ -175,60 +176,18 @@ void	draw_walls(t_game *game, t_vector m_pos_on_screen, t_vector size,
 	}
 }
 
-void	draw_minimap(t_game *game)
+void	update_player_pos_on_screen(t_game *game, t_vector *p_pos_on_screen)
 {
-	t_vector m_pos_on_screen; // on screen position
-	t_vector center;          // map center point position
-	t_vector size;            // size of the minimap
-	t_vector p_pos_on_screen; // player position
-	m_pos_on_screen.x = 100;
-	m_pos_on_screen.y = 100;
-	center.x = game->player.pos.x;
-	center.y = game->player.pos.y;
-	size.x = (2 * PLAYER_RADIUS + 1) * MINIMAP_SCALE;
-	size.y = (2 * PLAYER_RADIUS + 1) * MINIMAP_SCALE;
-	p_pos_on_screen.x = m_pos_on_screen.x + size.x / 2;
-	p_pos_on_screen.y = m_pos_on_screen.y + size.y / 2;
-	draw_minimap_background(&game->display.img, m_pos_on_screen.y,
-	m_pos_on_screen.x, FLOOR_COLOR);
-	draw_minimap2(game);
-	// draw_walls2(game, m_pos_on_screen, size, center);
-	draw_player(&game->display.img, p_pos_on_screen.y, p_pos_on_screen.x);
+	p_pos_on_screen->y = PLAYER_RADIUS * MINIMAP_SCALE + MINIMAP_PADDING_Y;
+	p_pos_on_screen->x = PLAYER_RADIUS * MINIMAP_SCALE + MINIMAP_PADDING_X;
 }
 
-/*
-	int			y;
-	int			x;
-	t_vector	p_pos;
-	t_vector	m_pos;
-	t_image		*image;
-
-	p_pos.x = (int)game->player.pos.x;
-	p_pos.y = (int)game->player.pos.y;
-	image = &game->display.img;
-	y = p_pos.y - PLAYER_RADIUS;
-	// draw_minimap_background(image, MINIMAP_PADDING_Y, MINIMAP_PADDING_X,
-		// FLOOR_COLOR);
-	m_pos.y = 0;
-	m_pos.x = 0;
-	while (y < p_pos.y + PLAYER_RADIUS)
-	{
-		x = p_pos.x - PLAYER_RADIUS;
-		m_pos.x = 0;
-		while (x < p_pos.x + PLAYER_RADIUS)
-		{
-			if ((y >= 0 && y < game->map.height) && (x >= 0
-					&& x < game->map.width))
-			{
-				if (game->map.grid[y][x] == '1')
-					draw_wall(image, m_pos.y * MINIMAP_SCALE
-						+ MINIMAP_PADDING_Y, m_pos.x * MINIMAP_SCALE
-						+ MINIMAP_PADDING_X);
-			}
-			x++;
-			m_pos.x++;
-		}
-		y++;
-		m_pos.y++;
-	}
- */
+void	draw_minimap(t_game *game)
+{
+	t_vector p_pos_on_screen; // player position
+	draw_minimap_background(&game->display.img, MINIMAP_PADDING_Y,
+		MINIMAP_PADDING_X, FLOOR_COLOR);
+	draw_minimap2(game);
+	update_player_pos_on_screen(game, &p_pos_on_screen);
+	draw_player(&game->display.img, p_pos_on_screen.y, p_pos_on_screen.x);
+}
