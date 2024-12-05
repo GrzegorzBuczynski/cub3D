@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 16:28:00 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:44:39 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define MINIMAP_SCALE 8
 # define MINIMAP_PADDING_X 20
 # define MINIMAP_PADDING_Y 20
-# define PLAYER_RADIUS 10
+# define PLAYER_RADIUS 20
 # define FLOOR_COLOR COLOR_BROWN
 # define WALL_COLOR COLOR_AQUA
 # define PLAYER_COLOR COLOR_GOLD
