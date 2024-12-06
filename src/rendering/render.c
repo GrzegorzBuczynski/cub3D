@@ -72,6 +72,7 @@ int	draw(t_game *game)
 	void		*mlx_img;
 	t_raycaster	*rc;
 
+	game->time.start_time = get_time();
 	rc = &game->rc;
 	display = &game->display;
 	draw_background(game, display);

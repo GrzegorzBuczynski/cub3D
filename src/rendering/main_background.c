@@ -78,6 +78,6 @@ void	limit_fps(t_game *game)
 	if (game->params.limit_fps)
 	{
 		delay_time = 1000 / game->params.fps;
-		ft_sleep(game->time.old_time, 1000 / game->params.fps);
+		ft_sleep(game->time.start_time, delay_time);
 	}
 }
