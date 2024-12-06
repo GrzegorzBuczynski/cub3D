@@ -49,10 +49,10 @@ void	update_center(t_vector *center, t_game *game)
 		center->x = minimap->size.x / 2;
 	if (center->x > game->map.width - minimap->size.x / 2)
 		center->x = game->map.width - minimap->size.x / 2;
-	if (center->y > game->map.height - minimap->size.y / 2)
-		center->y = game->map.height - minimap->size.y / 2;
-	if (center->y < minimap->size.y / 2)
-		center->y = minimap->size.y / 2;
+	if (center->y > game->map.height - minimap->player_vision_range)
+		center->y = game->map.height - minimap->player_vision_range;
+	if (center->y < minimap->player_vision_range)
+		center->y = minimap->player_vision_range;
 }
 
 void	update_player_pos_on_screen(t_game *game, t_vector *p_pos_on_screen,
@@ -118,9 +118,7 @@ void	draw_minimap(t_game *game, t_vector size, t_vector mini_padding, t_vector c
 void	add_minimap(t_game *game)
 {
 	t_vector	p_pos_on_screen; // player position
-	t_vector	mini_padding;
 	t_vector	center;
-	t_vector	size;
 
 	update_center(&center, game);
 	draw_minimap(game, game->params.minimap.size, game->params.minimap.padding, center);
