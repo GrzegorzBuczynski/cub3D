@@ -27,12 +27,7 @@ void	ft_sleep(unsigned int start_time, double expected_time)
 
 
 	delta = get_time() - start_time;
-	sleep_time = expected_time - delta -1;
+	sleep_time = expected_time - delta - 1;
 	if (sleep_time > 0)
 		usleep(sleep_time * 1000);
-	// while (delta < expected_time && delta > 0)
-	// {
-	// 	usleep(1000);
-	// 	delta = get_time() - start_time;
-	// }
 }
