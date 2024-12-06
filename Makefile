@@ -40,6 +40,7 @@ SRCS =	main.c \
 		rendering/colors.c \
 		rendering/walls.c \
 		rendering/draw.c \
+		rendering/draw_line.c \
 		rendering/main_background.c \
 		rendering/render.c \
 		rendering/textures.c \
