@@ -16,6 +16,14 @@ CC = gcc
 CFLAGS = -g -D DEBUG=1 #-Wall -Werror -Wextra 
 RM = rm -f
 
+HEADERS = includes/color.h \
+		includes/cub3d.h \
+		includes/error_message.h \
+		includes/key_linux.h \
+		includes/structs.h \
+		includes/xfdf.h 
+		
+
 SRCS =	main.c \
 		compass.c \
 		raycaster_utils.c \
@@ -78,7 +86,7 @@ $(LIBRARY):
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

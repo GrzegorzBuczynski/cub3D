@@ -12,14 +12,14 @@
 
 #include "../includes/cub3D.h"
 
-void	put_pixel(t_display *display, int x, int y, unsigned int color)
+void	put_pixel(t_image *image, int x, int y, unsigned int color)
 {
 	int	i;
-	int	*image;
+	int	*data;
 
-	image = (int *)(display->img.pixel_data);
+	data = (int *)(image->pixel_data);
 	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT && color != 0)
-		image[y * SCREEN_WIDTH + x] = color;
+		data[y * SCREEN_WIDTH + x] = color;
 }
 
 void	put_pixel_with_black(t_image *img, int y, int x, unsigned int color)

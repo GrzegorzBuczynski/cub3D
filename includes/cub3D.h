@@ -149,7 +149,7 @@ void			add_character_plane(t_game *game);
 t_image			*get_texture(t_game *game, char c, double time);
 // minimap.c
 void			add_minimap(t_game *game);
-void			put_pixel(t_display *display, int x, int y, unsigned int color);
+void			put_pixel(t_image *image, int x, int y, unsigned int color);
 void			put_pixel_with_black(t_image *img, int y, int x, unsigned int color);
 
 

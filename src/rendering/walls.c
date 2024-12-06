@@ -121,7 +121,7 @@ void	draw_object(t_game *game, char c)
 			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
 					wall.factor.x);
 			color = scale_color(color, wall.perp_wall_dist / 30);
-			put_pixel(&game->display, x, y, color);
+			put_pixel(&game->display.img, x, y, color);
 		}
 	}
 }
