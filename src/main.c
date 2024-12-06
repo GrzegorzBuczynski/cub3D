@@ -25,10 +25,20 @@
 
 void set_mini_map_params(t_game *game)
 {
-	game->params.padding = (t_vector){MINIMAP_PADDING_Y, MINIMAP_PADDING_X};
-	game->params.size = (t_vector){2 * PLAYER_RADIUS, 2 * PLAYER_RADIUS};
-	if (game->map.height < game->params.size.y)
-		game->params.size.y = game->map.height;
+	t_minimap	*minimap;
+
+	minimap = &game->params.minimap;
+	minimap->player_vision_range = PLAYER_MINIMAP_VISION_RANGE;
+	minimap->scale = MINIMAP_SCALE;
+	minimap->padding = (t_vector){MINIMAP_PADDING_Y, MINIMAP_PADDING_X};
+	minimap->size = (t_vector){2 * PLAYER_MINIMAP_VISION_RANGE, 2 * PLAYER_MINIMAP_VISION_RANGE};
+	if (minimap->size.y > game->map.height)
+		minimap->size.y = game->map.height;
+	if (minimap->size.x > game->map.width)
+		minimap->size.x = game->map.width;
+	minimap->player_color = PLAYER_COLOR;
+	minimap->wall_color = WALL_COLOR;
+	minimap->floor_color = FLOOR_COLOR;
 }
 
 void	init(t_game *game)

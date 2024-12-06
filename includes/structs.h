@@ -108,11 +108,11 @@ typedef struct s_square_params
 	int				color;
 }					t_square_params;
 
-typedef struct s_minimap
-{
-	t_image			image;
-	t_display		*display;
-}					t_minimap;
+// typedef struct s_minimap
+// {
+// 	t_image			image;
+// 	t_display		*display;
+// }					t_minimap;
 
 typedef struct s_map
 {
@@ -152,6 +152,18 @@ typedef struct s_time
 	double			rot_speed;
 }					t_time;
 
+typedef struct s_minimap
+{
+	int 			player_vision_range;
+	t_vector 		size;
+	t_vector 		padding;
+	int 			scale;
+	unsigned int 	player_color;
+	unsigned int 	wall_color;
+	unsigned int 	floor_color;
+
+}					t_minimap;
+
 typedef struct s_params
 {
 	int				fps;
@@ -159,8 +171,7 @@ typedef struct s_params
 	double			speed_ratio;
 	int				jump;
 	int				scale_color;
-	t_vector 		size;
-	t_vector 		padding;
+	t_minimap		minimap;
 }					t_params;
 
 typedef struct s_animation
@@ -179,7 +190,6 @@ typedef struct s_game
 	t_display		display;
 	t_raycaster		rc;
 	t_map			map;
-	t_minimap		minimap;
 	t_pressed		pressed;
 	t_player		player;
 	t_time			time;
