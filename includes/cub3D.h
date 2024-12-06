@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/05 19:44:39 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:44:51 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,8 @@ void			move_front(t_game *game);
 void			move_back(t_game *game);
 void			move_left(t_game *game);
 void			move_right(t_game *game);
-void			rotate_left(t_game *game);
-void			rotate_right(t_game *game);
+void			rotate_left(t_game *game, double speed);
+void			rotate_right(t_game *game, double speed);
 void			update_dir_n_plane(t_game *game);
 
 unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);

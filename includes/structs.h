@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 17:16:57 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:26:09 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_image
 typedef struct s_raycaster
 {
 	double			angle;
+	double			mouse_angle;
 	double			camera_x;
 	t_dvector		delta_dist;
 	int				draw_start;
@@ -74,6 +75,8 @@ typedef struct s_mouse
 	char			is_pressed;
 	int				x;
 	int				y;
+	int				delta_x;
+	int				delta_y;
 	int				previous_x;
 	int				previous_y;
 }					t_mouse;
