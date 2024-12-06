@@ -159,6 +159,8 @@ typedef struct s_params
 	double			speed_ratio;
 	int				jump;
 	int				scale_color;
+	t_vector 		size;
+	t_vector 		padding;
 }					t_params;
 
 typedef struct s_animation

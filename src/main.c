@@ -23,6 +23,14 @@
 // H) INTRO?
 // I) WIDTH X HEIGHT PROPORTIONAL
 
+void set_mini_map_params(t_game *game)
+{
+	game->params.padding = (t_vector){MINIMAP_PADDING_Y, MINIMAP_PADDING_X};
+	game->params.size = (t_vector){2 * PLAYER_RADIUS, 2 * PLAYER_RADIUS};
+	if (game->map.height < game->params.size.y)
+		game->params.size.y = game->map.height;
+}
+
 void	init(t_game *game)
 {
 	init_player(game);
@@ -39,6 +47,7 @@ void	init(t_game *game)
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
 	game->params.scale_color = true;
+	set_mini_map_params(game);
 }
 
 int	main(int ac, char **av)
