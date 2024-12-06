@@ -56,6 +56,7 @@ typedef struct s_line
 	t_vector		s;
 	t_vector		f;
 	int				color;
+	int				thickness;
 }					t_line;
 
 typedef struct s_player

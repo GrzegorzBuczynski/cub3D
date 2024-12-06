@@ -13,9 +13,20 @@
 #include "../includes/cub3D.h"
 
 
-void	draw_player(t_image *image, t_vector pos, int size, unsigned int color)
+void	draw_player(t_game *game, t_vector pos, int size, unsigned int color)
 {
+	t_image *image;
+	t_line	direction;
+	t_dvector	p_dir;
+
+	p_dir = game->player.dir;
+	image = &game->display.img;
+	direction.color = color;
+	direction.thickness = 5;
+	direction.s = (t_vector){pos.y + size / 2, pos.x + size / 2};
+	direction.f = (t_vector){direction.s.y + p_dir.y * size * 2, direction.s.x + p_dir.x * size * 2};
 	draw_square(image, pos, size, color);
+	draw_line(&direction, image);
 }
 
 void	draw_wall(t_image *image, t_vector on_screen_pos, t_vector on_map_pos, t_minimap *minimap)
@@ -123,7 +134,7 @@ void	add_minimap(t_game *game)
 	update_center(&center, game);
 	draw_minimap(game, game->params.minimap.size, game->params.minimap.padding, center);
 	update_player_pos_on_screen(game, &p_pos_on_screen, center);
-	draw_player(&game->display.img, p_pos_on_screen, game->params.minimap.scale, game->params.minimap.player_color);
+	draw_player(game, p_pos_on_screen, game->params.minimap.scale, game->params.minimap.player_color);
 }
 
 /* 

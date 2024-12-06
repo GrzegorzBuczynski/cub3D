@@ -118,8 +118,7 @@ unsigned int	scale_color(unsigned int color, double factor);
 int				get_color(t_vector current, t_vector start, t_vector end,
 					t_vector delta);
 // draw.c --
-// void	draw_line(t_vector f, t_vector s, t_display *data);
-void			draw_line(t_line *line, t_display *data);
+void			draw_line(t_line *line, t_image *image);
 void			draw_square(t_image *image, t_vector pos, int size, unsigned int color);
 void			draw_object(t_game *data, char c);
 void			draw_background(t_game *game, t_display *display);
