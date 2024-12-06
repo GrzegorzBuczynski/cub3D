@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/06 17:44:41 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:31:29 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,6 @@ void	move_right(t_game *game)
 			+ TO_WALL_DISTANCE * game->player.plane.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
-
-	// if (mouse.x < SCREEN_WIDTH * 0.05)
-	// 	rotate_left(game, 0.5);
-	// else if (mouse.x > SCREEN_WIDTH * 0.95)
-	// 	rotate_right(game, 0.5);
-	// else
-
 	
 void	update_mouse_move(t_game *game, int factor)
 {
@@ -113,10 +106,6 @@ void	update_mouse_move(t_game *game, int factor)
 		game->rc.angle = game->rc.angle - 2 * M_PI;
 	else if (game->rc.angle < 0)
 		game->rc.angle = game->rc.angle + 2 * M_PI;
-	// if (mouse.y < SCREEN_HEIGHT * 0.2)
-	// 	move_front(game);
-	// else if (mouse.y > SCREEN_HEIGHT * 0.8)
-		// move_back(game);
 	update_dir_n_plane(game);
 }
 

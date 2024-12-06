@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 19:43:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:28:04 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,8 @@ void	draw_object(t_game *game, char c)
 			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
 					wall.factor.x);
 			color = scale_color(color, wall.perp_wall_dist / 30);
-			put_pixel(&game->display.img, x, y, color);
+			put_pixel_with_black(&game->display.img, y, x, color);
+			// put_pixel(&game->display.img, x, y, color);
 		}
 	}
 }
