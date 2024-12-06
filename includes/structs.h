@@ -151,6 +151,7 @@ typedef struct s_time
 	unsigned int	frame_time;
 	double			move_speed;
 	double			rot_speed;
+	unsigned int	start_time;
 }					t_time;
 
 typedef struct s_minimap

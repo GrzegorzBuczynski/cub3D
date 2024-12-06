@@ -23,11 +23,11 @@ unsigned int	get_time(void)
 void	ft_sleep(unsigned int start_time, double expected_time)
 {
 	int	delta;
+	int sleep_time;
+
 
 	delta = get_time() - start_time;
-	while (delta < expected_time && delta > 0)
-	{
-		usleep(1000);
-		delta = get_time() - start_time;
-	}
+	sleep_time = expected_time - delta - 1;
+	if (sleep_time > 0)
+		usleep(sleep_time * 1000);
 }
