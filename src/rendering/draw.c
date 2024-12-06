@@ -152,3 +152,21 @@ t_image	cut_image(t_image *image, double factor, int width, int *data)
 	}
 	return (cut);
 }
+
+void	draw_square(t_image *image, t_vector pos, int size, unsigned int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			put_pixel_with_black(image, pos.y + i, pos.x + j, color);
+			j++;
+		}
+		i++;
+	}
+}
