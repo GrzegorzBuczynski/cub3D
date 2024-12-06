@@ -22,6 +22,15 @@ void	put_pixel(t_display *display, int x, int y, unsigned int color)
 		image[y * SCREEN_WIDTH + x] = color;
 }
 
+void	put_pixel_with_black(t_image *img, int y, int x, unsigned int color)
+{
+	int	i;
+	unsigned int	*image;
+
+	image = (unsigned int *)(img->pixel_data);
+	image[y * SCREEN_WIDTH + x] = color;
+}
+
 static void	estimate_delta(t_vector s, t_vector f, t_vector *delta)
 {
 	delta->x = ft_abs(s.x - f.x);

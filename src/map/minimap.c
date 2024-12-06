@@ -12,75 +12,46 @@
 
 #include "../includes/cub3D.h"
 
-void	put_pixel2(t_image *img, int y, int x, int color)
-{
-	int	i;
-	int	*image;
-
-	image = (int *)(img->pixel_data);
-	image[y * SCREEN_WIDTH + x] = color;
-}
-
-void	draw_square(t_image *image, int y, int x, unsigned int color)
+void	draw_square(t_image *image, t_vector pos, int size, unsigned int color)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < MINIMAP_SCALE)
+	while (i < size)
 	{
 		j = 0;
-		while (j < MINIMAP_SCALE)
+		while (j < size)
 		{
-			put_pixel2(image, y + i, x + j, color);
+			put_pixel_with_black(image, pos.y + i, pos.x + j, color);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	draw_player(t_image *image, int y, int x)
+void	draw_player(t_image *image, t_vector pos, int size, unsigned int color)
 {
-	draw_square(image, y, x, PLAYER_COLOR);
+	draw_square(image, pos, size, color);
 }
 
-void	draw_wall2(t_image *image, int y, int x)
+void	draw_wall(t_image *image, t_vector on_screen_pos, t_vector on_map_pos, t_minimap *minimap)
 {
-	draw_square(image, y, x, WALL_COLOR);
+	t_vector	pos;
+
+	pos.y = on_screen_pos.y + on_map_pos.y * minimap->scale;
+	pos.x = on_screen_pos.x + on_map_pos.x * minimap->scale;
+	draw_square(image, pos, minimap->scale, minimap->wall_color);
 }
 
-void	draw_wall(t_image *image, t_vector on_screen_pos, t_vector on_map_pos)
+void	draw_floor(t_image *image, t_vector on_screen_pos, t_vector on_map_pos, t_minimap *minimap)
 {
-	draw_square(image, on_screen_pos.y + on_map_pos.y * MINIMAP_SCALE,
-		on_screen_pos.x + on_map_pos.x * MINIMAP_SCALE, WALL_COLOR);
+	t_vector	pos;
+
+	pos.y = on_screen_pos.y + on_map_pos.y * minimap->scale;
+	pos.x = on_screen_pos.x + on_map_pos.x * minimap->scale;
+	draw_square(image, pos, minimap->scale, minimap->floor_color);
 }
-
-void	draw_floor(t_image *image, t_vector on_screen_pos, t_vector on_map_pos)
-{
-	draw_square(image, on_screen_pos.y + on_map_pos.y * MINIMAP_SCALE,
-	on_screen_pos.x + on_map_pos.x * MINIMAP_SCALE, FLOOR_COLOR);
-}
-
-void	draw_minimap_background(t_image *image, int y, int x,
-		unsigned int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < (2 * PLAYER_MINIMAP_VISION_RANGE) + 1)
-	{
-		j = 0;
-		while (j < (2 * PLAYER_MINIMAP_VISION_RANGE) + 1)
-		{
-			draw_square(image, i * MINIMAP_SCALE + y, j * MINIMAP_SCALE + x,
-				color);
-			j++;
-		}
-		i++;
-	}
-}
-
 
 void	update_center(t_vector *center, t_game *game)
 {
@@ -126,23 +97,25 @@ void	update_player_pos_on_screen(t_game *game, t_vector *p_pos_on_screen,
 void	draw_minimap_color(t_game *game, t_vector mini_padding, t_vector mini_screen_grid_nbr, t_vector center)
 {
 	t_vector	mini_grid;
+	t_minimap	*minimap;
 
-	mini_grid.x = center.x - PLAYER_MINIMAP_VISION_RANGE + mini_screen_grid_nbr.x;
-	mini_grid.y = center.y - PLAYER_MINIMAP_VISION_RANGE + mini_screen_grid_nbr.y;
+	minimap = &game->params.minimap;
+	mini_grid.x = center.x - minimap->player_vision_range + mini_screen_grid_nbr.x;
+	mini_grid.y = center.y - minimap->player_vision_range + mini_screen_grid_nbr.y;
 	if (mini_grid.y >= 0 && mini_grid.y < game->map.height && mini_grid.x >= 0
 		&& mini_grid.x < ft_strlen(game->map.grid[mini_grid.y]))
 	{
 		if (game->map.grid[mini_grid.y][mini_grid.x] == '1')
-			draw_wall(&game->display.img, mini_padding, mini_screen_grid_nbr);
+			draw_wall(&game->display.img, mini_padding, mini_screen_grid_nbr, minimap);
 		else
-			draw_floor(&game->display.img, mini_padding, mini_screen_grid_nbr);
+			draw_floor(&game->display.img, mini_padding, mini_screen_grid_nbr, minimap);
 	}
 	else
-		draw_floor(&game->display.img, mini_padding, mini_screen_grid_nbr);
+		draw_floor(&game->display.img, mini_padding, mini_screen_grid_nbr, minimap);
 
 }
 
-void	draw_minimap2(t_game *game, t_vector size, t_vector mini_padding, t_vector center)
+void	draw_minimap(t_game *game, t_vector size, t_vector mini_padding, t_vector center)
 {
 	t_vector	mini_screen_grid_nbr;
 
@@ -159,10 +132,7 @@ void	draw_minimap2(t_game *game, t_vector size, t_vector mini_padding, t_vector 
 	}
 }
 
-
-
-
-void	draw_minimap(t_game *game)
+void	add_minimap(t_game *game)
 {
 	t_vector	p_pos_on_screen; // player position
 	t_vector	mini_padding;
@@ -170,9 +140,9 @@ void	draw_minimap(t_game *game)
 	t_vector	size;
 
 	update_center(&center, game);
-	draw_minimap2(game, game->params.minimap.size, game->params.minimap.padding, center);
+	draw_minimap(game, game->params.minimap.size, game->params.minimap.padding, center);
 	update_player_pos_on_screen(game, &p_pos_on_screen, center);
-	draw_player(&game->display.img, p_pos_on_screen.y, p_pos_on_screen.x);
+	draw_player(&game->display.img, p_pos_on_screen, game->params.minimap.scale, game->params.minimap.player_color);
 }
 
 /* 

@@ -147,8 +147,10 @@ unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
 t_image			*get_texture(t_game *game, char c, double time);
 // minimap.c
-void			draw_minimap(t_game *game);
+void			add_minimap(t_game *game);
 void			put_pixel(t_display *display, int x, int y, unsigned int color);
+void			put_pixel_with_black(t_image *img, int y, int x, unsigned int color);
+
 
 // mlx_safe.c mlx wrapper
 void			*init_mlx_safe(void);
