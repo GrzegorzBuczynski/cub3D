@@ -6,13 +6,13 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 20:57:13 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:57:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-static char	*get_path(const char *str)
+char	*get_path(const char *str)
 {
 	char	*end;
 
@@ -90,7 +90,7 @@ void	init_textures(char **file, t_map *map)
 		else if (ft_strncmp(file[y], "F ", 2) == 0)
 		{
 			map->floor = parse_color(get_path(&file[y][2]));
-			printf("%u\n", map->floor);
+			// printf("%u\n", map->floor);
 		}
 		else if (ft_strncmp(file[y], "C ", 2) == 0)
 			map->ceiling = parse_color(get_path(&file[y][2]));

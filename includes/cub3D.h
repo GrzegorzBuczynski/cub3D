@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 16:05:45 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:44:39 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 # define false 0
 
 // Minimap
-# define MINIMAP_SCALE 8
+# define MINIMAP_SCALE 15
 # define MINIMAP_PADDING_X 20
 # define MINIMAP_PADDING_Y 20
-# define PLAYER_RADIUS 10
+# define PLAYER_MINIMAP_VISION_RANGE 15
 # define FLOOR_COLOR COLOR_BROWN
 # define WALL_COLOR COLOR_AQUA
 # define PLAYER_COLOR COLOR_GOLD
@@ -118,12 +118,11 @@ unsigned int	scale_color(unsigned int color, double factor);
 int				get_color(t_vector current, t_vector start, t_vector end,
 					t_vector delta);
 // draw.c --
-// void	draw_line(t_vector f, t_vector s, t_display *data);
-void			draw_line(t_line *line, t_display *data);
-void			print_walls(t_game *data);
-double			get_distance(t_game *data, double degree);
-void			generate_textures(int ***textures, int texWidth, int texHeight);
-// void			draw_background(t_display *data);
+void			draw_line(t_line *line, t_image *image);
+void			draw_square(t_image *image, t_vector pos, int size, unsigned int color);
+void			draw_object(t_game *data, char c);
+void			draw_background(t_game *game, t_display *display);
+
 void			init_textures(char **file, t_map *map);
 void			init_textures_wrapper(t_game *game);
 
@@ -144,12 +143,14 @@ void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 void			update_dir_n_plane(t_game *game);
 
-unsigned int				get_texture_pixel(t_image *texture, double tex_y, double tex_x);
+unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);
-t_image			*get_texture(t_game *game);
+t_image			*get_texture(t_game *game, char c, double time);
 // minimap.c
-void			draw_minimap(t_game *game);
-void			put_pixel(t_display *display, int x, int y, unsigned int color);
+void			add_minimap(t_game *game);
+void			put_pixel(t_image *image, int x, int y, unsigned int color);
+void			put_pixel_with_black(t_image *img, int y, int x, unsigned int color);
+
 
 // mlx_safe.c mlx wrapper
 void			*init_mlx_safe(void);
@@ -160,11 +161,9 @@ void			*mlx_xpm_file_to_image_safe(void *mlx, const char *path,
 void			*mlx_get_data_addr_safe(void *image, int *bpp, int *line_length,
 					int *endian);
 
-void			ray_direction_calculate(t_game *game, int x);
-void			calculate_step_and_dist(t_game *game);
-void			set_ray_steps(t_game *game);
-void			calculate_wall_parameters(t_game *game);
-void			calculate_texture_coordinates(t_game *game);
+void			set_ray_direction(t_game *game, int x);
+void			set_step_and_dist(t_game *game);
+int				scan_for_hit(t_game *game, char c);
 unsigned int	get_time(void);
 void			ft_sleep(unsigned int start_time, double expected_time);
 
@@ -177,5 +176,8 @@ t_image			cut_image(t_image *image, double factor, int width, int *data);
 
 int				parse_color(char *str);
 void			trim_texture(t_image *image);
+t_image			parse_texture(char *path);
+char			*get_path(const char *str);
+void			limit_fps(t_game *game);
 
 #endif

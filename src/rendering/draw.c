@@ -6,67 +6,32 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:24:23 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/05 15:29:01 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:19:32 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void	put_pixel(t_display *display, int x, int y, unsigned int color)
+void	put_pixel(t_image *image, int x, int y, unsigned int color)
 {
 	int	i;
-	int	*image;
+	int	*data;
 
-	image = (int *)(display->img.pixel_data);
-	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
-		image[y * SCREEN_WIDTH + x] = color;
+	data = (int *)(image->pixel_data);
+	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT && color != 0)
+		data[y * SCREEN_WIDTH + x] = color;
 }
 
-static void	estimate_delta(t_vector s, t_vector f, t_vector *delta)
+void	put_pixel_with_black(t_image *img, int y, int x, unsigned int color)
 {
-	delta->x = ft_abs(s.x - f.x);
-	delta->y = ft_abs(s.y - f.y);
+	int	i;
+	unsigned int	*image;
+
+	image = (unsigned int *)(img->pixel_data);
+	image[y * SCREEN_WIDTH + x] = color;
 }
 
-static void	calculate_sign(t_vector s, t_vector f, t_vector *sign)
-{
-	if (f.x < s.x)
-		sign->x = 1;
-	else
-		sign->x = -1;
-	if (f.y < s.y)
-		sign->y = 1;
-	else
-		sign->y = -1;
-}
 
-void	draw_line(t_line *line, t_display *data)
-{
-	t_vector	delta;
-	t_vector	sign;
-	t_vector	cur;
-	int			error[2];
-
-	estimate_delta(line->s, line->f, &delta);
-	calculate_sign(line->s, line->f, &sign);
-	error[0] = delta.x - delta.y;
-	cur = line->f;
-	while (cur.x != line->s.x || cur.y != line->s.y)
-	{
-		put_pixel(data, cur.x, cur.y, line->color);
-		error[1] = error[0] * 2;
-		if (error[1] > -delta.y)
-		{
-			error[0] -= delta.y;
-			cur.x += sign.x;
-		}
-		if (error[1] < delta.x)
-		{
-			error[0] += delta.x;
-			cur.y += sign.y;
-		}
-	}
-}
 
 void	get_part_of_image(t_image *image, t_image *part, int x, int y)
 {
@@ -142,4 +107,22 @@ t_image	cut_image(t_image *image, double factor, int width, int *data)
 		i++;
 	}
 	return (cut);
+}
+
+void	draw_square(t_image *image, t_vector pos, int size, unsigned int color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			put_pixel_with_black(image, pos.y + i, pos.x + j, color);
+			j++;
+		}
+		i++;
+	}
 }

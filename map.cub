@@ -9,8 +9,23 @@ WE ./textures/walls1/white_brick.xpm
 EA ./textures/walls1/brick.xpm
 
 
+[key] [type] [frame_number] [int speed]
+ANIMATION B 8 2
+./textures/animation/wallking_disk/disk1.xpm
+./textures/animation/wallking_disk/disk2.xpm
+./textures/animation/wallking_disk/disk3.xpm
+./textures/animation/wallking_disk/disk4.xpm
+./textures/animation/wallking_disk/disk5.xpm
+./textures/animation/wallking_disk/disk6.xpm
+./textures/animation/wallking_disk/disk7.xpm
+./textures/animation/wallking_disk/disk8.xpm
+
 F 220,100,0
 C 225,30,0
+
+
+
+
 
 
         11111111111111111111111111111111111111111111111111111111
@@ -27,5 +42,3 @@ C 225,30,0
 11000001110101011111011110011
 11110111111101011101111010001
 11111111111111111111111111111
-
-

@@ -6,81 +6,12 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 17:28:55 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:33:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-#define POWER 7
-
-static void	draw_ceiling(unsigned int color, t_display *display)
-{
-	int				*image;
-	int				i;
-	int				j;
-	double			factor;
-	unsigned int	color_base;
-
-	image = (int *)(display->img.pixel_data);
-	color_base = color;
-	i = 0;
-	while (i < SCREEN_HEIGHT / 2)
-	{
-		factor = ((double)pow(i, POWER) / pow(SCREEN_HEIGHT/2, POWER));
-		color_base = scale_color(color, factor);
-		j = 0;
-		while (j < SCREEN_WIDTH)
-		{
-			image[i * SCREEN_WIDTH + j] = color_base;
-			j++;
-		}
-		i++;
-	}
-}
-
-static void	draw_floor(unsigned int color, t_display *display)
-{
-	int				*image;
-	int				i;
-	int				j;
-	double			factor;
-	unsigned int	color_base;
-
-	image = (int *)(display->img.pixel_data);
-	color_base = color;
-	i = SCREEN_HEIGHT;
-	while (i > SCREEN_HEIGHT / 2)
-	{
-		factor = ((double)pow((SCREEN_HEIGHT - 1 - i), POWER) / pow(SCREEN_HEIGHT
-					/ 2, POWER));
-		color_base = scale_color(color, factor);
-		j = 0;
-		while (j < SCREEN_WIDTH)
-		{
-			image[i * SCREEN_WIDTH + j] = color_base;
-			j++;
-		}
-		i--;
-	}
-}
-
-void	draw_background(t_game *game, t_display *display)
-{
-	draw_ceiling(game->map.ceiling, display);
-	draw_floor(game->map.floor, display);
-}
-
-void	limit_fps(t_game *game)
-{
-	unsigned int	delay_time;
-
-	if (game->params.limit_fps)
-	{
-		delay_time = 1000 / game->params.fps;
-		ft_sleep(game->time.old_time, 1000 / game->params.fps);
-	}
-}
 
 void	fps_counter(t_game *game, int frame_time)
 {
@@ -128,21 +59,32 @@ void	debug(t_game *game)
 			game->player.plane.x);
 }
 
+void update_frame_nbr(t_raycaster *rc)
+{
+	rc->sec_part += 1.0 / FPS;
+	if (rc->sec_part > 1)
+		rc->sec_part -= 1;
+	// printf("sec_part: %f\n", rc->sec_part);
+}
 int	draw(t_game *game)
 {
 	t_display	*display;
 	void		*mlx_img;
+	t_raycaster	*rc;
 
+	rc = &game->rc;
 	display = &game->display;
 	draw_background(game, display);
-	print_walls(game);
+	draw_object(game, '1');
+	draw_object(game, 'B');
 	render_compass(game);
-	draw_minimap(game);
+	add_minimap(game);
 	mlx_put_image_to_window(display->mlx, display->win, display->mlx_img, 0, 0);
 	limit_fps(game);
 	set_times(game);
 	move(game);
 	// debug(game);
+	update_frame_nbr(rc);
 	return (0);
 }
 

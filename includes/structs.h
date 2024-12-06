@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 21:33:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:16:57 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_raycaster
 	t_image			*tex_img;
 	double			time_ratio;
 	t_dvector		tex;
-
+	double			sec_part;
 }					t_raycaster;
 
 typedef struct s_line
@@ -56,6 +56,7 @@ typedef struct s_line
 	t_vector		s;
 	t_vector		f;
 	int				color;
+	int				thickness;
 }					t_line;
 
 typedef struct s_player
@@ -108,11 +109,11 @@ typedef struct s_square_params
 	int				color;
 }					t_square_params;
 
-typedef struct s_minimap
-{
-	t_image			image;
-	t_display		*display;
-}					t_minimap;
+// typedef struct s_minimap
+// {
+// 	t_image			image;
+// 	t_display		*display;
+// }					t_minimap;
 
 typedef struct s_map
 {
@@ -152,6 +153,18 @@ typedef struct s_time
 	double			rot_speed;
 }					t_time;
 
+typedef struct s_minimap
+{
+	int 			player_vision_range;
+	t_vector 		size;
+	t_vector 		padding;
+	int 			scale;
+	unsigned int 	player_color;
+	unsigned int 	wall_color;
+	unsigned int 	floor_color;
+
+}					t_minimap;
+
 typedef struct s_params
 {
 	int				fps;
@@ -159,7 +172,17 @@ typedef struct s_params
 	double			speed_ratio;
 	int				jump;
 	int				scale_color;
+	t_minimap		minimap;
 }					t_params;
+
+typedef struct s_animation
+{
+	int		frames_count;
+	char	type;
+	double	speed;
+	t_image	frames[100];
+
+}			t_animation;
 
 typedef struct s_game
 {
@@ -168,9 +191,9 @@ typedef struct s_game
 	t_display		display;
 	t_raycaster		rc;
 	t_map			map;
-	t_minimap		minimap;
 	t_pressed		pressed;
 	t_player		player;
 	t_time			time;
 	t_params		params;
+	t_animation		animation[20];
 }					t_game;

@@ -6,7 +6,7 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/03 21:25:57 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/04 12:45:25 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,14 @@ NAME = cub3D
 CC = gcc
 CFLAGS = -g -D DEBUG=1 #-Wall -Werror -Wextra 
 RM = rm -f
+
+HEADERS = includes/color.h \
+		includes/cub3d.h \
+		includes/error_message.h \
+		includes/key_linux.h \
+		includes/structs.h \
+		includes/xfdf.h 
+		
 
 SRCS =	main.c \
 		compass.c \
@@ -40,6 +48,8 @@ SRCS =	main.c \
 		rendering/colors.c \
 		rendering/walls.c \
 		rendering/draw.c \
+		rendering/draw_line.c \
+		rendering/main_background.c \
 		rendering/render.c \
 		rendering/textures.c \
 		utils/time.c \
@@ -76,7 +86,7 @@ $(LIBRARY):
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

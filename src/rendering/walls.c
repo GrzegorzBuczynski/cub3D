@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 21:19:34 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:43:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_wall
 	t_dvector	factor;
 }				t_wall;
 
-void	calculate_wall_x(t_game *game, t_wall *wall)
+void	set_wall_x(t_game *game, t_wall *wall)
 {
 	if (game->rc.side == 0)
 		wall->factor.x = game->player.pos.x + wall->perp_wall_dist
@@ -36,7 +36,7 @@ void	calculate_wall_x(t_game *game, t_wall *wall)
 		wall->factor.x = 1 - wall->factor.x;
 }
 
-void	calculate_wall_distance(t_game *game, t_wall *wall)
+void	set_distance(t_game *game, t_wall *wall)
 {
 	if (game->rc.side == 0)
 		wall->perp_wall_dist = (game->rc.map.x - game->player.pos.y + (1
@@ -46,14 +46,14 @@ void	calculate_wall_distance(t_game *game, t_wall *wall)
 					- game->rc.step.x) / 2) / game->rc.raydir.x + 0.0001;
 }
 
-void	calculate_wall_height(t_game *game, t_wall *wall)
+void	set_wall_height(t_game *game, t_wall *wall)
 {
 	wall->height = (int)(SCREEN_HEIGHT / wall->perp_wall_dist);
 	wall->y_start = (SCREEN_HEIGHT - wall->height) / 2;
 	wall->y_end = SCREEN_HEIGHT / 2 + wall->height / 2;
 }
 
-void	calculate_draw_limits(t_game *game, t_wall *wall)
+void	set_draw_limits(t_game *game, t_wall *wall)
 {
 	game->rc.draw_start = wall->y_start;
 	if (game->rc.draw_start < 0)
@@ -63,37 +63,7 @@ void	calculate_draw_limits(t_game *game, t_wall *wall)
 		game->rc.draw_end = SCREEN_HEIGHT - 1;
 }
 
-void	print_walls(t_game *game)
-{
-	int				x;
-	int				y;
-	unsigned int	color;
-	t_wall			wall;
-
-	x = -1;
-	while (++x < SCREEN_WIDTH)
-	{
-		ray_direction_calculate(game, x);
-		calculate_step_and_dist(game);
-		set_ray_steps(game);
-		calculate_wall_x(game, &wall);
-		calculate_wall_distance(game, &wall);
-		calculate_wall_height(game, &wall);
-		calculate_draw_limits(game, &wall);
-		game->rc.tex_img = get_texture(game);
-		y = game->rc.draw_start - 1;
-		while (++y < game->rc.draw_end)
-		{
-			wall.factor.y = ((double)y - wall.y_start) / wall.height;
-			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
-					wall.factor.x);
-			color = scale_color(color, wall.perp_wall_dist / 30);
-			put_pixel(&game->display, x, y, color);
-		}
-	}
-}
-
-void	set_ray_steps(t_game *game)
+int	scan_for_hit(t_game *game, char c)
 {
 	int	hit;
 
@@ -112,7 +82,46 @@ void	set_ray_steps(t_game *game)
 			game->rc.map.y += game->rc.step.x;
 			game->rc.side = 1;
 		}
-		if (game->map.grid[game->rc.map.x][game->rc.map.y] != '0')
+		if (game->map.grid[game->rc.map.x][game->rc.map.y] == c)
+		{
 			hit = 1;
+			return (1);
+		}
+		else if (game->map.grid[game->rc.map.x][game->rc.map.y] == '1')
+		{
+			hit = 1;
+			return (0);
+		}
+	}
+}
+
+void	draw_object(t_game *game, char c)
+{
+	int				x;
+	int				y;
+	unsigned int	color;
+	t_wall			wall;
+
+	x = -1;
+	while (++x < SCREEN_WIDTH)
+	{
+		set_ray_direction(game, x);
+		set_step_and_dist(game);
+		if (scan_for_hit(game, c) == 0)
+			continue ;
+		set_wall_x(game, &wall);
+		set_distance(game, &wall);
+		set_wall_height(game, &wall);
+		set_draw_limits(game, &wall);
+		game->rc.tex_img = get_texture(game, c, game->rc.sec_part);
+		y = game->rc.draw_start - 1;
+		while (++y < game->rc.draw_end)
+		{
+			wall.factor.y = ((double)y - wall.y_start) / wall.height;
+			color = get_texture_pixel(game->rc.tex_img, wall.factor.y,
+					wall.factor.x);
+			color = scale_color(color, wall.perp_wall_dist / 30);
+			put_pixel(&game->display.img, x, y, color);
+		}
 	}
 }

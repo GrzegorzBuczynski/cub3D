@@ -23,6 +23,24 @@
 // H) INTRO?
 // I) WIDTH X HEIGHT PROPORTIONAL
 
+void set_mini_map_params(t_game *game)
+{
+	t_minimap	*minimap;
+
+	minimap = &game->params.minimap;
+	minimap->player_vision_range = PLAYER_MINIMAP_VISION_RANGE;
+	minimap->scale = MINIMAP_SCALE;
+	minimap->padding = (t_vector){MINIMAP_PADDING_Y, MINIMAP_PADDING_X};
+	minimap->size = (t_vector){2 * PLAYER_MINIMAP_VISION_RANGE, 2 * PLAYER_MINIMAP_VISION_RANGE};
+	if (minimap->size.y > game->map.height)
+		minimap->size.y = game->map.height;
+	if (minimap->size.x > game->map.width)
+		minimap->size.x = game->map.width;
+	minimap->player_color = PLAYER_COLOR;
+	minimap->wall_color = WALL_COLOR;
+	minimap->floor_color = FLOOR_COLOR;
+}
+
 void	init(t_game *game)
 {
 	init_player(game);
@@ -39,6 +57,7 @@ void	init(t_game *game)
 	game->params.speed_ratio = 1;
 	game->rc.time_ratio = 1;
 	game->params.scale_color = true;
+	set_mini_map_params(game);
 }
 
 int	main(int ac, char **av)
