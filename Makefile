@@ -6,10 +6,9 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/04 12:45:25 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/09 20:11:00 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = cub3D
 CC = gcc
@@ -21,7 +20,7 @@ HEADERS = includes/color.h \
 		includes/error_message.h \
 		includes/key_linux.h \
 		includes/structs.h \
-		includes/xfdf.h 
+		includes/key_events.h 
 		
 
 SRCS =	main.c \
@@ -44,9 +43,11 @@ SRCS =	main.c \
 		map/init_map.c \
 		map/map_utils.c \
 		map/minimap.c \
+		map/minimap_utils.c \
 		math/math_utils.c \
 		rendering/colors.c \
 		rendering/walls.c \
+		rendering/setup_walls.c \
 		rendering/draw.c \
 		rendering/draw_line.c \
 		rendering/main_background.c \
@@ -54,6 +55,9 @@ SRCS =	main.c \
 		rendering/textures.c \
 		utils/time.c \
 		utils/utils.c 
+
+
+INCLUDE_DIRS = includes lib/minilibx lib/garbage_colector
 
 
 SRCS_DIR = src/
