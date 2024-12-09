@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 19:57:25 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:13:10 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "key_linux.h"
 # include "xfdf.h"
 # include <sys/time.h>
-# include "../lib/garbage_colector/garbage_collector.h"
+# include "../lib/garbage_collector/garbage_collector.h"
 
 // Math
 // # define M_PI 3.142

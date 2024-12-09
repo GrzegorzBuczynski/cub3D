@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 19:57:01 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:18:51 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	close_program(void *param)
 	mlx_destroy_image(display->mlx, display->mlx_img);
 	mlx_destroy_window(display->mlx, display->win);
 	mlx_destroy_display(display->mlx);
-	exit(0);
+	gexit(0);
 }
 
 static int	key_press(int keycode, t_game *game)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
+#    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/09 20:11:00 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/09 20:14:47 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,9 @@ SRCS =	main.c \
 		map/init_map.c \
 		map/map_utils.c \
 		map/minimap.c \
-		map/minimap_utils.c \
 		math/math_utils.c \
 		rendering/colors.c \
 		rendering/walls.c \
-		rendering/setup_walls.c \
 		rendering/draw.c \
 		rendering/draw_line.c \
 		rendering/main_background.c \
@@ -57,20 +55,18 @@ SRCS =	main.c \
 		utils/utils.c 
 
 
-INCLUDE_DIRS = includes lib/minilibx lib/garbage_colector
-
-
 SRCS_DIR = src/
 SRCS_PATHS = $(addprefix $(SRCS_DIR), $(SRCS))
 OBJS = $(SRCS_PATHS:.c=.o)
 
 INCLUDES_DIR = includes
 MINILIBX_DIR = lib/minilibx
-CFLAGS += -I$(INCLUDES_DIR) -I$(MINILIBX_DIR)
+GARBAGE_COLLECTOR_DIR = lib/garbage_collector
+CFLAGS += -I$(INCLUDES_DIR) -I$(MINILIBX_DIR) -I$(GARBAGE_COLLECTOR_DIR)
 
-LIBRARY_DIRS = lib/lib_ft $(MINILIBX_DIR)
-LIBRARY_DIRSC = lib/lib_ft
-LIBRARY = mlx ft X11 Xext m
+LIBRARY_DIRS = lib/lib_ft $(MINILIBX_DIR) $(GARBAGE_COLLECTOR_DIR)
+LIBRARY_DIRSC = lib/lib_ft $(GARBAGE_COLLECTOR_DIR)
+LIBRARY = mlx ft gc X11 Xext m
 LDFLAGS = $(addprefix -L, $(LIBRARY_DIRS)) $(addprefix -l, $(LIBRARY))
 
 MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
