@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 16:49:06 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:40:42 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	set_mini_map_params(t_game *game)
 void	init(t_game *game)
 {
 	init_player(game);
-	// game->player.pos.x = 9;
-	// game->player.pos.y = 9;
 	init_textures_wrapper(game);
 	init_display(game);
 	mlx_loop_hook(game->display.mlx, draw, game);

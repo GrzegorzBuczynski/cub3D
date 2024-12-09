@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:24:23 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 17:19:32 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:44:01 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,12 @@ void	put_pixel(t_image *image, int x, int y, unsigned int color)
 
 void	put_pixel_with_black(t_image *img, int y, int x, unsigned int color)
 {
-	int	i;
+	int				i;
 	unsigned int	*image;
 
 	image = (unsigned int *)(img->pixel_data);
 	image[y * SCREEN_WIDTH + x] = color;
 }
-
-
 
 void	get_part_of_image(t_image *image, t_image *part, int x, int y)
 {
@@ -56,7 +54,6 @@ void	get_part_of_image(t_image *image, t_image *part, int x, int y)
 	}
 }
 
-// function takes display, image to put and x, y coordinates where to put image
 void	put_image_to_image(t_display *display, t_image *image, int y, int x)
 {
 	int				i;

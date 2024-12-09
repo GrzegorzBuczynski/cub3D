@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 17:05:06 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:41:39 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,3 @@ void	init_textures(char **file, t_map *map)
 	}
 	map->compass = parse_texture2("textures/compass.xpm");
 }
-

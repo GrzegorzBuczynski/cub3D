@@ -6,7 +6,7 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/09 16:55:49 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/12/09 18:54:34 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRCS =	main.c \
 		map/init_map.c \
 		map/map_utils.c \
 		map/minimap.c \
+		map/minimap_utils.c \
 		math/math_utils.c \
 		rendering/colors.c \
 		rendering/walls.c \

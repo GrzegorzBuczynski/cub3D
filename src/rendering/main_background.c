@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_background.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 12:43:55 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 13:26:11 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:44:35 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	draw_ceiling(unsigned int color, t_display *display)
 	i = 0;
 	while (i < SCREEN_HEIGHT / 2)
 	{
-		factor = ((double)pow(i, POWER) / pow(SCREEN_HEIGHT/2, POWER));
+		factor = ((double)pow(i, POWER) / pow(SCREEN_HEIGHT / 2, POWER));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)
@@ -52,8 +52,8 @@ static void	draw_floor(unsigned int color, t_display *display)
 	i = SCREEN_HEIGHT;
 	while (i > SCREEN_HEIGHT / 2 - 1)
 	{
-		factor = ((double)pow((SCREEN_HEIGHT - 1 - i), POWER) / pow(SCREEN_HEIGHT
-					/ 2, POWER));
+		factor = ((double)pow((SCREEN_HEIGHT - 1 - i), POWER)
+				/ pow(SCREEN_HEIGHT / 2, POWER));
 		color_base = scale_color(color, factor);
 		j = 0;
 		while (j < SCREEN_WIDTH)

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 18:38:32 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:57:08 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,14 @@ void			add_minimap(t_game *game);
 void			put_pixel(t_image *image, int x, int y, unsigned int color);
 void			put_pixel_with_black(t_image *img, int y, int x,
 					unsigned int color);
+
+// minimap_utils.c
+void			draw_player(t_game *game, t_vector pos, int size,
+					unsigned int color);
+void			draw_wall(t_image *image, t_vector on_screen_pos,
+					t_vector on_map_pos, t_minimap *minimap);
+void			draw_floor_mm(t_image *image, t_vector on_screen_pos,
+					t_vector on_map_pos, t_minimap *minimap);
 
 // mlx_safe.c mlx wrapper
 void			*init_mlx_safe(void);

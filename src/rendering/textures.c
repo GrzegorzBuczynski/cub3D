@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:13:11 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 17:54:52 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:45:57 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,12 @@ t_image	*get_texture_by_type(t_game *game, char c, double time)
 {
 	int	i;
 	int	number;
-	int frames_count;
+	int	frames_count;
 
 	i = 0;
 	frames_count = game->animation[i].frames_count;
-	number = (int)((time * game->animation[i].speed) * frames_count) % frames_count;
+	number = (int)((time * game->animation[i].speed) * frames_count)
+		% frames_count;
 	while (game->animation[i].type != c && game->animation[i].type != '\0')
 		i++;
 	return (&game->animation[i].frames[number]);

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 18:16:45 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:42:45 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	convert_spaces_to_walls(char **map)
 	y = 0;
 	while (map[y])
 	{
-		char *tibia = map[y];
 		x = 0;
 		while (map[y][x])
 		{
@@ -64,7 +63,6 @@ static int	find_first_map_row(char **array)
 	return (y);
 }
 
-// Function to create a 2D copy of the map, excluding '\n' characters
 char	**create_map_copy(char **map)
 {
 	char	**map_cpy;
@@ -89,7 +87,6 @@ char	**create_map_copy(char **map)
 	}
 	return (map_cpy);
 }
-
 
 void	select_map(t_game *data)
 {

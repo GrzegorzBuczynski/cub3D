@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   monster.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:44:42 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 19:45:04 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:52:43 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
 
 void	draw_monster(t_game *game, char c)
 {

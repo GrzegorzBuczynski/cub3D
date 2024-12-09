@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:28:56 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 21:08:58 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:42:21 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-void find_player_on_map(t_game *game)
+void	find_player_on_map(t_game *game)
 {
 	int	i;
 	int	j;
@@ -38,20 +38,18 @@ void find_player_on_map(t_game *game)
 	}
 	if (!game->player.direction)
 		perror("Error!\nNo player on the map!\n.");
-	// TO DO ---------
-	// NIE DOPUSCIC DO STARTU PROGRAMU
 }
 
-void init_player_n_plane_direction(t_game *game)
+void	init_player_n_plane_direction(t_game *game)
 {
 	if (game->player.direction == 'N')
 	{
-		game->rc.angle = M_PI/2;
+		game->rc.angle = M_PI / 2;
 		update_dir_n_plane(game);
 	}
 	else if (game->player.direction == 'S')
 	{
-		game->rc.angle = M_PI*3/2;
+		game->rc.angle = M_PI * 3 / 2;
 		update_dir_n_plane(game);
 	}
 	else if (game->player.direction == 'W')
@@ -72,4 +70,3 @@ void	init_player(t_game *game)
 	find_player_on_map(game);
 	init_player_n_plane_direction(game);
 }
-

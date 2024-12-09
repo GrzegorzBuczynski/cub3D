@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 14:13:22 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:40:55 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
 
 void	add_character_plane(t_game *game)
 {
@@ -80,5 +79,3 @@ void	set_step_and_dist(t_game *game)
 			* game->rc.delta_dist.x;
 	}
 }
-
-
