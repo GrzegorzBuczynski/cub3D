@@ -6,21 +6,11 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:24:23 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 18:44:01 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:21:45 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
-
-void	put_pixel(t_image *image, int x, int y, unsigned int color)
-{
-	int	i;
-	int	*data;
-
-	data = (int *)(image->pixel_data);
-	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT && color != 0)
-		data[y * SCREEN_WIDTH + x] = color;
-}
 
 void	put_pixel_with_black(t_image *img, int y, int x, unsigned int color)
 {
