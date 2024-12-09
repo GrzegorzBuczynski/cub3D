@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/26 17:17:40 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:23:09 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,50 +53,11 @@ void	read_file(char **av, char ***array)
 	close(fd);
 }
 
-// void	export_textures(t_game *data)
-// {
-// 	int	y;
-
-// 	y = 0;
-// 	while (data->array[y])
-// 	{
-// 		if (ft_strncmp(data->array[y], "NO ", 3) == 0)
-// 			data->xpm.wall_north = ft_strdup(data->array[y] + 3);
-// 		else if (ft_strncmp(data->array[y], "SO ", 3) == 0)
-// 			data->xpm.wall_south = ft_strdup(data->array[y] + 3);
-// 		else if (ft_strncmp(data->array[y], "WE ", 3) == 0)
-// 			data->xpm.wall_west = ft_strdup(data->array[y] + 3);
-// 		else if (ft_strncmp(data->array[y], "EA ", 3) == 0)
-// 			data->xpm.wall_east = ft_strdup(data->array[y] + 3);
-// 		else if (ft_strncmp(data->array[y], "F ", 2) == 0)
-// 			data->xpm.floor = parse_color(data->array[y + 2]);
-// 		else if (ft_strncmp(data->array[y], "C ", 2) == 0)
-// 			data->xpm.ceiling = parse_color(data->array[y + 2]);
-// 		y++;
-// 	}
-// }
-
-// void	init_textures(t_game *data)
-// {
-// 	data->xpm.floor = mlx_xpm_file_to_image(data->mlx, data.xpm.floor,
-// 			&(data->width), &(data->height));
-// 	data->xpm.wall_north = mlx_xpm_file_to_image(data->mlx, data.xpm.wall_north,
-// 			&(data->width), &(data->height));
-// 	data->xpm.wall_south = mlx_xpm_file_to_image(data->mlx, data.xpm.wall_south,
-// 			&(data->width), &(data->height));
-// 	data->xpm.wall_west = mlx_xpm_file_to_image(data->mlx, data.xpm.wall_west,
-// 			&(data->width), &(data->height));
-// 	data->xpm.wall_east = mlx_xpm_file_to_image(data->mlx, data.xpm.wall_east,
-// 			&(data->width), &(data->height));
-// }
-
 int	handle_input(char **av, t_game *game)
 {
-	// sometimes it doesn't find a file to open while debugging
 	read_file(av, &game->array);
 	select_map(game);
-	// check_map(data->map);
-	// export_textures(data);
-	// print_map(data->map);
+	check_map(game->map_cpy);
+	init_textures_wrapper(game);
 	return (1);
 }

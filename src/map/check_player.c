@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/12 19:40:12 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:13:02 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_player_on_map(char c, int *player)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		(*player)++;
-	else if (c != '0' && c != '1')
+	else if (c != '0' && c != '1' && c != ' ' && c != '\n')
 		return (0);
 	return (1);
 }
@@ -44,8 +44,5 @@ int	check_player(char **map)
 		return (ft_error(1, "Error\nMap doesn't have a player.\n"));
 	if (player != 1)
 		return (ft_error(1, "Error\nAdd only 1 player on the map.\n"));
-	// for testing
-	// if (DEBUG)
-	// 	printf("Player is on the map\n");
 	return (0);
 }

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures_wraper.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:33:44 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 17:50:58 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:03:06 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-
 
 void	init_animation(char **file, t_animation *animation)
 {

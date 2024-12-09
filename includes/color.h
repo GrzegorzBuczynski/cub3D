@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:15:42 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 16:53:11 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:38:42 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@
 # define COLOR_LINEN		0xFAF0E6
 # define COLOR_MAROON		0x800000
 # define COLOR_MINT			0x3EB489
-
 
 # define COLOR_DISCO		0x9A1F6A
 # define COLOR_FLAMINGO		0xEC4B27

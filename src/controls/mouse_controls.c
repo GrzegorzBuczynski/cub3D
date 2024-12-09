@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_controls.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:24:47 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/11/09 19:12:34 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:00:00 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	mouse_release(int button, int x, int y, void *param)
 
 int	mouse_move(int x, int y, void *param)
 {
-	t_display *display;
+	t_display	*display;
 
 	display = (t_display *)param;
 	display->mouse.previous_x = display->mouse.x;
@@ -60,7 +60,6 @@ int	mouse_move(int x, int y, void *param)
 	{
 		display->camera.beta += (x - display->mouse.previous_x) * 0.002;
 		display->camera.alpha += (y - display->mouse.previous_y) * 0.002;
-		// draw(display->map, display);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 16:51:23 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:38:04 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,8 @@ typedef struct s_square_params
 	int				color;
 }					t_square_params;
 
-// typedef struct s_minimap
-// {
-// 	t_image			image;
-// 	t_display		*display;
-// }					t_minimap;
-
 typedef struct s_map
 {
-	// t_dataList			*data;
 	char			**grid;
 	int				start_map;
 	int				height;
@@ -135,7 +128,7 @@ typedef struct s_pressed
 	int				s;
 	int				d;
 	int				space;
-	int 			shift;
+	int				shift;
 }					t_pressed;
 
 typedef struct s_time
@@ -150,13 +143,13 @@ typedef struct s_time
 
 typedef struct s_minimap
 {
-	int 			player_vision_range;
-	t_vector 		size;
-	t_vector 		padding;
-	int 			scale;
-	unsigned int 	player_color;
-	unsigned int 	wall_color;
-	unsigned int 	floor_color;
+	int				player_vision_range;
+	t_vector		size;
+	t_vector		padding;
+	int				scale;
+	unsigned int	player_color;
+	unsigned int	wall_color;
+	unsigned int	floor_color;
 
 }					t_minimap;
 
@@ -172,12 +165,12 @@ typedef struct s_params
 
 typedef struct s_animation
 {
-	int		frames_count;
-	char	type;
-	double	speed;
-	t_image	frames[100];
+	int				frames_count;
+	char			type;
+	double			speed;
+	t_image			frames[100];
 
-}			t_animation;
+}					t_animation;
 
 typedef struct s_game
 {

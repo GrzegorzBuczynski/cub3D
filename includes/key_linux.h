@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_linux.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:11:34 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 20:06:22 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:37:29 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@
 # define K_X 120
 # define K_Y 121
 # define K_Z 122
-
 
 /*
 ** Keyboard NUMPAD

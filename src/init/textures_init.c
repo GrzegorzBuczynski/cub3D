@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/04 17:57:28 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:05:06 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	init_textures(char **file, t_map *map)
 	while (file[y])
 	{
 		if (ft_strncmp(file[y], "NO ", 3) == 0)
-			map->no = parse_texture(&file[y][3]);
+			map->no = parse_texture2(get_path(&file[y][3]));
 		else if (ft_strncmp(file[y], "SO ", 3) == 0)
 			map->so = parse_texture(&file[y][3]);
 		else if (ft_strncmp(file[y], "WE ", 3) == 0)
@@ -88,15 +88,11 @@ void	init_textures(char **file, t_map *map)
 		else if (ft_strncmp(file[y], "EA ", 3) == 0)
 			map->ea = parse_texture(&file[y][3]);
 		else if (ft_strncmp(file[y], "F ", 2) == 0)
-		{
 			map->floor = parse_color(get_path(&file[y][2]));
-			// printf("%u\n", map->floor);
-		}
 		else if (ft_strncmp(file[y], "C ", 2) == 0)
 			map->ceiling = parse_color(get_path(&file[y][2]));
 		y++;
 	}
-	// map->compass = parse_texture2("textures/compass.xpm");
 	map->compass = parse_texture2("textures/compass.xpm");
 }
 

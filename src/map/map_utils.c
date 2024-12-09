@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/10 21:35:15 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:35:09 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ int	get_map_height(char **map)
 	return (height);
 }
 
-void	free_map(char **map)
+void	free_map(char **map, int height)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (i > height)
 	{
 		free(map[i]);
 		i++;

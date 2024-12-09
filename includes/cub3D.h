@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 16:55:35 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:38:32 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,12 @@
 // libmlx
 # include "../lib/minilibx/mlx.h"
 # include "color.h"
-# include "key_linux.h"
 # include "key_events.h"
+# include "key_linux.h"
 # include <sys/time.h>
 
-// Math
-// # define M_PI 3.142
-
-# define true 1
-# define false 0
+# define TRUE 1
+# define FALSE 0
 
 // Minimap
 # define MINIMAP_SCALE 15
@@ -70,11 +67,6 @@
 #  define DEBUG 0
 # endif
 
-// Error codes
-# define ERR_MAP_LOAD -1
-# define ERR_TEXTURE_LOAD -2
-# define ERR_MEMORY -3
-
 // check_map
 //	// check_borders.c
 int				check_borders(char **map);
@@ -90,7 +82,7 @@ void			get_player_position(char **map, t_vector *p_pos);
 int				get_maps_row_width(const char *row);
 int				get_maps_max_row_width(char **map);
 int				get_map_height(char **map);
-void			free_map(char **map);
+void			free_map(char **map, int height);
 void			convert_spaces_to_walls(char **map);
 
 // handle_input.c
@@ -113,7 +105,8 @@ int				get_color(t_vector current, t_vector start, t_vector end,
 					t_vector delta);
 // draw.c --
 void			draw_line(t_line *line, t_image *image);
-void			draw_square(t_image *image, t_vector pos, int size, unsigned int color);
+void			draw_square(t_image *image, t_vector pos, int size,
+					unsigned int color);
 void			draw_object(t_game *data, char c);
 void			draw_background(t_game *game, t_display *display);
 
@@ -143,8 +136,8 @@ t_image			*get_texture(t_game *game, char c, double time);
 // minimap.c
 void			add_minimap(t_game *game);
 void			put_pixel(t_image *image, int x, int y, unsigned int color);
-void			put_pixel_with_black(t_image *img, int y, int x, unsigned int color);
-
+void			put_pixel_with_black(t_image *img, int y, int x,
+					unsigned int color);
 
 // mlx_safe.c mlx wrapper
 void			*init_mlx_safe(void);

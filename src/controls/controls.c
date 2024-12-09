@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 16:56:11 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:59:37 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,10 @@ static int	key_press(int keycode, t_game *game)
 		game->pressed.left = true;
 	if (keycode == K_SPACE)
 		game->params.speed_ratio = 2;
-	// printf("keycode: %d\n", keycode);
 	return (0);
 }
 
-void activate(t_game *game)
+void	activate(t_game *game)
 {
 	game->pressed.w = true;
 	game->pressed.s = true;
@@ -57,7 +56,7 @@ void activate(t_game *game)
 
 int	key_release(int keycode, t_game *game)
 {
-	if ((keycode == K_W ||keycode == ARROW_UP)  && game->pressed.w)
+	if ((keycode == K_W || keycode == ARROW_UP) && game->pressed.w)
 		game->pressed.w = false;
 	if ((keycode == K_S || keycode == ARROW_DOWN) && game->pressed.s)
 		game->pressed.s = false;
@@ -71,13 +70,12 @@ int	key_release(int keycode, t_game *game)
 		game->pressed.left = false;
 	if (keycode == K_SPACE)
 		game->params.speed_ratio = 1;
-	// printf("keycode: %d\n", keycode);
 	return (0);
 }
 
 void	setup_controls(t_game *game)
 {
-	t_display *display;
+	t_display	*display;
 
 	display = &game->display;
 	mlx_hook(display->win, KEYPRESS, KEYPRESSMASK, key_press, game);
@@ -87,5 +85,3 @@ void	setup_controls(t_game *game)
 	mlx_hook(display->win, BUTTONRELEASE, (1L << 3), mouse_release, display);
 	mlx_hook(display->win, MOTIONNOTIFY, (1L << 6), mouse_move, display);
 }
-
-

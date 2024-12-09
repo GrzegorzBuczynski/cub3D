@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/02 16:13:29 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:00:31 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	move_front(t_game *game)
 		|| game->map.grid[(int)(new_pos_y + TO_WALL_DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + TO_WALL_DISTANCE
-			* game->player.dir.x)] == '0'
-		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + TO_WALL_DISTANCE
-			* game->player.dir.x)] == 'O')
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+		+ TO_WALL_DISTANCE * game->player.dir.x)] == '0'
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+			+ TO_WALL_DISTANCE * game->player.dir.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
 
@@ -47,10 +47,10 @@ void	move_back(t_game *game)
 		|| game->map.grid[(int)(new_pos_y - TO_WALL_DISTANCE
 			* game->player.dir.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - TO_WALL_DISTANCE
-			* game->player.dir.x)] == '0'
-		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - TO_WALL_DISTANCE
-			* game->player.dir.x)] == 'O')
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+		- TO_WALL_DISTANCE * game->player.dir.x)] == '0'
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+			- TO_WALL_DISTANCE * game->player.dir.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
 
@@ -68,10 +68,10 @@ void	move_left(t_game *game)
 		|| game->map.grid[(int)(new_pos_y - TO_WALL_DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - TO_WALL_DISTANCE
-			* game->player.plane.x)] == '0'
-		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x - TO_WALL_DISTANCE
-			* game->player.plane.x)] == 'O')
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+		- TO_WALL_DISTANCE * game->player.plane.x)] == '0'
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+			- TO_WALL_DISTANCE * game->player.plane.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
 
@@ -89,10 +89,10 @@ void	move_right(t_game *game)
 		|| game->map.grid[(int)(new_pos_y + TO_WALL_DISTANCE
 			* game->player.plane.y)][(int)game->player.pos.x] == 'O')
 		game->player.pos.y = new_pos_y;
-	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + TO_WALL_DISTANCE
-			* game->player.plane.x)] == '0'
-		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x + TO_WALL_DISTANCE
-			* game->player.plane.x)] == 'O')
+	if (game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+		+ TO_WALL_DISTANCE * game->player.plane.x)] == '0'
+		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
+			+ TO_WALL_DISTANCE * game->player.plane.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
 
@@ -110,7 +110,5 @@ int	move(t_game *game)
 		rotate_left(game);
 	if (game->pressed.right)
 		rotate_right(game);
-	// if (game->pressed.space)
-	// 	open_door_execute(game);
 	return (true);
 }
