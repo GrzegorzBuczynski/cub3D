@@ -6,7 +6,7 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/09 18:54:34 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/12/09 19:14:11 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS =	main.c \
 		math/math_utils.c \
 		rendering/colors.c \
 		rendering/walls.c \
+		rendering/setup_walls.c \
 		rendering/draw.c \
 		rendering/draw_line.c \
 		rendering/main_background.c \

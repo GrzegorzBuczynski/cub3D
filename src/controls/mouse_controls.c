@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:24:47 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 17:00:00 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:59:30 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,10 @@ int	mouse_press(int button, int x, int y, void *param)
 	display = (t_display *)param;
 	(void)x;
 	(void)y;
-	/* 	if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
-			zoom(button, display);
-		else */
 	if (button == MOUSE_LEFT_BUTTON)
 		display->mouse.is_pressed = true;
 	return (0);
 }
-
-/*
-** Handle mouse release
-*/
 
 int	mouse_release(int button, int x, int y, void *param)
 {
@@ -42,10 +35,6 @@ int	mouse_release(int button, int x, int y, void *param)
 	display->mouse.is_pressed = false;
 	return (0);
 }
-
-/*
-** Handle mouse move
-*/
 
 int	mouse_move(int x, int y, void *param)
 {

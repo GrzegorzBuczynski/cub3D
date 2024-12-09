@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 18:57:08 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:18:45 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int				ft_max(int a, int b);
 int				ft_abs(int x);
 int				draw(t_game *game);
 
-// movment.c
+// movement.c
 int				move(t_game *game);
 void			move_front(t_game *game);
 void			move_back(t_game *game);
@@ -129,6 +129,12 @@ void			move_right(t_game *game);
 void			rotate_left(t_game *game);
 void			rotate_right(t_game *game);
 void			update_dir_n_plane(t_game *game);
+
+// setup_wall.c
+void			set_wall_x(t_game *game, t_wall *wall);
+void			set_distance(t_game *game, t_wall *wall);
+void			set_wall_height(t_game *game, t_wall *wall);
+void			set_draw_limits(t_game *game, t_wall *wall);
 
 unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
 void			add_character_plane(t_game *game);

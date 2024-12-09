@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_line.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/09 19:03:09 by ssuchane          #+#    #+#             */
+/*   Updated: 2024/12/09 19:03:11 by ssuchane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
@@ -19,14 +30,49 @@ static void	calculate_sign(t_vector s, t_vector f, t_vector *sign)
 		sign->y = -1;
 }
 
+static void	draw_thick_point(t_image *image, t_vector cur, int thickness,
+		int color)
+{
+	int	i;
+	int	j;
+
+	i = -thickness / 2;
+	while (i <= thickness / 2)
+	{
+		j = -thickness / 2;
+		while (j <= thickness / 2)
+		{
+			put_pixel(image, cur.x + i, cur.y + j, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	update_error_and_position(t_vector *cur, t_vector sign,
+		t_vector delta, int *error)
+{
+	int	error2;
+
+	error2 = error[0] * 2;
+	if (error2 > -delta.y)
+	{
+		error[0] -= delta.y;
+		cur->x += sign.x;
+	}
+	if (error2 < delta.x)
+	{
+		error[0] += delta.x;
+		cur->y += sign.y;
+	}
+}
+
 void	draw_line(t_line *line, t_image *image)
 {
+	int			error[2];
 	t_vector	delta;
 	t_vector	sign;
 	t_vector	cur;
-	int			error[2];
-	int			i;
-	int			j;
 
 	estimate_delta(line->s, line->f, &delta);
 	calculate_sign(line->s, line->f, &sign);
@@ -34,23 +80,7 @@ void	draw_line(t_line *line, t_image *image)
 	cur = line->f;
 	while (cur.x != line->s.x || cur.y != line->s.y)
 	{
-		for (i = -line->thickness / 2; i <= line->thickness / 2; i++)
-		{
-			for (j = -line->thickness / 2; j <= line->thickness / 2; j++)
-			{
-				put_pixel(image, cur.x + i, cur.y + j, line->color);
-			}
-		}
-		error[1] = error[0] * 2;
-		if (error[1] > -delta.y)
-		{
-			error[0] -= delta.y;
-			cur.x += sign.x;
-		}
-		if (error[1] < delta.x)
-		{
-			error[0] += delta.x;
-			cur.y += sign.y;
-		}
+		draw_thick_point(image, cur, line->thickness, line->color);
+		update_error_and_position(&cur, sign, delta, error);
 	}
 }

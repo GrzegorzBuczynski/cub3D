@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 18:38:04 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 19:05:13 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,15 @@ typedef struct s_line
 	int				color;
 	int				thickness;
 }					t_line;
+
+typedef struct s_wall
+{
+	int				height;
+	double			perp_wall_dist;
+	int				y_start;
+	int				y_end;
+	t_dvector		factor;
+}					t_wall;
 
 typedef struct s_player
 {

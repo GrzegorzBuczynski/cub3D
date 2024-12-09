@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 20:36:00 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/01 18:41:51 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:59:53 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ unsigned int	get_time(void)
 void	ft_sleep(unsigned int start_time, double expected_time)
 {
 	int	delta;
-	int sleep_time;
-
+	int	sleep_time;
 
 	delta = get_time() - start_time;
 	sleep_time = expected_time - delta - 1;
