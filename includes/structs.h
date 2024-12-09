@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/04 17:16:57 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:51:23 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,8 @@ typedef struct s_mouse
 
 typedef struct s_camera
 {
-	// t_projection		projection;
-	int				zoom;
 	double			alpha;
 	double			beta;
-	double			gamma;
-	double			z_divisor;
-	int				x_offset;
-	int				y_offset;
 }					t_camera;
 
 typedef struct s_display

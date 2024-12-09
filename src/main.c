@@ -3,27 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/03 21:22:15 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:49:06 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
 
-// ------------TO DO------------
-// A) SPRITES
-// B) FLOOR/CEILING TEXTURE/COLOR
-// C) MOUSE CONTROLS
-// D) HUD ?????????
-// E) MENU
-// F) SCALE TEXTURE ON WALL
-// G) SCORE?
-// H) INTRO?
-// I) WIDTH X HEIGHT PROPORTIONAL
-
-void set_mini_map_params(t_game *game)
+void	set_mini_map_params(t_game *game)
 {
 	t_minimap	*minimap;
 
@@ -31,7 +20,8 @@ void set_mini_map_params(t_game *game)
 	minimap->player_vision_range = PLAYER_MINIMAP_VISION_RANGE;
 	minimap->scale = MINIMAP_SCALE;
 	minimap->padding = (t_vector){MINIMAP_PADDING_Y, MINIMAP_PADDING_X};
-	minimap->size = (t_vector){2 * PLAYER_MINIMAP_VISION_RANGE, 2 * PLAYER_MINIMAP_VISION_RANGE};
+	minimap->size = (t_vector){2 * PLAYER_MINIMAP_VISION_RANGE, 2
+		* PLAYER_MINIMAP_VISION_RANGE};
 	if (minimap->size.y > game->map.height)
 		minimap->size.y = game->map.height;
 	if (minimap->size.x > game->map.width)

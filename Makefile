@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
+#    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/04 12:45:25 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/09 16:55:49 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ HEADERS = includes/color.h \
 		includes/error_message.h \
 		includes/key_linux.h \
 		includes/structs.h \
-		includes/xfdf.h 
+		includes/key_events.h 
 		
 
 SRCS =	main.c \

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 20:15:42 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/03 16:08:25 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:53:11 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 # define COLOR_H
 
-# define TEXT_COLOR			0xEAEAEA
-# define MENU_BACKGROUND	0x1E1E1E
+# define BACKGROUND			0x222222
 
 # define COLOR_WHITE		0xFFFFFF
 # define COLOR_BLACK		0x000000
 # define COLOR_GRAY			0x404040
-
 # define COLOR_BRICK_RED	0xC2294E
-# define BACKGROUND			0x222222
 # define COLOR_RED			0xFF0000
 # define COLOR_GREEN		0x00FF00
 # define COLOR_BLUE			0x0000FF
@@ -30,8 +27,6 @@
 # define COLOR_CYAN			0x00FFFF
 # define COLOR_MAGENTA		0xFF00FF
 # define COLOR_TURQUOISE	0x40E0D0
-
-
 # define COLOR_LIME			0x00FF00
 # define COLOR_GOLD			0xFFD700
 # define COLOR_ORANGE		0xFFA500

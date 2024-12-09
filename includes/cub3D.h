@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/05 19:44:39 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:55:35 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "../lib/minilibx/mlx.h"
 # include "color.h"
 # include "key_linux.h"
-# include "xfdf.h"
+# include "key_events.h"
 # include <sys/time.h>
 
 // Math
@@ -66,9 +66,6 @@
 # define HORIZONTAL 0
 # define VERTICAL 1
 
-# define mapWidth 24
-# define mapHeight 24
-
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
@@ -101,9 +98,6 @@ int				handle_input(char **av, t_game *data);
 
 // utils.c
 int				ft_error(int error_code, char *message);
-
-void	print_map(char **map);    // temporary
-void	print_map_nl(char **map); // temporary
 
 void			select_map(t_game *data);
 void			get_player_position(char **map, t_vector *p_pos);

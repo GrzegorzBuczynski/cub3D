@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xfdf.h                                             :+:      :+:    :+:   */
+/*   key_events.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 20:07:54 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/08/02 21:32:02 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:55:27 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef XFDF_H
-# define XFDF_H
+#ifndef KEY_EVENTS_H
+# define KEY_EVENTS_H
 
 // content form orginal X.h
 /* Input Event Masks. Used as event-mask window attribute and as arguments
