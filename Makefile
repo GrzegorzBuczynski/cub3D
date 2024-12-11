@@ -26,7 +26,6 @@ HEADERS = includes/color.h \
 SRCS =	main.c \
 		compass.c \
 		raycaster_utils.c \
-		controls/close_window.c \
 		controls/controls.c \
 		controls/mouse_controls.c \
 		controls/movement.c \
