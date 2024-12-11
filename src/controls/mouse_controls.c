@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:24:47 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 18:59:30 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:22:45 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,20 @@ int	mouse_release(int button, int x, int y, void *param)
 int	mouse_move(int x, int y, void *param)
 {
 	t_display	*display;
+	t_mouse		*mouse;
+	static int	i = 0;
 
 	display = (t_display *)param;
-	display->mouse.previous_x = display->mouse.x;
-	display->mouse.previous_y = display->mouse.y;
-	display->mouse.x = x;
-	display->mouse.y = y;
-	if (display->mouse.is_pressed)
+	mouse = &display->mouse;
+	mouse->delta_x = x - SCREEN_WIDTH / 2;
+	mouse->delta_y = y - SCREEN_HEIGHT / 2;
+	if (x != SCREEN_WIDTH / 2)
 	{
-		display->camera.beta += (x - display->mouse.previous_x) * 0.002;
-		display->camera.alpha += (y - display->mouse.previous_y) * 0.002;
+		mlx_mouse_move(display->mlx, display->win, SCREEN_WIDTH / 2,
+			SCREEN_HEIGHT / 2);
+		i++;
 	}
+	mouse->x = x;
+	mouse->y = y;
 	return (0);
 }

@@ -6,10 +6,9 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/09 19:14:11 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/12/09 20:14:47 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = cub3D
 CC = gcc
@@ -64,11 +63,12 @@ OBJS = $(SRCS_PATHS:.c=.o)
 
 INCLUDES_DIR = includes
 MINILIBX_DIR = lib/minilibx
-CFLAGS += -I$(INCLUDES_DIR) -I$(MINILIBX_DIR)
+GARBAGE_COLLECTOR_DIR = lib/garbage_collector
+CFLAGS += -I$(INCLUDES_DIR) -I$(MINILIBX_DIR) -I$(GARBAGE_COLLECTOR_DIR)
 
-LIBRARY_DIRS = lib/lib_ft $(MINILIBX_DIR)
-LIBRARY_DIRSC = lib/lib_ft
-LIBRARY = mlx ft X11 Xext m
+LIBRARY_DIRS = lib/lib_ft $(MINILIBX_DIR) $(GARBAGE_COLLECTOR_DIR)
+LIBRARY_DIRSC = lib/lib_ft $(GARBAGE_COLLECTOR_DIR)
+LIBRARY = mlx ft gc X11 Xext m
 LDFLAGS = $(addprefix -L, $(LIBRARY_DIRS)) $(addprefix -l, $(LIBRARY))
 
 MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git

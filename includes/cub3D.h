@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 19:18:45 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:13:10 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "key_events.h"
 # include "key_linux.h"
 # include <sys/time.h>
+# include "../lib/garbage_collector/garbage_collector.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -126,8 +127,8 @@ void			move_front(t_game *game);
 void			move_back(t_game *game);
 void			move_left(t_game *game);
 void			move_right(t_game *game);
-void			rotate_left(t_game *game);
-void			rotate_right(t_game *game);
+void			rotate_left(t_game *game, double speed);
+void			rotate_right(t_game *game, double speed);
 void			update_dir_n_plane(t_game *game);
 
 // setup_wall.c

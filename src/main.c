@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 18:40:42 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:35:56 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,20 @@ void	set_mini_map_params(t_game *game)
 	minimap->wall_color = WALL_COLOR;
 	minimap->floor_color = FLOOR_COLOR;
 }
+void center_mouse_on_start(t_game *game)
+{
+    int center_x = SCREEN_WIDTH / 2;
+    int center_y = SCREEN_HEIGHT / 2;
+    mlx_mouse_move(game->display.mlx, game->display.win, center_x, center_y);
+}
 
 void	init(t_game *game)
 {
 	init_player(game);
 	init_textures_wrapper(game);
 	init_display(game);
+	center_mouse_on_start(game);
+	mlx_mouse_hide(game->display.mlx, game->display.win);
 	mlx_loop_hook(game->display.mlx, draw, game);
 	setup_controls(game);
 	game->map.width = get_maps_max_row_width(game->map.grid);
@@ -46,6 +54,8 @@ void	init(t_game *game)
 	game->rc.time_ratio = 1;
 	game->params.scale_color = true;
 	set_mini_map_params(game);
+	game->time.old_time = get_time();
+	game->time.start_time = get_time();
 }
 
 int	main(int ac, char **av)
