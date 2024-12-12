@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:06:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 19:58:13 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:54:34 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void				*gmalloc(size_t size);
 void				*gcalloc(size_t nmemb, size_t size);
 void				gfree(void *ptr);
 void				gexit(int status);
-void				register_pointer(void *ptr);
+void				*register_pointer(void *ptr);
 
 #endif

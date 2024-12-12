@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 19:34:12 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:19:55 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_path(const char *str)
 	while (end > str && (*end == ' ' || *end == '\t' || *end == '\n'))
 		end--;
 	*(end + 1) = '\0';
-	return (ft_strdup(str));
+	return (register_pointer(ft_strdup(str)));
 }
 
 t_image	parse_texture(char *path)
@@ -38,7 +38,7 @@ t_image	parse_texture(char *path)
 			&result.height);
 	pixel_data = mlx_get_data_addr_safe(image, &result.bpp, &result.line_length,
 			&result.endian);
-	result.pixel_data = calloc(result.width * result.height, result.bpp / 8);
+	result.pixel_data = gcalloc(result.width * result.height, result.bpp / 8);
 	if (!result.pixel_data)
 		ft_panic("Error.\nFailed to allocate memory for texture.\n", 1);
 	ft_memcpy(result.pixel_data, pixel_data, result.width * result.height

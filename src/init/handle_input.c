@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 18:23:09 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:59:51 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	**ft_read(int fd)
 	{
 		if (line == NULL)
 			break ;
-		array = ft_append_argv(array, line);
+		register_pointer(line);
+		array = register_pointer(ft_append_argv(array, line));
 		line = get_next_line(fd);
 	}
 	return (array);

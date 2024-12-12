@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_safe.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/11/24 17:11:37 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:18:23 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*init_mlx_safe(void)
 {
 	void	*mlx;
 
-	mlx = mlx_init();
+	mlx = register_pointer(mlx_init());
 	if (!mlx)
 		ft_panic("Error.\nFailed to initialize mlx.\n", 1);
 	return (mlx);

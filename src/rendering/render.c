@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 18:47:18 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:28:34 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 void	fps_counter(t_game *game, int frame_time)
 {
+	static int	i = 0;
+	static int	arr[20] = {0};
 	int			avg;
 	int			fps;
 
 	avg = 0;
 	fps = 1000 / frame_time;
+	arr[i] = fps;
+	i = (i + 1) % 20;
+	for (int j = 0; j < 20; j++)
+		avg += arr[j];
 	avg /= 20;
 	mlx_string_put(game->display.mlx, game->display.win, 1315, 30, 0xFFFFFF,
 		"FPS: ");

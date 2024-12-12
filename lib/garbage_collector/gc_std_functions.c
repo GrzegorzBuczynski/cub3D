@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc_std_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:49:34 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 20:16:59 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 16:54:23 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void gexit(int status)
 	exit(status);
 }
 
-void register_pointer(void *ptr)
+void *register_pointer(void *ptr)
 {
 	gc_collector(ptr, false, 1);
+	return (ptr);
 }
