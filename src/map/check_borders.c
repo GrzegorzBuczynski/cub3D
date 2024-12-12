@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 17:19:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:43:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ char	**create_map_border(int width, int height)
 	char	**map_border;
 	int		i;
 
-	map_border = gmalloc(sizeof(char *) * height);
+	map_border = malloc(sizeof(char *) * height);
 	if (!map_border)
 		return (NULL);
 	i = 0;
 	while (i < height)
 	{
-		map_border[i] = gmalloc(sizeof(char) * width);
+		map_border[i] = malloc(sizeof(char) * width);
 		if (map_border[i] == NULL)
 		{
 			while (--i >= 0)
