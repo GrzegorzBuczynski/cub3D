@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 19:01:00 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:08:16 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,28 @@
 
 void	fps_counter(t_game *game, int frame_time)
 {
-    static int	i = 0;
-    static int	arr[20];
-    int			avg;
-    char		*str;
-    int			j;
+	static int	i = 0;
+	static int	arr[20];
+	int			avg;
+	char		*str;
+	int			j;
 
-    avg = 0;
-    arr[i] = 1000 / frame_time;
-    i = (i + 1) % 20;
-    j = 0;
-    while (j < 20)
-    {
-        avg += arr[j];
-        j++;
-    }
-    avg /= 20;
-    mlx_string_put(game->display.mlx, game->display.win, 1315, 30, 0xFFFFFF, "FPS: ");
-    str = ft_itoa(avg);
-    mlx_string_put(game->display.mlx, game->display.win, 1350, 30, 0xFFFFFF, str);
-    free(str);
+	avg = 0;
+	arr[i] = 1000 / frame_time;
+	i = (i + 1) % 20;
+	j = 0;
+	while (j < 20)
+	{
+		avg += arr[j];
+		j++;
+	}
+	avg /= 20;
+	mlx_string_put(game->display.mlx, game->display.win, 1315, 30, 0xFFFFFF,
+		"FPS: ");
+	str = ft_itoa(avg);
+	mlx_string_put(game->display.mlx, game->display.win, 1350, 30, 0xFFFFFF,
+		str);
+	free(str);
 }
 
 void	set_times(t_game *game)

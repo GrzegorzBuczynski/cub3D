@@ -6,13 +6,13 @@
 #    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/12 18:57:44 by ssuchane         ###   ########.fr        #
+#    Updated: 2024/12/12 19:38:47 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = gcc
-CFLAGS = -g -D DEBUG=1 -Wall -Werror -Wextra 
+CFLAGS = -g -D DEBUG=1 #-Wall -Werror -Wextra 
 RM = rm -f
 
 HEADERS = includes/color.h \

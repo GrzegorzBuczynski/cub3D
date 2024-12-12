@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/06 18:31:29 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:41:08 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	move_right(t_game *game)
 			+ TO_WALL_DISTANCE * game->player.plane.x)] == 'O')
 		game->player.pos.x = new_pos_x;
 }
-	
+
 void	update_mouse_move(t_game *game, int factor)
 {
 	t_mouse	mouse;

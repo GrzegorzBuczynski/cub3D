@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 19:00:14 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:02:58 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int				get_maps_max_row_width(char **map);
 int				get_map_height(char **map);
 void			free_map(char **map, int height);
 void			convert_spaces_to_walls(char **map);
+char			**create_map_copy(char **map);
 
 // handle_input.c
 int				handle_input(char **av, t_game *data);

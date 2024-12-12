@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 17:52:13 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:05:12 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ char	**create_map_copy(char **map)
 
 	y = 0;
 	height = get_map_height(map);
-	map_cpy = malloc(sizeof(char *) * height);
+	map_cpy = gmalloc(sizeof(char *) * height);
 	while (map[y])
 	{
 		x = 0;
-		map_cpy[y] = malloc(sizeof(char) * (ft_strlen(map[y]) + 1));
+		map_cpy[y] = gmalloc(sizeof(char) * (ft_strlen(map[y]) + 1));
 		while (map[y][x])
 		{
 			map_cpy[y][x] = map[y][x];

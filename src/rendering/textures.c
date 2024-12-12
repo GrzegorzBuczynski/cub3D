@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:13:11 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 17:47:47 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:19:43 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x)
 	x = tex_x * texture->width;
 	y = tex_y * texture->height;
 	offset = y * texture->line_length + x * (texture->bpp / 8);
-	pixel = (unsigned int *)(texture->pixel_data + offset);
-	return (*pixel);
+	pixel = (unsigned int *)(texture->pixel_data);
+	return (pixel[offset / 4]);
 }
 
 t_image	*get_wall_texture_by_side(t_game *game)

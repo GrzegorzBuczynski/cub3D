@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 17:19:55 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:35:12 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_image	parse_texture(char *path)
 	image = NULL;
 	image = mlx_xpm_file_to_image_safe(mlx, path, &result.width,
 			&result.height);
-	pixel_data = mlx_get_data_addr_safe(image, &result.bpp, &result.line_length,
-			&result.endian);
+	pixel_data = mlx_get_data_addr_safe(image, &result.bpp,
+			&result.line_length, &result.endian);
 	result.pixel_data = gcalloc(result.width * result.height, result.bpp / 8);
 	if (!result.pixel_data)
 		ft_panic("Error.\nFailed to allocate memory for texture.\n", 1);
