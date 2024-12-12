@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc_std_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:49:34 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 20:23:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:44:13 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*gmalloc(size_t size)
 	void	*ptr;
 
 	ptr = gc_collector(malloc(size), false, 1);
+	if (!ptr)
+		gexit(0);
 	return (ptr);
 }
 
@@ -25,6 +27,8 @@ void	*gcalloc(size_t nmemb, size_t size)
 	void	*ptr;
 
 	ptr = gc_collector(calloc(nmemb, size), false, 1);
+	if (!ptr)
+		gexit(0);
 	return (ptr);
 }
 
