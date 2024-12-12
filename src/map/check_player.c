@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 17:13:02 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:25:08 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_player_on_map(char c, int *player)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		(*player)++;
-	else if (c != '0' && c != '1' && c != ' ' && c != '\n')
+	else if (c != '0' && c != '1' && c != ' ' && c != '\n' && c != 'B')
 		return (0);
 	return (1);
 }
