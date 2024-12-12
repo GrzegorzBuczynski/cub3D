@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/06 18:35:56 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:15:21 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,18 @@ void	set_mini_map_params(t_game *game)
 	minimap->wall_color = WALL_COLOR;
 	minimap->floor_color = FLOOR_COLOR;
 }
-void center_mouse_on_start(t_game *game)
+
+void	center_mouse_on_start(t_game *game)
 {
-    int center_x = SCREEN_WIDTH / 2;
-    int center_y = SCREEN_HEIGHT / 2;
-    mlx_mouse_move(game->display.mlx, game->display.win, center_x, center_y);
+	int	center_x;
+	int	center_y;
+
+	center_x = SCREEN_WIDTH / 2;
+	center_y = SCREEN_HEIGHT / 2;
+	mlx_mouse_move(game->display.mlx, game->display.win, center_x, center_y);
 }
+
+// mlx_mouse_hide(game->display.mlx, game->display.win);
 
 void	init(t_game *game)
 {
@@ -43,7 +49,6 @@ void	init(t_game *game)
 	init_textures_wrapper(game);
 	init_display(game);
 	center_mouse_on_start(game);
-	mlx_mouse_hide(game->display.mlx, game->display.win);
 	mlx_loop_hook(game->display.mlx, draw, game);
 	setup_controls(game);
 	game->map.width = get_maps_max_row_width(game->map.grid);

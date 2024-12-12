@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:49:34 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 16:54:23 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:15:34 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	gfree(void *ptr)
 	gc_collector(ptr, true, 1);
 }
 
-void gexit(int status)
+void	gexit(int status)
 {
 	printf("my_exit\n");
 	gc_collector(NULL, true, 1);
 	exit(status);
 }
 
-void *register_pointer(void *ptr)
+void	*register_pointer(void *ptr)
 {
 	gc_collector(ptr, false, 1);
 	return (ptr);

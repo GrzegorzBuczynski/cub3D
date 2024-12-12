@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:28:14 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 19:58:51 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:15:50 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,8 @@ int	ft_free_lvl_and_content(t_glist *head)
 	return (true);
 }
 
-
-
-void	remove_level_from_root_glist(t_glist **memory, t_glist *previous, t_glist *current)
+void	remove_level_from_root_glist(t_glist **memory, t_glist *previous,
+		t_glist *current)
 {
 	if (previous)
 	{
@@ -104,4 +103,3 @@ void	remove_level_from_root_glist(t_glist **memory, t_glist *previous, t_glist *
 		*memory = current->next;
 	}
 }
-

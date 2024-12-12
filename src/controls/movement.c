@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 17:37:15 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 19:41:08 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:11:57 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,35 +94,4 @@ void	move_right(t_game *game)
 		|| game->map.grid[(int)game->player.pos.y][(int)(new_pos_x
 			+ TO_WALL_DISTANCE * game->player.plane.x)] == 'O')
 		game->player.pos.x = new_pos_x;
-}
-
-void	update_mouse_move(t_game *game, int factor)
-{
-	t_mouse	mouse;
-
-	mouse = game->display.mouse;
-	game->rc.angle += (double)mouse.delta_x / SCREEN_WIDTH * factor * 2 * M_PI;
-	if (game->rc.angle >= 2 * M_PI)
-		game->rc.angle = game->rc.angle - 2 * M_PI;
-	else if (game->rc.angle < 0)
-		game->rc.angle = game->rc.angle + 2 * M_PI;
-	update_dir_n_plane(game);
-}
-
-int	move(t_game *game)
-{
-	if (game->pressed.w)
-		move_front(game);
-	if (game->pressed.s)
-		move_back(game);
-	if (game->pressed.a)
-		move_left(game);
-	if (game->pressed.d)
-		move_right(game);
-	if (game->pressed.left)
-		rotate_left(game, 1.0);
-	if (game->pressed.right)
-		rotate_right(game, 1.0);
-	update_mouse_move(game, 1);
-	return (true);
 }

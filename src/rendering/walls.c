@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 19:00:23 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:19:56 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+void	update_raycasting_params(t_game *game)
+{
+	if (game->rc.lenght_to.y < game->rc.lenght_to.x)
+	{
+		game->rc.lenght_to.y += game->rc.delta_dist.y;
+		game->rc.map.x += game->rc.step.y;
+		game->rc.side = 0;
+	}
+	else
+	{
+		game->rc.lenght_to.x += game->rc.delta_dist.x;
+		game->rc.map.y += game->rc.step.x;
+		game->rc.side = 1;
+	}
+}
 
 int	scan_for_hit(t_game *game, char c)
 {
@@ -19,18 +35,7 @@ int	scan_for_hit(t_game *game, char c)
 	hit = 0;
 	while (hit == 0)
 	{
-		if (game->rc.lenght_to.y < game->rc.lenght_to.x)
-		{
-			game->rc.lenght_to.y += game->rc.delta_dist.y;
-			game->rc.map.x += game->rc.step.y;
-			game->rc.side = 0;
-		}
-		else
-		{
-			game->rc.lenght_to.x += game->rc.delta_dist.x;
-			game->rc.map.y += game->rc.step.x;
-			game->rc.side = 1;
-		}
+		update_raycasting_params(game);
 		if (game->map.grid[game->rc.map.x][game->rc.map.y] == c)
 		{
 			hit = 1;

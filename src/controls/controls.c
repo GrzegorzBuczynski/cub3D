@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 19:40:42 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:12:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,5 @@ void	setup_controls(t_game *game)
 	mlx_hook(display->win, KEYPRESS, KEYPRESSMASK, key_press, game);
 	mlx_hook(display->win, KEYRELEASE, KEYRELEASEMASK, key_release, game);
 	mlx_hook(display->win, DESTROYNOTIFY, (1L << 2), close_program, display);
-	mlx_hook(display->win, BUTTONPRESS, (1L << 2), mouse_press, display);
-	mlx_hook(display->win, BUTTONRELEASE, (1L << 3), mouse_release, display);
 	mlx_hook(display->win, MOTIONNOTIFY, (1L << 6), mouse_move, display);
 }

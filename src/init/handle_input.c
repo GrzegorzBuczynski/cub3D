@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 16:59:51 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:09:45 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ int	handle_input(char **av, t_game *game)
 	read_file(av, &game->array);
 	select_map(game);
 	check_map(game->map_cpy);
-	init_textures_wrapper(game);
 	return (1);
 }

@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_controls.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 18:24:47 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/06 18:22:45 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 20:12:45 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
-
-int	mouse_press(int button, int x, int y, void *param)
-{
-	t_display	*display;
-
-	display = (t_display *)param;
-	(void)x;
-	(void)y;
-	if (button == MOUSE_LEFT_BUTTON)
-		display->mouse.is_pressed = true;
-	return (0);
-}
-
-int	mouse_release(int button, int x, int y, void *param)
-{
-	t_display	*display;
-
-	(void)x;
-	(void)y;
-	(void)button;
-	display = (t_display *)param;
-	display->mouse.is_pressed = false;
-	return (0);
-}
 
 int	mouse_move(int x, int y, void *param)
 {
@@ -55,4 +31,35 @@ int	mouse_move(int x, int y, void *param)
 	mouse->x = x;
 	mouse->y = y;
 	return (0);
+}
+
+void	update_mouse_move(t_game *game, int factor)
+{
+	t_mouse	mouse;
+
+	mouse = game->display.mouse;
+	game->rc.angle += (double)mouse.delta_x / SCREEN_WIDTH * factor * 2 * M_PI;
+	if (game->rc.angle >= 2 * M_PI)
+		game->rc.angle = game->rc.angle - 2 * M_PI;
+	else if (game->rc.angle < 0)
+		game->rc.angle = game->rc.angle + 2 * M_PI;
+	update_dir_n_plane(game);
+}
+
+int	move(t_game *game)
+{
+	if (game->pressed.w)
+		move_front(game);
+	if (game->pressed.s)
+		move_back(game);
+	if (game->pressed.a)
+		move_left(game);
+	if (game->pressed.d)
+		move_right(game);
+	if (game->pressed.left)
+		rotate_left(game, 1.0);
+	if (game->pressed.right)
+		rotate_right(game, 1.0);
+	update_mouse_move(game, 1);
+	return (true);
 }
