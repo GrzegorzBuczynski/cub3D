@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/06 18:28:04 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:00:23 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	scan_for_hit(t_game *game, char c)
 			return (0);
 		}
 	}
+	return (0);
 }
 
 void	render_wall_slice(t_game *game, int x, t_wall *wall)
@@ -62,16 +63,13 @@ void	render_wall_slice(t_game *game, int x, t_wall *wall)
 
 void	process_column(t_game *game, int x, char c, t_wall *wall)
 {
-	unsigned int	color;
-	int				y;
-
 	set_ray_direction(game, x);
 	set_step_and_dist(game);
 	if (scan_for_hit(game, c) == 0)
 		return ;
 	set_wall_x(game, wall);
 	set_distance(game, wall);
-	set_wall_height(game, wall);
+	set_wall_height(wall);
 	set_draw_limits(game, wall);
 	game->rc.tex_img = get_texture(game, c, game->rc.sec_part);
 	render_wall_slice(game, x, wall);

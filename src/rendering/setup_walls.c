@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 19:07:41 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:59:42 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	set_distance(t_game *game, t_wall *wall)
 					- game->rc.step.x) / 2) / game->rc.raydir.x + 0.0001;
 }
 
-void	set_wall_height(t_game *game, t_wall *wall)
+void	set_wall_height(t_wall *wall)
 {
 	wall->height = (int)(SCREEN_HEIGHT / wall->perp_wall_dist);
 	wall->y_start = (SCREEN_HEIGHT - wall->height) / 2;

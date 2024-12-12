@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 18:35:09 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:01:57 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_maps_row_width(const char *row)
 {
 	int	length;
 
-	length = strlen(row);
+	length = ft_strlen(row);
 	if (length > 0 && row[length - 1] == '\n')
 		return (length - 1);
 	return (length);

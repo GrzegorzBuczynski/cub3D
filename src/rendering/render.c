@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:43:07 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 17:33:54 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:01:00 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	update_frame_nbr(t_raycaster *rc)
 int	draw(t_game *game)
 {
 	t_display	*display;
-	void		*mlx_img;
 	t_raycaster	*rc;
 
 	game->time.start_time = get_time();

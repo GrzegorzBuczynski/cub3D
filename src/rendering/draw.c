@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 19:24:23 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 19:21:45 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:00:51 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	put_pixel_with_black(t_image *img, int y, int x, unsigned int color)
 {
-	int				i;
 	unsigned int	*image;
 
 	image = (unsigned int *)(img->pixel_data);
@@ -50,7 +49,6 @@ void	put_image_to_image(t_display *display, t_image *image, int y, int x)
 	int				j;
 	int				*display_img;
 	int				*input_img;
-	unsigned int	b;
 
 	display_img = (int *)(display->img.pixel_data);
 	input_img = (int *)(image->pixel_data);
@@ -60,7 +58,6 @@ void	put_image_to_image(t_display *display, t_image *image, int y, int x)
 		j = 0;
 		while (j < image->width)
 		{
-			b = input_img[i * image->width + j];
 			if (input_img[i * image->width + j] != 0)
 				display_img[(y + i) * SCREEN_WIDTH + x + j] = input_img[i
 					* image->width + j];

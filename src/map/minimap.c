@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/06 16:03:58 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:58:31 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	update_center(t_vector *center, t_game *game)
 {
-	int			i;
-	int			len;
 	t_minimap	*minimap;
 
 	minimap = &game->params.minimap;
@@ -69,7 +67,7 @@ void	draw_minimap_color(t_game *game, t_vector mini_padding,
 	mini_grid.y = center.y - minimap->player_vision_range
 		+ mini_screen_grid_nbr.y;
 	if (mini_grid.y >= 0 && mini_grid.y < game->map.height && mini_grid.x >= 0
-		&& mini_grid.x < ft_strlen(game->map.grid[mini_grid.y]))
+		&& mini_grid.x < (int)ft_strlen(game->map.grid[mini_grid.y]))
 	{
 		if (game->map.grid[mini_grid.y][mini_grid.x] == '1')
 			draw_wall(&game->display.img, mini_padding, mini_screen_grid_nbr,

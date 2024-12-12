@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 19:21:54 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:58:40 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	put_pixel(t_image *image, int x, int y, unsigned int color)
 {
-	int	i;
 	int	*data;
 
 	data = (int *)(image->pixel_data);

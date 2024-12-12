@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 20:18:51 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:58:10 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	close_program(void *param)
 	mlx_destroy_window(display->mlx, display->win);
 	mlx_destroy_display(display->mlx);
 	gexit(0);
+	return (0);
 }
 
 static int	key_press(int keycode, t_game *game)

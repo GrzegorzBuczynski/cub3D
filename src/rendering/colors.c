@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 18:45:07 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:58:46 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ unsigned int	scale_color(unsigned int color, double factor)
 	if (blue < 0)
 		blue = 0;
 	return ((red << 16) | (green << 8) | blue);
-}
-
-int	get_color(t_vector current, t_vector start, t_vector end, t_vector delta)
-{
-	int	color;
-
-	color = scale_color(COLOR_CYAN, 0.5);
-	return (color);
 }
 
 int	parse_color(char *str)

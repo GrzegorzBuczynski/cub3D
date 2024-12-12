@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/09 20:13:10 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:00:14 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # include <string.h>
 
 // libmlx
+# include "../lib/garbage_collector/garbage_collector.h"
 # include "../lib/minilibx/mlx.h"
 # include "color.h"
 # include "key_events.h"
 # include "key_linux.h"
 # include <sys/time.h>
-# include "../lib/garbage_collector/garbage_collector.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -102,8 +102,6 @@ void			setup_controls(t_game *game);
 
 // colors.c
 unsigned int	scale_color(unsigned int color, double factor);
-int				get_color(t_vector current, t_vector start, t_vector end,
-					t_vector delta);
 // draw.c --
 void			draw_line(t_line *line, t_image *image);
 void			draw_square(t_image *image, t_vector pos, int size,
@@ -134,7 +132,7 @@ void			update_dir_n_plane(t_game *game);
 // setup_wall.c
 void			set_wall_x(t_game *game, t_wall *wall);
 void			set_distance(t_game *game, t_wall *wall);
-void			set_wall_height(t_game *game, t_wall *wall);
+void			set_wall_height(t_wall *wall);
 void			set_draw_limits(t_game *game, t_wall *wall);
 
 unsigned int	get_texture_pixel(t_image *texture, double tex_y, double tex_x);
