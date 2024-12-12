@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
+#    By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/12 20:21:25 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/12 21:17:37 by ssuchane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = gcc
-CFLAGS = -g -D DEBUG=1 -Wall -Werror -Wextra 
+CFLAGS = -g -Wall -Werror -Wextra 
 RM = rm -f
 
 HEADERS = includes/color.h \

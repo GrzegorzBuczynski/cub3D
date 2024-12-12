@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 20:43:00 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 21:29:23 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,13 @@ static int	find_first_map_row(char **array)
 	y = 0;
 	while (array[y])
 	{
-		x = -1;
-		while (x++, array[y][x])
+		x = 0;
+		while (array[y][x])
+		{
 			if (array[y][x] == '1' && only_whitespace_before(array[y], x))
 				return (y);
+			x++;
+		}
 		y++;
 	}
 	return (y);
@@ -72,17 +75,16 @@ char	**create_map_copy(char **map)
 
 	y = 0;
 	height = get_map_height(map);
-	map_cpy = gmalloc(sizeof(char *) * height);
+	map_cpy = gcalloc(sizeof(char *) * height + 1, 1);
 	while (map[y])
 	{
 		x = 0;
-		map_cpy[y] = gmalloc(sizeof(char) * (ft_strlen(map[y]) + 1));
+		map_cpy[y] = gcalloc(sizeof(char) * (ft_strlen(map[y]) + 1), 1);
 		while (map[y][x])
 		{
 			map_cpy[y][x] = map[y][x];
 			x++;
 		}
-		map_cpy[y][x] = '\0';
 		y++;
 	}
 	return (map_cpy);
@@ -93,6 +95,6 @@ void	select_map(t_game *data)
 	int	y;
 
 	y = find_first_map_row(data->array);
-	data->map.grid = data->array + y;
+	data->map.grid = &data->array[y];
 	data->map_cpy = create_map_copy(data->map.grid);
 }

@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:39:33 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 20:37:25 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/12 21:11:37 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_player(char **map)
 	while (map[y])
 	{
 		x = 0;
-		while (map[y][x] && map[y][x] != '\n')
+		while (map[y][x])
 		{
 			if (!is_player_on_map(map[y][x], &player))
 				return (ft_error(1, "Error\nInvalid object on map.\n"));
