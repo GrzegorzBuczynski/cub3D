@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/13 18:51:13 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:53:21 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@
 //	// check_borders.c
 int				check_borders(t_map *map);
 //	// check_map.c
-void	check_map(t_map *map);
+void			check_map(t_map *map);
 
 //	// check_player.c
 int				check_player(char **map);
