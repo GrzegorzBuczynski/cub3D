@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:01:09 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 18:58:46 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:54:08 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,16 @@ int	parse_color(char *str)
 	ft_skip_whitespace(&temp);
 	red = ft_atoi(temp);
 	temp = ft_strchr(temp, ',');
-	temp++;
+	if (!temp)
+		return (0);
+	else
+		temp++;
 	green = ft_atoi(temp);
 	temp = ft_strchr(temp, ',');
-	temp++;
+	if (!temp)
+		return (0);
+	else
+		temp++;
 	blue = ft_atoi(temp);
 	return ((red << 16) | (green << 8) | blue);
 }

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 17:18:23 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:35:18 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	*mlx_xpm_file_to_image_safe(void *mlx, const char *path, int *width,
 
 	if (!mlx || !path)
 	{
-		ft_panic("Error.\nInvalid MLX instance or path for XPM file\n", 1);
+		ft_putstr_fd("Error.\nInvalid MLX instance or path for XPM file\n", 2);
 		return (NULL);
 	}
 	image = mlx_xpm_file_to_image(mlx, (char *)path, width, height);
 	if (!image)
 	{
-		ft_panic("Error.\nFailed to load XPM file\n", 1);
+		ft_putstr_fd("Error.\nFailed to load XPM file\n", 2);
 		return (NULL);
 	}
 	return (image);

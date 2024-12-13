@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 21:16:34 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:41:30 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	center_mouse_on_start(t_game *game)
 void	init(t_game *game)
 {
 	init_player(game);
-	init_textures_wrapper(game);
 	init_display(game);
+	init_textures_wrapper(game);
 	center_mouse_on_start(game);
 	mlx_loop_hook(game->display.mlx, draw, game);
 	setup_controls(game);

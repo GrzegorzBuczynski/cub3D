@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/13 18:53:21 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:32:54 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ void			draw_square(t_image *image, t_vector pos, int size,
 void			draw_object(t_game *data, char c);
 void			draw_background(t_game *game, t_display *display);
 
-void			init_textures(char **file, t_map *map);
+void			init_textures(char **file, t_map *map, t_game *game);
+
 void			init_textures_wrapper(t_game *game);
 
 // math_utils.c
@@ -170,13 +171,13 @@ void			ft_sleep(unsigned int start_time, double expected_time);
 void			render_compass(t_game *game);
 void			put_image_to_image(t_display *display, t_image *image, int y,
 					int x);
-t_image			parse_texture2(char *path);
 t_image			cut_image(t_image *image, double factor, int width, int *data);
 
 int				parse_color(char *str);
 void			trim_texture(t_image *image);
-t_image			parse_texture(char *path);
+t_image			parse_texture(char *path, t_game *game);
 char			*get_path(const char *str);
 void			limit_fps(t_game *game);
+int				close_program(void *param);
 
 #endif

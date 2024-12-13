@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures_wraper.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:33:44 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 18:42:27 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:37:18 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	init_animation(char **file, t_animation *animation)
+void	init_animation(char **file, t_animation *animation, t_game *game)
 {
 	int	y;
 	int	x;
@@ -29,7 +29,7 @@ void	init_animation(char **file, t_animation *animation)
 			y++;
 			while (file[y] && file[y] != 0 && x < animation->frames_count)
 			{
-				animation->frames[x] = parse_texture(get_path(file[y]));
+				animation->frames[x] = parse_texture(get_path(file[y]), game);
 				y++;
 				x++;
 			}
@@ -41,6 +41,6 @@ void	init_animation(char **file, t_animation *animation)
 
 void	init_textures_wrapper(t_game *game)
 {
-	init_textures(game->array, &game->map);
-	init_animation(game->array, &game->animation[0]);
+	init_textures(game->array, &game->map, game);
+	init_animation(game->array, &game->animation[0], game);
 }
