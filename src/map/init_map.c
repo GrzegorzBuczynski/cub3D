@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 21:29:23 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:33:16 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void	select_map(t_game *data)
 	y = find_first_map_row(data->array);
 	data->map.grid = &data->array[y];
 	data->map_cpy = create_map_copy(data->map.grid);
+	data->map.max_width = get_map_height(data->map.grid);
 }

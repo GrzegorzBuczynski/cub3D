@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:47:54 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/06 17:26:09 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:33:50 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ typedef struct s_map
 	int				start_map;
 	int				height;
 	int				width;
+	int				max_width;
 	t_image			no;
 	t_image			so;
 	t_image			we;

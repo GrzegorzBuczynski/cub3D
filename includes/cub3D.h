@@ -6,7 +6,7 @@
 /*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/12 19:02:58 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:46:58 by ssuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@
 
 // check_map
 //	// check_borders.c
-int				check_borders(char **map);
+int				check_borders(t_map *map);
 //	// check_map.c
-void			check_map(char **map);
+void	check_map(t_map *map);
 
 //	// check_player.c
 int				check_player(char **map);
@@ -80,7 +80,7 @@ void			init_player(t_game *game);
 
 //	// map_utils.c
 void			get_player_position(char **map, t_vector *p_pos);
-int				get_maps_row_width(const char *row);
+int				get_maps_row_width(char *row);
 int				get_maps_max_row_width(char **map);
 int				get_map_height(char **map);
 void			free_map(char **map, int height);
