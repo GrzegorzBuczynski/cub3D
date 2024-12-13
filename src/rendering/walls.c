@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 20:19:56 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:50:12 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	draw_object(t_game *game, char c)
 	t_wall	wall;
 
 	x = -1;
+	ft_bzero(&wall, sizeof(t_wall));
 	while (++x < SCREEN_WIDTH)
 		process_column(game, x, c, &wall);
 }

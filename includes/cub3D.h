@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:44:12 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/13 17:46:58 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 18:51:13 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ int				ft_error(int error_code, char *message);
 void			select_map(t_game *data);
 void			get_player_position(char **map, t_vector *p_pos);
 void			init_display(t_game *data);
-int				mouse_press(int button, int x, int y, void *param);
-int				mouse_release(int button, int x, int y, void *param);
 int				mouse_move(int x, int y, void *param);
 void			setup_controls(t_game *game);
 
