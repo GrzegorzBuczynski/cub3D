@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:38:53 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/13 20:06:45 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:10:26 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	check_map(t_map *map)
 	status += check_borders(map);
 	if (status)
 		return (status);
-	return(0);
+	return (0);
 }
