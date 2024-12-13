@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/13 19:42:49 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:59:03 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ char	*get_path(const char *str)
 	return (register_pointer(ft_strdup(str)));
 }
 
+void	tibia(t_game *game, void *mlx)
+{
+	mlx_destroy_display(mlx);
+	close_program(&game->display);
+}
+
 t_image	parse_texture(char *path, t_game *game)
 {
 	t_image		result;
@@ -41,10 +47,7 @@ t_image	parse_texture(char *path, t_game *game)
 			&result.height);
 	display = &game->display;
 	if (!image)
-	{
-		mlx_destroy_display(mlx);
-		close_program(&game->display);
-	}
+		tibia(game, mlx);
 	pixel_data = mlx_get_data_addr_safe(image, &result.bpp, &result.line_length,
 			&result.endian);
 	result.pixel_data = gcalloc(result.width * result.height, result.bpp / 8);
