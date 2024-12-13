@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/13 20:25:44 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:29:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	update_raycasting_params(t_game *game)
 	if (game->rc.lenght_to.y < game->rc.lenght_to.x)
 	{
 		game->rc.lenght_to.y += game->rc.delta_dist.y;
-		game->rc.map.x += game->rc.step.y;
+		game->rc.map.y += game->rc.step.y;
 		game->rc.side = 0;
 	}
 	else
 	{
 		game->rc.lenght_to.x += game->rc.delta_dist.x;
-		game->rc.map.y += game->rc.step.x;
+		game->rc.map.x += game->rc.step.x;
 		game->rc.side = 1;
 	}
 }
@@ -36,12 +36,12 @@ int	scan_for_hit(t_game *game, char c)
 	while (hit == 0)
 	{
 		update_raycasting_params(game);
-		if (game->map.grid[game->rc.map.x][game->rc.map.y] == c)
+		if (game->map.grid[game->rc.map.y][game->rc.map.x] == c)
 		{
 			hit = 1;
 			return (1);
 		}
-		else if (game->map.grid[game->rc.map.x][game->rc.map.y] == '1')
+		else if (game->map.grid[game->rc.map.y][game->rc.map.x] == '1')
 		{
 			hit = 1;
 			return (0);

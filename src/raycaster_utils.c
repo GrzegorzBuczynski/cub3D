@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:26:39 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/09 18:40:55 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:31:50 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	set_ray_direction(t_game *game, int x)
 		* game->rc.camera_x;
 	game->rc.raydir.x = game->player.dir.x + game->player.plane.x
 		* game->rc.camera_x;
-	game->rc.map.x = (int)game->player.pos.y;
-	game->rc.map.y = (int)game->player.pos.x;
+	game->rc.map.y = (int)game->player.pos.y;
+	game->rc.map.x = (int)game->player.pos.x;
 	game->rc.delta_dist.y = fabs(1 / game->rc.raydir.y);
 	game->rc.delta_dist.x = fabs(1 / game->rc.raydir.x);
 }
@@ -57,25 +57,25 @@ void	set_step_and_dist(t_game *game)
 	if (game->rc.raydir.y < 0)
 	{
 		game->rc.step.y = -1;
-		game->rc.lenght_to.y = (game->player.pos.y - game->rc.map.x)
+		game->rc.lenght_to.y = (game->player.pos.y - game->rc.map.y)
 			* game->rc.delta_dist.y;
 	}
 	else
 	{
 		game->rc.step.y = 1;
-		game->rc.lenght_to.y = (game->rc.map.x + 1.0 - game->player.pos.y)
+		game->rc.lenght_to.y = (game->rc.map.y + 1.0 - game->player.pos.y)
 			* game->rc.delta_dist.y;
 	}
 	if (game->rc.raydir.x < 0)
 	{
 		game->rc.step.x = -1;
-		game->rc.lenght_to.x = (game->player.pos.x - game->rc.map.y)
+		game->rc.lenght_to.x = (game->player.pos.x - game->rc.map.x)
 			* game->rc.delta_dist.x;
 	}
 	else
 	{
 		game->rc.step.x = 1;
-		game->rc.lenght_to.x = (game->rc.map.y + 1.0 - game->player.pos.x)
+		game->rc.lenght_to.x = (game->rc.map.x + 1.0 - game->player.pos.x)
 			* game->rc.delta_dist.x;
 	}
 }

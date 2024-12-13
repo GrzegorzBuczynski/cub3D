@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssuchane <ssuchane@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 18:31:28 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/12 18:59:42 by ssuchane         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:34:35 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	set_wall_x(t_game *game, t_wall *wall)
 void	set_distance(t_game *game, t_wall *wall)
 {
 	if (game->rc.side == 0)
-		wall->perp_wall_dist = (game->rc.map.x - game->player.pos.y + (1
+		wall->perp_wall_dist = (game->rc.map.y - game->player.pos.y + (1
 					- game->rc.step.y) / 2) / game->rc.raydir.y + 0.0001;
 	else
-		wall->perp_wall_dist = (game->rc.map.y - game->player.pos.x + (1
+		wall->perp_wall_dist = (game->rc.map.x - game->player.pos.x + (1
 					- game->rc.step.x) / 2) / game->rc.raydir.x + 0.0001;
 }
 
