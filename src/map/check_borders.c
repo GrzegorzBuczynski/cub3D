@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/15 16:27:41 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:38:59 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	alloc_bigger_map(t_game *game, char ***map)
 		i++;
 	}
 	*map = new_map;
+	return (0);
 }
 
 void	rewrite_map(char **map, char **new_map)

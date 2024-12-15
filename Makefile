@@ -6,13 +6,13 @@
 #    By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/28 22:56:26 by gbuczyns          #+#    #+#              #
-#    Updated: 2024/12/13 19:40:42 by gbuczyns         ###   ########.fr        #
+#    Updated: 2024/12/15 16:38:14 by gbuczyns         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = gcc
-CFLAGS = -g #-Wall -Werror -Wextra 
+CFLAGS = -g -Wall -Werror -Wextra 
 RM = rm -f
 
 HEADERS = includes/color.h \
@@ -74,6 +74,7 @@ MINILIBX_REPO = https://github.com/42Paris/minilibx-linux.git
 MINILIBX_DIR = lib/minilibx
 
 all: $(MINILIBX_DIR) $(LIBRARY) $(NAME)
+
 bonus: all
 
 $(MINILIBX_DIR):

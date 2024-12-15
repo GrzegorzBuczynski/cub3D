@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 20:09:18 by gbuczyns          #+#    #+#             */
-/*   Updated: 2024/12/13 19:59:03 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:38:44 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_image	parse_texture(char *path, t_game *game)
 	void		*image;
 	void		*mlx;
 	char		*pixel_data;
-	t_display	*display;
 
 	mlx = init_mlx_safe();
 	if (!mlx)
@@ -45,7 +44,6 @@ t_image	parse_texture(char *path, t_game *game)
 	image = NULL;
 	image = mlx_xpm_file_to_image_safe(mlx, path, &result.width,
 			&result.height);
-	display = &game->display;
 	if (!image)
 		tibia(game, mlx);
 	pixel_data = mlx_get_data_addr_safe(image, &result.bpp, &result.line_length,
