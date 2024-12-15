@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:47:07 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/15 16:22:53 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:27:41 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	flood_fill(char **map, t_vector pos, t_vector size)
 
 int	alloc_bigger_map(t_game *game, char ***map)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	**new_map;
 
 	i = 0;
@@ -54,7 +54,6 @@ int	alloc_bigger_map(t_game *game, char ***map)
 			j++;
 		}
 		i++;
-		
 	}
 	*map = new_map;
 }
@@ -78,12 +77,11 @@ void	rewrite_map(char **map, char **new_map)
 	}
 }
 
-
 int	check_borders(t_game *game)
 {
-	char	**map;
-	t_vector size;
-	t_vector pos;
+	char		**map;
+	t_vector	size;
+	t_vector	pos;
 
 	game->map.width = get_maps_max_row_width(game->map.grid);
 	game->map.height = get_map_height(game->map.grid);

@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:42:46 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/15 16:10:39 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:28:49 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,3 @@ int	main(int ac, char **av)
 	mlx_loop(game.display.mlx);
 	return (0);
 }
-
-
-// https://prod.liveshare.vsengsaas.visualstudio.com/join?70BAFF02F5065AF39EF12F33EA9FAF251226
