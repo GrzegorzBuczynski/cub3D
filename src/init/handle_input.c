@@ -6,11 +6,23 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:10:52 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/15 15:53:42 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:48:28 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3D.h"
+
+void	validate_file_extension(char *filename)
+{
+	char	*extension;
+
+	extension = ft_strrchr(filename, '.');
+	if (extension == NULL || ft_strncmp(extension, ".cub", 4) != 0)
+	{
+		ft_error(1, "Error\nInvalid file extension.\n");
+		close_program(NULL);
+	}
+}
 
 char	**ft_read(int fd)
 {
@@ -56,6 +68,7 @@ void	read_file(char **av, char ***array)
 
 int	handle_input(char **av, t_game *game)
 {
+	validate_file_extension(av[1]);
 	read_file(av, &game->array);
 	select_map(game);
 	if (check_map(&game->map, game))

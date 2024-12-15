@@ -6,7 +6,7 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:36:32 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/13 20:08:50 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:47:25 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	close_program(void *param)
 	t_display	*display;
 
 	display = (t_display *)param;
-	if (display->mlx)
+	if (display && display->mlx)
 	{
 		mlx_destroy_image(display->mlx, display->mlx_img);
 		mlx_destroy_window(display->mlx, display->win);
