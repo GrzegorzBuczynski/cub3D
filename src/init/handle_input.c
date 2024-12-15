@@ -58,7 +58,7 @@ int	handle_input(char **av, t_game *game)
 {
 	read_file(av, &game->array);
 	select_map(game);
-	if (check_map(&game->map))
+	if (check_map(&game->map, game))
 		close_program(&game->display);
 	return (0);
 }

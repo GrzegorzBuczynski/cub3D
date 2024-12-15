@@ -96,6 +96,6 @@ void	select_map(t_game *data)
 
 	y = find_first_map_row(data->array);
 	data->map.grid = &data->array[y];
-	data->map_cpy = create_map_copy(data->map.grid);
-	data->map.max_width = get_map_height(data->map.grid);
+	// data->map_cpy = create_map_copy(data->map.grid);
+	// data->map.max_width = get_map_height(data->map.grid);
 }

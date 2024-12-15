@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3D.h"
 
-int	check_map(t_map *map)
+int	check_map(t_map *map, t_game game)
 {
 	int	status;
 

@@ -72,7 +72,7 @@
 //	// check_borders.c
 int				check_borders(t_map *map);
 //	// check_map.c
-int				check_map(t_map *map);
+int				check_map(t_map *map, t_game game);
 
 //	// check_player.c
 int				check_player(char **map);
