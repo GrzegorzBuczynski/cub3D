@@ -6,13 +6,13 @@
 /*   By: gbuczyns <gbuczyns@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:38:53 by ssuchane          #+#    #+#             */
-/*   Updated: 2024/12/13 20:10:26 by gbuczyns         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:12:46 by gbuczyns         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-int	check_map(t_map *map, t_game game)
+int	check_map(t_map *map, t_game *game)
 {
 	int	status;
 
@@ -20,7 +20,7 @@ int	check_map(t_map *map, t_game game)
 	status += check_player(map->grid);
 	if (status)
 		return (status);
-	status += check_borders(map);
+	status += check_borders(game);
 	if (status)
 		return (status);
 	return (0);
